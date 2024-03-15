@@ -107,7 +107,11 @@ class Customer extends CustomerWallet
         'verification_token',
         'accepts_marketing',
         'fcm_token',
-        'phone'
+        'phone',
+        'hospital_pic_name',
+        'hospital_pic_phone',
+        'hospital_pic_email',
+        'hospital_group',
     ];
 
     /**
@@ -135,6 +139,7 @@ class Customer extends CustomerWallet
         $searchable['description'] = strip_tags($this->description);
         $searchable['dob'] = $this->dob;
         $searchable['active'] = $this->active;
+        $searchable['hospital_pic_name'] = $this->hospital_pic_name;
 
         return $searchable;
     }

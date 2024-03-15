@@ -60,15 +60,22 @@
             <table class="table">
               @if ($customer->name)
                 <tr>
-                  <th width="25%">{{ trans('app.full_name') }}: </th>
+                  <th width="25%">{{ trans('app.form.hospital_name') }}: </th>
                   <td>{{ $customer->name }}</td>
                 </tr>
               @endif
 
               <tr>
-                <th>{{ trans('app.email') }}: </th>
+                <th>{{ trans('app.form.hospital_email') }}: </th>
                 <td>{{ $customer->email }}</td>
               </tr>
+
+              @if ($customer->phone)
+                <tr>
+                  <th>{{ trans('app.form.hospital_phone') }}: </th>
+                  <td>{!! get_formated_gender($customer->phone) !!}</td>
+                </tr>
+              @endif
 
               @if ($customer->dob)
                 <tr>
@@ -90,6 +97,34 @@
                   <td>{!! $customer->description !!}</td>
                 </tr>
               @endif
+
+              @if ($customer->hospital_pic_name)
+                <tr>
+                  <th>{{ trans('app.form.hospital_pic_name') }}: </th>
+                  <td>{!! $customer->hospital_pic_name !!}</td>
+                </tr>
+              @endif
+
+              @if ($customer->hospital_pic_phone)
+                <tr>
+                  <th>{{ trans('app.form.hospital_pic_phone') }}: </th>
+                  <td>{!! $customer->hospital_pic_phone !!}</td>
+                </tr>
+              @endif
+
+              @if ($customer->hospital_pic_email)
+                <tr>
+                  <th>{{ trans('app.form.hospital_pic_email') }}: </th>
+                  <td>{!! $customer->hospital_pic_email !!}</td>
+                </tr>
+              @endif
+
+              @if ($customer->hospital_group)
+              <tr>
+                <th>{{ trans('app.form.hospital_group') }}: </th>
+                <td>{!! $customer->hospital_group !!}</td>
+              </tr>
+            @endif
             </table>
           </div> <!-- /.tab-pane -->
 

@@ -6,7 +6,7 @@
       <h3 class="box-title">{{ trans('app.customers') }}</h3>
       <div class="box-tools pull-right">
         @can('create', \App\Models\Customer::class)
-          <a href="javascript:void(0)" data-link="{{ route('admin.admin.customer.bulk') }}" class="ajax-modal-btn btn btn-default btn-flat">{{ trans('app.bulk_import') }}</a>
+          {{-- <a href="javascript:void(0)" data-link="{{ route('admin.admin.customer.bulk') }}" class="ajax-modal-btn btn btn-default btn-flat">{{ trans('app.bulk_import') }}</a> --}}
           <a href="javascript:void(0)" data-link="{{ route('admin.admin.customer.create') }}" class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.add_customer') }}</a>
         @endcan
       </div>
@@ -36,9 +36,9 @@
               <th></th>
             @endcan
             <th>{{ trans('app.avatar') }}</th>
-            <th>{{ trans('app.nice_name') }}</th>
-            <th>{{ trans('app.full_name') }}</th>
-            <th>{{ trans('app.email') }}</th>
+            <th>{{ trans('app.form.hospital_pic_name') }}</th>
+            <th>{{ trans('app.form.hospital_name') }}</th>
+            <th>{{ trans('app.form.hospital_email') }}</th>
             <th>{{ trans('app.orders') }}</th>
             <th>{{ trans('app.option') }}</th>
           </tr>
@@ -72,9 +72,9 @@
         <thead>
           <tr>
             <th>{{ trans('app.avatar') }}</th>
-            <th>{{ trans('app.nice_name') }}</th>
-            <th>{{ trans('app.full_name') }}</th>
-            <th>{{ trans('app.email') }}</th>
+            <th>{{ trans('app.form.hospital_pic_name') }}</th>
+            <th>{{ trans('app.form.hospital_name') }}</th>
+            <th>{{ trans('app.form.hospital_email') }}</th>
             <th>{{ trans('app.deleted_at') }}</th>
             <th>{{ trans('app.option') }}</th>
           </tr>

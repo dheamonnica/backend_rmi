@@ -1172,6 +1172,15 @@ return [
         'none'  => 'None',
         'newsletter'  => 'Newsletter',
         'banner'  => 'Banner',
+
+        // customer
+        'hospital_name' => 'Hospital Name',
+        'hospital_phone' => 'Hospital Phone',
+        'hospital_email' => 'Hospital Email',
+        'hospital_group' => 'Hospital Group',
+        'hospital_pic_name' => 'Hospital PIC Name',
+        'hospital_pic_phone' => 'Hospital PIC Phone',
+        'hospital_pic_email' => 'Hospital PIC Email',
     ],
 
     'placeholder' => [

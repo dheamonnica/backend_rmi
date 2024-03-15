@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-8 nopadding-right">
     <div class="form-group">
-      {!! Form::label('name', trans('app.form.full_name') . '*') !!}
-      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.full_name'), 'required']) !!}
+      {!! Form::label('name', trans('app.form.hospital_name') . '*') !!}
+      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('app.form.hospital_name'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
   </div>
@@ -18,14 +18,15 @@
 <div class="row">
   <div class="col-md-6 nopadding-right">
     <div class="form-group">
-      {!! Form::label('nice_name', trans('app.form.nice_name')) !!}
-      {!! Form::text('nice_name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.nice_name')]) !!}
+      {!! Form::label('hospital_group', trans('app.form.hospital_group') . '*') !!}
+      {!! Form::text('hospital_group', null, ['class' => 'form-control', 'placeholder' => trans('app.form.hospital_group'), 'required']) !!}
+      <div class="help-block with-errors"></div>
     </div>
   </div>
   <div class="col-md-6 nopadding-left">
     <div class="form-group">
-      {!! Form::label('email', trans('app.form.email_address') . '*') !!}
-      {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.valid_email'), 'required']) !!}
+      {!! Form::label('email', trans('app.form.hospital_email') . '*') !!}
+      {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => trans('app.form.hospital_email'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
   </div>
@@ -53,19 +54,25 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 nopadding-right">
+  <div class="col-md-4 nopadding-right">
     <div class="form-group">
-      {!! Form::label('dob', trans('app.form.dob')) !!}
-      <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-        {!! Form::text('dob', null, ['class' => 'form-control datepicker', 'placeholder' => trans('app.placeholder.dob')]) !!}
-      </div>
+      {!! Form::label('hospital_pic_name', trans('app.form.hospital_pic_name') . '*') !!}
+      {!! Form::text('hospital_pic_name', null, ['class' => 'form-control', 'placeholder' => trans('app.form.hospital_pic_name'), 'required']) !!}
+      <div class="help-block with-errors"></div>
     </div>
   </div>
-  <div class="col-md-6 nopadding-left">
+  <div class="col-md-4 nopadding-left">
     <div class="form-group">
-      {!! Form::label('sex', trans('app.form.sex')) !!}
-      {!! Form::select('sex', ['app.male' => trans('app.male'), 'app.female' => trans('app.female'), 'app.other' => trans('app.other')], null, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.placeholder.sex')]) !!}
+      {!! Form::label('hospital_pic_phone', trans('app.form.hospital_pic_phone') . '*') !!}
+      {!! Form::text('hospital_pic_phone', null, ['class' => 'form-control', 'placeholder' => trans('app.form.hospital_pic_phone'), 'required']) !!}
+      <div class="help-block with-errors"></div>
+    </div>
+  </div>
+  <div class="col-md-4 nopadding-left">
+    <div class="form-group">
+      {!! Form::label('hospital_pic_email', trans('app.form.hospital_pic_email') . '*') !!}
+      {!! Form::email('hospital_pic_email', null, ['class' => 'form-control', 'placeholder' => trans('app.form.hospital_pic_email'), 'required']) !!}
+      <div class="help-block with-errors"></div>
     </div>
   </div>
 </div>
