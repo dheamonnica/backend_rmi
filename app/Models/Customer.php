@@ -106,7 +106,8 @@ class Customer extends CustomerWallet
         'remember_token',
         'verification_token',
         'accepts_marketing',
-        'fcm_token'
+        'fcm_token',
+        'phone'
     ];
 
     /**
