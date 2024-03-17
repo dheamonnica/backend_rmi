@@ -21,7 +21,7 @@
           <h3 class="box-title">{{ isset($product) ? trans('app.update_product') : trans('app.add_product') }}</h3>
           <div class="box-tools pull-right">
             @if (!isset($product))
-              <a href="javascript:void(0)" data-link="{{ route('admin.catalog.product.upload') }}" class="ajax-modal-btn btn btn-default btn-flat">{{ trans('app.bulk_import') }}</a>
+              {{-- <a href="javascript:void(0)" data-link="{{ route('admin.catalog.product.upload') }}" class="ajax-modal-btn btn btn-default btn-flat">{{ trans('app.bulk_import') }}</a> --}}
             @endif
           </div>
         </div> <!-- /.box-header -->
@@ -48,24 +48,11 @@
           </div>
 
           <div class="row">
-            <div class="col-md-4 nopadding-right">
+            <div class="col-md-12">
               <div class="form-group">
-                {!! Form::label('mpn', trans('app.form.mpn'), ['class' => 'with-help']) !!}
-                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.mpn') }}"></i>
-                {!! Form::text('mpn', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.mpn')]) !!}
-              </div>
-            </div>
-            <div class="col-md-4 nopadding">
-              <div class="form-group">
-                {!! Form::label('gtin', trans('app.form.gtin'), ['class' => 'with-help']) !!}
-                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.gtin') }}"></i>
-                {!! Form::text('gtin', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.gtin')]) !!}
-              </div>
-            </div>
-            <div class="col-md-4 nopadding-left">
-              <div class="form-group">
-                {!! Form::label('gtin_type', trans('app.form.gtin_type'), ['class' => 'with-help']) !!}
-                {!! Form::select('gtin_type', $gtin_types, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.gtin_type')]) !!}
+                {!! Form::label('gtin', trans('app.form.item_number'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.item_number') }}"></i>
+                {!! Form::text('gtin', null, ['class' => 'form-control', 'placeholder' => trans('app.form.item_number')]) !!}
               </div>
             </div>
           </div>
@@ -125,17 +112,6 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="input-group">
-                {{ Form::hidden('downloadable', 0) }}
-                {!! Form::checkbox('downloadable', null, null, ['class' => 'icheckbox_line']) !!}
-                {!! Form::label('downloadable', trans('app.form.downloadable')) !!}
-                <span class="input-group-addon" id="basic-addon1">
-                  <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="left" title="{{ trans('help.downloadable') }}"></i>
-                </span>
-              </div>
-            </div>
-
             @if (auth()->user()->isFromplatform())
               <div class="row">
                 <div class="col-md-6 nopadding-right">
@@ -191,34 +167,7 @@
             </div>
           </fieldset>
 
-          <fieldset>
-            <legend>{{ trans('app.branding') }}</legend>
-            <div class="form-group">
-              {!! Form::label('origin_country', trans('app.form.origin'), ['class' => 'with-help']) !!}
-              {!! Form::select('origin_country', $countries, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.origin')]) !!}
-              <div class="help-block with-errors"></div>
-            </div>
-
-            <div class="form-group">
-              {!! Form::label('manufacturer_id', trans('app.form.manufacturer'), ['class' => 'with-help']) !!}
-              {!! Form::select('manufacturer_id', $manufacturers, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.manufacturer')]) !!}
-              <div class="help-block with-errors"></div>
-            </div>
-
-            <div class="form-group">
-              {!! Form::label('brand', trans('app.form.brand'), ['class' => 'with-help']) !!}
-              <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.brand') }}"></i>
-              {!! Form::text('brand', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.brand')]) !!}
-            </div>
-
-            <div class="form-group">
-              {!! Form::label('model_number', trans('app.form.model_number'), ['class' => 'with-help']) !!}
-              <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.model_number') }}"></i>
-              {!! Form::text('model_number', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.model_number')]) !!}
-            </div>
-          </fieldset>
-
-          <fieldset>
+          <fieldset style="display: none">
             <legend>{{ trans('app.seo') }}</legend>
             <div class="form-group">
               {!! Form::label('slug', trans('app.form.slug') . '*', ['class' => 'with-help']) !!}
@@ -227,10 +176,10 @@
               <div class="help-block with-errors"></div>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               {!! Form::label('tag_list[]', trans('app.form.tags'), ['class' => 'with-help']) !!}
               {!! Form::select('tag_list[]', $tags, null, ['class' => 'form-control select2-tag', 'multiple' => 'multiple']) !!}
-            </div>
+            </div> --}}
           </fieldset>
         </div>
       </div>

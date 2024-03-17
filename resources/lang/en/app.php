@@ -1181,6 +1181,9 @@ return [
         'hospital_pic_name' => 'Hospital PIC Name',
         'hospital_pic_phone' => 'Hospital PIC Phone',
         'hospital_pic_email' => 'Hospital PIC Email',
+
+        // product
+        'item_number' => 'Item Number',
     ],
 
     'placeholder' => [

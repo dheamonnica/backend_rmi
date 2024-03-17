@@ -242,17 +242,17 @@ return [
 
     'shop_external_url' => 'If you own a website you can put the external link here, the url can be set as shop\'s landing page.',
 
-    'product_name' => 'Customers will not see this. This name only helps merchants to find the item for listing.',
+    'product_name' => 'This name only helps admin to find the item for listing.',
 
-    'product_featured_image' =>  'Customers will not see this. This only helps merchants to find the item for listing.',
+    'product_featured_image' =>  'This helps to make thumbnail photo.',
 
     'product_images' => 'Customers will see this images only if the merchant\'s listing has no images to display.',
 
-    'product_active' => 'Merchants will find active items only.',
+    'product_active' => 'Admin will find active items only.',
 
     'product_slug' => 'This will be used as your product URL, You can not change it later. Be creative to choose the slug for your product',
 
-    'product_description' => 'Customers will see this. This is the core and common product description.',
+    'product_description' => 'This is the core and common product description.',
 
     'model_number' => 'An identifier of a product given by its manufacturer. Not required but recommended',
 
@@ -909,4 +909,6 @@ return [
     'choose_attributes' => 'Choose all of your attributes and then click SET VARIANTS button to generate all possible combinations.',
 
     'listing_type' => 'Select the listing type of the item.',
+
+    'item_number' => 'Item number is a unique identifier of a product.'
 ];
