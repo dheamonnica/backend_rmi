@@ -1,4 +1,4 @@
-@foreach ($product->categories as $category)
+{{-- @foreach ($product->categories as $category)
   <span class="label label-outline">{{ $category->name }}</span>
   @if ($loop->iteration > 2)
     <span class="text-primary indent10">
@@ -6,4 +6,6 @@
     </span>
 		@break
 	@endif
-@endforeach
+@endforeach --}}
+
+{{ $product->purchase_price }}

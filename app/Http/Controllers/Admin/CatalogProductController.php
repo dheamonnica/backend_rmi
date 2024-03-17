@@ -72,7 +72,7 @@ class CatalogProductController extends Controller
                 return view('admin.partials.actions.product.name', compact('product'));
             })
             ->editColumn('type', function ($product) {
-                return $product->type;
+                return $product->licence_number;
             })
             ->editColumn('gtin', function ($product) {
                 return view('admin.partials.actions.product.gtin', compact('product'));

@@ -910,5 +910,9 @@ return [
 
     'listing_type' => 'Select the listing type of the item.',
 
-    'item_number' => 'Item number is a unique identifier of a product.'
+    // products
+    'licence_number' => 'A legal licence number from goverment.',
+    'manufacture_skuid' => 'Unique manufacture  product number.',
+    'selling_skuid' => 'Selling product number.',
+    'client_skuid' => 'Unique client product number.',
 ];

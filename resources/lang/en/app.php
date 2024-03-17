@@ -1183,7 +1183,11 @@ return [
         'hospital_pic_email' => 'Hospital PIC Email',
 
         // product
-        'item_number' => 'Item Number',
+        'licence_number' => 'Licence Number',
+        'manufacture_skuid' => 'Manufacture SKUID',
+        'selling_skuid' => 'Selling SKUID',
+        'client_skuid' => 'Client SKUID',
+        'manufacturing' => 'Manufacturing',
     ],
 
     'placeholder' => [

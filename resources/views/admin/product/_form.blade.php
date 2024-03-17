@@ -36,7 +36,7 @@
               </div>
             </div>
 
-            <div class="col-md-3 nopadding-left">
+            <div class="col-md-3">
               <div class="form-group">
                 {!! Form::label('active', trans('app.form.status') . '*', ['class' => 'with-help']) !!}
                 <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.product_active') }}"></i>
@@ -48,11 +48,32 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3 nopadding-right">
               <div class="form-group">
-                {!! Form::label('gtin', trans('app.form.item_number'), ['class' => 'with-help']) !!}
-                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.item_number') }}"></i>
-                {!! Form::text('gtin', null, ['class' => 'form-control', 'placeholder' => trans('app.form.item_number')]) !!}
+                {!! Form::label('licence_number', trans('app.form.licence_number'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.licence_number') }}"></i>
+                {!! Form::text('licence_number', null, ['class' => 'form-control', 'placeholder' => trans('app.form.licence_number')]) !!}
+              </div>
+            </div>
+            <div class="col-md-3 nopadding-right">
+              <div class="form-group">
+                {!! Form::label('manufacture_skuid', trans('app.form.manufacture_skuid'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.manufacture_skuid') }}"></i>
+                {!! Form::text('manufacture_skuid', null, ['class' => 'form-control', 'placeholder' => trans('app.form.manufacture_skuid')]) !!}
+              </div>
+            </div>
+            <div class="col-md-3 nopadding-right">
+              <div class="form-group">
+                {!! Form::label('selling_skuid', trans('app.form.selling_skuid'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.selling_skuid') }}"></i>
+                {!! Form::text('selling_skuid', null, ['class' => 'form-control', 'placeholder' => trans('app.form.selling_skuid')]) !!}
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                {!! Form::label('client_skuid', trans('app.form.client_skuid'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.client_skuid') }}"></i>
+                {!! Form::text('client_skuid', null, ['class' => 'form-control', 'placeholder' => trans('app.form.client_skuid')]) !!}
               </div>
             </div>
           </div>
@@ -99,7 +120,7 @@
           </div>
 
           <fieldset>
-            <legend>{{ trans('app.catalog_rules') }}</legend>
+            {{-- <legend>{{ trans('app.catalog_rules') }}</legend>
 
             <div class="form-group">
               <div class="input-group">
@@ -110,7 +131,34 @@
                   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="left" title="{{ trans('help.requires_shipping') }}"></i>
                 </span>
               </div>
-            </div>
+            </div> --}}
+
+            <fieldset>
+              <legend>{{ trans('app.form.manufacturing') }}</legend>
+              <div class="form-group">
+                {!! Form::label('origin_country', trans('app.form.origin'), ['class' => 'with-help']) !!}
+                {!! Form::select('origin_country', $countries, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.origin')]) !!}
+                <div class="help-block with-errors"></div>
+              </div>
+  
+              <div class="form-group">
+                {!! Form::label('manufacturer_id', trans('app.form.manufacturer'), ['class' => 'with-help']) !!}
+                {!! Form::select('manufacturer_id', $manufacturers, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.manufacturer')]) !!}
+                <div class="help-block with-errors"></div>
+              </div>
+  
+              {{-- <div class="form-group">
+                {!! Form::label('brand', trans('app.form.brand'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.brand') }}"></i>
+                {!! Form::text('brand', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.brand')]) !!}
+              </div>
+  
+              <div class="form-group">
+                {!! Form::label('model_number', trans('app.form.model_number'), ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.model_number') }}"></i>
+                {!! Form::text('model_number', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.model_number')]) !!}
+              </div> --}}
+            </fieldset>
 
             @if (auth()->user()->isFromplatform())
               <div class="row">
@@ -132,6 +180,17 @@
                     <div class="input-group">
                       <span class="input-group-addon">{{ get_currency_symbol() }}</span>
                       {!! Form::number('max_price', null, ['class' => 'form-control', 'step' => 'any', 'min' => '0', 'placeholder' => trans('app.placeholder.catalog_max_price')]) !!}
+                    </div>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    {!! Form::label('purchase_price', trans('app.form.purchase_price'), ['class' => 'with-help']) !!}
+                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.purchase_price') }}"></i>
+                    <div class="input-group">
+                      <span class="input-group-addon">{{ get_currency_symbol() }}</span>
+                      {!! Form::number('purchase_price', null, ['class' => 'form-control', 'step' => 'any', 'min' => '0', 'placeholder' => trans('app.form.purchase_price')]) !!}
                     </div>
                     <div class="help-block with-errors"></div>
                   </div>

@@ -78,6 +78,11 @@ class Product extends Inspectable
         // 'meta_description',
         'sale_count',
         'active',
+        'licence_number',
+        'manufacture_skuid',
+        'selling_skuid',
+        'client_skuid',
+        'purchase_price'
     ];
 
     /**

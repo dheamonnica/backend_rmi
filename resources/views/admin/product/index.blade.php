@@ -6,7 +6,7 @@
       <h3 class="box-title">{{ trans('app.products') }}</h3>
       <div class="box-tools pull-right">
         @can('create', \App\Models\Product::class)
-          <a href="javascript:void(0)" data-link="{{ route('admin.catalog.product.bulk') }}" class="ajax-modal-btn btn btn-default btn-flat">{{ trans('app.bulk_import') }}</a>
+          {{-- <a href="javascript:void(0)" data-link="{{ route('admin.catalog.product.bulk') }}" class="ajax-modal-btn btn btn-default btn-flat">{{ trans('app.bulk_import') }}</a> --}}
           <a href="{{ route('admin.catalog.product.create') }}" class=" btn btn-new btn-flat">{{ trans('app.add_product') }}</a>
         @endcan
       </div>
@@ -44,10 +44,12 @@
             @endcan
             <th>{{ trans('app.image') }}</th>
             <th>{{ trans('app.name') }}</th>
-            <th>{{ trans('app.type') }}</th>
-            <th>{{ trans('app.gtin') }}</th>
-            <th width="20%">{{ trans('app.category') }}</th>
-            <th>{{ trans('app.listing') }}</th>
+            <th>{{ trans('app.form.licence_number') }}</th>
+            <th>{{ trans('app.form.selling_skuid') }}</th>
+            <th width="20%">{{ trans('app.form.purchase_price') }}</th>
+            <th>
+              {{ trans('app.listing') }}
+            </th>
             @if (Auth::user()->isFromPlatform())
               <th width="15%">{{ trans('app.added_by') }}</th>
             @else
@@ -86,8 +88,8 @@
           <tr>
             <th>{{ trans('app.image') }}</th>
             <th>{{ trans('app.name') }}</th>
-            <th>{{ trans('app.type') }}</th>
-            <th>{{ trans('app.model_number') }}</th>
+            {{-- <th>{{ trans('app.type') }}</th> --}}
+            {{-- <th>{{ trans('app.model_number') }}</th> --}}
             <th>{{ trans('app.category') }}</th>
             <th>{{ trans('app.option') }}</th>
           </tr>
@@ -103,8 +105,8 @@
                 @endif
               </td>
               <td>{{ $trash->name }}</td>
-              <td>{{ $trash->type }}</td>
-              <td>{{ $trash->model_number }}</td>
+              {{-- <td>{{ $trash->type }}</td> --}}
+              {{-- <td>{{ $trash->model_number }}</td> --}}
               <td>
                 @foreach ($trash->categories as $category)
                   <span class="label label-outline">{{ $category->name }}</span>

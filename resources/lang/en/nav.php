@@ -36,7 +36,7 @@ return [
     'stock' => 'Stock',
     'inventories' => 'Inventories',
     'digital_products' => 'Digital Items',
-    'physical_products' => 'Physical Items',
+    'physical_products' => 'Inventory',
     'warehouses' => 'Warehouses',
 
     'utilities' => 'Utilities',
