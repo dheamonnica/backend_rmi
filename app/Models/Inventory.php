@@ -114,6 +114,7 @@ class Inventory extends Inspectable
         'base_price',
         'auction_end',
         'bid_accept_action',
+        'expired_date'
     ];
 
     // public $asYouType = true;

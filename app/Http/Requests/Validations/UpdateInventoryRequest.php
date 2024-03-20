@@ -55,8 +55,8 @@ class UpdateInventoryRequest extends Request
             ]);
         }
 
-        $min_price = get_formated_decimal($inventoryData->product->min_price);
-        $max_price = get_formated_decimal($inventoryData->product->max_price);
+        $min_price = $inventoryData->product->min_price;
+        $max_price = $inventoryData->product->max_price;
 
         $rules = [
             'title' => 'required',

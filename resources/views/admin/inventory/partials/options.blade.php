@@ -1,4 +1,4 @@
- <a href="{{ route('show.product', $inventory->slug) }}" target="_blank"><i data-toggle="tooltip" data-placement="top" title="{{ trans('app.view_as_customer') }}" class="fa fa-external-link"></i></a>&nbsp;
+ {{-- <a href="{{ route('show.product', $inventory->slug) }}" target="_blank"><i data-toggle="tooltip" data-placement="top" title="{{ trans('app.view_as_customer') }}" class="fa fa-external-link"></i></a>&nbsp; --}}
 
  {{-- @can('view', $inventory)
    <a href="javascript:void(0)" data-link="{{ route('admin.stock.inventory.show', $inventory->id) }}" class="ajax-modal-btn"><i data-toggle="tooltip" data-placement="top" title="{{ trans('app.detail') }}" class="fa fa-expand"></i></a>&nbsp;
