@@ -915,4 +915,8 @@ return [
     'manufacture_skuid' => 'Unique manufacture  product number.',
     'selling_skuid' => 'Selling product number.',
     'client_skuid' => 'Unique client product number.',
+
+    // inventories
+    'expired_date' => 'Expired product date.',
+
 ];

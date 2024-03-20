@@ -42,8 +42,8 @@ class CreateInventoryRequest extends Request
 
         $product = Product::find($this->product_id);
 
-        $min_price = get_formated_decimal($product->min_price);
-        $max_price = get_formated_decimal($product->max_price);
+        $min_price = $product->min_price;
+        $max_price = $product->max_price;
 
         $rules = [
             'title' => 'required',

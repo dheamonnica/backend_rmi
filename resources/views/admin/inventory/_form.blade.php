@@ -44,11 +44,11 @@
 
           <div class="col-md-4 nopadding-left">
             <div class="form-group">
-              {!! Form::label('available_from', trans('app.form.available_from'), ['class' => 'with-help']) !!}
+              {!! Form::label('available_from', trans('app.form.available_from') . '*', ['class' => 'with-help']) !!}
               <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.available_from') }}"></i>
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                {!! Form::text('available_from', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.placeholder.available_from')]) !!}
+                {!! Form::text('available_from', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.placeholder.available_from'), 'required']) !!}
               </div>
             </div>
           </div>
@@ -84,12 +84,24 @@
         </div> <!-- /.row -->
 
         @if (config('system_settings.show_item_conditions'))
+        <div class="col-md-6 nopadding-left">
           <div class="form-group">
             {!! Form::label('condition_note', trans('app.form.condition_note'), ['class' => 'with-help']) !!}
             <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.seller_condition_note') }}"></i>
             {!! Form::text('condition_note', null, ['class' => 'form-control input-sm', 'placeholder' => trans('app.placeholder.condition_note')]) !!}
             <div class="help-block with-errors"></div>
           </div>
+        </div>
+        <div class="col-md-6 nopadding-left">
+          <div class="form-group">
+            {!! Form::label('expired_date', trans('app.form.expired_date') . '*', ['class' => 'with-help']) !!}
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.expired_date') }}"></i>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              {!! Form::text('expired_date', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.form.expired_date'), 'required']) !!}
+            </div>
+          </div>
+        </div>
         @endif
 
         <div class="form-group">
@@ -133,9 +145,9 @@
       </div> <!-- /.box -->
     @endif
 
-    @include('admin.inventory._key_features')
+    {{-- @include('admin.inventory._key_features') --}}
 
-    <div class="box">
+    <div class="box" style="display: none">
       <div class="box-header with-border">
         <h3 class="box-title">{{ trans('app.seo') }}</h3>
         <div class="box-tools pull-right">
@@ -220,6 +232,33 @@
         @endif
 
         <div class="{{ isset($inventory) && $inventory->auctionable ? 'd-none' : '' }}" id="js-direct-sale">
+
+          <div class="row">
+            <div class="col-md-6 nopadding-right">
+              <div class="form-group">
+                {!! Form::label('min_price', trans('app.form.catalog_min_price') . '*', ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.catalog_min_price') }}"></i>
+                <div class="input-group">
+                  <span class="input-group-addon">{{ get_currency_symbol() }}</span>
+                  {!! Form::number('min_price', $product->min_price, ['class' => 'form-control', 'step' => 'any', 'min' => '0', 'placeholder' => trans('app.placeholder.catalog_min_price'), 'disabled' => 'disabled']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div> <!-- /.form-group -->
+            </div> <!-- /.col-md-* -->
+
+            <div class="col-md-6 nopadding-right">
+              <div class="form-group">
+                {!! Form::label('max_price', trans('app.form.catalog_max_price') . '*', ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.catalog_max_price') }}"></i>
+                <div class="input-group">
+                  <span class="input-group-addon">{{ get_currency_symbol() }}</span>
+                  {!! Form::number('max_price', $product->max_price, ['class' => 'form-control', 'step' => 'any', 'min' => '0', 'placeholder' => trans('app.placeholder.catalog_min_price'), 'disabled' => 'disabled']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div> <!-- /.form-group -->
+            </div> <!-- /.col-md-* -->
+          </div> <!-- /.row -->
+
           <div class="row">
             <div class="col-md-6 nopadding-right">
               <div class="form-group">
@@ -360,7 +399,7 @@
     @endif
 
     @if ($attributes->count())
-      <div class="box">
+      <div class="box" style="display: none">
         <div class="box-header with-border">
           <h3 class="box-title">{{ trans('app.attributes') }}</h3>
           <div class="box-tools pull-right">
@@ -371,7 +410,7 @@
           @foreach ($attributes as $attribute)
             <div class="form-group">
               {!! Form::label($attribute->name, $attribute->name . '*') !!}
-              <select class="form-control select2" id="{{ $attribute->name }}" name="variants[{{ $attribute->id }}]" placeholder={{ trans('app.placeholder.select') }} required>
+              <select class="form-control select2" id="{{ $attribute->name }}" name="variants[{{ $attribute->id }}]" placeholder={{ trans('app.placeholder.select') }}>
                 <option value="">{{ trans('app.placeholder.select') }}</option>
 
                 @foreach ($attribute->attributeValues as $attributeValue)
@@ -438,7 +477,7 @@
       </div> <!-- /.box -->
     @endif
 
-    <div class="box">
+    <div class="box" style="display: none">
       <div class="box-header with-border">
         <h3 class="box-title">{{ trans('app.cross_selling') }}</h3>
         <div class="box-tools pull-right">
@@ -455,7 +494,7 @@
       </div> <!-- /.box-body -->
     </div> <!-- /.box -->
 
-    <div class="box">
+    <div class="box" style="display: none">
       <div class="box-header with-border">
         <h3 class="box-title">{{ trans('app.reporting') }}</h3>
         <div class="box-tools pull-right">
