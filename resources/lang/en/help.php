@@ -472,7 +472,7 @@ return [
 
     'order_refunded' => 'Previously refunded <strong><em> :amount </em></strong> of total <strong><em> :total </em></strong>',
 
-    'search_customer' => 'Find the customer by email address, nice name or full name.',
+    'search_customer' => 'Find the customer by full name.',
 
     'coupon_quantity' => 'Total number of avaliable coupons',
 

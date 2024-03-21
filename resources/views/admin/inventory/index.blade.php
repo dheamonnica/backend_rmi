@@ -92,7 +92,7 @@
                 <th>{{ trans('app.image') }}</th>
                 <th>{{ trans('app.sku') }}</th>
                 <th>{{ trans('app.title') }}</th>
-                <th>{{ trans('app.condition') }}</th>
+                <th>{{ trans('app.form.expired_date') }}</th>
                 <th>{{ trans('app.sale_price') }} <small>( {{ trans('app.excl_tax') }} )</small> </th>
                 <th>{{ trans('app.quantity') }}</th>
                 @if (is_incevio_package_loaded('pharmacy'))
@@ -131,7 +131,7 @@
                 <th>{{ trans('app.image') }}</th>
                 <th>{{ trans('app.sku') }}</th>
                 <th>{{ trans('app.title') }}</th>
-                <th>{{ trans('app.condition') }}</th>
+                <th>{{ trans('app.form.expired_date') }}</th>
                 <th>{{ trans('app.sale_price') }} <small>( {{ trans('app.excl_tax') }} )</small> </th>
                 <th>{{ trans('app.quantity') }}</th>
                 @if (is_incevio_package_loaded('pharmacy'))

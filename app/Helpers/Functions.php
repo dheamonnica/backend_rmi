@@ -981,10 +981,10 @@ if (!function_exists('get_formated_cutomer_str')) {
     function get_formated_cutomer_str($customer)
     {
         if (is_array($customer)) {
-            return  $customer['nice_name'] . ' | ' . $customer['name'] . ' | ' . $customer['email'];
+            return  $customer['name'];
         }
 
-        return  $customer->nice_name . ' | ' . $customer->name . ' | ' . $customer->email;
+        return $customer->name;
     }
 }
 
