@@ -412,10 +412,10 @@
             </div>
         
             <div class="form-group">
-              {!! Form::label('shipping_weight', trans('app.form.shipping_weight'), ['class' => 'with-help']) !!}
+              {!! Form::label('shipping_weight', trans('app.form.shipping_weight') . '*', ['class' => 'with-help']) !!}
               <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shipping_weight') }}"></i>
               <div class="input-group">
-                {!! Form::number('shipping_weight', isset($inventory) ? $inventory->shipping_weight : null, ['class' => 'form-control', 'step' => 'any', 'min' => 0, 'placeholder' => trans('app.placeholder.shipping_weight')]) !!}
+                {!! Form::number('shipping_weight', isset($inventory) ? $inventory->shipping_weight : null, ['class' => 'form-control', 'step' => 'any', 'min' => 0, 'placeholder' => trans('app.placeholder.shipping_weight'), 'required']) !!}
                 <span class="input-group-addon">{{ config('system_settings.weight_unit') ?: 'gm' }}</span>
               </div>
               <div class="help-block with-errors"></div>

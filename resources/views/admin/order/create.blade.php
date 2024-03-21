@@ -123,7 +123,7 @@
                   <tr>
                     <td class="text-right">{{ trans('app.handling') }}</td>
                     <td class="text-right" width="40%">{{ get_formated_currency_symbol() }}
-                      <span id="summary-handling">{{ get_formated_decimal(config('shop_settings.order_handling_cost'), true, 2) }}</span>
+                      <span id="summary-handling">{{ config('shop_settings.order_handling_cost') }}</span>
                     </td>
                   </tr>
                 @endif

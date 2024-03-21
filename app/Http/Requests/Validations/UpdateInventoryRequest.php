@@ -68,6 +68,7 @@ class UpdateInventoryRequest extends Request
             'offer_start' => 'nullable|date|required_with:offer_price',
             'offer_end' => 'nullable|date|required_with:offer_price|after:offer_start',
             'image' => 'mimes:jpg,jpeg,png,gif',
+            'shipping_weight' => 'required',
         ];
 
         //request check

@@ -57,6 +57,7 @@ class CreateInventoryRequest extends Request
             'offer_end' => 'nullable|date|required_with:offer_price|after:offer_start',
             'slug' => 'required|alpha_dash|unique:inventories,slug',
             'image' => 'mimes:jpg,jpeg,png,gif',
+            'shipping_weight' => 'required',
         ];
 
         if ($this->has('digital_file')) {
