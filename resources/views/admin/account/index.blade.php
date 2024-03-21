@@ -20,19 +20,19 @@
             </a>
           </li>
 
-          <li class="{{ Request::is('admin/account/billing') ? 'active' : '' }}">
+          {{-- <li class="{{ Request::is('admin/account/billing') ? 'active' : '' }}">
             <a href="#billing_tab" data-toggle="tab">
               <i class="fa fa-credit-card hidden-sm"></i>
               {{ trans('app.billing') }}
             </a>
-          </li>
+          </li> --}}
 
-          <li class="{{ Request::is('admin/account/ticket') ? 'active' : '' }}">
+          {{-- <li class="{{ Request::is('admin/account/ticket') ? 'active' : '' }}">
             <a href="#ticket_tab" data-toggle="tab">
               <i class="fa fa-ticket hidden-sm"></i>
               {{ trans('app.tickets') }}
             </a>
-          </li>
+          </li> --}}
         </ul>
         <div class="tab-content">
           <div class="tab-pane {{ Request::is('admin/account/profile') ? 'active' : '' }}" id="profile_tab">

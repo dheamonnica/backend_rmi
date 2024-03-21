@@ -30,7 +30,7 @@
 
     <div class="clearfix spacer30"></div>
     <p>
-    <div>
+    {{-- <div>
       <i class="fa fa-building-o"></i>
 
       @if (Auth::user()->isSuperAdmin())
@@ -38,7 +38,7 @@
       @else
         {{ Auth::user()->role->name }}
       @endif
-    </div>
+    </div> --}}
 
     <i class="fa fa-clock-o"></i>
     {{ trans('app.member_since') . ' ' . Auth::user()->created_at->diffForHumans() }}
@@ -53,21 +53,21 @@
       {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.full_name'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
       {!! Form::label('nice_name', trans('app.form.nice_name')) !!}
       {!! Form::text('nice_name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.nice_name')]) !!}
     </div>
     <div class="form-group">
       {!! Form::label('role', trans('app.form.role')) !!}
       {!! Form::text('role', $profile->role->name, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
-    </div>
+    </div> --}}
     <div class="form-group">
       {!! Form::label('email', trans('app.form.email_address') . '*') !!}
       {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.valid_email'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
       {!! Form::label('dob', trans('app.form.dob')) !!}
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -82,14 +82,14 @@
     <div class="form-group">
       {!! Form::label('description', trans('app.form.biography')) !!}
       {!! Form::textarea('description', null, ['class' => 'form-control summernote-without-toolbar', 'rows' => '2', 'placeholder' => trans('app.placeholder.biography')]) !!}
-    </div>
+    </div> --}}
 
     {!! Form::submit(trans('app.update'), ['class' => 'btn btn-flat btn-new']) !!}
     {!! Form::close() !!}
     <div class="spacer30"></div>
   </div>
 
-  <div class="col-md-3">
+  {{-- <div class="col-md-3">
     <div class="form-group">
       <label>{{ trans('app.form.address') }}</label>
       @if ($profile->primaryAddress)
@@ -150,5 +150,5 @@
         @endcan
       </div>
     @endif
-  </div>
+  </div> --}}
 </div>

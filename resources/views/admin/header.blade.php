@@ -43,18 +43,18 @@
         </li>
       @endif
 
-      <li>
+      {{-- <li>
         <a href="{{ get_shop_url() }}" target="_blank">
           <i class="fa fa-external-link mr-2"></i> {{ trans('app.store_front') }}
         </a>
-      </li>
+      </li> --}}
     </ul>
 
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <!-- Messages Menu-->
-        <li class="dropdown messages-menu">
+        {{-- <li class="dropdown messages-menu">
           <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
             @if ($count_message = $unread_messages->count())
@@ -91,10 +91,11 @@
               <a href="{{ url('admin/support/message/labelOf/' . \App\Models\Message::LABEL_INBOX) }}">{{ trans('app.go_to_msg_inbox') }}</a>
             </li>
           </ul>
-        </li><!-- /.messages-menu -->
+        </li> --}}
+        <!-- /.messages-menu -->
 
         <!-- Notifications Menu -->
-        <li class="dropdown notifications-menu" id="notifications-dropdown">
+        {{-- <li class="dropdown notifications-menu" id="notifications-dropdown">
           <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
             @if ($count_notification = Auth::user()->unreadNotifications->count())
@@ -114,11 +115,12 @@
                     @includeFirst([$notification_view, 'admin.partials.notifications.default'])
                   </li>
                 @endforeach
-              </ul><!-- .menu -->
+              </ul>
             </li>
             <li class="footer"><a href="{{ route('admin.notifications') }}">{{ trans('app.view_all_notifications') }}</a></li>
           </ul>
-        </li><!-- /.notifications-menu -->
+        </li> --}}
+        <!-- /.notifications-menu -->
 
         <!-- Announcement Menu -->
         @if (is_incevio_package_loaded('announcement'))
