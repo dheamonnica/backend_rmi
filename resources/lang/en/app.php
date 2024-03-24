@@ -1191,6 +1191,7 @@ return [
 
         // inventories
         'expired_date' => 'Expired Date',
+        'uom' => 'Unit of measurement',
 
         // merchant
         'business_name' => 'Business Name',

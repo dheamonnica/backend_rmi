@@ -44,12 +44,10 @@
 
           <div class="col-md-4 nopadding-left">
             <div class="form-group">
-              {!! Form::label('available_from', trans('app.form.available_from') . '*', ['class' => 'with-help']) !!}
-              <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.available_from') }}"></i>
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                {!! Form::text('available_from', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.placeholder.available_from'), 'required']) !!}
-              </div>
+              {!! Form::label('uom', trans('app.form.uom'), ['class' => 'with-help']) !!}
+              <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.uom') }}"></i>
+              {!! Form::text('uom', null, ['class' => 'form-control input-sm', 'placeholder' => trans('app.form.uom')]) !!}
+              <div class="help-block with-errors"></div>
             </div>
           </div>
 
@@ -86,10 +84,12 @@
         @if (config('system_settings.show_item_conditions'))
         <div class="col-md-6 nopadding-left">
           <div class="form-group">
-            {!! Form::label('condition_note', trans('app.form.condition_note'), ['class' => 'with-help']) !!}
-            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.seller_condition_note') }}"></i>
-            {!! Form::text('condition_note', null, ['class' => 'form-control input-sm', 'placeholder' => trans('app.placeholder.condition_note')]) !!}
-            <div class="help-block with-errors"></div>
+            {!! Form::label('available_from', trans('app.form.available_from') . '*', ['class' => 'with-help']) !!}
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.available_from') }}"></i>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              {!! Form::text('available_from', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.placeholder.available_from'), 'required']) !!}
+            </div>
           </div>
         </div>
         <div class="col-md-6 nopadding-left">

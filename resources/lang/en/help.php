@@ -918,5 +918,6 @@ return [
 
     // inventories
     'expired_date' => 'Expired product date.',
+    'uom' => 'Unit of measurement of product.',
 
 ];
