@@ -54,7 +54,7 @@
               <div class="spacer20"></div>
 
               <a class="btn btn-link nopadding-left" href="{{ route('vendor.register') }}" class="text-center">
-                <i class="fa fa-laptop" aria-hidden="true"></i> {{ customer_can_register() ? trans('app.form.register_as_merchant') : trans('app.form.register') }}
+                {{-- <i class="fa fa-laptop" aria-hidden="true"></i> {{ customer_can_register() ? trans('app.form.register_as_merchant') : trans('app.form.register') }} --}}
               </a>
             </div> <!-- /.form-section -->
             @include('partials._demo_admin_login')

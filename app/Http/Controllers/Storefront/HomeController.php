@@ -112,24 +112,25 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        return view('theme::index', compact(
-            'banners',
-            'sliders',
-            // 'daily_popular',
-            // 'weekly_popular',
-            // 'monthly_popular',
-            'recent',
-            'additional_items',
-            'trending_categories',
-            'featured_items',
-            'deal_of_the_day',
-            'deals_under',
-            'featured_category',
-            'featured_brands',
-            'featured_vendors',
-            'flashdeals',
-            'digital_products'
-        ));
+        // return view('theme::index', compact(
+        //     'banners',
+        //     'sliders',
+        //     // 'daily_popular',
+        //     // 'weekly_popular',
+        //     // 'monthly_popular',
+        //     'recent',
+        //     'additional_items',
+        //     'trending_categories',
+        //     'featured_items',
+        //     'deal_of_the_day',
+        //     'deals_under',
+        //     'featured_category',
+        //     'featured_brands',
+        //     'featured_vendors',
+        //     'flashdeals',
+        //     'digital_products'
+        // ));
+        return redirect()->guest(route('login'));
     }
 
     /**
