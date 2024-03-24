@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Log;
 
 // use Response;
 
@@ -37,6 +38,9 @@ class SearchController extends Controller
         }
 
         $products = $query->take(10)->get();
+        // TODO:
+        Log::info('product ' . $products);
+
 
         if ($request->is('api/*')) {
             return ProductLightResource::collection($products);
