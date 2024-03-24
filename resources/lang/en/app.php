@@ -1191,6 +1191,11 @@ return [
 
         // inventories
         'expired_date' => 'Expired Date',
+
+        // merchant
+        'business_name' => 'Business Name',
+        'warehouse_name' => 'Warehouse Name',
+        'pic_name' => 'PIC Name',
     ],
 
     'placeholder' => [

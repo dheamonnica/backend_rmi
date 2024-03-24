@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-8 nopadding-right">
     <div class="form-group">
-      {!! Form::label('name', trans('app.form.merchant_full_name') . '*') !!}
-      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.merchant_full_name'), 'required']) !!}
+      {!! Form::label('name', trans('app.form.business_name') . '*') !!}
+      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('app.form.business_name'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
   </div>
@@ -30,8 +30,8 @@
         {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => trans('app.placeholder.temporary_password'), 'data-minlength' => '6', 'required']) !!}
         <div class="help-block with-errors"></div>
       @else
-        {!! Form::label('nice_name', trans('app.form.nice_name')) !!}
-        {!! Form::text('nice_name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.nice_name')]) !!}
+        {{-- {!! Form::label('nice_name', trans('app.form.nice_name')) !!}
+        {!! Form::text('nice_name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.nice_name')]) !!} --}}
       @endif
     </div>
   </div>
@@ -45,27 +45,27 @@
   </div>
 @endif
 
-@unless (isset($merchant))
+{{-- @unless (isset($merchant)) --}}
   <div class="row">
     <div class="col-md-6 nopadding-right">
       <div class="form-group">
-        {!! Form::label('shop_name', trans('app.form.shop_name') . '*', ['class' => 'with-help']) !!}
-        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shop_name') }}"></i>
-        {!! Form::text('shop_name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.shop_name'), 'required']) !!}
+        {!! Form::label('warehouse_name', trans('app.form.warehouse_name') . '*', ['class' => 'with-help']) !!}
+        {{-- <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.warehouse') }}"></i> --}}
+        {!! Form::text('warehouse_name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.warehouse_name'), 'required']) !!}
         <div class="help-block with-errors"></div>
       </div>
     </div>
     <div class="col-md-6 nopadding-left">
       <div class="form-group">
-        {!! Form::label('legal_name', trans('app.form.legal_name') . '*', ['class' => 'with-help']) !!}
-        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shop_legal_name') }}"></i>
-        {!! Form::text('legal_name', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.shop_legal_name'), 'required']) !!}
+        {!! Form::label('pic_name', trans('app.form.pic_name') . '*', ['class' => 'with-help']) !!}
+        {{-- <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shop_legal_name') }}"></i> --}}
+        {!! Form::text('pic_name', null, ['class' => 'form-control', 'placeholder' => trans('app.form.pic_name'), 'required']) !!}
         <div class="help-block with-errors"></div>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" style="display: none">
     <div class="col-md-6 nopadding-right">
       <div class="form-group">
         {!! Form::label('slug', trans('app.form.slug') . '*', ['class' => 'with-help']) !!}
@@ -83,9 +83,9 @@
       </div>
     </div>
   </div>
-@endunless
+{{-- @endunless --}}
 
-@if (isset($merchant))
+{{-- @if (isset($merchant))
   <div class="row">
     <div class="col-md-6 nopadding-right">
       <div class="form-group">
@@ -103,7 +103,7 @@
       </div>
     </div>
   </div>
-@endif
+@endif --}}
 
 <div class="form-group">
   {!! Form::label('description', trans('app.form.description')) !!}

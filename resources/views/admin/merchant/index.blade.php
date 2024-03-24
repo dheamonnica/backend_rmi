@@ -3,10 +3,10 @@
 @section('content')
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('app.merchants') }}</h3>
+      <h3 class="box-title">{{ trans('app.warehouse') }}</h3>
       <div class="box-tools pull-right">
         @can('create', \App\Models\Merchant::class)
-          <a href="javascript:void(0)" data-link="{{ route('admin.vendor.merchant.create') }}" class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.add_merchant') }}</a>
+          <a href="javascript:void(0)" data-link="{{ route('admin.vendor.merchant.create') }}" class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.add_warehouse') }}</a>
         @endcan
       </div>
     </div> <!-- /.box-header -->
@@ -33,9 +33,9 @@
               </th>
             @endcan
             <th>{{ trans('app.avatar') }}</th>
-            <th>{{ trans('app.nice_name') }}</th>
-            <th>{{ trans('app.full_name') }}</th>
-            <th>{{ trans('app.shop') }}</th>
+            <th>{{ trans('app.form.business_name') }}</th>
+            <th>{{ trans('app.form.pic_name') }}</th>
+            <th>{{ trans('app.form.warehouse_name') }}</th>
             @if (is_subscription_enabled())
               <th>{{ trans('app.current_billing_plan') }}</th>
             @endif
@@ -52,14 +52,15 @@
                 <img src="{{ get_avatar_src($merchant, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
               </td>
               <td>
-                {{ $merchant->nice_name }}
+                {{ $merchant->name }}
 
                 @unless ($merchant->active)
                   <span class="label label-default indent10">{{ trans('app.inactive') }}</span>
                 @endunless
               </td>
-              <td>{{ $merchant->name }}</td>
-              <td>
+              <td>{{ $merchant->pic_name }}</td>
+              <td>{{ $merchant->warehouse_name }}</td>
+              {{-- <td>
                 @if ($merchant->owns->name)
                   <img src="{{ get_storage_file_url(optional($merchant->owns->logoImage)->path, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.logo') }}">
                   <p class="indent10">
@@ -80,7 +81,7 @@
                     <span class="label label-default indent10">{{ trans('app.inactive') }}</span>
                   @endif
                 @endif
-              </td>
+              </td> --}}
 
               @if (is_subscription_enabled())
                 <td>

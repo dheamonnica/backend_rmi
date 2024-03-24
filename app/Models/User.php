@@ -116,6 +116,8 @@ class User extends Authenticatable
         'read_announcements_at',
         'remember_token',
         'verification_token',
+        'pic_name',
+        'warehouse_name',
     ];
 
     /**
