@@ -52,13 +52,13 @@
               </li>
             @endif
 
-            @can('index', \App\Models\Attribute::class)
+            {{-- @can('index', \App\Models\Attribute::class)
               <li class="{{ Request::is('admin/catalog/attribute*') ? 'active' : '' }}">
                 <a href="{{ url('admin/catalog/attribute') }}">
                   <i class="fa fa-angle-double-right"></i> {{ trans('nav.attributes') }}
                 </a>
               </li>
-            @endcan
+            @endcan --}}
 
             @if (is_catalog_enabled())
               @can('index', \App\Models\Product::class)
@@ -97,11 +97,11 @@
                   </a>
                 </li>
 
-                <li class="{{ Request::is('admin/stock/inventory/digital') || (isset($product) && $product->downloadable) ? 'active' : '' }}">
+                {{-- <li class="{{ Request::is('admin/stock/inventory/digital') || (isset($product) && $product->downloadable) ? 'active' : '' }}">
                   <a href="{{ route('admin.stock.inventory.index', ['type' => 'digital']) }}">
                     <i class="fa fa-angle-double-right"></i> {{ trans('nav.digital_products') }}
                   </a>
-                </li>
+                </li> --}}
 
                 @if (is_incevio_package_loaded('auction'))
                   <li class="{{ Request::is('admin/stock/inventory/auction') || (isset($inventory) && $inventory->auctionable) ? 'active' : '' }}">
@@ -179,13 +179,13 @@
               </li>
             @endcan --}}
 
-            @can('index', \App\Models\Cart::class)
+            {{-- @can('index', \App\Models\Cart::class)
               <li class="{{ Request::is('admin/order/cart*') ? 'active' : '' }}">
                 <a href="{{ url('admin/order/cart') }}">
                   <i class="fa fa-angle-double-right"></i> {{ trans('nav.carts') }}
                 </a>
               </li>
-            @endcan
+            @endcan --}}
 
             @can('cancelAny', \App\Models\Order::class)
               <li class="{{ Request::is('admin/order/cancellation*') ? 'active' : '' }}">
@@ -210,7 +210,7 @@
         <li class="treeview {{ Request::is('admin/admin*') || Request::is('address/addresses/customer*') || Request::is('admin/inspector*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
             <i class="fa fa-user-secret"></i>
-            <span>{{ trans('nav.admin') }}</span>
+            <span>Administrator</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -256,14 +256,14 @@
         <li class="treeview {{ Request::is('admin/vendor*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
             <i class="fa fa-bar-chart"></i>
-            <span>{{ trans('nav.vendors') }}</span>
+            <span>Warehouse</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             @can('index', \App\Models\Shop::class)
               <li class="{{ Request::is('admin/vendor/merchant*') ? 'active' : '' }}">
                 <a href="{{ url('admin/vendor/merchant') }}">
-                  <i class="fa fa-angle-double-right"></i> {{ trans('nav.merchants') }}
+                  <i class="fa fa-angle-double-right"></i> WH Area
                 </a>
               </li>
             @endcan
@@ -271,7 +271,7 @@
             @can('index', \App\Models\Shop::class)
               <li class="{{ Request::is('admin/vendor/shop*') ? 'active' : '' }}">
                 <a href="{{ url('admin/vendor/shop') }}">
-                  <i class="fa fa-angle-double-right"></i> {{ trans('nav.shops') }}
+                  <i class="fa fa-angle-double-right"></i> WH Employee
                 </a>
               </li>
             @endcan
@@ -361,7 +361,8 @@
       @endif
 
       {{-- temporarily hidden from super admin --}}
-      @if (Auth::user()->isFromMerchant())
+      {{-- @if (Auth::user()->isAdmin()) --}}
+      {{-- @if (Auth::user()->isFromMerchant())
         <li class="treeview {{ Request::is('admin/promotion*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
             <i class="fa fa-paper-plane"></i>
@@ -382,7 +383,7 @@
               <a href="{{ url('admin/promotions') }}">
                 <i class="fa fa-angle-double-right"></i> {{ trans('nav.promotions') }}
               </a>
-            </li>
+            </li> --}}
 
             {{-- @can('index', \App\Models\GiftCard::class)
                   <li class="{{ Request::is('admin/promotion/giftCard*') ? 'active' : '' }}">
@@ -391,10 +392,12 @@
                     </a>
                   </li>
                 @endcan --}}
-          </ul>
+          {{-- </ul>
         </li>
       @endif
+      @endif --}}
 
+      @if (Auth::user()->isAdmin())
       @if (Gate::allows('index', \App\Models\Message::class) || Gate::allows('index', \App\Models\Ticket::class) || Gate::allows('index', \App\Models\Dispute::class) || Gate::allows('index', \App\Models\Refund::class) || Gate::allows('index', \Incevio\Package\LiveChat\Models\ChatConversation::class))
         <li class="treeview {{ Request::is('admin/support*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -450,8 +453,9 @@
           </ul>
         </li>
       @endif
+      @endif
 
-      @if ((new \App\Helpers\Authorize(Auth::user(), 'customize_appearance'))->check())
+      {{-- @if ((new \App\Helpers\Authorize(Auth::user(), 'customize_appearance'))->check())
         <li class="treeview {{ Request::is('admin/appearance*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
             <i class="fa fa-paint-brush"></i>
@@ -494,10 +498,10 @@
             </li>
           </ul>
         </li>
-      @endif
+      @endif --}}
 
       {{-- Flash deal merge into promotions --}}
-      @if (Auth::user()->isAdmin() || (new \App\Helpers\Authorize(Auth::user(), 'manage_flash_deal'))->check())
+      {{-- @if (Auth::user()->isAdmin() || (new \App\Helpers\Authorize(Auth::user(), 'manage_flash_deal'))->check())
         <li class="treeview {{ Request::is('admin/promotions*') || Request::is('admin/flashdeal*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
             <i class="fa fa-bullhorn"></i>
@@ -531,16 +535,16 @@
             @endif
           </ul>
         </li>
-      @endif
+      @endif --}}
 
-      @if (Auth::user()->isAdmin())
+      {{-- @if (Auth::user()->isAdmin())
         <li class="{{ Request::is('admin/packages*') ? 'active' : '' }}">
           <a href="{{ url('admin/packages') }}">
             <i class="fa fa-plug"></i> <span>{{ trans('nav.packages') }}</span>
           </a>
         </li>
-      @endif
-
+      @endif --}}
+      
       <li class="treeview {{ Request::is('admin/setting*') ? 'active' : '' }}">
         <a href="javascript:void(0)">
           <i class="fa fa-gears"></i>
@@ -587,12 +591,14 @@
               </a>
             </li>
 
+            @if (Auth::user()->isAdmin())
             @if (vendor_get_paid_directly() || vendor_can_on_off_payment_method())
               <li class=" {{ Request::is('admin/setting/paymentMethod*') ? 'active' : '' }}">
                 <a href="{{ url('admin/setting/paymentMethod') }}">
                   <i class="fa fa-angle-double-right"></i> {{ trans('nav.payment_methods') }}
                 </a>
               </li>
+            @endif
             @endif
 
             <li class=" {{ Request::is('admin/setting/shippingMethod*') ? 'active' : '' }}">
@@ -601,7 +607,8 @@
               </a>
             </li>
           @endcan
-
+          
+          @if (Auth::user()->isAdmin())
           @can('view', \App\Models\System::class)
             <li class="{{ Request::is('admin/setting/system/general*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/system/general') }}">
@@ -645,6 +652,7 @@
                 <i class="fa fa-angle-double-right"></i> {{ trans('app.languages') }}
               </a>
             </li>
+          @endif
           @endif
 
           @if (is_incevio_package_loaded('wallet'))
@@ -702,7 +710,8 @@
           @endif
         </ul>
       </li>
-
+      
+      @if (Auth::user()->isAdmin())
       @if (Gate::allows('index', \App\Models\Page::class) || Gate::allows('index', \App\Models\EmailTemplate::class) || Gate::allows('index', \App\Models\Blog::class) || Gate::allows('index', \App\Models\Faq::class))
         <li class="treeview {{ Request::is('admin/utility*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -756,7 +765,9 @@
           </ul>
         </li>
       @endif
+      @endif
 
+      @if (Auth::user()->isAdmin())
       @if (Auth::user()->isAdmin() || Auth::user()->isMerchant() || Gate::allows('report', \Incevio\Package\Wallet\Models\Wallet::class))
         <li class="treeview {{ Request::is('admin/report*') || Request::is('admin/shop/report*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -830,6 +841,7 @@
             @endif
           </ul>
         </li>
+      @endif
       @endif
 
       <!--
