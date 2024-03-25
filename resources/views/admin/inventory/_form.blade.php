@@ -82,13 +82,17 @@
         </div> <!-- /.row -->
 
         @if (config('system_settings.show_item_conditions'))
+        @php
+        $now = Carbon\Carbon::now();
+        $datenow = $now->toDateString();
+        @endphp
         <div class="col-md-6 nopadding-left">
           <div class="form-group">
             {!! Form::label('available_from', trans('app.form.available_from') . '*', ['class' => 'with-help']) !!}
             <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.available_from') }}"></i>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              {!! Form::text('available_from', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.placeholder.available_from'), 'required']) !!}
+              {!! Form::text('available_from', $datenow, ['class' => 'datepicker form-control', 'placeholder' => trans('app.placeholder.available_from'), 'required', 'disabled']) !!}
             </div>
           </div>
         </div>
@@ -98,7 +102,7 @@
             <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.expired_date') }}"></i>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              {!! Form::text('expired_date', null, ['class' => 'datetimepicker form-control', 'placeholder' => trans('app.form.expired_date'), 'required']) !!}
+              {!! Form::text('expired_date', null, ['class' => 'datepicker form-control', 'placeholder' => trans('app.form.expired_date'), 'required']) !!}
             </div>
           </div>
         </div>

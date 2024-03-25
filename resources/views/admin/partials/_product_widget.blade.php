@@ -9,15 +9,16 @@
     </span>
 
     <span class="admin-user-widget-text text-muted">
-      {{ trans('app.product_type') . ': ' . $product->type }}
+      {{ trans('app.form.manufacture_skuid') . ': ' . $product->manufacture_skuid }}
     </span>
 
     <span class="admin-user-widget-text text-muted">
-      {{ $product->gtin_type . ': ' . $product->gtin }}
+      {{-- {{ $product->gtin_type . ': ' . $product->gtin }} --}}
+      {{ trans('app.form.selling_skuid') . ': ' . $product->selling_skuid }}
     </span>
 
     <span class="admin-user-widget-text text-muted">
-      {{ trans('app.model_number') . ': ' . $product->model_number }}
+      {{ trans('app.form.client_skuid') . ': ' . $product->client_skuid }}
     </span>
 
     <span class="admin-user-widget-text text-muted">
