@@ -54,9 +54,9 @@ class CatalogProductController extends Controller
             ->withCount('inventories');
 
         // When accessing by a merchent user
-        if (Auth::user()->isFromMerchant()) {
-            $products->mine();
-        }
+        // if (Auth::user()->isFromMerchant()) {
+        //     $products->mine();
+        // }
 
         return Datatables::of($products)
             ->editColumn('checkbox', function ($product) {
