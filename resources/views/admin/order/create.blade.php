@@ -484,26 +484,32 @@
 
           var numOfRows = $("tbody#items tr").length;
 
+          var dateOfferAvailable = productObj[ID].dateNow > productObj[ID].offerStart && productObj[ID].dateNow < productObj[ID].offerEnd;
+          var isOfferAvailable = dateOfferAvailable ? 'Offer Available' : 'Offer Unavailable';
+          var price = productObj[ID].offerPrice > 0 ? productObj[ID].offerPrice : productObj[ID].salePrice;
+
           var node = '<tr id="' + ID + '">' +
             '<td><img src="' + imgSrc + '" class="img-circle img-md" alt="{{ trans('app.image') }}"></td>' +
             '<td class="nopadding-right" width="55%">' + itemDescription +
             '<input type="hidden" name="cart[' + numOfRows + '][inventory_id]" value="' + ID + '"></input>' +
             '<input type="hidden" name="cart[' + numOfRows + '][item_description]" value="' + itemDescription + '"></input>' +
             '<input type="hidden" name="cart[' + numOfRows + '][shipping_weight]" value="' + productObj[ID].shipping_weight + '" id="weight-' + ID + '" class="itemWeight"></input>' +
+            '<input type="hidden" name="cart[' + numOfRows + '][stock_quantity]" value="' + productObj[ID].stockQtt + '" id="stock-' + ID + '" class="itemStock"></input>' +
             '</td>' +
+            '<td class="small" width="15%">'+ isOfferAvailable + ` <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Offer Date: ${productObj[ID].offerStart} - ${productObj[ID].offerEnd}"></i></td>` +
             '<td class="nopadding-right" width="15%">' +
-            '<input name="cart[' + numOfRows + '][unit_price]" value="' + productObj[ID].salePrice + '" id="price-' + ID + '" type="number" class="form-control itemPrice no-border" placeholder="{{ trans('app.price') }}" required>' +
+            '<input name="cart[' + numOfRows + '][unit_price]" value="' + price + '" id="price-' + ID + '" type="number" class="form-control itemPrice no-border" placeholder="{{ trans('app.price') }}" required readonly>' +
             '</div>' +
             '<td>x</td>' +
             '<td class="nopadding-right" width="10%">' +
-            '<input name="cart[' + numOfRows + '][quantity]" value="1" type="number" id="qtt-' + ID + '" class="form-control itemQtt no-border" placeholder="{{ trans('app.quantity') }}" required>' +
+            '<input name="cart[' + numOfRows + '][quantity]" value="1" max="' + productObj[ID].stockQtt + '" type="number" id="qtt-' + ID + '" class="form-control itemQtt no-border" placeholder="{{ trans('app.quantity') }}" required>' +
             '</td>' +
             '<td class="nopadding-right text-center" width="10%">{{ get_formated_currency_symbol() }}' +
             '<span id="total-' + ID + '"  class="itemTotal">' +
-            getFormatedValue(productObj[ID].salePrice) +
+              getFormatedValue(price) +
             '</span>' +
             '</td>' +
-            '<td class="small"><i class="fa fa-trash text-muted deleteThisRow" data-toggle="tooltip" data-placement="left" title="{{ trans('help.romove_this_cart_item') }}"></i></td>' +
+            '<td class="small"><i class="fa fa-trash text-muted deleteThisRow" data-toggle="tooltip" data-placement="left" title="{{ trans('help.remove_this_cart_item') }}"></i></td>' +
             '</tr>';
 
           $('tbody#items').append(node);
@@ -561,7 +567,7 @@
           }
         );
         $("#summary-total").text(getFormatedValue(sum));
-
+        
         $(".itemWeight").each(function() {
           cartWeight += ($(this).val()) * 1;
         });
@@ -695,6 +701,19 @@
       }
 
       function getItemTotal(ID) {
+        // order item
+        console.log(getItemQtt(ID), 'getItemQtt')
+        // stock_quantity
+        var stock = $("#stock-" + ID).val();
+        console.log(stock, 'stock');
+
+        if(stock >= getItemQtt(ID)) {
+          $("#global-alert-msg").html('{{ trans('messages.notice.out_of_stock') }}');
+          $("#global-alert-box").removeClass('hidden');
+        } else {
+          $("#global-alert-box").addClass('hidden');
+        }
+
         return Number(getItemQtt(ID)) * Number(getItemPrice(ID));
       };
 

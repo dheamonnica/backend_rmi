@@ -682,7 +682,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 
                     $str = substr($str, 0, -3);
 
-                    $items[$inventory->id] = $inventory->sku . ': ' . $inventory->title . $str . ' - ' . $inventory->condition;
+                    $items[$inventory->id] = $inventory->sku . '(sku): ' . $inventory->title . $str . ' - ' . $inventory->expired_date . '(exp) - ' . $inventory->stock_quantity . '(pcs)';
 
                     if ($inventory->image) {
                         $img_path = optional($inventory->image)->path;
@@ -699,8 +699,9 @@ class ViewComposerServiceProvider extends ServiceProvider
                         'offerPrice' => round($inventory->offer_price, 2),
                         'stockQtt' => $inventory->stock_quantity,
                         'shipping_weight' => $inventory->shipping_weight,
-                        'offerStart' => $inventory->offer_start,
-                        'offerEnd' => $inventory->offer_end,
+                        'offerStart' => $inventory->offer_start->format('Y-m-d h:i:a'),
+                        'offerEnd' => $inventory->offer_end->format('Y-m-d h:i:a'),
+                        'dateNow' => date("Y-m-d h:i:a")
                     ];
                 }
 

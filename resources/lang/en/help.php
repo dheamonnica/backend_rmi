@@ -354,7 +354,7 @@ return [
 
     'delete_this_combination' => 'Delete this combination',
 
-    'romove_this_cart_item' => 'Romove this item from the cart',
+    'remove_this_cart_item' => 'Remove this item from the cart',
 
     'no_product_found' => 'No product found! Please try different search or add new product',
 

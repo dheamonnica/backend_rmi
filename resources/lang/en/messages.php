@@ -104,6 +104,8 @@ return [
         'no_rate_for_the_shipping_zone' => 'The <strong> :zone </strong> shipping zone has no shipping rates. Please create shipping rates to accept orders from this zone.',
 
         'cant_cal_weight_shipping_rate' => 'Can\'t calculate weight based shipping rate. Because weight are not set for some items.',
+
+        'out_of_stock' => 'Out of stock',
     ],
 
     'no_changes' => 'Nothing to show',
