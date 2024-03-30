@@ -460,63 +460,71 @@
       $('#add-to-cart-btn').click(
         function() {
           var ID = $("#product-to-add").select2('data')[0].id;
-          var itemDescription = $("#product-to-add").select2('data')[0].text;
 
-          if (ID == '' || itemDescription == '') {
-            return false;
+          console.log('stock', productObj[ID].stockQtt);
+          if(productObj[ID].stockQtt === 0) {
+            $("#global-alert-msg").html('{{ trans('messages.notice.out_of_stock') }}');
+            $("#global-alert-box").removeClass('hidden');
           } else {
-            $("#empty-cart").hide(); // Hide the empty cart message
+            var itemDescription = $("#product-to-add").select2('data')[0].text;
+
+              if (ID == '' || itemDescription == '') {
+                return false;
+              } else {
+                $("#empty-cart").hide(); // Hide the empty cart message
+              }
+
+              $("#product-to-add").select2("val", ""); // Reset the product search dropdown
+
+              // Check if the product is already on the cart, Is so then just increase the qtt
+              if ($("tr#" + ID).length) {
+                increaseQttByOne(ID);
+                calculateItemTotal(ID);
+                return;
+              }
+
+              //Pick the string after the : to get the item description
+              itemDescription = itemDescription.substring(itemDescription.indexOf(":") + 2);
+
+              var imgSrc = getFromPHPHelper('get_product_img_src', ID, 'tiny');
+
+              var numOfRows = $("tbody#items tr").length;
+
+              var dateOfferAvailable = productObj[ID].dateNow > productObj[ID].offerStart && productObj[ID].dateNow < productObj[ID].offerEnd;
+              var isOfferAvailable = dateOfferAvailable ? 'Offer Available' : 'Offer Unavailable';
+              var price = productObj[ID].offerPrice > 0 ? productObj[ID].offerPrice : productObj[ID].salePrice;
+
+              var node = '<tr id="' + ID + '">' +
+                '<td><img src="' + imgSrc + '" class="img-circle img-md" alt="{{ trans('app.image') }}"></td>' +
+                '<td class="nopadding-right" width="55%">' + itemDescription +
+                '<input type="hidden" name="cart[' + numOfRows + '][inventory_id]" value="' + ID + '"></input>' +
+                '<input type="hidden" name="cart[' + numOfRows + '][item_description]" value="' + itemDescription + '"></input>' +
+                '<input type="hidden" name="cart[' + numOfRows + '][shipping_weight]" value="' + productObj[ID].shipping_weight + '" id="weight-' + ID + '" class="itemWeight"></input>' +
+                '<input type="hidden" name="cart[' + numOfRows + '][stock_quantity]" value="' + productObj[ID].stockQtt + '" id="stock-' + ID + '" class="itemStock"></input>' +
+                '</td>' +
+                '<td class="small" width="15%">'+ isOfferAvailable + ` <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Offer Date: ${productObj[ID].offerStart} - ${productObj[ID].offerEnd}"></i></td>` +
+                '<td class="nopadding-right" width="15%">' +
+                '<input name="cart[' + numOfRows + '][unit_price]" value="' + price + '" id="price-' + ID + '" type="number" class="form-control itemPrice no-border" placeholder="{{ trans('app.price') }}" required readonly>' +
+                '</div>' +
+                '<td>x</td>' +
+                '<td class="nopadding-right" width="10%">' +
+                '<input name="cart[' + numOfRows + '][quantity]" value="1" max="' + productObj[ID].stockQtt + '" type="number" id="qtt-' + ID + '" class="form-control itemQtt no-border" placeholder="{{ trans('app.quantity') }}" required>' +
+                '</td>' +
+                '<td class="nopadding-right text-center" width="10%">{{ get_formated_currency_symbol() }}' +
+                '<span id="total-' + ID + '"  class="itemTotal">' +
+                  getFormatedValue(price) +
+                '</span>' +
+                '</td>' +
+                '<td class="small"><i class="fa fa-trash text-muted deleteThisRow" data-toggle="tooltip" data-placement="left" title="{{ trans('help.remove_this_cart_item') }}"></i></td>' +
+                '</tr>';
+
+              $('tbody#items').append(node);
+
+              calculateOrderTotal();
+
+              return false; //Return false to prevent unspected form submition
           }
-
-          $("#product-to-add").select2("val", ""); // Reset the product search dropdown
-
-          // Check if the product is already on the cart, Is so then just increase the qtt
-          if ($("tr#" + ID).length) {
-            increaseQttByOne(ID);
-            calculateItemTotal(ID);
-            return;
-          }
-
-          //Pick the string after the : to get the item description
-          itemDescription = itemDescription.substring(itemDescription.indexOf(":") + 2);
-
-          var imgSrc = getFromPHPHelper('get_product_img_src', ID, 'tiny');
-
-          var numOfRows = $("tbody#items tr").length;
-
-          var dateOfferAvailable = productObj[ID].dateNow > productObj[ID].offerStart && productObj[ID].dateNow < productObj[ID].offerEnd;
-          var isOfferAvailable = dateOfferAvailable ? 'Offer Available' : 'Offer Unavailable';
-          var price = productObj[ID].offerPrice > 0 ? productObj[ID].offerPrice : productObj[ID].salePrice;
-
-          var node = '<tr id="' + ID + '">' +
-            '<td><img src="' + imgSrc + '" class="img-circle img-md" alt="{{ trans('app.image') }}"></td>' +
-            '<td class="nopadding-right" width="55%">' + itemDescription +
-            '<input type="hidden" name="cart[' + numOfRows + '][inventory_id]" value="' + ID + '"></input>' +
-            '<input type="hidden" name="cart[' + numOfRows + '][item_description]" value="' + itemDescription + '"></input>' +
-            '<input type="hidden" name="cart[' + numOfRows + '][shipping_weight]" value="' + productObj[ID].shipping_weight + '" id="weight-' + ID + '" class="itemWeight"></input>' +
-            '<input type="hidden" name="cart[' + numOfRows + '][stock_quantity]" value="' + productObj[ID].stockQtt + '" id="stock-' + ID + '" class="itemStock"></input>' +
-            '</td>' +
-            '<td class="small" width="15%">'+ isOfferAvailable + ` <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Offer Date: ${productObj[ID].offerStart} - ${productObj[ID].offerEnd}"></i></td>` +
-            '<td class="nopadding-right" width="15%">' +
-            '<input name="cart[' + numOfRows + '][unit_price]" value="' + price + '" id="price-' + ID + '" type="number" class="form-control itemPrice no-border" placeholder="{{ trans('app.price') }}" required readonly>' +
-            '</div>' +
-            '<td>x</td>' +
-            '<td class="nopadding-right" width="10%">' +
-            '<input name="cart[' + numOfRows + '][quantity]" value="1" max="' + productObj[ID].stockQtt + '" type="number" id="qtt-' + ID + '" class="form-control itemQtt no-border" placeholder="{{ trans('app.quantity') }}" required>' +
-            '</td>' +
-            '<td class="nopadding-right text-center" width="10%">{{ get_formated_currency_symbol() }}' +
-            '<span id="total-' + ID + '"  class="itemTotal">' +
-              getFormatedValue(price) +
-            '</span>' +
-            '</td>' +
-            '<td class="small"><i class="fa fa-trash text-muted deleteThisRow" data-toggle="tooltip" data-placement="left" title="{{ trans('help.remove_this_cart_item') }}"></i></td>' +
-            '</tr>';
-
-          $('tbody#items').append(node);
-
-          calculateOrderTotal();
-
-          return false; //Return false to prevent unspected form submition
+         
         }
       );
 
@@ -707,7 +715,7 @@
         var stock = $("#stock-" + ID).val();
         console.log(stock, 'stock');
 
-        if(stock >= getItemQtt(ID)) {
+        if(getItemQtt(ID) >= stock) {
           $("#global-alert-msg").html('{{ trans('messages.notice.out_of_stock') }}');
           $("#global-alert-box").removeClass('hidden');
         } else {
