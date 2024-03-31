@@ -111,9 +111,11 @@
           @endif
 
           @can('fulfill', $order)
+          @if($order->deliveryBoy->nice_name === null)
             <a data-link="{{ route('admin.order.deliveryboys', $order->id) }}" class="ajax-modal-btn btn btn-flat btn-default indent10" style="cursor: pointer;">
               <i class="fa fa-user"></i> {{ trans('app.assign_deliveryboy') }}
             </a>
+          @endif
           @endcan
 
           <div class="box-tools pull-right">
@@ -320,9 +322,17 @@
           <div class="box-body">
             <div class="box-tools">
               @if (Auth::user()->canManageOrderPayments())
+                @if (Auth::user()->role_id !== 9)
                 {!! Form::open(['route' => ['admin.order.order.togglePaymentStatus', $order], 'method' => 'put', 'class' => 'inline']) !!}
                 <button type="submit" class="confirm ajax-silent btn btn-lg btn-danger">{{ $order->isPaid() ? trans('app.mark_as_unpaid') : trans('app.mark_as_paid') }}</button>
                 {!! Form::close() !!}
+                @endif
+
+                @if (Auth::user()->role_id === 9)
+                {!! Form::open(['route' => ['admin.order.order.setAsDelivered', $order], 'method' => 'put', 'class' => 'inline']) !!}
+                <button type="submit" class="confirm ajax-silent btn btn-lg btn-warning" <?php echo $order->delivery_date === null ? '' : 'disabled' ?>>SET AS DELIVERED</button>
+                {!! Form::close() !!}
+                @endif
 
                 @if ($order->isPaid() && ((Auth::user()->isFromPlatForm() && !vendor_get_paid_directly()) || (Auth::user()->isFromMerchant() && vendor_get_paid_directly())))
                   @can('initiate', \App\Models\Refund::class)
@@ -334,16 +344,20 @@
               @endif
 
               <div class="pull-right">
+                @if($order->deliveryBoy->nice_name === null)
                 <a href="javascript:void(0)" data-link="{{ route('admin.order.order.edit', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-default'>
                   {{ trans('app.update_status') }}
                 </a>
+                @endif
 
                 @if ($order->isFulfilled())
                   @unless ($order->isArchived())
                     @can('archive', $order)
+                    @if($order->deliveryBoy->nice_name === null)
                       {!! Form::open(['route' => ['admin.order.order.archive', $order->id], 'method' => 'delete', 'class' => 'inline']) !!}
                       <button type="submit" class="confirm ajax-silent btn btn-lg btn-default"><i class="fa fa-archive text-muted"></i> {{ trans('app.order_archive') }}</button>
                       {!! Form::close() !!}
+                      @endif
                     @endcan
                   @endunless
                 @else
@@ -376,12 +390,6 @@
           </div> <!-- /.box-body -->
         </div> <!-- /.box -->
       @endcan
-
-      @if (Auth::user()->role_id === 6)
-      {!! Form::open(['route' => ['admin.order.order.setAsDelivered', $order], 'method' => 'put', 'class' => 'inline']) !!}
-      <button type="submit" class="confirm ajax-silent btn btn-lg btn-warning mb-5">SET AS DELIVERED</button>
-      {!! Form::close() !!}
-      @endif
 
       @include('admin.partials._activity_logs', ['logger' => $order])
     </div> <!-- /.col-md-8 -->
