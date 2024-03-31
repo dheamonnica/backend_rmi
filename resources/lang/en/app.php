@@ -1197,6 +1197,9 @@ return [
         'business_name' => 'Business Name',
         'warehouse_name' => 'Warehouse Name',
         'pic_name' => 'PIC Name',
+
+        // order
+        'po_number_ref' => 'PO Number Ref'
     ],
 
     'placeholder' => [

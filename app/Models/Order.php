@@ -131,6 +131,7 @@ class Order extends BaseModel
         'currency_id',
         'delivery_boy_feedback_id',
         'auction_bid_id',
+        'po_number_ref'
     ];
 
     /**

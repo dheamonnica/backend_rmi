@@ -34,6 +34,7 @@ class CreateOrderRequest extends Request
             'payment_method_id' => 'required',
             'payment_status' => 'required',
             'billing_address' => 'required',
+            'po_number_ref' => 'required',
         ];
     }
 }

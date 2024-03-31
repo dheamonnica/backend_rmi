@@ -459,6 +459,10 @@
           'searchable': false
         },
         {
+          'data': 'po_number_ref',
+          'name': 'po_number_ref'
+        },
+        {
           'data': 'order_date',
           'name': 'order_date'
         },

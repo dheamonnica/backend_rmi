@@ -211,6 +211,13 @@
           <span class="admin-user-widget-text text-muted">
             {{ trans('app.email') . ': ' . $customer->email }}
           </span>
+
+          <div class="form-group">
+            {!! Form::label('po_number_ref', trans('app.form.po_number_ref') . '*') !!}
+            {!! Form::text('po_number_ref', isset($cart->po_number_ref) ? $cart->po_number_ref : null, ['class' => 'form-control', 'placeholder' => trans('app.form.po_number_ref'), 'required']) !!}
+            <div class="help-block with-errors"></div>
+          </div>
+
           @can('view', $customer)
             <a href="javascript:void(0)" data-link="{{ route('admin.admin.customer.show', $customer->id) }}" class="ajax-modal-btn btn btn-default btn-xs">{{ trans('app.view_detail') }}</a>
           @endcan
@@ -279,10 +286,10 @@
         </div>
       </div>
 
-      <div class="box">
+      {{-- <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title"> {{ trans('app.invoice') }}</h3>
-        </div> <!-- /.box-header -->
+        </div>
         <div class="box-body">
           <div class="form-group">
             {!! Form::label('message_to_customer', trans('app.form.message_to_customer'), ['class' => 'with-help']) !!}
@@ -295,7 +302,7 @@
             <i class="fa fa-question-circle indent5" data-toggle="tooltip" data-placement="top" title="{{ trans('help.send_invoice_to_customer') }}"></i>
           </small>
         </div>
-      </div>
+      </div> --}}
     </div>
     {!! Form::close() !!}
   </div>
@@ -656,7 +663,7 @@
 
       function calculateOrderSummary() {
         var grand = getTotalAmount() + getTax();
-        $("#summary-grand-total").text(getFormatedValue(grand));
+        $("#summary-grand-total").text(grand.toLocaleString('id-ID'));
         return;
       }
 
@@ -715,8 +722,8 @@
         var stock = $("#stock-" + ID).val();
         console.log(stock, 'stock');
 
-        if(getItemQtt(ID) >= stock) {
-          $("#global-alert-msg").html('{{ trans('messages.notice.out_of_stock') }}');
+        if(Number(getItemQtt(ID)) >= Number(stock)) {
+          $("#global-alert-msg").html('{{ trans('messages.notice.last_stock') }}');
           $("#global-alert-box").removeClass('hidden');
         } else {
           $("#global-alert-box").addClass('hidden');

@@ -91,6 +91,9 @@ class OrderController extends Controller
         ->addColumn('order', function ($order) {
             return view('admin.partials.actions.order.order', compact('order'));
         })
+        ->addColumn('po_number_ref', function ($order) {
+            return view('admin.partials.actions.order.order_po_number_ref', compact('order'));
+        })
         ->addColumn('order_date', function ($order) {
             return view('admin.partials.actions.order.order_date', compact('order'));
         })
@@ -116,7 +119,7 @@ class OrderController extends Controller
         ->editColumn('option', function ($order) {
             return view('admin.partials.actions.order.option', compact('order'));
         })
-        ->rawColumns(['checkbox', 'order', 'order_date', 'delivery_boy', 'shop', 'customer_name','grand_total','payment_status','option'])
+        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'delivery_boy', 'shop', 'customer_name','grand_total','payment_status','option'])
         ->make(true);
     }
 

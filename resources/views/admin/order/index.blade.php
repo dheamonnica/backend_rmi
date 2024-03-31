@@ -80,6 +80,7 @@
                             </button>
                         </th>
                         <th>{{ trans('app.order_number') }}</th>
+                        <th>{{ trans('app.form.po_number_ref') }}</th>
                         <th>{{ trans('app.order_date') }}</th>
                         <th>{{ trans('app.model.delivery_boy') }}</th>
                         @if (Auth::user()->isFromPlatform())
