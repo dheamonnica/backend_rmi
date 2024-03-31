@@ -136,6 +136,18 @@ class EloquentOrder extends EloquentRepository implements BaseRepository, OrderR
         return $order->save();
     }
 
+    public function updateStatusDelivered(Request $request, $order)
+    {
+        if (!$order instanceof Order) {
+            $order = $this->model->find($order);
+        }
+
+        $order->delivery_date = date("Y-m-d");
+        $order->order_status_id = 6;
+
+        return $order->save();
+    }
+
     /**
      * Sync up the inventory
      * @param  Order $order

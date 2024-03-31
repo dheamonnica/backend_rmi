@@ -377,11 +377,17 @@
         </div> <!-- /.box -->
       @endcan
 
+      @if (Auth::user()->role_id === 6)
+      {!! Form::open(['route' => ['admin.order.order.setAsDelivered', $order], 'method' => 'put', 'class' => 'inline']) !!}
+      <button type="submit" class="confirm ajax-silent btn btn-lg btn-warning mb-5">SET AS DELIVERED</button>
+      {!! Form::close() !!}
+      @endif
+
       @include('admin.partials._activity_logs', ['logger' => $order])
     </div> <!-- /.col-md-8 -->
 
     <div class="col-md-4 nopadding-left">
-      @if (Auth::user()->isFromPlatform())
+      {{-- @if (Auth::user()->isFromPlatform())
         <div class="box">
           <div class="box-header with-border">
             <h3 class="box-title"><i class="fa fa-map-marker"></i> {{ trans('app.shop') }}</h3>
@@ -393,7 +399,7 @@
                 </a>
               @endcan
             </div>
-          </div> <!-- /.box-header -->
+          </div>
           <div class="box-body">
             <img src="{{ get_storage_file_url(optional($order->shop->image)->path, 'mini') }}" class="" alt="{{ trans('app.logo') }}">
             <p class="indent10">
@@ -415,7 +421,7 @@
 
           </div>
         </div>
-      @endif
+      @endif --}}
 
       <div class="box">
         <div class="box-header with-border">

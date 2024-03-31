@@ -40,6 +40,7 @@ trait Authorizable
         'updateOrderStatus' => 'fulfill',
         'togglePaymentStatus' => 'fulfill',
         'saveAdminNote'     => 'fulfill',
+        'setAsDelivered'     => 'view',
         'cancellation'      => 'cancel',
         'initiate'          => 'initiate',
         'form'              => 'initiate',

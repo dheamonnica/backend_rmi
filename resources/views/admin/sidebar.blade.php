@@ -545,6 +545,7 @@
         </li>
       @endif --}}
       
+      @if (Auth::user()->isAdmin())
       <li class="treeview {{ Request::is('admin/setting*') ? 'active' : '' }}">
         <a href="javascript:void(0)">
           <i class="fa fa-gears"></i>
@@ -710,6 +711,7 @@
           @endif
         </ul>
       </li>
+      @endif
       
       @if (Auth::user()->isAdmin())
       @if (Gate::allows('index', \App\Models\Page::class) || Gate::allows('index', \App\Models\EmailTemplate::class) || Gate::allows('index', \App\Models\Blog::class) || Gate::allows('index', \App\Models\Faq::class))

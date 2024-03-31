@@ -425,6 +425,16 @@ class OrderController extends Controller
         return back()->with('success', trans('messages.updated', ['model' => $this->model_name]));
     }
 
+    public function setAsDelivered(Request $request, $id)
+    {
+        
+        $order = $this->order->find($id);
+
+        $this->order->updateStatusDelivered($request, $order);
+
+        return back()->with('success', trans('messages.updated', ['model' => $this->model_name]));
+    }
+
     /**
      * Trash the specified resource.
      *
