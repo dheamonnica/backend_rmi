@@ -83,6 +83,7 @@
                         <th>{{ trans('app.form.po_number_ref') }}</th>
                         <th>{{ trans('app.order_date') }}</th>
                         <th>{{ trans('app.model.delivery_boy') }}</th>
+                        <th>{{ trans('app.delivery_date') }}</th>
                         @if (Auth::user()->isFromPlatform())
                             <th>{{ trans('app.shop') }}</th>
                         @endif

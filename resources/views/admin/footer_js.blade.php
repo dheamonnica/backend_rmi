@@ -470,6 +470,10 @@
           'data': 'delivery_boy',
           'name': 'delivery_boy'
         },
+        {
+          'data': 'delivery_date',
+          'name': 'delivery_date'
+        },
         @if (Auth::user()->isFromPlatform())
           {
             'data': 'shop',

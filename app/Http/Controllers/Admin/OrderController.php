@@ -94,6 +94,9 @@ class OrderController extends Controller
         ->addColumn('po_number_ref', function ($order) {
             return view('admin.partials.actions.order.order_po_number_ref', compact('order'));
         })
+        ->addColumn('delivery_date', function ($order) {
+            return view('admin.partials.actions.order.order_delivery_date', compact('order'));
+        })
         ->addColumn('order_date', function ($order) {
             return view('admin.partials.actions.order.order_date', compact('order'));
         })
@@ -119,7 +122,7 @@ class OrderController extends Controller
         ->editColumn('option', function ($order) {
             return view('admin.partials.actions.order.option', compact('order'));
         })
-        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'delivery_boy', 'shop', 'customer_name','grand_total','payment_status','option'])
+        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'delivery_boy', 'delivery_date', 'shop', 'customer_name','grand_total','payment_status','option'])
         ->make(true);
     }
 
@@ -293,6 +296,16 @@ class OrderController extends Controller
         $order = $this->order->find($id);
 
         $deliveryboys = ListHelper::deliveryBoys($order->shop_id);
+
+        return view('admin.order._assign_delivery_boy', compact('deliveryboys', 'order'));
+    }
+
+    public function deliveryBoysRole($id)
+    {
+        $order = $this->order->find($id);
+
+        // $deliveryboys = ListHelper::deliveryBoys($order->shop_id);
+        $deliveryboys = $this->user->all();
 
         return view('admin.order._assign_delivery_boy', compact('deliveryboys', 'order'));
     }
