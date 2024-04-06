@@ -111,9 +111,9 @@
           @endif
 
           @can('fulfill', $order)
-          @if($order->deliveryBoy->nice_name === null)
-            <a data-link="{{ route('admin.order.deliveryboys', $order->id) }}" class="ajax-modal-btn btn btn-flat btn-default indent10" style="cursor: pointer;">
-              <i class="fa fa-user"></i> {{ trans('app.assign_deliveryboy') }}
+          @if($order->deliveryBoyRole->nice_name === null)
+            <a data-link="{{ route('admin.order.deliveryBoyRoles', $order->id) }}" class="ajax-modal-btn btn btn-flat btn-default indent10" style="cursor: pointer;">
+              <i class="fa fa-user"></i> {{ trans('app.assign_deliveryBoyRole') }}
             </a>
           @endif
           @endcan
@@ -344,7 +344,7 @@
               @endif
 
               <div class="pull-right">
-                @if($order->deliveryBoy->nice_name === null)
+                @if($order->deliveryBoyRole->nice_name === null)
                 <a href="javascript:void(0)" data-link="{{ route('admin.order.order.edit', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-default'>
                   {{ trans('app.update_status') }}
                 </a>
@@ -353,7 +353,7 @@
                 @if ($order->isFulfilled())
                   @unless ($order->isArchived())
                     @can('archive', $order)
-                    @if($order->deliveryBoy->nice_name === null)
+                    @if($order->deliveryBoyRole->nice_name === null)
                       {!! Form::open(['route' => ['admin.order.order.archive', $order->id], 'method' => 'delete', 'class' => 'inline']) !!}
                       <button type="submit" class="confirm ajax-silent btn btn-lg btn-default"><i class="fa fa-archive text-muted"></i> {{ trans('app.order_archive') }}</button>
                       {!! Form::close() !!}
@@ -440,22 +440,22 @@
         </div> <!-- /.box-header -->
         <div class="box-body">
           <p>
-            <img src="{{ get_avatar_src($order->deliveryBoy, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
+            <img src="{{ get_avatar_src($order->deliveryBoyRole, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
 
             <span class="admin-user-widget-title indent5">
               {{-- @if (config('system_settings.vendor_can_view_customer_info') && $order->delivery_boy_id)
                 <a href="javascript:void(0)" data-link="{{ route('admin.admin.customer.show', $order->customer->id) }}" class="ajax-modal-btn">
-                  {{ $order->deliveryBoy->getName() }}
+                  {{ $order->deliveryBoyRole->getName() }}
                 </a>
               @else --}}
-              {{ $order->deliveryBoy ? $order->deliveryBoy->getName() : trans('app.no_assigned_yet') }}
+              {{ $order->deliveryBoyRole ? $order->deliveryBoyRole->getName() : trans('app.no_assigned_yet') }}
               {{-- @endif --}}
             </span>
           </p>
 
-          @if ($order->deliveryBoy)
+          @if ($order->deliveryBoyRole)
             <span class="admin-user-widget-text text-muted">
-              {{ trans('app.email') . ': ' . $order->deliveryBoy->email }}
+              {{ trans('app.email') . ': ' . $order->deliveryBoyRole->email }}
             </span>
           @endif
         </div>

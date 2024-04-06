@@ -728,6 +728,18 @@ class ListHelper
             ->orderBy('name', 'asc')->pluck('name', 'id');
     }
 
+     /**
+     * Get users list under the shop for form dropdown.
+     *
+     * @return array
+     */
+    public static function deliveryBoyRole()
+    {
+
+        return DB::table('users')->where('deleted_at', null)->where('role_id', 9)
+            ->orderBy('name', 'asc')->pluck('name', 'id');
+    }
+
     /**
      * Get suppliers list for form dropdown.
      *

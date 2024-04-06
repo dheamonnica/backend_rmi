@@ -299,6 +299,12 @@ class Order extends BaseModel
         return $this->belongsTo(DeliveryBoy::class, 'delivery_boy_id');
     }
 
+    public function deliveryBoyRole(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'delivery_boy_id');
+    }
+
+
     /**
      * Get the packaging for the order.
      */

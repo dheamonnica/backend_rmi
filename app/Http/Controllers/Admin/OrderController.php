@@ -53,8 +53,10 @@ class OrderController extends Controller
         $orders = $this->order->all($fulfilment);
 
         $archives = $this->order->trashOnly();
+
+        $deliveryBoysUser = ListHelper::deliveryBoyRole();
         
-        return view('admin.order.index',compact('orders','archives'));
+        return view('admin.order.index',compact('orders','archives', 'deliveryBoysUser'));
     }
 
     /**
@@ -69,6 +71,10 @@ class OrderController extends Controller
         $fulfilment = Route::is('admin.order.pickup') ? Order::FULFILMENT_TYPE_PICKUP : Order::FULFILMENT_TYPE_DELIVER;
         
         $orders = Order::where('fulfilment_type', $fulfilment);
+
+        if (Auth::user()->role_id === 9) {
+            $orders = Order::where('delivery_boy_id', Auth::user()->role_id);
+        }
         
         if(Auth::user()->isFromMerchant()){
             $orders->where('shop_id', Auth::user()->merchantId()); // Merchants must only see their own orders
@@ -187,8 +193,10 @@ class OrderController extends Controller
         $this->authorize('view', $order); // Check permission
 
         $address = $order->customer->primaryAddress();
+
+        $deliveryBoysUser = ListHelper::deliveryBoyRole();
         
-        return view('admin.order.show', compact('order', 'address'));
+        return view('admin.order.show', compact('order', 'address', 'deliveryBoysUser'));
     }
     
     /**
@@ -297,17 +305,9 @@ class OrderController extends Controller
 
         $deliveryboys = ListHelper::deliveryBoys($order->shop_id);
 
-        return view('admin.order._assign_delivery_boy', compact('deliveryboys', 'order'));
-    }
+        $deliveryBoysUser = ListHelper::deliveryBoyRole();
 
-    public function deliveryBoysRole($id)
-    {
-        $order = $this->order->find($id);
-
-        // $deliveryboys = ListHelper::deliveryBoys($order->shop_id);
-        $deliveryboys = $this->user->all();
-
-        return view('admin.order._assign_delivery_boy', compact('deliveryboys', 'order'));
+        return view('admin.order._assign_delivery_boy', compact('deliveryboys','deliveryBoysUser', 'order'));
     }
 
     public function assignDeliveryBoy(Request $request, $id)
