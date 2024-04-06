@@ -137,7 +137,7 @@
               <legend>{{ trans('app.form.manufacturing') }}</legend>
               <div class="form-group">
                 {!! Form::label('origin_country', trans('app.form.origin'), ['class' => 'with-help']) !!}
-                {!! Form::select('origin_country', $countries, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.origin')]) !!}
+                {!! Form::select('origin_country', $countries, 360, ['class' => 'form-control select2-normal', 'required']) !!}
                 <div class="help-block with-errors"></div>
               </div>
   
