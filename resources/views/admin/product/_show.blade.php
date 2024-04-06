@@ -58,17 +58,17 @@
           <li><a href="#listings_tab" data-toggle="tab">
               {{ trans('app.listings') }}
             </a></li>
-          <li><a href="#seo_tab" data-toggle="tab">
+          {{-- <li><a href="#seo_tab" data-toggle="tab">
               {{ trans('app.seo') }}
-            </a></li>
+            </a></li> --}}
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="basic_info_tab">
             <table class="table">
-              <tr>
+              {{-- <tr>
                 <th>{{ trans('app.product_type') }}:</th>
                 <td>{{ $product->downloadable ? trans('app.digital') : trans('app.physical') }}</td>
-              </tr>
+              </tr> --}}
               <tr>
                 <th>{{ trans('app.requires_shipping') }}:</th>
                 <td>{{ $product->requires_shipping ? trans('app.yes') : trans('app.no') }}</td>

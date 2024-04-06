@@ -82,7 +82,8 @@ class Product extends Inspectable
         'manufacture_skuid',
         'selling_skuid',
         'client_skuid',
-        'purchase_price'
+        'purchase_price',
+        'type_uom'
     ];
 
     /**

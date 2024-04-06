@@ -119,6 +119,12 @@
             <div class="help-block with-errors"></div>
           </div>
 
+          <div class="form-group">
+            {!! Form::label('type_uom', trans('app.form.type_uom') . '*', ['class' => 'with-help']) !!}
+            {!! Form::select('type_uom', ['pcs' => 'pcs', 'carton' => 'carton'], null, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.form.type_uom'), 'required']) !!}
+            <div class="help-block with-errors"></div>
+          </div>
+
           <fieldset>
             {{-- <legend>{{ trans('app.catalog_rules') }}</legend>
 

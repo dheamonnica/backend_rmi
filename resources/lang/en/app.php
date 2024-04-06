@@ -1188,6 +1188,7 @@ return [
         'selling_skuid' => 'Selling SKUID',
         'client_skuid' => 'Client SKUID',
         'manufacturing' => 'Manufacturing',
+        'type_uom' => 'Type of UOM',
 
         // inventories
         'expired_date' => 'Expired Date',
