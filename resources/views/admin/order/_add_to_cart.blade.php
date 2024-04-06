@@ -1,5 +1,6 @@
 <div class="row add-to-cart-option">
   <div class="col-md-9 nopadding input-lg">
+    <?= json_encode($products) ?>
     {!! Form::select('product', $products, null, ['id' => 'product-to-add', 'class' => 'form-control select2', 'placeholder' => trans('app.placeholder.choose_product')]) !!}
   </div>
   <div class="col-md-3 nopadding">
