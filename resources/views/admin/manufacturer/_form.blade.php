@@ -1,17 +1,19 @@
-<div class="form-group">
-  {!! Form::label('name', trans('app.form.name') . '*', ['class' => 'with-help']) !!}
-  {!! Form::text('name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.manufacturer_name'), 'required']) !!}
-  <div class="help-block with-errors"></div>
-</div>
-
 <div class="row">
-  <div class="col-md-9 nopadding-right">
+  <div class="col-md-9 nopadding-right" style="display: none">
     <div class="form-group">
       {!! Form::label('slug', trans('app.form.slug') . '*', ['class' => 'with-help']) !!}
       <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.slug') }}"></i>
       {!! Form::text('slug', null, ['class' => 'form-control slug', 'placeholder' => trans('app.placeholder.slug'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
+  </div>
+
+  <div class="col-md-9 nopadding-right">
+    <div class="form-group">
+      {!! Form::label('name', trans('app.form.name') . '*', ['class' => 'with-help']) !!}
+      {!! Form::text('name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.manufacturer_name'), 'required']) !!}
+      <div class="help-block with-errors"></div>
+    </div>  
   </div>
 
   <div class="col-md-3 nopadding-left">
@@ -24,7 +26,7 @@
   </div>
 </div>
 
-<div class="row">
+{{-- <div class="row">
   <div class="col-md-6 nopadding-right">
     <div class="form-group">
       {!! Form::label('url', trans('app.form.url')) !!}
@@ -40,7 +42,7 @@
       {!! Form::select('country_id', $countries, null, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.country')]) !!}
     </div>
   </div>
-</div>
+</div> --}}
 
 <div class="row">
   <div class="col-md-6 nopadding-right">
