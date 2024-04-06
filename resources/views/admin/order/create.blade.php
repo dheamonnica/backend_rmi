@@ -338,6 +338,7 @@
 
       var shipping_options = <?= $shipping_options ?>;
       var productObj = <?= json_encode($inventories) ?>;
+      console.log(productObj, 'inventories')
 
       var cart = "{{ isset($cart) ? true : false }}";
       if (cart) {
@@ -468,11 +469,11 @@
         function() {
           var ID = $("#product-to-add").select2('data')[0].id;
 
-          console.log('stock', productObj[ID].stockQtt);
-          if(productObj[ID].stockQtt === 0) {
-            $("#global-alert-msg").html('{{ trans('messages.notice.out_of_stock') }}');
-            $("#global-alert-box").removeClass('hidden');
-          } else {
+          // console.log('stock', productObj[ID].stockQtt);
+          // if(productObj[ID].stockQtt === 0) {
+          //   $("#global-alert-msg").html('{{ trans('messages.notice.out_of_stock') }}');
+          //   $("#global-alert-box").removeClass('hidden');
+          // } else {
             var itemDescription = $("#product-to-add").select2('data')[0].text;
 
               if (ID == '' || itemDescription == '') {
@@ -530,7 +531,6 @@
               calculateOrderTotal();
 
               return false; //Return false to prevent unspected form submition
-          }
          
         }
       );
