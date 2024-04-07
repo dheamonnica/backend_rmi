@@ -452,12 +452,12 @@
           'exportable': false,
           'printable': false
         },
-        {
-          'data': 'order',
-          'name': 'order',
-          'orderable': false,
-          'searchable': false
-        },
+        // {
+        //   'data': 'order',
+        //   'name': 'order',
+        //   'orderable': false,
+        //   'searchable': false
+        // },
         {
           'data': 'po_number_ref',
           'name': 'po_number_ref'

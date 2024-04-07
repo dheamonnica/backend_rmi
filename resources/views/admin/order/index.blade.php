@@ -79,7 +79,7 @@
                                     title="{{ trans('app.select_all') }}"></i>
                             </button>
                         </th>
-                        <th>{{ trans('app.order_number') }}</th>
+                        {{-- <th>{{ trans('app.order_number') }}</th> --}}
                         <th>{{ trans('app.form.po_number_ref') }}</th>
                         <th>{{ trans('app.order_date') }}</th>
                         <th>{{ trans('app.model.delivery_boy') }}</th>
@@ -121,7 +121,7 @@
             <table class="table table-hover table-no-sort">
                 <thead>
                     <tr>
-                        <th>{{ trans('app.order_number') }}</th>
+                        {{-- <th>{{ trans('app.order_number') }}</th> --}}
                         <th>{{ trans('app.order_date') }}</th>
                         <th>{{ trans('app.grand_total') }}</th>
                         <th>{{ trans('app.payment') }}</th>
@@ -133,7 +133,7 @@
                 <tbody>
                     @foreach ($archives as $archive)
                         <tr>
-                            <td>
+                            {{-- <td>
                                 @can('view', $archive)
                                     <a href="{{ route('admin.order.order.show', $archive->id) }}">
                                         {{ $archive->order_number }}
@@ -141,7 +141,7 @@
                                 @else
                                     {{ $archive->order_number }}
                                 @endcan
-                            </td>
+                            </td> --}}
                             <td>{{ $archive->created_at->toDayDateTimeString() }}</td>
                             <td>{{ get_formated_currency($archive->grand_total, 2, $archive->currency_id) }}</td>
                             <td>{!! $archive->paymentStatusName() !!}</td>

@@ -103,7 +103,7 @@
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">
-            <i class="fa fa-shopping-cart"></i> {{ trans('app.order') . ': ' . $order->order_number }}
+            <i class="fa fa-shopping-cart"></i> {{ trans('app.form.invoice_numbers') . ': ' . $order->order_number }}
           </h3>
 
           @if ($order->dispute)
@@ -492,6 +492,12 @@
               <span class="admin-user-widget-text text-muted">
                 {{ trans('app.email') . ': ' . $order->customer->email }}
               </span>
+            @endif
+
+            @if ($order->po_number_ref)
+            <span class="admin-user-widget-text text-muted">
+              {{ trans('app.form.po_number_ref') . ': ' . $order->po_number_ref }}
+            </span>
             @endif
 
             <span class="spacer10"></span>

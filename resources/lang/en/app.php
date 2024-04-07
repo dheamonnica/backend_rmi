@@ -1201,6 +1201,7 @@ return [
 
         // order
         'po_number_ref' => 'PO Number Ref',
+        'invoice_numbers' => 'Invoice Number',
 
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',
