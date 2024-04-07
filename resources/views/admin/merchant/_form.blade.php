@@ -45,13 +45,13 @@
   </div>
 @endif
 
-@unless (isset($merchant))
+{{-- @unless (isset($merchant)) --}}
   <div class="row">
     <div class="col-md-6 nopadding-right">
       <div class="form-group">
         {!! Form::label('warehouse_name', trans('app.form.warehouse_name') . '*', ['class' => 'with-help']) !!}
         {{-- <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.warehouse') }}"></i> --}}
-        {!! Form::text('shop_name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.warehouse_name'), 'required']) !!}
+        {!! Form::text('warehouse_name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.warehouse_name'), 'required']) !!}
         <div class="help-block with-errors"></div>
       </div>
     </div>
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-@endunless
+{{-- @endunless --}}
 
 {{-- @if (isset($merchant))
   <div class="row">

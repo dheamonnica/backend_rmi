@@ -37,7 +37,7 @@
               </th>
             @endcan
             <th>{{ trans('app.image') }}</th>
-            <th>{{ trans('app.shop_name') }}</th>
+            <th>{{ trans('app.form.warehouse_name') }}</th>
             @if (is_subscription_enabled())
               <th>{{ trans('app.current_billing_plan') }}</th>
             @endif
@@ -47,7 +47,7 @@
             @if (is_incevio_package_loaded('dynamicCommission'))
               <th>{{ trans('dynamicCommission::lang.periodic_sold_amount') }}</th>
             @endif
-            <th>{{ trans('app.owner') }}</th>
+            <th>{{ trans('app.form.pic_name') }}</th>
             <th>{{ trans('app.option') }}</th>
           </tr>
         </thead>
@@ -104,7 +104,7 @@
                 <td>{{ get_formated_currency($shop->periodic_sold_amount, 2, config('system_settings.currency.id')) }}</td>
               @endif
 
-              <td>
+              {{-- <td>
                 <img src="{{ get_avatar_src($shop->owner, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
 
                 <p class="indent10">
@@ -118,7 +118,17 @@
                     <span class="label label-default indent10">{{ trans('app.inactive') }}</span>
                   @endunless
                 </p>
+              </td> --}}
+              
+              @if($shop->pic_name)
+              <td>
+                {{ $shop->pic_name }}
               </td>
+              @else
+              <td>
+                
+              </td>
+              @endif
 
               <td class="row-options">
                 @can('view', $shop)

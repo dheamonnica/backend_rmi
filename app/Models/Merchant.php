@@ -110,6 +110,8 @@ class Merchant extends Authenticatable
         'active',
         'last_visited_at',
         'last_visited_from',
+        'pic_name',
+        'warehouse_name',
     ];
 
     /**

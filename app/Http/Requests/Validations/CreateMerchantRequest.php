@@ -31,7 +31,7 @@ class CreateMerchantRequest extends Request
             'name' => 'required|max:255',
             // 'legal_name' => 'required',
             'slug' => 'required|alpha_dash|max:255|unique:shops',
-            'shop_name' => 'required|string|max:255|unique:shops,name',
+            // 'shop_name' => 'required|string|max:255|unique:shops,name',
             'email' =>  'required|email|max:255|unique:users',
             'external_url' => 'nullable|url',
             'password' =>  'required|min:6',

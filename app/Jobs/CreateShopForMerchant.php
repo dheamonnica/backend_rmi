@@ -45,7 +45,8 @@ class CreateShopForMerchant
         }
 
         $shop = Shop::create([
-            'name' => $this->request['shop_name'],
+            // 'name' => $this->request['shop_name'],
+            'name' => $this->request['pic_name'],
             'description' => isset($this->request['description']) ? $this->request['description'] : trans('app.welcome'),
             'legal_name' => isset($this->request['legal_name']) ? $this->request['legal_name'] : null,
             'owner_id' => $this->merchant->id,
@@ -57,6 +58,7 @@ class CreateShopForMerchant
             'current_billing_plan' => isset($this->request['plan']) ? $this->request['plan'] : null,
             'trial_ends_at' => $trial_ends_at ?? null,
             'active' => $status,
+            'pic_name' => $this->request['pic_name'],
         ]);
 
         // configaring The Shop

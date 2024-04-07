@@ -187,13 +187,13 @@
               </li>
             @endcan --}}
 
-            @can('cancelAny', \App\Models\Order::class)
+            {{-- @can('cancelAny', \App\Models\Order::class)
               <li class="{{ Request::is('admin/order/cancellation*') ? 'active' : '' }}">
                 <a href="{{ url('admin/order/cancellation') }}">
                   <i class="fa fa-angle-double-right"></i> {{ trans('nav.cancellations') }}
                 </a>
               </li>
-            @endcan
+            @endcan --}}
 
             {{-- @can('index', \App\Models\Payment::class) --}}
             {{-- <li class="{{ Request::is('admin/order/payment*') ? 'active' : '' }}">
