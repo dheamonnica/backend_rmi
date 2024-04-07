@@ -24,6 +24,13 @@
       <div class="help-block with-errors"></div>
     </div>
   </div>
+
+  <div class="col-md-4 nopadding-left" style="display: none">
+    <div class="form-group">
+      {!! Form::label('country_id', trans('app.form.country')) !!}
+      {!! Form::select('country_id', $countries, 360, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.country')]) !!}
+    </div>
+  </div>
 </div>
 
 {{-- <div class="row">
@@ -66,7 +73,31 @@
   </div>
 </div>
 
-<div class="form-group">
+<div class="row">
+  <div class="col-md-4 nopadding-right">
+    <div class="form-group">
+      {!! Form::label('manufacture_pic_name', trans('app.form.manufacture_pic_name') . '*', ['class' => 'with-help']) !!}
+      {!! Form::text('manufacture_pic_name', null, ['class' => 'form-control', 'placeholder' => trans('app.form.manufacture_pic_name'), 'required']) !!}
+      <div class="help-block with-errors"></div>
+    </div> 
+  </div>
+  <div class="col-md-4 nopadding-left nopadding-right">
+    <div class="form-group">
+      {!! Form::label('manufacture_pic_email', trans('app.form.manufacture_pic_email') . '*', ['class' => 'with-help']) !!}
+      {!! Form::email('manufacture_pic_email', null, ['class' => 'form-control', 'placeholder' => trans('app.form.manufacture_pic_email'), 'required']) !!}
+      <div class="help-block with-errors"></div>
+    </div> 
+  </div>
+  <div class="col-md-4 nopadding-left">
+    <div class="form-group">
+      {!! Form::label('manufacture_pic_phone', trans('app.form.manufacture_pic_phone') . '*', ['class' => 'with-help']) !!}
+      {!! Form::text('manufacture_pic_phone', null, ['class' => 'form-control', 'placeholder' => trans('app.form.manufacture_pic_phone'), 'required']) !!}
+      <div class="help-block with-errors"></div>
+    </div> 
+  </div>
+</div>
+
+{{-- <div class="form-group">
   {!! Form::label('description', trans('app.form.description')) !!}
   {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'placeholder' => trans('app.placeholder.description')]) !!}
 </div>
@@ -151,6 +182,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 <p class="help-block">* {{ trans('app.form.required_fields') }}</p>

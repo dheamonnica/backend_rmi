@@ -1200,7 +1200,13 @@ return [
         'pic_name' => 'PIC Name',
 
         // order
-        'po_number_ref' => 'PO Number Ref'
+        'po_number_ref' => 'PO Number Ref',
+
+        // manufacture
+        'manufacture_pic_name' => 'Manufacture PIC Name',
+        'manufacture_pic_email' => 'Manufacture PIC Email',
+        'manufacture_pic_phone' => 'Manufacture PIC Phone'
+
     ],
 
     'placeholder' => [

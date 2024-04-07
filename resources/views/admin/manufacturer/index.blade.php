@@ -36,8 +36,8 @@
             <th>{{ trans('app.name') }}</th>
             <th>{{ trans('app.phone') }}</th>
             <th>{{ trans('app.email') }}</th>
-            <th>{{ trans('app.country') }}</th>
-            <th>{{ trans('app.products') }}</th>
+            {{-- <th>{{ trans('app.country') }}</th> --}}
+            {{-- <th>{{ trans('app.products') }}</th> --}}
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -60,10 +60,10 @@
               </td>
               <td>{{ $manufacturer->phone }}</td>
               <td>{{ $manufacturer->email }}</td>
-              <td>{{ optional($manufacturer->country)->name }}</td>
-              <td>
+              {{-- <td>{{ optional($manufacturer->country)->name }}</td> --}}
+              {{-- <td>
                 <span class="label label-default">{{ $manufacturer->products_count }}</span>
-              </td>
+              </td> --}}
               <td class="row-options">
                 @can('view', $manufacturer)
                   <a href="javascript:void(0)" data-link="{{ route('admin.catalog.manufacturer.show', $manufacturer->id) }}" class="ajax-modal-btn"><i data-toggle="tooltip" data-placement="top" title="{{ trans('app.detail') }}" class="fa fa-expand"></i></a>&nbsp;

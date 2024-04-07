@@ -32,6 +32,9 @@ class Manufacturer extends BaseModel
         'description',
         'country_id',
         'active',
+        'manufacture_pic_name',
+        'manufacture_pic_email',
+        'manufacture_pic_phone'
     ];
 
     public function getName()
