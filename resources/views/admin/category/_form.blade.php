@@ -17,7 +17,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 nopadding-right">
+  <div class="col-md-6 nopadding-right" style="display: none">
     <div class="form-group">
       {!! Form::label('slug', trans('app.form.slug') . '*', ['class' => 'with-help']) !!}
       <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.slug') }}"></i>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="col-md-3 nopadding-right nopadding-left">
+  <div class="col-md-3">
     <div class="form-group">
       {!! Form::label('active', trans('app.form.status') . '*', ['class' => 'with-help']) !!}
       {!! Form::select('active', ['1' => 'Active', '0' => 'Inactive'], null, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.placeholder.status'), 'required']) !!}
@@ -50,14 +50,14 @@
   {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.category_description'), 'rows' => '1']) !!}
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
   {!! Form::label('attrsList[]', trans('app.attributes'), ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.category_attributes') }}"></i>
   {!! Form::select('attrsList[]', $attrsList, null, ['class' => 'form-control select2-normal', 'multiple' => 'multiple']) !!}
   <div class="help-block with-errors"></div>
-</div>
+</div> --}}
 
-<div class="row">
+{{-- <div class="row">
   <div class="col-md-6 nopadding-right">
     <div class="form-group" style="margin-bottom: 0px!important;">
       {!! Form::label('exampleInputFile', trans('app.form.cover_img'), ['class' => 'with-help']) !!}
@@ -81,9 +81,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
-  <div class="col-md-6 nopadding-left">
+  {{-- <div class="col-md-6 nopadding-left">
     <div class="form-group">
       {!! Form::label('exampleInputFile', trans('app.form.featured_image'), ['class' => 'with-help']) !!}
       <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.featured_image', ['page' => trans('app.category')]) }}"></i>
@@ -107,9 +107,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
-<div class="form-group">
+{{-- <div class="form-group">
   {!! Form::label('meta_title', trans('app.form.meta_title'), ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.meta_title') }}"></i>
   {!! Form::text('meta_title', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.meta_title')]) !!}
@@ -119,6 +119,6 @@
   {!! Form::label('meta_description', trans('app.form.meta_description'), ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.meta_description') }}"></i>
   {!! Form::textarea('meta_description', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.meta_description'), 'rows' => '1']) !!}
-</div>
+</div> --}}
 
 <p class="help-block">* {{ trans('app.form.required_fields') }}</p>

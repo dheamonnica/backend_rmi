@@ -566,18 +566,18 @@
           'exportable': false,
           'printable': false
         },
-        {
-          'data': 'cover_image',
-          'name': 'cover_image',
-          'orderable': false,
-          'searchable': false
-        },
-        {
-          'data': 'feature_image',
-          'name': 'feature_image',
-          'orderable': false,
-          'searchable': false
-        },
+        // {
+        //   'data': 'cover_image',
+        //   'name': 'cover_image',
+        //   'orderable': false,
+        //   'searchable': false
+        // },
+        // {
+        //   'data': 'feature_image',
+        //   'name': 'feature_image',
+        //   'orderable': false,
+        //   'searchable': false
+        // },
         {
           'data': 'name',
           'name': 'name'
@@ -588,11 +588,11 @@
           'orderable': false,
           'searchable': false
         },
-        {
-          'data': 'attrs_list_count',
-          'name': 'attrs_list_count',
-          'searchable': false
-        },
+        // {
+        //   'data': 'attrs_list_count',
+        //   'name': 'attrs_list_count',
+        //   'searchable': false
+        // },
         {
           'data': 'products_count',
           'name': 'products_counts',

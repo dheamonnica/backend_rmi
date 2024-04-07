@@ -34,11 +34,11 @@
                 </div>
               </th>
             @endcan
-            <th>{{ trans('app.cover_image') }}</th>
-            <th>{{ trans('app.feature_image') }}</th>
+            {{-- <th>{{ trans('app.cover_image') }}</th> --}}
+            {{-- <th>{{ trans('app.feature_image') }}</th> --}}
             <th>{{ trans('app.category_name') }}</th>
             <th>{{ trans('app.parent') }}</th>
-            <th>{{ trans('app.attributes') }}</th>
+            {{-- <th>{{ trans('app.attributes') }}</th> --}}
             <th>{{ trans('app.products') }}</th>
             <th>{{ trans('app.listings') }}</th>
             <th>{{ trans('app.order') }}</th>

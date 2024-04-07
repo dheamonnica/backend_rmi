@@ -27,14 +27,14 @@
   </div>
 </div>
 
-<div class="form-group">
+<div class="form-group" style="display: none">
   {!! Form::label('slug', trans('app.form.slug') . '*', ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.slug') }}"></i>
   {!! Form::text('slug', null, ['class' => 'form-control slug', 'placeholder' => trans('app.placeholder.slug'), 'required']) !!}
   <div class="help-block with-errors"></div>
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
   {!! Form::label('meta_title', trans('app.form.meta_title'), ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.meta_title') }}"></i>
   {!! Form::text('meta_title', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.meta_title')]) !!}
@@ -44,9 +44,9 @@
   {!! Form::label('meta_description', trans('app.form.meta_description'), ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.meta_description') }}"></i>
   {!! Form::textarea('meta_description', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.meta_description'), 'rows' => '1']) !!}
-</div>
+</div> --}}
 
-<div class="form-group">
+{{-- <div class="form-group">
   {!! Form::label('exampleInputFile', trans('app.form.cover_img'), ['class' => 'with-help']) !!}
   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.cover_img', ['page' => trans('app.category')]) }}"></i>
   @if (isset($categorySubGroup) && $categorySubGroup->coverImage)
@@ -67,6 +67,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 <p class="help-block">* {{ trans('app.form.required_fields') }}</p>

@@ -32,7 +32,7 @@
                 </div>
               </th>
             @endcan
-            <th>{{ trans('app.cover_image') }}</th>
+            {{-- <th>{{ trans('app.cover_image') }}</th> --}}
             <th>{{ trans('app.category_sub_group') }}</th>
             <th>{{ trans('app.parent') }}</th>
             <th>{{ trans('app.categories') }}</th>
@@ -46,9 +46,9 @@
               @can('massDelete', \App\Models\CategorySubGroup::class)
                 <td><input id="{{ $categorySubGrp->id }}" type="checkbox" class="massCheck"></td>
               @endcan
-              <td>
+              {{-- <td>
                 <img src="{{ get_storage_file_url(optional($categorySubGrp->coverImage)->path, 'cover_thumb') }}" class="img-sm" alt="{{ trans('app.cover_image') }}">
-              </td>
+              </td> --}}
               <td> {{ $categorySubGrp->name }}
                 @unless($categorySubGrp->active)
                   <span class="label label-default indent5 small">{{ trans('app.inactive') }}</span>

@@ -33,8 +33,8 @@
                 </div>
               </th>
             @endcan
-            <th>{{ trans('app.background_image') }}</th>
-            <th>{{ trans('app.cover_image') }}</th>
+            {{-- <th>{{ trans('app.background_image') }}</th> --}}
+            {{-- <th>{{ trans('app.cover_image') }}</th> --}}
             <th>{{ trans('app.category_group') }}</th>
             <th>{{ trans('app.sub_groups') }}</th>
             <th>{{ trans('app.order') }}</th>
@@ -47,16 +47,16 @@
               @can('massDelete', \App\Models\CategoryGroup::class)
                 <td><input id="{{ $categoryGrp->id }}" type="checkbox" class="massCheck"></td>
               @endcan
-              <td>
+              {{-- <td>
                 @if (Storage::exists(optional($categoryGrp->backgroundImage)->path))
                   <img src="{{ get_storage_file_url(optional($categoryGrp->backgroundImage)->path, 'small') }}" class="" alt="{{ trans('app.background_image') }}">
                 @endif
-              </td>
-              <td>
+              </td> --}}
+              {{-- <td>
                 @if (Storage::exists(optional($categoryGrp->coverImage)->path))
                   <img src="{{ get_storage_file_url(optional($categoryGrp->coverImage)->path, 'cover_thumb') }}" class="img-sm" alt="{{ trans('app.cover_image') }}">
                 @endif
-              </td>
+              </td> --}}
               <td>
                 <h5>
                   <i class="fa {{ $categoryGrp->icon }}"></i> {{ $categoryGrp->name }}
