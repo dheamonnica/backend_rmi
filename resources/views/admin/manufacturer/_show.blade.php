@@ -66,6 +66,18 @@
                   <td style="width: 75%;"> {{ $manufacturer->phone }} </td>
                 </tr>
               @endif
+              <tr>
+                <th class="text-right">{{ trans('app.form.manufacture_pic_name') }}:</th>
+                <td style="width: 75%;">{{ $manufacturer->manufacture_pic_name }}</td>
+              </tr>
+              <tr>
+                <th class="text-right">{{ trans('app.form.manufacture_pic_email') }}:</th>
+                <td style="width: 75%;">{{ $manufacturer->manufacture_pic_email }}</td>
+              </tr>
+              <tr>
+                <th class="text-right">{{ trans('app.form.manufacture_pic_phone') }}:</th>
+                <td style="width: 75%;">{{ $manufacturer->manufacture_pic_phone }}</td>
+              </tr>
             </table>
           </div>
           <!-- /.tab-pane -->
