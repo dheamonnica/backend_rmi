@@ -29,7 +29,7 @@ class CreateMerchantRequest extends Request
 
         $rules =  [
             'name' => 'required|max:255',
-            'legal_name' => 'required',
+            // 'legal_name' => 'required',
             'slug' => 'required|alpha_dash|max:255|unique:shops',
             'shop_name' => 'required|string|max:255|unique:shops,name',
             'email' =>  'required|email|max:255|unique:users',
