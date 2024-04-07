@@ -73,7 +73,7 @@ class OrderController extends Controller
         $orders = Order::where('fulfilment_type', $fulfilment);
 
         if (Auth::user()->role_id === 9) {
-            $orders = Order::where('delivery_boy_id', Auth::user()->role_id);
+            $orders = Order::where('delivery_boy_id', Auth::user()->id);
         }
         
         if(Auth::user()->isFromMerchant()){
