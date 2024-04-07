@@ -344,12 +344,13 @@
               @endif
 
               <div class="pull-right">
-                {{-- @if($order->deliveryBoyRole->nice_name === null) --}}
+                @if(Auth::user()->role_id !== 9)
                 <a href="javascript:void(0)" data-link="{{ route('admin.order.order.edit', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-default'>
                   {{ trans('app.update_status') }}
                 </a>
-                {{-- @endif --}}
+                @endif
 
+              @if (Auth::user()->role_id !== 9)
                 @if ($order->isFulfilled())
                   @unless ($order->isArchived())
                     @can('archive', $order)
@@ -385,6 +386,7 @@
                     </a>
                   @endif
                 @endif
+              @endif
               </div>
             </div>
           </div> <!-- /.box-body -->
@@ -502,6 +504,7 @@
 
             <span class="spacer10"></span>
 
+            @if(Auth::user()->role_id !== 9)
             @if ($order->conversation)
               <a href="{{ route('admin.support.message.show', $order->conversation) }}" class="btn btn-sm btn-info btn-flat">{{ trans('app.view_conversations') }}</a>
             @else
@@ -510,6 +513,7 @@
             @endif
 
             <a href="{{ route('admin.order.order.invoice', $order->id) }}" class="btn btn-sm btn-default btn-flat">{{ trans('app.invoice') }}</a>
+            @endif
 
             @if ($order->dispute)
               <a href="{{ route('admin.support.dispute.show', $order->dispute) }}" class="btn btn-sm btn-danger btn-flat">{{ trans('app.view_dispute') }}</a>

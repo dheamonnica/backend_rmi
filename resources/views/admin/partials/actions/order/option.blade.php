@@ -12,6 +12,7 @@
     <a href="{{ route('admin.order.order.invoice', $order->id) }}">
         <i data-toggle="tooltip" data-placement="top" title="{{ trans('app.download') }} {{ trans('app.invoice') }}" class="fa fa-download"></i>
     </a>&nbsp;
+    @if (Auth::user()->role_id !== 9)
     @can('archive', $order)
         {!! Form::open([
             'route' => ['admin.order.order.archive', $order->id],
@@ -27,4 +28,5 @@
         ]) !!}
         {!! Form::close() !!}
     @endcan
+    @endif
 </td>
