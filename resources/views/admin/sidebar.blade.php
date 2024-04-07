@@ -137,13 +137,13 @@
               @endcan
             @endif
 
-            @can('index', \App\Models\Warehouse::class)
+            {{-- @can('index', \App\Models\Warehouse::class)
               <li class="{{ Request::is('admin/stock/warehouse*') ? 'active' : '' }}">
                 <a href="{{ url('admin/stock/warehouse') }}">
                   <i class="fa fa-angle-double-right"></i> {{ trans('nav.warehouses') }}
                 </a>
               </li>
-            @endcan
+            @endcan --}}
 
             @can('index', \App\Models\Supplier::class)
               <li class="{{ Request::is('admin/stock/supplier*') ? 'active' : '' }}">
@@ -397,7 +397,7 @@
       @endif
       @endif --}}
 
-      @if (Auth::user()->isAdmin())
+      {{-- @if (Auth::user()->isAdmin())
       @if (Gate::allows('index', \App\Models\Message::class) || Gate::allows('index', \App\Models\Ticket::class) || Gate::allows('index', \App\Models\Dispute::class) || Gate::allows('index', \App\Models\Refund::class) || Gate::allows('index', \Incevio\Package\LiveChat\Models\ChatConversation::class))
         <li class="treeview {{ Request::is('admin/support*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -453,7 +453,7 @@
           </ul>
         </li>
       @endif
-      @endif
+      @endif --}}
 
       {{-- @if ((new \App\Helpers\Authorize(Auth::user(), 'customize_appearance'))->check())
         <li class="treeview {{ Request::is('admin/appearance*') ? 'active' : '' }}">
@@ -713,7 +713,7 @@
       </li>
       @endif
       
-      @if (Auth::user()->isAdmin())
+      {{-- @if (Auth::user()->isAdmin())
       @if (Gate::allows('index', \App\Models\Page::class) || Gate::allows('index', \App\Models\EmailTemplate::class) || Gate::allows('index', \App\Models\Blog::class) || Gate::allows('index', \App\Models\Faq::class))
         <li class="treeview {{ Request::is('admin/utility*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -767,9 +767,9 @@
           </ul>
         </li>
       @endif
-      @endif
+      @endif --}}
 
-      @if (Auth::user()->isAdmin())
+      {{-- @if (Auth::user()->isAdmin())
       @if (Auth::user()->isAdmin() || Auth::user()->isMerchant() || Gate::allows('report', \Incevio\Package\Wallet\Models\Wallet::class))
         <li class="treeview {{ Request::is('admin/report*') || Request::is('admin/shop/report*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -844,7 +844,7 @@
           </ul>
         </li>
       @endif
-      @endif
+      @endif --}}
 
       <!--
         <li class="header">LABELS</li>
