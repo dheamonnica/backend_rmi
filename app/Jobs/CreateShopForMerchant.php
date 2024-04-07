@@ -46,7 +46,7 @@ class CreateShopForMerchant
 
         $shop = Shop::create([
             // 'name' => $this->request['shop_name'],
-            'name' => $this->request['pic_name'],
+            'name' => $this->request['warehouse_name'],
             'description' => isset($this->request['description']) ? $this->request['description'] : trans('app.welcome'),
             'legal_name' => isset($this->request['legal_name']) ? $this->request['legal_name'] : null,
             'owner_id' => $this->merchant->id,

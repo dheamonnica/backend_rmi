@@ -185,9 +185,9 @@
         <thead>
           <tr>
             <th>{{ trans('app.image') }}</th>
-            <th>{{ trans('app.name') }}</th>
-            <th>{{ trans('app.email') }}</th>
-            <th>{{ trans('app.owner') }}</th>
+            <th>{{ trans('app.form.warehouse_name') }}</th>
+            <th>{{ trans('app.form.pic_name') }}</th>
+            {{-- <th>{{ trans('app.owner') }}</th> --}}
             <th>{{ trans('app.deleted_at') }}</th>
             <th>{{ trans('app.option') }}</th>
           </tr>
@@ -199,11 +199,11 @@
                 <img src="{{ get_logo_url($trash, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.logo') }}">
               </td>
               <td>{{ $trash->name }}</td>
-              <td>{{ $trash->email }}</td>
-              <td>
+              <td>{{ $trash->pic_name }}</td>
+              {{-- <td>
                 <img src="{{ get_avatar_src($trash->owner, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
                 <p class="indent10">{{ $trash->owner->getName() }}</p>
-              </td>
+              </td> --}}
               <td>{{ $trash->deleted_at->diffForHumans() }}</td>
               <td class="row-options">
                 @can('delete', $trash)

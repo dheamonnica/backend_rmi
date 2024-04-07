@@ -344,20 +344,20 @@
               @endif
 
               <div class="pull-right">
-                @if($order->deliveryBoyRole->nice_name === null)
+                {{-- @if($order->deliveryBoyRole->nice_name === null) --}}
                 <a href="javascript:void(0)" data-link="{{ route('admin.order.order.edit', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-default'>
                   {{ trans('app.update_status') }}
                 </a>
-                @endif
+                {{-- @endif --}}
 
                 @if ($order->isFulfilled())
                   @unless ($order->isArchived())
                     @can('archive', $order)
-                    @if($order->deliveryBoyRole->nice_name === null)
+                    {{-- @if($order->deliveryBoyRole->nice_name === null) --}}
                       {!! Form::open(['route' => ['admin.order.order.archive', $order->id], 'method' => 'delete', 'class' => 'inline']) !!}
                       <button type="submit" class="confirm ajax-silent btn btn-lg btn-default"><i class="fa fa-archive text-muted"></i> {{ trans('app.order_archive') }}</button>
                       {!! Form::close() !!}
-                      @endif
+                      {{-- @endif --}}
                     @endcan
                   @endunless
                 @else

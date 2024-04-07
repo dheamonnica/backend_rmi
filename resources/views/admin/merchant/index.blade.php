@@ -149,10 +149,9 @@
         <thead>
           <tr>
             <th>{{ trans('app.avatar') }}</th>
-            <th>{{ trans('app.nice_name') }}</th>
-            <th>{{ trans('app.full_name') }}</th>
-            <th>{{ trans('app.email') }}</th>
-            <th>{{ trans('app.shop') }}</th>
+            <th>{{ trans('app.form.business_name') }}</th>
+            <th>{{ trans('app.form.pic_name') }}</th>
+            <th>{{ trans('app.form.warehouse_name') }}</th>
             <th>{{ trans('app.deleted_at') }}</th>
             <th>{{ trans('app.option') }}</th>
           </tr>
@@ -163,10 +162,10 @@
               <td>
                 <img src="{{ get_avatar_src($trash, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
               </td>
-              <td>{{ $trash->nice_name }}</td>
               <td>{{ $trash->name }}</td>
-              <td>{{ $trash->email }}</td>
-              <td>
+              <td>{{ $trash->pic_name }}</td>
+              <td>{{ $trash->warehouse_name }}</td>
+              {{-- <td>
                 @if ($trash->owns)
                   <img src="{{ get_storage_file_url(optional($trash->owns->image)->path, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.logo') }}">
                   <p class="indent10">{{ $trash->owns->name }}</p>
@@ -177,7 +176,7 @@
                     <i class="fa fa-trash-o small"></i> {{ trans('app.in_trash') }}
                   </span>
                 @endif
-              </td>
+              </td> --}}
               <td>{{ $trash->deleted_at->diffForHumans() }}</td>
               <td class="row-options">
                 @can('delete', $trash)

@@ -42,7 +42,7 @@
               @endif
               @if ($merchant->owns)
                 <tr>
-                  <th>{{ trans('app.shop') }}: </th>
+                  <th>{{ trans('app.form.pic_name') }}: </th>
                   <td>{{ optional($merchant->owns)->name }}</td>
                 </tr>
               @endif

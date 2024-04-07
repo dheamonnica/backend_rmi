@@ -9,6 +9,31 @@
     </span>
 
     <span class="admin-user-widget-text text-muted">
+      {{ trans('app.form.type_uom') . ': ' . $product->type_uom }}
+    </span>
+
+    <span class="admin-user-widget-text text-muted">
+      {{ trans('app.form.purchase_price') . ': ' . $product->purchase_price }}
+    </span>
+
+    {{-- <span class="admin-user-widget-text text-muted">
+      {{ trans('app.form.licence_number') . ': ' . $product->licence_number }}
+    </span>
+
+    <span class="admin-user-widget-text text-muted">
+      {{ trans('app.form.manufacture_skuid') . ': ' . $product->manufacture_skuid }}
+    </span>
+
+    <span class="admin-user-widget-text text-muted">
+      {{ trans('app.form.selling_skuid') . ': ' . $product->selling_skuid }}
+    </span>
+
+    <span class="admin-user-widget-text text-muted">
+      {{ trans('app.form.client_skuid') . ': ' . $product->client_skuid }}
+    </span> --}}
+
+{{-- 
+    <span class="admin-user-widget-text text-muted">
       {{ trans('app.product_type') . ': ' . $product->type }}
     </span>
 
@@ -22,7 +47,7 @@
 
     <span class="admin-user-widget-text text-muted">
       {{ trans('app.brand') . ': ' . $product->brand }}
-    </span>
+    </span> --}}
 
     @can('view', $product)
       <a href="javascript:void(0)" data-link="{{ route('admin.catalog.product.show', $product->id) }}" class="ajax-modal-btn small">{{ trans('app.view_detail') }}</a>

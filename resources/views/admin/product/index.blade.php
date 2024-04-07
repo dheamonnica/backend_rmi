@@ -90,7 +90,7 @@
             <th>{{ trans('app.name') }}</th>
             {{-- <th>{{ trans('app.type') }}</th> --}}
             {{-- <th>{{ trans('app.model_number') }}</th> --}}
-            <th>{{ trans('app.category') }}</th>
+            {{-- <th>{{ trans('app.category') }}</th> --}}
             <th>{{ trans('app.option') }}</th>
           </tr>
         </thead>
@@ -107,11 +107,11 @@
               <td>{{ $trash->name }}</td>
               {{-- <td>{{ $trash->type }}</td> --}}
               {{-- <td>{{ $trash->model_number }}</td> --}}
-              <td>
+              {{-- <td>
                 @foreach ($trash->categories as $category)
                   <span class="label label-outline">{{ $category->name }}</span>
                 @endforeach
-              </td>
+              </td> --}}
               <td class="row-options">
                 @can('delete', $trash)
                   <a href="{{ route('admin.catalog.product.restore', $trash->id) }}"><i data-toggle="tooltip" data-placement="top" title="{{ trans('app.restore') }}" class="fa fa-database"></i></a>&nbsp;

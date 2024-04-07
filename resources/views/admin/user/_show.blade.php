@@ -36,12 +36,12 @@
 				                	<td>{{ $user->name }}</td>
 				                </tr>
 				            @endif
-				            @if($user->shop)
+				            {{-- @if($user->shop)
 				                <tr>
 				                	<th>{{ trans('app.shop') }}: </th>
 				                	<td>{{ $user->shop->name }}</td>
 				                </tr>
-				            @endif
+				            @endif --}}
 							@if($user->role)
 			                <tr>
 			                	<th>{{ trans('app.roles') }}: </th>
@@ -49,7 +49,7 @@
 						          	<span class="label label-outline">{{ $user->role->name }}</span>
 				                </td>
 			               	</tr>
-							@endifs
+							@endif
 				            @if($user->dob)
 				                <tr>
 				                	<th>{{ trans('app.dob') }}: </th>

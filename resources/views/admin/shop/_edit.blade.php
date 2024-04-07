@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-md-6 nopadding-right">
           <div class="form-group">
             {!! Form::label('custom_subscription_fee', trans('subscription::lang.custom_subscription_fee'), ['class' => 'with-help']) !!}
@@ -74,9 +74,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
 
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-md-6 nopadding-right">
           <div class="form-group">
             {!! Form::label('legal_name', trans('app.form.legal_name') . '*', ['class' => 'with-help']) !!}
@@ -92,10 +92,10 @@
             {!! Form::select('timezone_id', $timezones, isset($shop) ? null : config('system_settings.timezone_id'), ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.timezone')]) !!}
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <div class="row">
-        <div class="col-md-6 nopadding-right">
+        <div class="col-md-12 nopadding-right">
           <div class="form-group">
             {!! Form::label('email', trans('app.form.email_address') . '*', ['class' => 'with-help']) !!}
             <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shop_email') }}"></i>
@@ -104,13 +104,13 @@
           </div>
         </div>
 
-        <div class="col-md-6 nopadding-left">
+        {{-- <div class="col-md-6 nopadding-left">
           <div class="form-group">
             {!! Form::label('external_url', trans('app.form.external_url'), ['class' => 'with-help']) !!}
             <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shop_external_url') }}"></i>
             {!! Form::text('external_url', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.external_url')]) !!}
           </div>
-        </div>
+        </div> --}}
       </div>
 
       <div class="form-group">
@@ -119,7 +119,7 @@
         {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'placeholder' => trans('app.placeholder.description')]) !!}
       </div>
 
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-md-6 nopadding-right">
           <div class="form-group">
             {!! Form::label('exampleInputFile', trans('app.form.logo'), ['class' => 'with-help']) !!}
@@ -172,7 +172,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <p class="help-block">* {{ trans('app.form.required_fields') }}</p>
     </div>

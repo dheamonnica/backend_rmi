@@ -18,7 +18,7 @@
             </td>
           </tr>
           <tr>
-            <th class="text-right">{{ trans('app.owner') }}:</th>
+            <th class="text-right">{{ trans('app.form.business_name') }}:</th>
             <td style="width: 75%;">{{ $shop->owner->name }}</td>
           </tr>
           <tr>
@@ -46,10 +46,10 @@
       <!-- Custom Tabs -->
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs nav-justified">
-          <li class="active"><a href="#basic" data-toggle="tab">
+          {{-- <li class="active"><a href="#basic" data-toggle="tab">
               {{ trans('app.basic_info') }}
-            </a></li>
-          <li><a href="#config" data-toggle="tab">
+            </a></li> --}}
+          <li class="active"><a href="#config" data-toggle="tab">
               {{ trans('app.configs') }}
             </a></li>
           <li><a href="#description" data-toggle="tab">
@@ -60,7 +60,7 @@
             </a></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="basic">
+          <div class="tab-pane" id="basic">
             <div class="box-body">
               <table class="table">
                 <tr>
@@ -108,7 +108,7 @@
               </table>
             </div>
           </div>
-          <div class="tab-pane" id="config">
+          <div class="tab-pane active" id="config">
             <div class="box-body">
               <table class="table">
                 <tr>

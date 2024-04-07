@@ -172,7 +172,7 @@
             <th>{{ trans('app.image') }}</th>
             <th>{{ trans('app.sku') }}</th>
             <th>{{ trans('app.title') }}</th>
-            <th>{{ trans('app.condition') }}</th>
+            <th>{{ trans('app.form.expired_date') }}</th>
             <th>{{ trans('app.price') }}</th>
             <th>{{ trans('app.quantity') }}</th>
             <th>{{ trans('app.deleted_at') }}</th>
@@ -199,7 +199,7 @@
                 @endif
               </td>
               <td>{{ $trash->title }}</td>
-              <td>{{ $trash->condition }}</td>
+              <td>{{ $trash->expired_date }}</td>
               <td>{{ get_formated_currency($trash->sale_price, 2, config('system_settings.currency.id')) }}</td>
               <td>{{ $trash->stock_quantity }}</td>
               <td>{{ $trash->deleted_at->diffForHumans() }}</td>
