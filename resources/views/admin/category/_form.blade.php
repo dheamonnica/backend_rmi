@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6 nopadding-right">
+  <div class="col-md-4 nopadding-right">
     <div class="form-group">
       {!! Form::label('name', trans('app.form.category_name') . '*') !!}
       {!! Form::text('name', null, ['class' => 'form-control makeSlug', 'placeholder' => trans('app.placeholder.category_name'), 'required']) !!}
@@ -7,10 +7,18 @@
     </div>
   </div>
 
-  <div class="col-md-6 nopadding-left">
+  <div class="col-md-4 nopadding-left nopadding-right">
     <div class="form-group">
       {!! Form::label('category_sub_group_id', trans('app.form.category_sub_group') . '*') !!}
       {!! Form::select('category_sub_group_id', $catList, null, ['class' => 'form-control select2-categories', 'placeholder' => trans('app.placeholder.category_sub_group'), 'required']) !!}
+      <div class="help-block with-errors"></div>
+    </div>
+  </div>
+
+  <div class="col-md-4 nopadding-left" style="margin-top: -3px;">
+    <div class="form-group">
+      {!! Form::label('active', trans('app.form.status') . '*', ['class' => 'with-help']) !!}
+      {!! Form::select('active', ['1' => 'Active', '0' => 'Inactive'], null, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.placeholder.status'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
   </div>
@@ -26,22 +34,14 @@
     </div>
   </div>
 
-  <div class="col-md-3">
-    <div class="form-group">
-      {!! Form::label('active', trans('app.form.status') . '*', ['class' => 'with-help']) !!}
-      {!! Form::select('active', ['1' => 'Active', '0' => 'Inactive'], null, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.placeholder.status'), 'required']) !!}
-      <div class="help-block with-errors"></div>
-    </div>
-  </div>
-
-  <div class="col-md-3 nopadding-left">
+  {{-- <div class="col-md-3 nopadding-left">
     <div class="form-group">
       {!! Form::label('order', trans('app.form.position'), ['class' => 'with-help']) !!}
       <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.display_order') }}"></i>
       {!! Form::number('order', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.position')]) !!}
       <div class="help-block with-errors"></div>
     </div>
-  </div>
+  </div> --}}
 </div>
 
 <div class="form-group">

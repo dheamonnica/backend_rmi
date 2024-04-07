@@ -604,11 +604,11 @@
           'name': 'listings_count',
           'searchable': false
         },
-        {
-          'data': 'order',
-          'name': 'order',
-          'searchable': false
-        },
+        // {
+        //   'data': 'order',
+        //   'name': 'order',
+        //   'searchable': false
+        // },
         {
           'data': 'option',
           'name': 'option',

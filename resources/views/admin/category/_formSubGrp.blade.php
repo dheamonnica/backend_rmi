@@ -17,14 +17,14 @@
       <div class="help-block with-errors"></div>
     </div>
   </div>
-  <div class="col-md-6 nopadding-left">
+  {{-- <div class="col-md-6 nopadding-left">
     <div class="form-group">
       {!! Form::label('order', trans('app.form.position'), ['class' => 'with-help']) !!}
       <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.display_order') }}"></i>
       {!! Form::number('order', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.position')]) !!}
       <div class="help-block with-errors"></div>
     </div>
-  </div>
+  </div> --}}
 </div>
 
 <div class="form-group" style="display: none">

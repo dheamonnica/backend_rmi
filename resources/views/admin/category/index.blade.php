@@ -41,7 +41,7 @@
             {{-- <th>{{ trans('app.attributes') }}</th> --}}
             <th>{{ trans('app.products') }}</th>
             <th>{{ trans('app.listings') }}</th>
-            <th>{{ trans('app.order') }}</th>
+            {{-- <th>{{ trans('app.order') }}</th> --}}
             <th>&nbsp;</th>
           </tr>
         </thead>

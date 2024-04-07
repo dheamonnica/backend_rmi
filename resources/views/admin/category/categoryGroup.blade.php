@@ -37,7 +37,7 @@
             {{-- <th>{{ trans('app.cover_image') }}</th> --}}
             <th>{{ trans('app.category_group') }}</th>
             <th>{{ trans('app.sub_groups') }}</th>
-            <th>{{ trans('app.order') }}</th>
+            {{-- <th>{{ trans('app.order') }}</th> --}}
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -71,7 +71,7 @@
               <td>
                 <span class="label label-default">{{ $categoryGrp->sub_groups_count }}</span>
               </td>
-              <td>{{ $categoryGrp->order }}</td>
+              {{-- <td>{{ $categoryGrp->order }}</td> --}}
               <td class="row-options">
                 @can('update', $categoryGrp)
                   <a href="javascript:void(0)" data-link="{{ route('admin.catalog.categoryGroup.edit', $categoryGrp->id) }}" class="ajax-modal-btn"><i data-toggle="tooltip" data-placement="top" title="{{ trans('app.edit') }}" class="fa fa-edit"></i></a>&nbsp;
