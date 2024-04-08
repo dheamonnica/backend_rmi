@@ -28,7 +28,7 @@ class UpdateBasicConfigRequest extends Request
         return [
             'name' => 'required',
             'slug' => 'required|alpha_dash|unique:shops,slug,' . $id,
-            'legal_name' => 'required',
+            // 'legal_name' => 'required',
             'email' => 'required|email|max:255|unique:shops,email,' . $id,
             'external_url' => 'nullable|url',
             'logo' => 'max:' . config('system_settings.max_img_size_limit_kb') . '|mimes:jpg,jpeg,png,gif',

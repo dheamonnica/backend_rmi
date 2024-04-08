@@ -34,7 +34,7 @@
             </div> <!-- /.row -->
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="display: none">
             <div class="row">
               <div class="col-sm-4 text-right">
                 {!! Form::label('slug', '*' . trans('app.slug') . ':', ['class' => 'with-help control-label']) !!}
@@ -54,7 +54,7 @@
             </div> <!-- /.row -->
           </div>
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <div class="row">
               <div class="col-sm-4 text-right">
                 {!! Form::label('legal_name', '*' . trans('app.shop_legal_name') . ':', ['class' => 'with-help control-label']) !!}
@@ -68,8 +68,8 @@
                   <span>{{ $shop->legal_name }}</span>
                 @endif
               </div>
-            </div> <!-- /.row -->
-          </div>
+            </div>
+          </div> --}}
 
           <div class="form-group">
             <div class="row">
@@ -92,7 +92,7 @@
             @include('liveChat::facebook.fb_chat_config_form')
           @endif
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <div class="row">
               <div class="col-sm-4 text-right">
                 {!! Form::label('external_url', trans('app.form.external_url') . ':', ['class' => 'with-help control-label']) !!}
@@ -105,8 +105,8 @@
                   <span>{{ $shop->external_url }}</span>
                 @endif
               </div>
-            </div> <!-- /.row -->
-          </div>
+            </div> 
+          </div> --}}
 
           <div class="form-group">
             <div class="row">
@@ -141,7 +141,7 @@
           </div>
 
           @if ($can_update)
-            <div class="form-group">
+            {{-- <div class="form-group">
               <div class="row">
                 <div class="col-sm-4 text-right">
                   <label for="exampleInputFile" class="with-help control-label"> {{ trans('app.form.logo') }}</label>
@@ -156,10 +156,10 @@
                     <input type="file" name="logo" id="uploadBtn" class="upload" />
                   </div>
                 </div>
-              </div> <!-- /.row -->
-            </div>
+              </div> 
+            </div> --}}
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <div class="row">
                 <div class="col-sm-4 text-right">
                   {!! Form::label('exampleInputFile', trans('app.form.cover_img'), ['class' => 'with-help control-label']) !!}
@@ -175,8 +175,8 @@
                     <input type="file" name="cover_image" id="uploadBtn1" class="upload" />
                   </div>
                 </div>
-              </div> <!-- /.row -->
-            </div>
+              </div> 
+            </div> --}}
           @endif
 
           @if ($can_update)
