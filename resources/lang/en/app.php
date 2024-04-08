@@ -1198,6 +1198,7 @@ return [
         'business_name' => 'Business Name',
         'warehouse_name' => 'Warehouse Name',
         'pic_name' => 'PIC Name',
+        'employee' => 'Employee',
 
         // order
         'po_number_ref' => 'PO Number Ref',

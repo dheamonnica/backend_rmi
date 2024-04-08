@@ -24,13 +24,6 @@
       <div class="help-block with-errors"></div>
     </div>
   </div>
-
-  <div class="col-md-4 nopadding-left" style="display: none">
-    <div class="form-group">
-      {!! Form::label('country_id', trans('app.form.country')) !!}
-      {!! Form::select('country_id', $countries, 360, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.country')]) !!}
-    </div>
-  </div>
 </div>
 
 {{-- <div class="row">
@@ -52,7 +45,7 @@
 </div> --}}
 
 <div class="row">
-  <div class="col-md-6 nopadding-right">
+  <div class="col-md-4 nopadding-right">
     <div class="form-group">
       {!! Form::label('email', trans('app.form.email_address')) !!}
       <div class="input-group">
@@ -62,13 +55,19 @@
       <div class="help-block with-errors"></div>
     </div>
   </div>
-  <div class="col-md-6 nopadding-left">
+  <div class="col-md-4 nopadding-left">
     <div class="form-group">
       {!! Form::label('phone', trans('app.form.phone')) !!}
       <div class="input-group">
         {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.phone_number')]) !!}
         <span class="input-group-addon" id="basic-addon1" data-toggle="tooltip" data-placement="left" title="{{ trans('help.manufacturer_phone') }}"><i class="fa fa-question-circle"></i></span>
       </div>
+    </div>
+  </div>
+  <div class="col-md-4 nopadding-left">
+    <div class="form-group">
+      {!! Form::label('country_id', trans('app.form.country')) !!}
+      {!! Form::select('country_id', $countries, 360, ['class' => 'form-control select2', 'placeholder' => trans('app.placeholder.country')]) !!}
     </div>
   </div>
 </div>

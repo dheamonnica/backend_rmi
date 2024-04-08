@@ -699,8 +699,8 @@ class ViewComposerServiceProvider extends ServiceProvider
                         'offerPrice' => round($inventory->offer_price, 2),
                         'stockQtt' => $inventory->stock_quantity,
                         'shipping_weight' => $inventory->shipping_weight,
-                        'offerStart' => $inventory->offer_start->format('Y-m-d h:i:a'),
-                        'offerEnd' => $inventory->offer_end->format('Y-m-d h:i:a'),
+                        'offerStart' => $inventory->offer_start === null ? null : $inventory->offer_start->format('Y-m-d h:i:a'),
+                        'offerEnd' => $inventory->offer_end === null ? null : $inventory->offer_end->format('Y-m-d h:i:a'),
                         'dateNow' => date("Y-m-d h:i:a")
                     ];
                 }

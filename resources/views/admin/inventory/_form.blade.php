@@ -37,7 +37,7 @@
           <div class="col-md-8 nopadding-right">
             <div class="form-group">
               {!! Form::label('title', trans('app.form.title') . '*', ['class' => 'with-help']) !!}
-              {!! Form::text('title', null, ['class' => $title_classes, 'placeholder' => trans('app.placeholder.title'), 'required']) !!}
+              {!! Form::text('title', $product->name, ['class' => $title_classes, 'placeholder' => trans('app.placeholder.title'), 'required']) !!}
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -46,16 +46,16 @@
             <div class="form-group">
               {!! Form::label('uom', trans('app.form.uom'), ['class' => 'with-help']) !!}
               <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.uom') }}"></i>
-              {!! Form::text('uom', null, ['class' => 'form-control input-sm', 'placeholder' => trans('app.form.uom')]) !!}
+              {!! Form::text('uom', $product->type_uom, ['class' => 'form-control', 'placeholder' => trans('app.form.uom'), 'readonly']) !!}
               <div class="help-block with-errors"></div>
             </div>
           </div>
 
           <div class="col-md-{{ config('system_settings.show_item_conditions') ? 6 : 9 }} nopadding-right">
             <div class="form-group">
-              {!! Form::label('sku', trans('app.form.sku') . '*', ['class' => 'with-help']) !!}
-              <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.sku') }}"></i>
-              {!! Form::text('sku', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.sku'), 'required']) !!}
+              {!! Form::label('sku', trans('app.form.selling_skuid') . '*', ['class' => 'with-help']) !!}
+              {{-- <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.sku') }}"></i> --}}
+              {!! Form::text('sku', $product->selling_skuid, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.sku'), 'required', 'readonly']) !!}
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -250,7 +250,7 @@
               </div> <!-- /.form-group -->
             </div> <!-- /.col-md-* -->
 
-            <div class="col-md-6 nopadding-right">
+            <div class="col-md-6 nopadding-right nopadding-left">
               <div class="form-group">
                 {!! Form::label('max_price', trans('app.form.catalog_max_price') . '*', ['class' => 'with-help']) !!}
                 <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.catalog_max_price') }}"></i>
@@ -300,7 +300,8 @@
                     </span>
                   @endif
 
-                  {!! Form::number('offer_price', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('app.placeholder.offer_price')]) !!}
+                  {{-- {!! Form::number('offer_price', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('app.placeholder.offer_price')]) !!} --}}
+                  {!! Form::number('offer_price', isset($inventory) ? $inventory->sale_price : null, ['class' => 'form-control', 'min' => $product->min_price, 'max' => $product->max_price ?? PHP_INT_MAX, 'step' => 'any', 'placeholder' => trans('app.placeholder.sale_price'), 'required']) !!}
 
                   @if (get_currency_suffix())
                     <span class="input-group-addon" id="basic-addon1">
@@ -308,6 +309,7 @@
                     </span>
                   @endif
                 </div>
+                <div class="help-block with-errors"></div>
               </div> <!-- /.form-group -->
             </div> <!-- /.col-md-* -->
           </div> <!-- /.row -->
@@ -452,7 +454,7 @@
               {!! Form::label('shipping_weight', trans('app.form.shipping_weight'), ['class' => 'with-help']) !!}
               <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shipping_weight') }}"></i>
               <div class="input-group">
-                {!! Form::number('shipping_weight', null, ['class' => 'form-control', 'step' => 'any', 'min' => 0, 'placeholder' => trans('app.placeholder.shipping_weight')]) !!}
+                {!! Form::number('shipping_weight', $product->shipping_weight, ['class' => 'form-control', 'step' => 'any', 'min' => 0, 'placeholder' => trans('app.placeholder.shipping_weight'), 'readonly']) !!}
                 <span class="input-group-addon">{{ config('system_settings.weight_unit') ?: 'gm' }}</span>
               </div>
               <div class="help-block with-errors"></div>
@@ -466,7 +468,7 @@
               </div>
             @endif
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <div class="input-group">
                 {{ Form::hidden('free_shipping', 0) }}
                 {!! Form::checkbox('free_shipping', null, null, ['id' => 'free_shipping', 'class' => 'icheckbox_line']) !!}
@@ -475,7 +477,7 @@
                   <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.free_shipping') }}"></i>
                 </span>
               </div>
-            </div>
+            </div> --}}
           @endunless
         </div> <!-- /.box-body -->
       </div> <!-- /.box -->

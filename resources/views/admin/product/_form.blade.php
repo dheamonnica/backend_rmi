@@ -141,7 +141,7 @@
 
             <fieldset>
               <legend>{{ trans('app.form.manufacturing') }}</legend>
-              <div class="form-group">
+              <div class="form-group" style="display: none">
                 {!! Form::label('origin_country', trans('app.form.origin'), ['class' => 'with-help']) !!}
                 {!! Form::select('origin_country', $countries, 360, ['class' => 'form-control select2-normal', 'required']) !!}
                 <div class="help-block with-errors"></div>
@@ -246,6 +246,26 @@
               {!! Form::select('tag_list[]', $tags, null, ['class' => 'form-control select2-tag', 'multiple' => 'multiple']) !!}
             </div> --}}
           </fieldset>
+
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">{{ trans('app.shipping') }}</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div> <!-- /.box-header -->
+            <div class="box-body">
+                <div class="form-group">
+                  {!! Form::label('shipping_weight', trans('app.form.shipping_weight'), ['class' => 'with-help']) !!}
+                  <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.shipping_weight') }}"></i>
+                  <div class="input-group">
+                    {!! Form::number('shipping_weight', null, ['class' => 'form-control', 'step' => 'any', 'min' => 0, 'placeholder' => trans('app.placeholder.shipping_weight'), 'required']) !!}
+                    <span class="input-group-addon">{{ config('system_settings.weight_unit') ?: 'gm' }}</span>
+                  </div>
+                  <div class="help-block with-errors"></div>
+                </div>
+            </div> <!-- /.box-body -->
+          </div> <!-- /.box -->
         </div>
       </div>
     </div>

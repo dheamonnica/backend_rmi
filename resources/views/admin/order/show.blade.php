@@ -111,10 +111,12 @@
           @endif
 
           @can('fulfill', $order)
-          @if($order->deliveryBoyRole->nice_name === null)
-            <a data-link="{{ route('admin.order.deliveryBoyRoles', $order->id) }}" class="ajax-modal-btn btn btn-flat btn-default indent10" style="cursor: pointer;">
-              <i class="fa fa-user"></i> {{ trans('app.assign_deliveryBoyRole') }}
-            </a>
+          @if($order->deliveryBoyRole === null)
+          <a data-link="{{ route('admin.order.deliveryboys', $order->id) }}" class="ajax-modal-btn btn btn-flat btn-default indent10" style="cursor: pointer;">
+            <i class="fa fa-user"></i> {{ trans('app.assign_deliveryboy') }}
+          </a>
+          @else
+          {{$order->deliveryBoyRole->nice_name}}
           @endif
           @endcan
 
@@ -322,13 +324,13 @@
           <div class="box-body">
             <div class="box-tools">
               @if (Auth::user()->canManageOrderPayments())
-                @if (Auth::user()->role_id !== 9)
+                @if (Auth::user()->role_id !== 9 && (Auth::user()->role_id === 1 || Auth::user()->role_id === 3))
                 {!! Form::open(['route' => ['admin.order.order.togglePaymentStatus', $order], 'method' => 'put', 'class' => 'inline']) !!}
                 <button type="submit" class="confirm ajax-silent btn btn-lg btn-danger">{{ $order->isPaid() ? trans('app.mark_as_unpaid') : trans('app.mark_as_paid') }}</button>
                 {!! Form::close() !!}
                 @endif
 
-                @if (Auth::user()->role_id === 9)
+                @if (Auth::user()->role_id === 9 || Auth::user()->role_id === 1 || Auth::user()->role_id === 3)
                 {!! Form::open(['route' => ['admin.order.order.setAsDelivered', $order], 'method' => 'put', 'class' => 'inline']) !!}
                 <button type="submit" class="confirm ajax-silent btn btn-lg btn-warning" <?php echo $order->delivery_date === null ? '' : 'disabled' ?>>SET AS DELIVERED</button>
                 {!! Form::close() !!}

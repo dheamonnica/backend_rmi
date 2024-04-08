@@ -3,10 +3,10 @@
 @section('content')
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('app.shops') }}</h3>
+      <h3 class="box-title">{{ trans('app.form.employee') }}</h3>
       <div class="box-tools pull-right">
         @can('create', \App\Models\Merchant::class)
-          <a href="javascript:void(0)" data-link="{{ route('admin.vendor.merchant.create') }}" class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.add_merchant') }}</a>
+          {{-- <a href="javascript:void(0)" data-link="{{ route('admin.vendor.merchant.create') }}" class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.add_merchant') }}</a> --}}
         @endcan
       </div>
     </div> <!-- /.box-header -->

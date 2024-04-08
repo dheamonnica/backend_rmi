@@ -545,7 +545,7 @@
         </li>
       @endif --}}
       
-      @if (Auth::user()->isAdmin())
+      @if (Auth::user()->role_id === 3 || Auth::user()->isAdmin())
       <li class="treeview {{ Request::is('admin/setting*') ? 'active' : '' }}">
         <a href="javascript:void(0)">
           <i class="fa fa-gears"></i>
