@@ -1,3 +1,5 @@
 <td>
-    {{ $order->delivery_date }}
+    @if($order->delivery_date)
+        {{ $order->delivery_date }}
+    @endif
 </td>

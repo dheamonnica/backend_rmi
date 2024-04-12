@@ -133,6 +133,34 @@
                   <td>{{ get_formated_currency($product->max_price, 2, config('system_settings.currency.id')) }}</td>
                 </tr>
               @endif
+              <tr>
+                <th>{{ trans('app.form.purchase_price') }}: </th>
+                <td>{{ get_formated_currency($product->purchase_price, 2, config('system_settings.currency.id')) }}</td>
+              </tr>
+              <tr>
+                <th>{{ trans('app.shipping_weight') }}: </th>
+                <td>{{ $product->shipping_weight }}</td>
+              </tr>
+              <tr>
+                <th>{{ trans('app.form.manufacture_skuid') }}: </th>
+                <td>{{ $product->manufacture_skuid }}</td>
+              </tr>
+              <tr>
+                <th>{{ trans('app.form.licence_number') }}: </th>
+                <td>{{ $product->licence_number }}</td>
+              </tr>
+              <tr>
+                <th>{{ trans('app.form.selling_skuid') }}: </th>
+                <td>{{ $product->selling_skuid }}</td>
+              </tr>
+              <tr>
+                <th>{{ trans('app.form.client_skuid') }}: </th>
+                <td>{{ $product->client_skuid }}</td>
+              </tr>
+              <tr>
+                <th>{{ trans('app.form.type_uom') }}: </th>
+                <td>{{ $product->type_uom }}</td>
+              </tr>
             </table>
           </div> <!-- /.tab-pane -->
           <div class="tab-pane" id="description_tab">
@@ -161,9 +189,9 @@
                     <td>
                       {{ $listing->shop->name ?? '' }}
 
-                      @if ($listing->shop->isVerified())
+                      {{-- @if ($listing->shop->isVerified())
                         <img src="{{ get_verified_badge() }}" class="verified-badge img-xs" data-toggle="tooltip" data-placement="top" title="{{ trans('help.verified_seller') }}" alt="verified-badge">
-                      @endif
+                      @endif --}}
 
                       @if ($listing->shop->isDown())
                         <span class="label label-default indent10">{{ trans('app.maintenance_mode') }}</span>

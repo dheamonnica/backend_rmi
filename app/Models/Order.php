@@ -36,6 +36,7 @@ class Order extends BaseModel
     const STATUS_RETURNED = 7;
     const STATUS_CANCELED = 8;
     const STATUS_DISPUTED = 9;
+    const STATUS_PACKED = 10;
 
     const PAYMENT_STATUS_UNPAID = 1;       // Default
     const PAYMENT_STATUS_PENDING = 2;
@@ -131,7 +132,13 @@ class Order extends BaseModel
         'currency_id',
         'delivery_boy_feedback_id',
         'auction_bid_id',
-        'po_number_ref'
+        'po_number_ref',
+        'shipped_by',
+        'delivery_by',
+        'paid_by',
+        'paid_date',
+        'packed_date',
+        'packed_by'
     ];
 
     /**
@@ -888,6 +895,8 @@ class Order extends BaseModel
     public function markAsPaid(array $params = [])
     {
         $this->payment_status = static::PAYMENT_STATUS_PAID;
+        $this->paid_date =  date('Y-m-d h:i:s');
+        $this->paid_by = Auth::user()->id;
 
         if ($this->order_status_id < static::STATUS_CONFIRMED) {
             $this->order_status_id = static::STATUS_CONFIRMED;
@@ -1135,14 +1144,14 @@ class Order extends BaseModel
             case static::PAYMENT_STATUS_UNPAID:
             case static::PAYMENT_STATUS_REFUNDED:
             case static::PAYMENT_STATUS_PARTIALLY_REFUNDED:
-                return '<span class="label label-danger">' . $payment_status . '</span>';
+                return '<span class="label label-outline">' . $payment_status . '</span>';
 
             case static::PAYMENT_STATUS_PENDING:
             case static::PAYMENT_STATUS_INITIATED_REFUND:
                 return '<span class="label label-info">' . $payment_status . '</span>';
 
             case static::PAYMENT_STATUS_PAID:
-                return '<span class="label label-outline">' . $payment_status . '</span>';
+                return '<span class="label label-info">' . $payment_status . '</span>';
         }
 
         return null;
@@ -1194,5 +1203,21 @@ class Order extends BaseModel
         static::where('order_date', '<', now()->subDays(15))
             ->where('blocked', 0)
             ->update(['blocked' => 1]);
+    }
+
+    public function getPackedByName() {
+        return $this->belongsTo(User::class, 'packed_by');
+    }
+
+    public function getFulfilledName() {
+        return $this->belongsTo(User::class, 'shipped_by');
+    }
+
+    public function getDeliveredName() {
+        return $this->belongsTo(User::class, 'delivery_by');
+    }
+
+    public function getPaidByName() {
+        return $this->belongsTo(User::class, 'paid_by');
     }
 }

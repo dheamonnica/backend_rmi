@@ -105,7 +105,8 @@ class EloquentSalesReportsRepository extends EloquentRepository implements BaseR
             DB::raw('(CASE WHEN order_status_id = '.Order::STATUS_FULFILLED.' THEN COUNT(*) ELSE 0 END)  as fulfilled'),
             DB::raw('(CASE WHEN order_status_id = '.Order::STATUS_PAYMENT_ERROR.' THEN COUNT(*) ELSE 0 END)  as payment_error'),
             DB::raw('(CASE WHEN order_status_id = '.Order::STATUS_RETURNED.' THEN COUNT(*) ELSE 0 END)  as returned'),
-            DB::raw('(CASE WHEN order_status_id = '.Order::STATUS_DISPUTED.' THEN COUNT(*) ELSE 0 END)  as disputed')
+            DB::raw('(CASE WHEN order_status_id = '.Order::STATUS_DISPUTED.' THEN COUNT(*) ELSE 0 END)  as disputed'),
+            DB::raw('(CASE WHEN order_status_id = '.Order::STATUS_PACKED.' THEN COUNT(*) ELSE 0 END)  as disputed')
         );
 
         if ($days > 30) {

@@ -39,6 +39,7 @@
                     <option value="STATUS_PAYMENT_ERROR" @if (request()->get('order_status') == 'STATUS_PAYMENT_ERROR') selected @endif>{{ trans('app.payment_error') }}</option>
                     <option value="STATUS_RETURNED" @if (request()->get('order_status') == 'STATUS_RETURNED') selected @endif>{{ trans('app.returns') }}</option>
                     <option value="STATUS_DISPUTED" @if (request()->get('order_status') == 'STATUS_DISPUTED') selected @endif>{{ trans('app.disputed') }}</option>
+                    <option value="STATUS_PACKED" @if (request()->get('order_status') == 'STATUS_PACKED') selected @endif>{{ trans('app.disputed') }}</option>
                   </select>
                 </div>
               </div>

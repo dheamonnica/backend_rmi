@@ -2228,6 +2228,8 @@ if (!function_exists('get_order_status_name')) {
                 return trans('app.statuses.refunded');
             case Order::STATUS_CANCELED:
                 return trans('app.canceled');
+            case Order::STATUS_PACKED:
+                return trans('app.statuses.packed');
             default:
                 return '';
         }

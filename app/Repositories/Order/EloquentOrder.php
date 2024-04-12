@@ -105,6 +105,8 @@ class EloquentOrder extends EloquentRepository implements BaseRepository, OrderR
             $order = $this->model->find($order);
         }
 
+        $order->shipping_date = date('Y-m-d');
+        $order->shipped_by = Auth::user()->id;
         $order->update($request->all());
 
         if ($order->hasPendingCancellationRequest()) {
@@ -144,6 +146,20 @@ class EloquentOrder extends EloquentRepository implements BaseRepository, OrderR
 
         $order->delivery_date = date("Y-m-d");
         $order->order_status_id = 6;
+        $order->delivery_by = Auth::user()->id;;
+
+        return $order->save();
+    }
+
+    public function updateStatusPacked(Request $request, $order)
+    {
+        if (!$order instanceof Order) {
+            $order = $this->model->find($order);
+        }
+
+        $order->packed_date = date("Y-m-d h:i:s");
+        $order->order_status_id = 10;
+        $order->packed_by = Auth::user()->id;;
 
         return $order->save();
     }

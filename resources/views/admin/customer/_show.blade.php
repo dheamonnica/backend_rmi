@@ -16,7 +16,8 @@
         <div class="row">
           <div class="col-sm-4 border-right">
             <div class="description-block">
-              <h5 class="description-header">{{ get_formated_currency(\App\Helpers\Statistics::total_spent($customer), 2, config('system_settings.currency.id')) }}</h5>
+              {{-- <h5 class="description-header">{{ get_formated_currency(\App\Helpers\Statistics::total_spent($customer), 2, config('system_settings.currency.id')) }}</h5> --}}
+              <h5 class="description-header">{{ get_formated_currency( $customer::total_spent($customer->id), 2, config('system_settings.currency.id')) }}</h5>
               <span class="description-text">{{ trans('app.spent') }}</span>
             </div>
           </div>
@@ -30,7 +31,8 @@
 
           <div class="col-sm-4">
             <div class="description-block">
-              <h5 class="description-header">{{ \App\Helpers\Statistics::customer_orders_count($customer) }}</h5>
+              {{-- <h5 class="description-header">{{ \App\Helpers\Statistics::customer_orders_count($customer) }}</h5> --}}
+              <h5 class="description-header">{{ $customer::customer_orders_count($customer->id) }}</h5>
               <span class="description-text">#{{ trans('app.orders') }}</span>
             </div>
           </div>

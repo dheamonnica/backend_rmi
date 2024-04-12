@@ -16,6 +16,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 // Uncomment below line to enable Wallet plugin. (Have to install the plugin.)
 use App\Notifications\Auth\CustomerResetPasswordNotification;
@@ -320,5 +321,15 @@ class Customer extends CustomerWallet
     public function scopeActive($query)
     {
         return $query->where('active', 1);
+    }
+
+    public static function total_spent($customer_id)
+    {
+        return DB::table('orders')->where('customer_id', $customer_id)->sum('total');
+    }
+
+    public static function customer_orders_count($customer_id)
+    {
+        return DB::table('orders')->where('customer_id', $customer_id)->count();
     }
 }

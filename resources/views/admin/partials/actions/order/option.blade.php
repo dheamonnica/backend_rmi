@@ -1,11 +1,11 @@
 <td class="row-options">
-    @can('fulfill', $order)
+    {{-- @can('fulfill', $order)
         @unless ($order->isFulfilled())
             <a href="javascript:void(0)" data-link="{{ route('admin.order.order.fulfillment', $order) }}" class='ajax-modal-btn'>
                 <i data-toggle="tooltip" data-placement="top" title="{{ trans('app.fulfill_order') }}" class="fa fa-truck"></i>
             </a>&nbsp;
         @endunless
-    @endcan
+    @endcan --}}
     <a href="{{ route('admin.order.order.show', $order->id) }}">
         <i data-toggle="tooltip" data-placement="top" title="{{ trans('app.open') }}" class="fa fa-expand"></i>
     </a>&nbsp;

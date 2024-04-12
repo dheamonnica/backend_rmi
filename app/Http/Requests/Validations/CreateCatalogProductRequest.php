@@ -34,11 +34,16 @@ class CreateCatalogProductRequest extends Request
           'category_list' => 'required',
           'name' => 'required|unique:products',
           'slug' => 'required|unique:products',
-          'description' => 'required',
+          // 'description' => 'required',
           'active' => 'required',
           'min_price' => 'nullable|numeric|min:0',
           'max_price' => 'nullable|numeric|min:' . $this->min_price ?? 0,
           'images.*' => 'mimes:jpg,jpeg,png,gif',
+          'licence_number' => 'required|unique:products,licence_number',
+          'manufacture_skuid' => 'required|unique:products,manufacture_skuid',
+          'selling_skuid' => 'required|unique:products,selling_skuid',
+          'client_skuid' => 'required|unique:products,client_skuid',
+          'purchase_price' => 'required|numeric|max:'. $this->min_price ?? 0,
         ];
     }
 

@@ -374,6 +374,8 @@ class PdfInvoice extends FPDF
             );
         }
 
+        // THIS IS INVOICE PDF
+
         //Title
         $this->SetTextColor(0, 0, 0);
         $this->SetFont($this->font, 'B', 20);

@@ -53,6 +53,8 @@ Route::put('order/{order}/updateOrderStatus', [OrderController::class, 'updateOr
 
 Route::put('order/{order}/setAsDelivered', [OrderController::class, 'setAsDelivered'])->name('order.setAsDelivered');
 
+Route::put('order/{order}/setAsPacked', [OrderController::class, 'setAsPacked'])->name('order.setAsPacked');
+
 Route::put('order/{order}/togglePaymentStatus', [OrderController::class, 'togglePaymentStatus'])->name('order.togglePaymentStatus');
 
 Route::get('{order}/deliveryboys', [

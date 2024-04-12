@@ -850,6 +850,7 @@ return [
         'unpaid'    => 'Unpaid',
         'waiting'   => 'Waiting',
         'waiting_for_payment' => 'Waiting for payment',
+        'packed' => 'Packed',
     ],
 
     'priorities' => [
@@ -1203,6 +1204,15 @@ return [
         // order
         'po_number_ref' => 'PO Number Ref',
         'invoice_numbers' => 'Invoice Number',
+        'packed' => 'Packed',
+        'packed_by' => 'Packed By',
+        'packed_date' => 'Packed Date',
+        'shipped_by' => 'Shipped By',
+        'shipped_date' => 'Shipped Date',
+        'delivered_by' => 'Delivered By',
+        'delivered_date' => 'Delivered Date',
+        'paid_by' => 'Paid By',
+        'paid_date' => 'Paid Date',
 
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',

@@ -110,7 +110,7 @@
             <span class="label label-danger indent5">{{ trans('app.statuses.disputed') }}</span>
           @endif
 
-          @can('fulfill', $order)
+          {{-- @can('fulfill', $order)
           @if($order->deliveryBoyRole === null)
           <a data-link="{{ route('admin.order.deliveryboys', $order->id) }}" class="ajax-modal-btn btn btn-flat btn-default indent10" style="cursor: pointer;">
             <i class="fa fa-user"></i> {{ trans('app.assign_deliveryboy') }}
@@ -118,7 +118,7 @@
           @else
           {{$order->deliveryBoyRole->nice_name}}
           @endif
-          @endcan
+          @endcan --}}
 
           <div class="box-tools pull-right">
             {!! $order->orderStatus() !!}
@@ -160,7 +160,7 @@
                         </td>
                         <td class="nopadding-right" width="55%">
                           {{ $item->pivot->item_description }}
-                          <a href="{{ route('show.product', $item->slug) }}" target="_blank" class="indent5 small"><i class=" fa fa-external-link"></i></a>
+                          {{-- <a href="{{ route('show.product', $item->slug) }}" target="_blank" class="indent5 small"><i class=" fa fa-external-link"></i></a> --}}
                         </td>
                         <td class="nopadding-right text-right " width="15%">
                           {{ get_formated_currency($item->pivot->unit_price, 2, $order->currency_id) }}
@@ -324,43 +324,81 @@
           <div class="box-body">
             <div class="box-tools">
               @if (Auth::user()->canManageOrderPayments())
-                @if (Auth::user()->role_id !== 9 && (Auth::user()->role_id === 1 || Auth::user()->role_id === 3))
-                {!! Form::open(['route' => ['admin.order.order.togglePaymentStatus', $order], 'method' => 'put', 'class' => 'inline']) !!}
-                <button type="submit" class="confirm ajax-silent btn btn-lg btn-danger">{{ $order->isPaid() ? trans('app.mark_as_unpaid') : trans('app.mark_as_paid') }}</button>
-                {!! Form::close() !!}
-                @endif
+                  {{-- PACKED ORDER --}}
+                  @if($order->order_status_id === 3)
+                    {!! Form::open(['route' => ['admin.order.order.setAsPacked', $order], 'method' => 'put', 'class' => 'inline']) !!}
+                    <button type="submit" class="confirm ajax-silent btn btn-lg btn-primary">PACKED ORDER</button>
+                    {!! Form::close() !!}
+                  @endif
+                  {{-- FULFILL ORDER --}}
+                  @if($order->order_status_id === 10)
+                    <a href="javascript:void(0)" data-link="{{ route('admin.order.order.fulfillment', $order) }}" class='ajax-modal-btn' style="color: white">
+                      <button type="submit" class="btn btn-lg btn-danger">
+                          FULFILL ORDER 
+                      </button>
+                    </a>
+                  @endif
+                  {{-- SET AS DELIVERED --}}
+                  @if($order->order_status_id === 4)
+                    {!! Form::open(['route' => ['admin.order.order.setAsDelivered', $order], 'method' => 'put', 'class' => 'inline']) !!}
+                    <button type="submit" class="confirm ajax-silent btn btn-lg btn-warning">SET AS DELIVERED</button>
+                    {!! Form::close() !!}
+                  @endif
+                  {{-- MARK AS PAID --}}
+                  @if($order->order_status_id === 6 && $order->payment_status !== 3)
+                    {!! Form::open(['route' => ['admin.order.order.togglePaymentStatus', $order], 'method' => 'put', 'class' => 'inline']) !!}
+                    <button type="submit" class="confirm ajax-silent btn btn-lg btn-info">MARK AS PAID</button>
+                    {!! Form::close() !!}
+                  @endif
+                  @if($order->payment_status === 3)
+                  {!! Form::open(['route' => ['admin.order.order.togglePaymentStatus', $order], 'method' => 'put', 'class' => 'inline']) !!}
+                    <button type="submit" class="confirm ajax-silent btn btn-lg btn-info disabled">MARK AS PAID</button>
+                    {!! Form::close() !!}
+                  @endif
 
-                @if (Auth::user()->role_id === 9 || Auth::user()->role_id === 1 || Auth::user()->role_id === 3)
-                {!! Form::open(['route' => ['admin.order.order.setAsDelivered', $order], 'method' => 'put', 'class' => 'inline']) !!}
-                <button type="submit" class="confirm ajax-silent btn btn-lg btn-warning" <?php echo $order->delivery_date === null ? '' : 'disabled' ?>>SET AS DELIVERED</button>
-                {!! Form::close() !!}
-                @endif
 
-                @if ($order->isPaid() && ((Auth::user()->isFromPlatForm() && !vendor_get_paid_directly()) || (Auth::user()->isFromMerchant() && vendor_get_paid_directly())))
+                {{-- @if ($order->isPaid() && ((Auth::user()->isFromPlatForm() && !vendor_get_paid_directly()) || (Auth::user()->isFromMerchant() && vendor_get_paid_directly())))
                   @can('initiate', \App\Models\Refund::class)
                     <a href="javascript:void(0)" data-link="{{ route('admin.support.refund.form', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-default'>
                       {{ trans('app.initiate_refund') }}
                     </a>
                   @endcan
+                @endif --}}
+
                 @endif
-              @endif
 
               <div class="pull-right">
-                @if(Auth::user()->role_id !== 9)
+                 {{-- CANCEL ORDER --}}
+                 @unless ($order->isCanceled() || $order->cancellation)
+                 @if (!$order->cancellationFeeApplicable())
+                   @if (Auth::user()->isFromPlatform())
+                     <a href="javascript:void(0)" data-link="{{ route('admin.order.cancellation.create', $order) }}" class='ajax-modal-btn btn btn-lg btn-warning'>
+                       {{ trans('app.cancel_order') }}
+                     </a>
+                   @else
+                     {!! Form::open(['route' => ['admin.order.order.cancel', $order], 'method' => 'put', 'class' => 'inline']) !!}
+                     <button type="submit" class="confirm ajax-silent btn btn-lg btn-grey">{{ trans('app.cancel_order') }}</button>
+                     {!! Form::close() !!}
+                   @endif
+                 @else
+                   <a href="javascript:void(0)" data-link="{{ route('admin.order.cancellation.create', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-danger'>
+                     {{ trans('app.cancel_order') }}
+                   </a>
+                 @endif
+               @endunless
+                {{-- @if(Auth::user()->role_id !== 9)
                 <a href="javascript:void(0)" data-link="{{ route('admin.order.order.edit', $order) }}" class='ajax-modal-btn btn btn-flat btn-lg btn-default'>
                   {{ trans('app.update_status') }}
                 </a>
-                @endif
+                @endif --}}
 
-              @if (Auth::user()->role_id !== 9)
+              {{-- @if (Auth::user()->role_id !== 9)
                 @if ($order->isFulfilled())
                   @unless ($order->isArchived())
                     @can('archive', $order)
-                    {{-- @if($order->deliveryBoyRole->nice_name === null) --}}
                       {!! Form::open(['route' => ['admin.order.order.archive', $order->id], 'method' => 'delete', 'class' => 'inline']) !!}
                       <button type="submit" class="confirm ajax-silent btn btn-lg btn-default"><i class="fa fa-archive text-muted"></i> {{ trans('app.order_archive') }}</button>
                       {!! Form::close() !!}
-                      {{-- @endif --}}
                     @endcan
                   @endunless
                 @else
@@ -388,7 +426,7 @@
                     </a>
                   @endif
                 @endif
-              @endif
+              @endif --}}
               </div>
             </div>
           </div> <!-- /.box-body -->
@@ -435,25 +473,19 @@
         </div>
       @endif --}}
 
-      <div class="box">
+      {{-- <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-truck"></i> {{ trans('app.deliveryboy') }}</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           </div>
-        </div> <!-- /.box-header -->
+        </div>
         <div class="box-body">
           <p>
             <img src="{{ get_avatar_src($order->deliveryBoyRole, 'tiny') }}" class="img-circle img-sm" alt="{{ trans('app.avatar') }}">
 
             <span class="admin-user-widget-title indent5">
-              {{-- @if (config('system_settings.vendor_can_view_customer_info') && $order->delivery_boy_id)
-                <a href="javascript:void(0)" data-link="{{ route('admin.admin.customer.show', $order->customer->id) }}" class="ajax-modal-btn">
-                  {{ $order->deliveryBoyRole->getName() }}
-                </a>
-              @else --}}
               {{ $order->deliveryBoyRole ? $order->deliveryBoyRole->getName() : trans('app.no_assigned_yet') }}
-              {{-- @endif --}}
             </span>
           </p>
 
@@ -463,7 +495,7 @@
             </span>
           @endif
         </div>
-      </div>
+      </div> --}}
 
       @if (config('system_settings.vendor_can_view_customer_info'))
         <div class="box">

@@ -110,6 +110,7 @@ class ListHelper
             Order::STATUS_AWAITING_DELIVERY     =>  trans('app.statuses.awaiting_delivery'),
             Order::STATUS_DELIVERED             =>  trans('app.statuses.delivered'),
             Order::STATUS_RETURNED              =>  trans('app.statuses.refunded'),
+            Order::STATUS_PACKED              =>  trans('app.statuses.packed'),
         ];
     }
 

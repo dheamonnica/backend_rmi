@@ -100,8 +100,29 @@ class OrderController extends Controller
         ->addColumn('po_number_ref', function ($order) {
             return view('admin.partials.actions.order.order_po_number_ref', compact('order'));
         })
+        ->addColumn('packed_by', function ($order) {
+            return view('admin.partials.actions.order.order_packed_by', compact('order'));
+        })
+        ->addColumn('packed_date', function ($order) {
+            return view('admin.partials.actions.order.order_packed_date', compact('order'));
+        })
+        ->addColumn('shipped_by', function ($order) {
+            return view('admin.partials.actions.order.order_shipped_by', compact('order'));
+        })
+        ->addColumn('shipping_date', function ($order) {
+            return view('admin.partials.actions.order.order_shipped_date', compact('order'));
+        })
+        ->addColumn('delivery_by', function ($order) {
+            return view('admin.partials.actions.order.order_delivery_by', compact('order'));
+        })
         ->addColumn('delivery_date', function ($order) {
             return view('admin.partials.actions.order.order_delivery_date', compact('order'));
+        })
+        ->addColumn('paid_by', function ($order) {
+            return view('admin.partials.actions.order.order_paid_by', compact('order'));
+        })
+        ->addColumn('paid_date', function ($order) {
+            return view('admin.partials.actions.order.order_paid_date', compact('order'));
         })
         ->addColumn('order_date', function ($order) {
             return view('admin.partials.actions.order.order_date', compact('order'));
@@ -128,7 +149,7 @@ class OrderController extends Controller
         ->editColumn('option', function ($order) {
             return view('admin.partials.actions.order.option', compact('order'));
         })
-        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'delivery_boy', 'delivery_date', 'shop', 'customer_name','grand_total','payment_status','option'])
+        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'packed_date', 'shipped_by', 'shipping_date', 'delivery_by', 'delivery_date', 'paid_by', 'paid_date', 'shop', 'customer_name','grand_total','payment_status','option'])
         ->make(true);
     }
 
@@ -444,6 +465,16 @@ class OrderController extends Controller
         $order = $this->order->find($id);
 
         $this->order->updateStatusDelivered($request, $order);
+
+        return back()->with('success', trans('messages.updated', ['model' => $this->model_name]));
+    }
+
+    public function setAsPacked(Request $request, $id)
+    {
+        
+        $order = $this->order->find($id);
+
+        $this->order->updateStatusPacked($request, $order);
 
         return back()->with('success', trans('messages.updated', ['model' => $this->model_name]));
     }
