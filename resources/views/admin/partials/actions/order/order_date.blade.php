@@ -1,2 +1,1 @@
-<td>{{ $order->created_at->toDayDateTimeString() }}</td>
-                  
+<td> {{date('d-m-Y h:i:s', strtotime($order->created_at)) }}</td>                  

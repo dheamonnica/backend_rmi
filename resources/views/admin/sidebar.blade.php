@@ -256,14 +256,14 @@
         <li class="treeview {{ Request::is('admin/vendor*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
             <i class="fa fa-bar-chart"></i>
-            <span>Warehouse</span>
+            <span>Business Unit</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             @can('index', \App\Models\Shop::class)
               <li class="{{ Request::is('admin/vendor/merchant*') ? 'active' : '' }}">
                 <a href="{{ url('admin/vendor/merchant') }}">
-                  <i class="fa fa-angle-double-right"></i> WH Area
+                  <i class="fa fa-angle-double-right"></i> Area
                 </a>
               </li>
             @endcan
@@ -271,7 +271,7 @@
             @can('index', \App\Models\Shop::class)
               <li class="{{ Request::is('admin/vendor/shop*') ? 'active' : '' }}">
                 <a href="{{ url('admin/vendor/shop') }}">
-                  <i class="fa fa-angle-double-right"></i> WH Employee
+                  <i class="fa fa-angle-double-right"></i> Employee
                 </a>
               </li>
             @endcan
