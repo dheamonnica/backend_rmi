@@ -506,7 +506,7 @@
         @endif {
           'data': 'customer_name',
           'name': 'customer_name',
-          'searchable': false
+          'searchable': true
         },
         {
           'data': 'grand_total',
