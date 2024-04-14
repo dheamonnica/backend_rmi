@@ -466,38 +466,38 @@
           'data': 'order_date',
           'name': 'order_date'
         },
-        {
-          'data': 'packed_by',
-          'name': 'packed_by'
-        },
-        {
-          'data': 'packed_date',
-          'name': 'packed_date'
-        },
-        {
-          'data': 'shipped_by',
-          'name': 'shipped_by'
-        },
-        {
-          'data': 'shipping_date',
-          'name': 'shipping_date'
-        },
-        {
-          'data': 'delivery_by',
-          'name': 'delivery_by'
-        },
-        {
-          'data': 'delivery_date',
-          'name': 'delivery_date'
-        },
-        {
-          'data': 'paid_by',
-          'name': 'paid_by'
-        },
-        {
-          'data': 'paid_date',
-          'name': 'paid_date'
-        },
+        // {
+        //   'data': 'packed_by',
+        //   'name': 'packed_by'
+        // },
+        // {
+        //   'data': 'packed_date',
+        //   'name': 'packed_date'
+        // },
+        // {
+        //   'data': 'shipped_by',
+        //   'name': 'shipped_by'
+        // },
+        // {
+        //   'data': 'shipping_date',
+        //   'name': 'shipping_date'
+        // },
+        // {
+        //   'data': 'delivery_by',
+        //   'name': 'delivery_by'
+        // },
+        // {
+        //   'data': 'delivery_date',
+        //   'name': 'delivery_date'
+        // },
+        // {
+        //   'data': 'paid_by',
+        //   'name': 'paid_by'
+        // },
+        // {
+        //   'data': 'paid_date',
+        //   'name': 'paid_date'
+        // },
         @if (Auth::user()->isFromPlatform())
           {
             'data': 'shop',
@@ -508,21 +508,21 @@
           'name': 'customer_name',
           'searchable': false
         },
-        // {
-        //   'data': 'grand_total',
-        //   'name': 'grand_total',
-        //   'searchable': false
-        // },
-        // {
-        //   'data': 'payment_status',
-        //   'name': 'payment_status',
-        //   'searchable': false
-        // },
-        // {
-        //   'data': 'order_status',
-        //   'name': 'order_status',
-        //   'searchable': false
-        // },
+        {
+          'data': 'grand_total',
+          'name': 'grand_total',
+          'searchable': false
+        },
+        {
+          'data': 'payment_status',
+          'name': 'payment_status',
+          'searchable': false
+        },
+        {
+          'data': 'order_status',
+          'name': 'order_status',
+          'searchable': false
+        },
         {
           'data': 'option',
           'name': 'option',

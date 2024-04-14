@@ -82,21 +82,21 @@
                         {{-- <th>{{ trans('app.order_number') }}</th> --}}
                         <th>{{ trans('app.form.po_number_ref') }}</th>
                         <th>{{ trans('app.order_date') }}</th>
-                        <th>{{ trans('app.form.packed_by') }}</th>
+                        {{-- <th>{{ trans('app.form.packed_by') }}</th>
                         <th>{{ trans('app.form.packed_date') }}</th>
                         <th>{{ trans('app.form.shipped_by') }}</th>
                         <th>{{ trans('app.form.shipped_date') }}</th>
                         <th>{{ trans('app.form.delivered_by') }}</th>
                         <th>{{ trans('app.form.delivered_date') }}</th>
                         <th>{{ trans('app.form.paid_by') }}</th>
-                        <th>{{ trans('app.form.paid_date') }}</th>
+                        <th>{{ trans('app.form.paid_date') }}</th> --}}
                         @if (Auth::user()->isFromPlatform())
-                            <th>{{ trans('app.shop') }}</th>
+                            <th>{{ trans('app.business_area') }}</th>
                         @endif
                         <th>{{ trans('app.customer') }}</th>
-                        {{-- <th>{{ trans('app.grand_total') }}</th> --}}
-                        {{-- <th>{{ trans('app.payment_status') }}</th> --}}
-                        {{-- <th>{{ trans('app.order_status') }}</th> --}}
+                        <th>{{ trans('app.grand_total') }}</th>
+                        <th>{{ trans('app.payment_status') }}</th>
+                        <th>{{ trans('app.order_status') }}</th>
                         <th>{{ trans('app.options') }}</th>
                         <th>&nbsp;</th>
                     </tr>
