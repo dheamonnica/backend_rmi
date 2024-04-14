@@ -325,7 +325,7 @@
             <div class="box-tools">
               @if (Auth::user()->canManageOrderPayments())
                   {{-- PACKED ORDER --}}
-                  @if($order->order_status_id === 3)
+                  @if($order->order_status_id === 1 || $order->payment_status === 1)
                     {!! Form::open(['route' => ['admin.order.order.setAsPacked', $order], 'method' => 'put', 'class' => 'inline']) !!}
                     <button type="submit" class="confirm ajax-silent btn btn-lg btn-primary">PACKED ORDER</button>
                     {!! Form::close() !!}
