@@ -483,20 +483,20 @@
           'name': 'shipping_date'
         },
         {
-          'data': 'paid_by',
-          'name': 'paid_by'
-        },
-        {
-          'data': 'paid_date',
-          'name': 'paid_date'
-        },
-        {
           'data': 'delivery_by',
           'name': 'delivery_by'
         },
         {
           'data': 'delivery_date',
           'name': 'delivery_date'
+        },
+        {
+          'data': 'paid_by',
+          'name': 'paid_by'
+        },
+        {
+          'data': 'paid_date',
+          'name': 'paid_date'
         },
         @if (Auth::user()->isFromPlatform())
           {
