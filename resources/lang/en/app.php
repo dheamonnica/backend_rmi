@@ -1213,6 +1213,7 @@ return [
         'delivered_date' => 'Delivered Date',
         'paid_by' => 'Paid By',
         'paid_date' => 'Paid Date',
+        'due_date_payment' => 'Due Date Payment',
 
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',

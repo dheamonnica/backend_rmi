@@ -486,10 +486,14 @@
         //   'data': 'delivery_by',
         //   'name': 'delivery_by'
         // },
-        // {
-        //   'data': 'delivery_date',
-        //   'name': 'delivery_date'
-        // },
+        {
+          'data': 'delivery_date',
+          'name': 'delivery_date'
+        },
+        {
+          'data': 'due_date_payment',
+          'name': 'due_date_payment'
+        },
         // {
         //   'data': 'paid_by',
         //   'name': 'paid_by'

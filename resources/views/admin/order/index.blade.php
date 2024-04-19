@@ -82,11 +82,12 @@
                         {{-- <th>{{ trans('app.order_number') }}</th> --}}
                         <th>{{ trans('app.form.po_number_ref') }}</th>
                         <th>{{ trans('app.order_date') }}</th>
+                        <th>{{ trans('app.form.delivered_by') }}</th>
+                        <th>{{ trans('app.form.due_date_payment') }}</th>
                         {{-- <th>{{ trans('app.form.packed_by') }}</th>
                         <th>{{ trans('app.form.packed_date') }}</th>
                         <th>{{ trans('app.form.shipped_by') }}</th>
                         <th>{{ trans('app.form.shipped_date') }}</th>
-                        <th>{{ trans('app.form.delivered_by') }}</th>
                         <th>{{ trans('app.form.delivered_date') }}</th>
                         <th>{{ trans('app.form.paid_by') }}</th>
                         <th>{{ trans('app.form.paid_date') }}</th> --}}

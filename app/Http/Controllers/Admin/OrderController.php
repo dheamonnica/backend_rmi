@@ -118,6 +118,9 @@ class OrderController extends Controller
         ->addColumn('delivery_date', function ($order) {
             return view('admin.partials.actions.order.order_delivery_date', compact('order'));
         })
+        ->addColumn('due_date_payment', function ($order) {
+            return view('admin.partials.actions.order.order_due_date_payment', compact('order'));
+        })
         ->addColumn('paid_by', function ($order) {
             return view('admin.partials.actions.order.order_paid_by', compact('order'));
         })
@@ -149,7 +152,7 @@ class OrderController extends Controller
         ->editColumn('option', function ($order) {
             return view('admin.partials.actions.order.option', compact('order'));
         })
-        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'packed_date', 'shipped_by', 'shipping_date', 'delivery_by', 'delivery_date', 'paid_by', 'paid_date', 'shop', 'customer_name','grand_total','payment_status','option'])
+        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'packed_date', 'shipped_by', 'shipping_date', 'delivery_by', 'delivery_date', 'due_date_payment', 'paid_by', 'paid_date', 'shop', 'customer_name','grand_total','payment_status','option'])
         ->make(true);
     }
 
