@@ -66,3 +66,6 @@ Route::post('{order}/deliveryboy/assign', [
 ])->name('deliveryboy.assign');
 
 Route::resource('order', OrderController::class)->except('update');
+Route::get('order-full', [
+  OrderController::class, 'exportIndex'
+])->name('order.exportIndex');

@@ -41,6 +41,7 @@ trait Authorizable
         'togglePaymentStatus' => 'fulfill',
         'saveAdminNote'     => 'fulfill',
         'setAsDelivered'     => 'view',
+        'exportIndex'     => 'view',
         'setAsPacked'     => 'view',
         'cancellation'      => 'cancel',
         'initiate'          => 'initiate',

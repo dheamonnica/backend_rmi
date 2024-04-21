@@ -171,6 +171,21 @@
                 </a>
               </li>
             @endcan
+            @can('index', \App\Models\Order::class)
+              <li class="{{ Request::is('admin/order/order-full') ? 'active' : '' }}">
+                <a href="{{ url('admin/order/order-full') }}">
+                  <i class="fa fa-angle-double-right"></i> Order Report
+                </a>
+              </li>
+            @endcan
+            {{-- @can('cancelAny', \App\Models\Order::class)
+              <li class="{{ Request::is('admin/order/cancellation*') ? 'active' : '' }}">
+                <a href="{{ url('admin/order/cancellation') }}">
+                  <i class="fa fa-angle-double-right"></i> {{ trans('nav.cancellations') }}
+                </a>
+              </li>
+            @endcan --}}
+
             {{-- @can('index', \App\Models\Order::class)
               <li class="{{ Request::is('admin/order/pickup*') ? 'active' : '' }}">
                 <a href="{{ url('admin/order/pickup') }}">
@@ -187,14 +202,7 @@
               </li>
             @endcan --}}
 
-            {{-- @can('cancelAny', \App\Models\Order::class)
-              <li class="{{ Request::is('admin/order/cancellation*') ? 'active' : '' }}">
-                <a href="{{ url('admin/order/cancellation') }}">
-                  <i class="fa fa-angle-double-right"></i> {{ trans('nav.cancellations') }}
-                </a>
-              </li>
-            @endcan --}}
-
+            
             {{-- @can('index', \App\Models\Payment::class) --}}
             {{-- <li class="{{ Request::is('admin/order/payment*') ? 'active' : '' }}">
                   <a href="{{ url('admin/order/payments') }}">

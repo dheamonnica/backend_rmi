@@ -8,6 +8,6 @@
             $diffInDays = $interval->format('%a');
         @endphp
 
-        {{45 - $diffInDays}}
+        {{45 - $diffInDays}} days
     @endif
 </td>

@@ -44,6 +44,7 @@
           {{ Form::hidden('discount', isset($cart->discount) ? $cart->discount : null, ['id' => 'cart-discount']) }}
           {{ Form::hidden('taxrate', null, ['id' => 'cart-taxrate']) }}
           {{ Form::hidden('taxes', null, ['id' => 'cart-taxes']) }}
+          {{ Form::hidden('created_by', Auth::user()->id) }}
 
           @if (is_incevio_package_loaded('packaging'))
             {{ Form::hidden('packaging_id', $default_packaging ? $default_packaging->id : null, ['id' => 'packaging_id']) }}

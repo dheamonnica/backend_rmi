@@ -1213,7 +1213,12 @@ return [
         'delivered_date' => 'Delivered Date',
         'paid_by' => 'Paid By',
         'paid_date' => 'Paid Date',
-        'due_date_payment' => 'Due Date Payment',
+        'duedate_days_payment' => 'Duedate Days Payment',
+        'duedate_payment' => 'Duedate Payment',
+        'create_order_by' => 'Create Order By',
+        'cancel_date' => 'Cancel Date',
+        'cancel_by' => 'Cancel By',
+        'product_qty' => 'Product Qty',
 
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',

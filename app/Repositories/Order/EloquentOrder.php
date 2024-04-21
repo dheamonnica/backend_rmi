@@ -146,7 +146,7 @@ class EloquentOrder extends EloquentRepository implements BaseRepository, OrderR
 
         $order->delivery_date = date("Y-m-d");
         $order->order_status_id = 6;
-        $order->delivery_by = Auth::user()->id;;
+        $order->delivery_by = Auth::user()->id;
 
         return $order->save();
     }

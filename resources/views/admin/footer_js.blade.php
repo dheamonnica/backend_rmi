@@ -466,6 +466,13 @@
           'data': 'order_date',
           'name': 'order_date'
         },
+        {
+          'data': 'created_by',
+          'name': 'created_by',
+          'visible': false,
+          'exportable': true,
+          'printable': true
+        },
         // {
         //   'data': 'packed_by',
         //   'name': 'packed_by'
@@ -488,7 +495,8 @@
         // },
         {
           'data': 'delivery_date',
-          'name': 'delivery_date'
+          'name': 'delivery_date',
+          'visible': false,
         },
         {
           'data': 'due_date_payment',
@@ -535,6 +543,119 @@
           'exportable': false,
           'printable': false
         }
+      ]
+    }));
+
+    // Load Order list by Ajax
+    $('#all-order-table-full').DataTable($.extend({}, dataTableOptions, {
+      "ajax": "{{ route('admin.order.bulkorder_process', ['paymentStatus' => '0', 'orderStatus' => '0']) }}",
+      "columns": [{
+          'data': 'checkbox',
+          'name': 'checkbox',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false,
+          'visible': false
+        },
+        {
+          'data': 'po_number_ref',
+          'name': 'po_number_ref'
+        },
+        {
+          'data': 'order_date',
+          'name': 'order_date'
+        },
+        {
+          'data': 'created_by',
+          'name': 'created_by',
+        },
+        {
+          'data': 'packed_date',
+          'name': 'packed_date'
+        },
+        {
+          'data': 'packed_by',
+          'name': 'packed_by'
+        },
+        {
+          'data': 'shipping_date',
+          'name': 'shipping_date'
+        },
+        {
+          'data': 'shipped_by',
+          'name': 'shipped_by'
+        },
+        {
+          'data': 'delivery_date',
+          'name': 'delivery_date',
+        },
+        {
+          'data': 'delivery_by',
+          'name': 'delivery_by'
+        },
+        {
+          'data': 'paid_date',
+          'name': 'paid_date'
+        },
+        {
+          'data': 'paid_by',
+          'name': 'paid_by'
+        },
+        {
+          'data': 'due_date_payment',
+          'name': 'due_date_payment'
+        },
+        {
+          'data': 'due_days_payment',
+          'name': 'due_days_payment'
+        },
+        {
+          'data': 'cancel_date',
+          'name': 'cancel_date'
+        },
+        {
+          'data': 'cancel_by',
+          'name': 'cancel_by'
+        },
+        @if (Auth::user()->isFromPlatform())
+          {
+            'data': 'shop',
+            'name': 'shop'
+          },
+        @endif {
+          'data': 'customer_name',
+          'name': 'customer_name',
+          'searchable': true
+        },
+        {
+          'data': 'product_qty',
+          'name': 'product_qty',
+          'searchable': false
+        },
+        {
+          'data': 'grand_total',
+          'name': 'grand_total',
+          'searchable': false
+        },
+        {
+          'data': 'payment_status',
+          'name': 'payment_status',
+          'searchable': false
+        },
+        {
+          'data': 'order_status',
+          'name': 'order_status',
+          'searchable': false
+        },
+        // {
+        //   'data': 'option',
+        //   'name': 'option',
+        //   'orderable': false,
+        //   'searchable': false,
+        //   'exportable': false,
+        //   'printable': false
+        // }
       ]
     }));
 

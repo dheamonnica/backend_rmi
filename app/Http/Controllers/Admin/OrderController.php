@@ -59,6 +59,19 @@ class OrderController extends Controller
         return view('admin.order.index',compact('orders','archives', 'deliveryBoysUser'));
     }
 
+    public function exportIndex()
+    {
+        $fulfilment = Route::is('admin.order.pickup') ? Order::FULFILMENT_TYPE_PICKUP : Order::FULFILMENT_TYPE_DELIVER;
+
+        $orders = $this->order->all($fulfilment);
+
+        $archives = $this->order->trashOnly();
+
+        $deliveryBoysUser = ListHelper::deliveryBoyRole();
+        
+        return view('admin.order.export_index',compact('orders','archives', 'deliveryBoysUser'));
+    }
+
     /**
      * Display a page to process bulk order processing.
      * @param Request
@@ -97,6 +110,9 @@ class OrderController extends Controller
         ->addColumn('order', function ($order) {
             return view('admin.partials.actions.order.order', compact('order'));
         })
+        ->addColumn('created_by', function ($order) {
+            return view('admin.partials.actions.order.order_created_by', compact('order'));
+        })
         ->addColumn('po_number_ref', function ($order) {
             return view('admin.partials.actions.order.order_po_number_ref', compact('order'));
         })
@@ -121,6 +137,15 @@ class OrderController extends Controller
         ->addColumn('due_date_payment', function ($order) {
             return view('admin.partials.actions.order.order_due_date_payment', compact('order'));
         })
+        ->addColumn('due_days_payment', function ($order) {
+            return view('admin.partials.actions.order.order_due_days_payment', compact('order'));
+        })
+        ->addColumn('cancel_date', function ($order) {
+            return view('admin.partials.actions.order.order_cancel_date', compact('order'));
+        })
+        ->addColumn('cancel_by', function ($order) {
+            return view('admin.partials.actions.order.order_cancel_by', compact('order'));
+        })
         ->addColumn('paid_by', function ($order) {
             return view('admin.partials.actions.order.order_paid_by', compact('order'));
         })
@@ -139,6 +164,9 @@ class OrderController extends Controller
         ->editColumn('customer_name', function ($order) {
             return view('admin.partials.actions.order.customer_name', compact('order'));
         })
+        ->editColumn('product_qty', function ($order) {
+            return view('admin.partials.actions.order.order_product_qty', compact('order'));
+        })
         ->editColumn('grand_total', function ($order) {
             return view('admin.partials.actions.order.grand_total', compact('order'));
         })
@@ -152,7 +180,7 @@ class OrderController extends Controller
         ->editColumn('option', function ($order) {
             return view('admin.partials.actions.order.option', compact('order'));
         })
-        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'packed_date', 'shipped_by', 'shipping_date', 'delivery_by', 'delivery_date', 'due_date_payment', 'paid_by', 'paid_date', 'shop', 'customer_name','grand_total','payment_status','option'])
+        ->rawColumns(['checkbox', 'order', 'po_number_ref', 'order_date', 'created_by', 'packed_date', 'shipped_by', 'shipping_date', 'delivery_by', 'delivery_date', 'due_date_payment', 'due_days_payment', 'cancel_by', 'cancel_date', 'paid_by', 'paid_date', 'shop', 'customer_name', 'order_product_qty', 'grand_total','payment_status','option'])
         ->make(true);
     }
 

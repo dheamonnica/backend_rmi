@@ -138,7 +138,8 @@ class Order extends BaseModel
         'paid_by',
         'paid_date',
         'packed_date',
-        'packed_by'
+        'packed_by',
+        'created_by'
     ];
 
     /**
@@ -880,6 +881,8 @@ class Order extends BaseModel
         } else {
             // Update order status
             $this->order_status_id = static::STATUS_CANCELED;
+            $this->cancel_by = Auth::user()->id;
+            $this->cancel_date = date("Y-m-d h:i:s");
             $this->save();
 
             event(new OrderCancelled($this));
@@ -1219,5 +1222,18 @@ class Order extends BaseModel
 
     public function getPaidByName() {
         return $this->belongsTo(User::class, 'paid_by');
+    }
+
+    public function getOrderByName() {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function getCancelByName() {
+        return $this->belongsTo(User::class, 'cancel_by');
+    }
+
+    public function sumProductbyOrder()
+    {
+        return DB::table('order_items')->where('order_id', $this->id)->sum('quantity');
     }
 }
