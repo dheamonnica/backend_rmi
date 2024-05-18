@@ -157,7 +157,7 @@ class EloquentOrder extends EloquentRepository implements BaseRepository, OrderR
             $order = $this->model->find($order);
         }
 
-        $order->packed_date = date("Y-m-d h:i:s");
+        $order->packed_date = date("Y-m-d G:i:s");
         $order->order_status_id = 10;
         $order->packed_by = Auth::user()->id;;
 

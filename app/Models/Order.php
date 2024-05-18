@@ -898,7 +898,7 @@ class Order extends BaseModel
     public function markAsPaid(array $params = [])
     {
         $this->payment_status = static::PAYMENT_STATUS_PAID;
-        $this->paid_date =  date('Y-m-d h:i:s');
+        $this->paid_date =  date('Y-m-d G:i:s');
         $this->paid_by = Auth::user()->id;
 
         if ($this->order_status_id < static::STATUS_CONFIRMED) {
