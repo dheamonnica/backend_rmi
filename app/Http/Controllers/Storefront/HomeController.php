@@ -130,7 +130,8 @@ class HomeController extends Controller
         //     'flashdeals',
         //     'digital_products'
         // ));
-        return redirect()->guest(route('login'));
+        // return redirect()->guest(route('login'));
+        return view('theme::public');
     }
 
     /**
