@@ -44,8 +44,8 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link" href="index.html" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link" href="#about" id="navbarDropdown" role="button"
+                                        aria-haspopup="true" aria-expanded="false">
                                         Home
                                     </a>
                                 </li>
@@ -123,7 +123,7 @@
     </div>
     </div>
     </nav>
-    <div class="container">
+    <div class="container" id="about">
         <div class="banner-slider">
             <div class="banner">
                 <div class="row">
@@ -164,8 +164,8 @@
                                     fill="#4D72D0" />
                             </svg>
 
-                            <img src="/front/images/doctor-getting-ready-vaccine.png" class="img-fluid animated-hero"
-                                alt="hero" />
+                            <img src="/front/images/front-view-doctor-wearing-face-mask-transformed.png"
+                                class="img-fluid animated-hero" alt="hero" />
 
                             <ul class="main-slider-social">
                                 <li>
@@ -278,8 +278,8 @@
                                     fill="#4D72D0" />
                             </svg>
 
-                            <img src="/front/images/doctor-getting-ready-vaccine.png" class="img-fluid animated-hero"
-                                alt="hero" />
+                            <img src="/front/images/female-doctor-wearing-pandemic-medical-equipment-transformed.png"
+                                class="img-fluid animated-hero" alt="hero" />
 
                             <ul class="main-slider-social">
                                 <li>
@@ -309,21 +309,36 @@
 
     <!--//End Header -->
     <!--==================== About Section ====================-->
-    <section class="about-section">
-        <div class="container container-custom" id="tracking">
-            <div class="row">
+    <section class="about-section" id="tracking">
+        <div class="container container-custom">
+            <div class="row booking-form">
                 <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-9">
+                            <form action="{{ url('/my/orders') }}" method="get" class="">
+                                <input style="height: 50px;" type="text" class="form-control" name="q"
+                                    placeholder="Search by order id...">
+                            </form>
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-success btn-sm btn-block">
+                                Tracking Now</button>
+                        </div>
+                    </div>
                     <!-- booking form -->
-                    <ul class="booking-form">
-                        <li><input type="text" class="form-control" placeholder="Enter Your PO Number" /><i
-                                class="fas fa-book"></i>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-success">Tracking Now</a>
-                        </li>
+                    {{-- <ul class="booking-form">
+                        <li> --}}
+                    {{-- <input type="text" class="form-control" placeholder="Enter Your PO Number" /> --}}
+                    {{-- <i class="fas fa-book"></i> --}}
 
-                        {{-- STEP PROGRESS BAR --}}
-                        @include('theme::sections.front_progress')
+
+                    {{-- </li> --}}
+                    {{-- <li>
+                            <a href="#" class="btn btn-success">Tracking Now</a>
+                        </li> --}}
+
+                    {{-- STEP PROGRESS BAR --}}
+                    @include('theme::sections.front_progress')
 
                 </div>
 
@@ -449,8 +464,8 @@
     </section>
     <!--//End About Section -->
     <!--==================== Our Services ====================-->
-    <section class="space light">
-        <div class="container container-custom" id="service">
+    <section class="space light" id="service">
+        <div class="container container-custom">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-style1">
@@ -467,7 +482,7 @@
                             <h3>BMHP</h3>
                             <p>BMHP, or Consumable Medical Materials, are single-use medical devices with a regulated
                                 product list.</p>
-                            <a href="#" class="btn btn-dark">READ MORE</a>
+                            {{-- <a href="#" class="btn btn-dark">READ MORE</a> --}}
                             <div class="service-bg-icon">
                                 <img src="/front/images/services-bg1.png" class="img-fluid" alt="#">
                             </div>
@@ -477,7 +492,7 @@
                             <h3>Unit & Accessories</h3>
                             <p>Accessories are additional items used to complete or replace parts in medical equipment
                                 machines.</p>
-                            <a href="#" class="btn btn-dark">READ MORE</a>
+                            {{-- <a href="#" class="btn btn-dark">READ MORE</a> --}}
                             <div class="service-bg-icon">
                                 <img src="/front/images/services-bg2.png" class="img-fluid" alt="#">
                             </div>
@@ -489,7 +504,7 @@
                                 Service is an action or activity carried out to fulfill repairs or maintenance of
                                 medical equipment machines.
                             </p>
-                            <a href="#" class="btn btn-dark">READ MORE</a>
+                            {{-- <a href="#" class="btn btn-dark">READ MORE</a> --}}
                             <div class="service-bg-icon">
                                 <img src="/front/images/services-bg3.png" class="img-fluid" alt="#">
                             </div>
@@ -513,7 +528,7 @@
                 <div class="col-md-12">
                     <p class="text-center service-help_link">
                         Contact us for better help and services.
-                        <a href="#">Let’s get started</a>
+                        {{-- <a href="#">Let’s get started</a> --}}
                     </p>
                 </div>
             </div>
@@ -538,8 +553,8 @@
     <!--//End Map -->
 
     <!--==================== Our Partner ====================-->
-    <section class="our-team">
-        <div class="container container-custom" id="partner">
+    <section class="our-team" id="partner">
+        <div class="container container-custom">
             <div class="row">
                 <div class="col-md-12">
                     <div class="sub-title_center">

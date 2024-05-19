@@ -25,20 +25,20 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>About Us</a>
+                            <a href="#about"><i class="fas fa-angle-double-right"></i>About Us</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Order Tracking</a>
+                            <a href="#tracking"><i class="fas fa-angle-double-right"></i>Order Tracking</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Service</a>
+                            <a href="#service"><i class="fas fa-angle-double-right"></i>Service</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Location Coverage</a>
+                            <a href="#location"><i class="fas fa-angle-double-right"></i>Location Coverage</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#"><i class="fas fa-angle-double-right"></i>Contact Us</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -47,13 +47,13 @@
                     <h4>Our Product & Services</h4>
                     <ul>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>BMHP</a>
+                            <a href="#service"><i class="fas fa-angle-double-right"></i>BMHP</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Unit & Accessories</a>
+                            <a href="#service"><i class="fas fa-angle-double-right"></i>Unit & Accessories</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Service</a>
+                            <a href="#service"><i class="fas fa-angle-double-right"></i>Service</a>
                         </li>
                     </ul>
                 </div>

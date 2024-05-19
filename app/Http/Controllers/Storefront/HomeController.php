@@ -131,6 +131,11 @@ class HomeController extends Controller
         //     'digital_products'
         // ));
         // return redirect()->guest(route('login'));
+
+        // $fulfilment = Route::is('admin.order.pickup') ? Order::FULFILMENT_TYPE_PICKUP : Order::FULFILMENT_TYPE_DELIVER;
+
+        // $orders = $this->order->all($fulfilment);
+
         return view('theme::public');
     }
 

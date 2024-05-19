@@ -2,6 +2,7 @@
   @desktop
     <style>
       #zcart_admintopnav {
+        display: none;
         position: relative;
         background: #1d2327;
         background-color: #1d2327;

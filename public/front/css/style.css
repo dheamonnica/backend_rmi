@@ -1026,6 +1026,7 @@ a:focus {
   background: #4d72d0;
   padding: 40px;
   border-radius: 8px;
+  position: sticky;
 }
 .booking-form li {
   position: relative;
@@ -2259,6 +2260,7 @@ footer {
   color: #dededebd;
   margin: 0 0 15px;
   font-weight: 400;
+  font-size: 1rem;
 }
 .foot-contact-block h4 i {
   background: #5bc198;

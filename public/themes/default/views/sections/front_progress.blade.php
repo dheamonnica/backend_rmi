@@ -19,14 +19,45 @@
             </div> --}}
             <!-- progressbar -->
             <ul id="progressbar">
-                <li class="active">Add Product to Cart</li>
-                <li>Fill Details</li>
-                <li>Make Payment</li>
-                <li>Order in Progress</li>
-                <li>Order Arrived</li>
+                <li class="active">
+                    <p class="text-secondary m-0">Step 1</p>
+                    <h7 class="text-black font-weight-bold">Order Confirm</h7>
+                    <p class="progress-pills progress-pills-complete font-weight-bold mt-2">
+                        <small>Completed</small>
+                    </p>
+                </li>
+                <li>
+                    <p class="text-secondary m-0">Step 2</p>
+                    <h7 class="text-black font-weight-bold">Packing</h7>
+                    <p class="progress-pills progress-pills-inprogress font-weight-bold mt-2">
+                        <small>In Progress</small>
+                    </p>
+                </li>
+                <li>
+                    <p class="text-secondary m-0">Step 3</p>
+                    <h7 class="text-black font-weight-bold">Shipment</h7>
+                    <p class="progress-pills progress-pills-inprogress font-weight-bold mt-2">
+                        <small>In Progress</small>
+                    </p>
+
+                </li>
+                <li>
+                    <p class="text-secondary m-0">Step 4</p>
+                    <h7 class="text-black font-weight-bold">Delivered</h7>
+                    <p class="progress-pills progress-pills-inprogress font-weight-bold mt-2">
+                        <small>In Progress</small>
+                    </p>
+                </li>
+                <li>
+                    <p class="text-secondary m-0">Step 5</p>
+                    <h7 class="text-black font-weight-bold">Payment</h7>
+                    <p class="progress-pills progress-pills-inprogress font-weight-bold mt-2">
+                        <small>In Progress</small>
+                    </p>
+                </li>
             </ul>
             <!-- fieldsets -->
-            <fieldset>
+            {{-- <fieldset>
                 <h6>lorem ipsum dolor sit amet, consectetur adipiscing elit.</h6>
                 <button type="button" class="action-button previous_button">Back</button>
                 <button type="button" class="next action-button">Continue</button>
@@ -50,7 +81,7 @@
                 <h6>lorem ipsum dolor sit amet, consectetur adipiscing elit.</h6>
                 <button type="button" class="action-button previous_button">Back</button>
                 <button type="button" class="next action-button">Continue</button>
-            </fieldset>
+            </fieldset> --}}
         </form>
     </section>
     <!-- End Multi step form -->
