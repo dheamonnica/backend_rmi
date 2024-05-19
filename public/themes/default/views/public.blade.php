@@ -358,28 +358,27 @@
                 <!-- Service Icon -->
                 <div class="col-md-4">
                     <div class="service-thumbnail d-flex flex-fill">
-                        {{-- <img src="/front/images/suntikan.png" class="img-fluid" alt="#" /> --}}
+                        <img src="/front/images/463799-PG3O97-287.jpg" class="img-product" alt="#" />
                         <div class="service-thumbnail_text">
                             <h4>Specialised Product</h4>
-                            <p>Always Provide the High Quality products With the best Prices</p>
+                            <p>Always provide high-quality products with the best prices and exceptional customer service.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Service Icon 02 -->
                 <div class="col-md-4">
                     <div class="service-thumbnail d-flex flex-fill">
-                        {{-- <img src="/front/images/Service_tumnail-cs.jpg" class="img-fluid" alt="#" /> --}}
+                        <img src="/front/images/2453706-removebg-preview.png" class="img-product" alt="#" />
                         <div class="service-thumbnail_text">
                             <h4>Support Care</h4>
-                            <p>Support and Assistance given before, during, and after customers purchase a product or
-                                service.</p>
+                            <p>Help provided to customers before, during, and after they buy a product or service.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Service Icon 03 -->
                 <div class="col-md-4">
                     <div class="service-thumbnail border-0 d-flex flex-fill">
-                        {{-- <img src="/front/images/Service_tumnail_Loaction.png" class="img-fluid" alt="#" /> --}}
+                        <img src="/front/images/track.png" alt="#" class="img-product" />
                         <div class="service-thumbnail_text">
                             <h4>Online Tracking</h4>
                             <p>You can easily track your order status and updates only on your personal device.</p>

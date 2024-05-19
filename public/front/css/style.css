@@ -1090,7 +1090,7 @@ a:focus {
   .service-thumbnail {
     text-align: left;
     margin: 0;
-    border-right: 1px solid #cccccc5e;
+    /* border-right: 1px solid #cccccc5e; */
   }
 }
 .service-thumbnail img {
