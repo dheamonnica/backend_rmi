@@ -491,6 +491,11 @@ class HomeController extends Controller
         return view('theme::categories');
     }
 
+    public function offering()
+    {
+        return view('theme::offering');
+    }
+
     /**
      * Display the specified resource.
      *

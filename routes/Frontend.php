@@ -72,6 +72,14 @@ Route::middleware('storefront')->namespace('Storefront')->group(function () {
         HomeController::class, 'categories'
     ])->name('categories');
 
+    Route::get('categories', [
+        HomeController::class, 'categories'
+    ])->name('categories');
+
+    Route::get('offering', [
+        HomeController::class, 'offering'
+    ])->name('offering');
+
     Route::get('category/{slug}', [
         HomeController::class, 'browseCategory'
     ])->name('category.browse');
