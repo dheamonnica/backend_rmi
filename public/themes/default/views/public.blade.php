@@ -11,7 +11,6 @@
                         <ul class="topbar-social">
                             <li><a href="https://www.facebook.com/RizqullahMediskaIndonesia/"><i
                                         class="fab fa-facebook-f"></i></a></li>
-                            <!-- <li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
                             <li><a href="https://www.instagram.com/pt.rizqullahmediskaindonesia/"><i
                                         class="fab fa-instagram"></i></a></li>
                             <li><a href="https://id.linkedin.com/in/pt-rizqullah-mediska-indonesia-group-132529151"><i
@@ -60,37 +59,6 @@
                                     <a class="nav-link" href="#location" aria-haspopup="true" aria-expanded="false">
                                         Location
                                     </a>
-                                    <!--<ul class="dropdown-menu">
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false" href="#">Services</a>
-                                                    <ul class="dropdown-menu dropdown-menu1 dropdown-left">
-                                                        <li><a class="dropdown-item" href="services.html">Services
-                                                                One</a></li>
-                                                        <li><a class="dropdown-item" href="services-2.html">Services
-                                                                Two</a></li>
-                                                        <li><a class="dropdown-item" href="services-3.html">Services
-                                                                Three</a></li>
-                                                                <li><a class="dropdown-item" href="services-detail.html">Service
-                                                                    Detail</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="dropdown-item" href="appointment.html">Appointment</a>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false" href="#">Our Doctors</a>
-                                                    <ul class="dropdown-menu dropdown-menu1">
-                                                        <li><a class="dropdown-item" href="doctors.html">Doctors One</a></li>
-                                                        <li><a class="dropdown-item" href="doctors-2.html">Doctors Two</a></li>
-                                                        <li><a class="dropdown-item" href="doctors-3.html">Doctors Three</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="dropdown-item" href="pricing.html">Pricing</a>
-                                                </li>
-                                            </ul> -->
                                 </li>
                                 <!--//End Sub Menu -->
                                 <li class="nav-item dropdown">
@@ -100,8 +68,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link"
                                         href="https://glints.com/id/en/company/pt-rizqullah-mediska-indonesia-jobs/c13c086f-6fcf-47a7-af9b-3a75dfdb4b70"
-                                        id="navbarDropdown3" role="button" aria-haspopup="true"
-                                        aria-expanded="false"> Career </a>
+                                        id="navbarDropdown3" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Career </a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="#tracking" id="navbarDropdown4" role="button"
@@ -143,7 +111,6 @@
                                 at an economical price that can be beneficial for health
                                 together.
                             </p>
-                            <!--<a href="#" class="btn btn-primary">Make Appointment</a>-->
                             <a href="https://www.youtube.com/watch?v=pBFQdxA-apI" class="play-btn popup-youtube"><i
                                     class="fas fa-play"></i></a>
                         </div>
@@ -151,8 +118,8 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-7 d-flex align-items-end">
                         <div class="anim-container flex-fill">
-                            <svg class="circle-svg" width="100%" height="100%" viewBox="0 0 754 733"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="circle-svg" width="100%" height="100%" viewBox="0 0 754 733" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path class="big-circle" opacity="0.071" fill-rule="evenodd" clip-rule="evenodd"
                                     d="M377 29C563.12 29 714 179.879 714 366C714 552.119 563.12 702.999 377 702.999C190.88 702.999 40 552.119 40 366C40 179.879 190.88 29 377 29Z"
                                     fill="#4D72D0" />
@@ -199,7 +166,6 @@
                                 in general. With good performance, on target &
                                 sustainable for the sake of collective health.
                             </p>
-                            <!--<a href="#" class="btn btn-primary">Make Appointment</a>-->
                             <a href="https://www.youtube.com/watch?v=pBFQdxA-apI" class="play-btn popup-youtube"><i
                                     class="fas fa-play"></i></a>
                         </div>
@@ -257,7 +223,6 @@
                                 Health cost efficiency with the best quality.
                                 Become a good business partner
                             </p>
-                            <!--<a href="#" class="btn btn-primary">Make Appointment</a>-->
                             <a href="https://www.youtube.com/watch?v=pBFQdxA-apI" class="play-btn popup-youtube"><i
                                     class="fas fa-play"></i></a>
                         </div>
@@ -312,150 +277,129 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-9">
-                            <form action="{{ url('/my/orders') }}" method="get" class="">
-                                <input style="height: 50px;" type="text" class="form-control" name="q"
-                                    placeholder="Search by order id...">
-                            </form>
+                            <input type="text" id="search-input" placeholder="Search by PO Number Ref"
+                                class="form-control" style="height: 50px">
                         </div>
                         <div class="col-3">
-                            <button type="submit" class="btn btn-success btn-sm btn-block">
-                                Tracking Now</button>
+                            <button id="search-button" class="btn btn-success btn-sm btn-block">Tracking Now</button>
                         </div>
                     </div>
-                    <!-- booking form -->
-                    {{-- <ul class="booking-form">
-                        <li> --}}
-                    {{-- <input type="text" class="form-control" placeholder="Enter Your PO Number" /> --}}
-                    {{-- <i class="fas fa-book"></i> --}}
-
-
-                    {{-- </li> --}}
-                    {{-- <li>
-                            <a href="#" class="btn btn-success">Tracking Now</a>
-                        </li> --}}
-
-                    {{-- STEP PROGRESS BAR --}}
-                    @include('theme::sections.front_progress')
-
+                    <div id="results">
+                        <!-- Results will be displayed here -->
+                    </div>
+                    <!--//End booking form -->
                 </div>
-
-                <!--<script src="main.js"></script>-->
-
-
-                {{-- <li class="form-btn">
-                            <a href="#" class="btn btn-success">Tracking Now</a>
-                        </li> --}}
-                </ul>
-                <!--//End booking form -->
             </div>
-        </div>
 
-        <div class="container container-custom">
-            <div class="row space">
-                <!-- Service Icon -->
-                <div class="col-md-4">
-                    <div class="service-thumbnail d-flex flex-fill">
-                        <img src="/front/images/463799-PG3O97-287.jpg" class="img-product" alt="#" />
-                        <div class="service-thumbnail_text">
-                            <h4>Specialised Product</h4>
-                            <p>Always provide high-quality products with the best prices and exceptional customer service.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Service Icon 02 -->
-                <div class="col-md-4">
-                    <div class="service-thumbnail d-flex flex-fill">
-                        <img src="/front/images/2453706-removebg-preview.png" class="img-product" alt="#" />
-                        <div class="service-thumbnail_text">
-                            <h4>Support Care</h4>
-                            <p>Help provided to customers before, during, and after they buy a product or service.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Service Icon 03 -->
-                <div class="col-md-4">
-                    <div class="service-thumbnail border-0 d-flex flex-fill">
-                        <img src="/front/images/track.png" alt="#" class="img-product" />
-                        <div class="service-thumbnail_text">
-                            <h4>Online Tracking</h4>
-                            <p>You can easily track your order status and updates only on your personal device.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--//End Service Icon -->
-            </div>
-        </div>
-
-        <div class="container container-custom">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- About -->
-                    <div class="about-video_block">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-6">
-                                <a href="https://www.youtube.com/watch?v=pBFQdxA-apI"
-                                    class="video-play-img popup-youtube">
-                                    <img src="/front/images/about_agree.png" class="img-fluid w-100"
-                                        alt="#" />
-                                    <div class="video-play-btn">
-                                        <div class="video-play-icon">
-                                            <i class="fas fa-play"></i>
-                                        </div>
-                                        <span>PLAY VIDEO</span>
-                                    </div>
-                                </a>
+            <div class="container container-custom">
+                <div class="row space">
+                    <!-- Service Icon -->
+                    <div class="col-md-4">
+                        <div class="service-thumbnail d-flex flex-fill">
+                            <img src="/front/images/463799-PG3O97-287.jpg" class="img-product" alt="#" />
+                            <div class="service-thumbnail_text">
+                                <h4>Specialised Product</h4>
+                                <p>Always provide high-quality products with the best prices and exceptional customer
+                                    service.</p>
                             </div>
-                            <div class="col-md-12 col-lg-6">
-                                <div class="video-play-text">
-                                    <h2>Short Story About Rizqullah Mediska.</h2>
-                                    <p>
-                                        PT Rizqullah Mediska Indonesia always strives to achieve
-                                        idealism by reminding each other between Management,
-                                        employees and consumers in order to achieve the expected goals
-                                        together. By achieving a common goal there will be
-                                        contribution to the Company's success in the short-term
-                                        and long term. On this basis, we try
-                                        founded PT Rizqullah Mediska Indonesia with the aim of
-                                        make it easier for parties who need medical equipment
-                                        at an economical price that can be beneficial for health
-                                        together.
-                                    </p>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="facilities blue">
-                                                <h3>100+</h3>
-                                                <span>Happy Client</span>
+                        </div>
+                    </div>
+                    <!-- Service Icon 02 -->
+                    <div class="col-md-4">
+                        <div class="service-thumbnail d-flex flex-fill">
+                            <img src="/front/images/2453706-removebg-preview.png" class="img-product"
+                                alt="#" />
+                            <div class="service-thumbnail_text">
+                                <h4>Support Care</h4>
+                                <p>Help provided to customers before, during, and after they buy a product or service.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Icon 03 -->
+                    <div class="col-md-4">
+                        <div class="service-thumbnail border-0 d-flex flex-fill">
+                            <img src="/front/images/track.png" alt="#" class="img-product" />
+                            <div class="service-thumbnail_text">
+                                <h4>Online Tracking</h4>
+                                <p>You can easily track your order status and updates only on your personal device.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//End Service Icon -->
+                </div>
+            </div>
+
+            <div class="container container-custom">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- About -->
+                        <div class="about-video_block">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <a href="https://www.youtube.com/watch?v=pBFQdxA-apI"
+                                        class="video-play-img popup-youtube">
+                                        <img src="/front/images/about_agree.png" class="img-fluid w-100"
+                                            alt="#" />
+                                        <div class="video-play-btn">
+                                            <div class="video-play-icon">
+                                                <i class="fas fa-play"></i>
+                                            </div>
+                                            <span>PLAY VIDEO</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="video-play-text">
+                                        <h2>Short Story About Rizqullah Mediska.</h2>
+                                        <p>
+                                            PT Rizqullah Mediska Indonesia always strives to achieve
+                                            idealism by reminding each other between Management,
+                                            employees and consumers in order to achieve the expected goals
+                                            together. By achieving a common goal there will be
+                                            contribution to the Company's success in the short-term
+                                            and long term. On this basis, we try
+                                            founded PT Rizqullah Mediska Indonesia with the aim of
+                                            make it easier for parties who need medical equipment
+                                            at an economical price that can be beneficial for health
+                                            together.
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="facilities blue">
+                                                    <h3>100+</h3>
+                                                    <span>Happy Client</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="facilities green">
+                                                    <h3>80+</h3>
+                                                    <span>Product Variant</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="facilities green">
-                                                <h3>80+</h3>
-                                                <span>Product Variant</span>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="facilities yellow">
+                                                    <h3>5+</h3>
+                                                    <span>Hospital Partner</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="facilities yellow">
-                                                <h3>5+</h3>
-                                                <span>Hospital Partner</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="facilities gray">
-                                                <h3>20+</h3>
-                                                <span>License</span>
+                                            <div class="col-md-6">
+                                                <div class="facilities gray">
+                                                    <h3>20+</h3>
+                                                    <span>License</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--//End About -->
                     </div>
-                    <!--//End About -->
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!--//End About Section -->
@@ -505,18 +449,6 @@
                                 <img src="/front/images/services-bg3.png" class="img-fluid" alt="#">
                             </div>
                         </div>
-                        <!--<div class="service-block green">
-                            <img src="/front/images/service-icon3.png" alt="#" />
-                            <h3>Allergic Issue</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor
-                                incididunt ut labore
-                            </p>
-                            <a href="#" class="btn btn-dark">READ MORE</a>
-                            <div class="service-bg-icon">
-                                <img src="/front/images/services-bg4.png" class="img-fluid" alt="#">
-                            </div>
-                        </div>-->
                     </div>
                 </div>
             </div>
@@ -688,10 +620,131 @@
             </div>
         </div>
     </section>
+
+
     <!--//End Our Team -->
     <!--==================== Testimonials ====================-->
     <!--==================== Footer ====================-->
     @include('theme::sections.front_footer')
+
+    <script>
+        $(document).ready(function() {
+            $('#search-button').click(function() {
+                var query = $('#search-input').val();
+
+                $.ajax({
+                    url: '{{ route('inOrderSearch') }}', // Ensure this route points to your search method
+                    method: 'GET',
+                    data: {
+                        q: query
+                    },
+                    success: function(response) {
+                        $('#results').empty(); // Clear previous results
+                        if (response.length > 0) {
+                            $.each(response, function(index, order) {
+                                $('#results').append(
+                                    getMultiStepFormHtml(order)
+                                );
+                            });
+                        } else {
+                            $('#results').append('<p>No results found</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#results').append('<p>An error occurred</p>');
+                    }
+                });
+
+                function isDateValid(dateString) {
+                    return dateString && dateString !== '0000-00-00 00:00:00';
+                }
+
+                function formatDate(dateString) {
+                    const options = {
+                        weekday: 'short',
+                        year: 'numeric',
+                        month: 'short',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    };
+                    const date = new Date(dateString);
+                    return isDateValid(dateString) ? date.toLocaleString('en-US', options) : '';
+                }
+
+                function getBackgroundClass(date) {
+                    return isDateValid(date) ? 'active' :
+                        '';
+                }
+
+                function getTextColor(date) {
+                    return isDateValid(date) ? 'text-primary-blue' :
+                        'text-black';
+                }
+
+                function getStatusClass(date) {
+                    return isDateValid(date) ? 'progress-pills-complete' :
+                        'progress-pills-inprogress';
+                }
+
+                function getStatus(date) {
+                    return isDateValid(date) ? 'Completed' : 'In Progress';
+                }
+
+                function getMultiStepFormHtml(order) {
+                    return `<section class="multi_step_form mt-5">
+                    <form id="msform">
+                        <ul id="progressbar">
+                            <li class="${getBackgroundClass(order.created_at)}">
+                                <p class="text-secondary m-0">Step 1</p>
+                                <h7 class="${getTextColor(order.created_at)} font-weight-bold">Order Confirm</h7>
+                                <p class="progress-pills ${getStatusClass(order.created_at)} font-weight-bold mt-2 mb-2">
+                                    <small>${getStatus(order.created_at)}</small>
+                                </p>
+                                <small>${formatDate(order.created_at)}</small>
+                            </li>
+                            <li class="${getBackgroundClass(order.packed_date)}">
+                                <p class="text-secondary m-0">Step 2</p>
+                                <h7 class="${getTextColor(order.packed_date)} font-weight-bold">Packing</h7>
+                                <p class="progress-pills ${getStatusClass(order.packed_date)} font-weight-bold mt-2 mb-2">
+                                    <small>${getStatus(order.packed_date)}</small>
+                                </p>
+                                <small>${formatDate(order.packed_date)}</small>
+                            </li>
+                            <li class="${getBackgroundClass(order.shipping_date)}">
+                                <p class="text-secondary m-0">Step 3</p>
+                                <h7 class="${getTextColor(order.shipping_date)} font-weight-bold">Shipment</h7>
+                                <p class="progress-pills ${getStatusClass(order.shipping_date)} font-weight-bold mt-2 mb-2">
+                                    <small>${getStatus(order.shipping_date)}</small>
+                                </p>
+                                <small>${formatDate(order.shipping_date)}</small>
+                            </li>
+                            <li class="${getBackgroundClass(order.delivery_date)}">
+                                <p class="text-secondary m-0">Step 4</p>
+                                <h7 class="${getTextColor(order.delivery_date)} font-weight-bold">Delivered</h7>
+                                <p class="progress-pills ${getStatusClass(order.delivery_date)} font-weight-bold mt-2 mb-2">
+                                    <small>${getStatus(order.delivery_date)}</small>
+                                </p>
+                                <small>${formatDate(order.delivery_date)}</small>
+                            </li>
+                            <li class="${getBackgroundClass(order.paid_date)}">
+                                <p class="text-secondary m-0">Step 5</p>
+                                <h7 class="${getTextColor(order.paid_date)} font-weight-bold">Payment</h7>
+                                <p class="progress-pills ${getStatusClass(order.paid_date)} font-weight-bold mt-2 mb-2">
+                                    <small>${getStatus(order.paid_date)}</small>
+                                </p>
+                                <small>${formatDate(order.paid_date)}</small>
+                            </li>
+                        </ul>
+                    </form>
+                </section>
+                `;
+                }
+            });
+        });
+    </script>
 
 </body>
 

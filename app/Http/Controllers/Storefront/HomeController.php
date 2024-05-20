@@ -9,6 +9,7 @@ use App\Models\Slider;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Attribute;
 use App\Models\Inventory;
 use App\Helpers\ListHelper;
@@ -137,6 +138,14 @@ class HomeController extends Controller
         // $orders = $this->order->all($fulfilment);
 
         return view('theme::public');
+    }
+
+    public function search(Request $request)
+    {
+        $order = Order::select(['id', 'po_number_ref', 'created_at','packed_date','shipping_date','delivery_date','paid_date'])
+            ->where('po_number_ref', $request->q)->get();;
+
+            return response()->json($order);
     }
 
     /**
