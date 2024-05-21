@@ -30,7 +30,7 @@ class RegisterMerchantRequest extends Request
             // 'shop_name' => 'required|string|max:255|unique:shops,name',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'agree' => 'required',
+            // 'agree' => 'required',
         ];
 
         if (is_subscription_enabled()) {

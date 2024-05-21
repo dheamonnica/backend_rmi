@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\System;
+use App\Helpers\ListHelper;
 use Illuminate\Support\Str;
 use App\Events\Shop\ShopCreated;
 use Illuminate\Support\Facades\DB;
@@ -61,7 +62,9 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm($plan = null)
     {
-        return view('auth.register', compact('plan'));
+        $countries = ListHelper::countries(); 
+
+        return view('auth.register', compact('countries', 'plan'));
     }
 
     /**
@@ -126,6 +129,12 @@ class RegisterController extends Controller
 
         try {
             $merchant = $this->create($request->all());
+
+            if($request['shop_name']) {
+                $merchant['role_id'] = 10;
+                $merchant['business_name'] = $request->input('shop_name');
+                $merchant['country_id'] = $request->input('country_id');
+            }
 
             if (!customer_can_register()) {
                 // Dispatching customer create job
