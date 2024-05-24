@@ -777,7 +777,6 @@
       @endif
       @endif --}}
 
-      {{-- @if (Auth::user()->isAdmin())
       @if (Auth::user()->isAdmin() || Auth::user()->isMerchant() || Gate::allows('report', \Incevio\Package\Wallet\Models\Wallet::class))
         <li class="treeview {{ Request::is('admin/report*') || Request::is('admin/shop/report*') ? 'active' : '' }}">
           <a href="javascript:void(0)">
@@ -852,7 +851,6 @@
           </ul>
         </li>
       @endif
-      @endif --}}
 
       <!--
         <li class="header">LABELS</li>
