@@ -36,6 +36,10 @@ class DashboardController extends Controller
             return view('admin.dashboard.platform');
         }
 
+        if (Auth::user()->role_id == 10) {
+            return view('admin.dashboard.vendor');
+        }
+
         return view('admin.dashboard.merchant');
     }
 

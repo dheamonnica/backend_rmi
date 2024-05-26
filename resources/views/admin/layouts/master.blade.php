@@ -122,7 +122,7 @@
         @include('admin.partials._global_notice')
 
         {{-- Listings Notice --}}
-        @if (Auth::user()->isFromMerchant())
+        @if (Auth::user()->isFromMerchant() && !auth()->user()->role_id == 10)
           @if (Auth::user()->hasBillingInfo() || !is_billing_info_required())
             @unless (Auth::user()->isVerified())
               <div class="alert alert-info alert-dismissible">

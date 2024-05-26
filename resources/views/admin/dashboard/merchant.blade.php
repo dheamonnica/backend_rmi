@@ -4,7 +4,7 @@
   @include('plugins.ionic')
 @endsection
 
-@section('content')
+{{-- @section('content')
   @include('admin.partials._check_misconfigured_subscription')
 
   <!-- Info boxes -->
@@ -449,7 +449,7 @@
     </div>
     <!-- /.col-*-* -->
   </div>
-@endsection
+@endsection --}}
 
 @section('page-script')
   @include('plugins.chart')

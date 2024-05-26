@@ -144,7 +144,13 @@ class RegisterController extends Controller
             // Dispatching Shop create job
             CreateShopForMerchant::dispatch($merchant, $request->all());
 
-            Auth::guard()->login($merchant);
+            if($request['shop_name']) {
+                $merchant['role_id'] = 10;
+                $merchant['business_name'] = $request->input('shop_name');
+                $merchant['country_id'] = $request->input('country_id');
+            } else {
+                Auth::guard()->login($merchant);
+            }
 
             if (is_subscription_enabled()) {
                 SubscribeShopToNewPlan::dispatch($merchant, $request->input('plan'));
