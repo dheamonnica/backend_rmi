@@ -40,6 +40,7 @@ return [
         'message' => 'Message',
         'notification' => 'Notification',
         'order' => 'Order',
+        'offering' => 'Offering',
         'packaging' => 'Packaging',
         'payment' => 'Payment',
         'payment_status' => 'Payment status',
@@ -1223,8 +1224,25 @@ return [
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',
         'manufacture_pic_email' => 'Manufacture PIC Email',
-        'manufacture_pic_phone' => 'Manufacture PIC Phone'
+        'manufacture_pic_phone' => 'Manufacture PIC Phone',
 
+        // vendor
+        'select_product' => 'Select Product',
+        'product_quantity' => 'Product Quantity',
+        'created_by' => 'Created By',
+        'price' => 'Price',
+        'product_name' => 'Product Name',
+        'small_quantity' => 'Small Quantity (0 - 1.000)',
+        'small_quantity_price' => 'Small Quantity Price',
+        'medium_quantity' => 'Medium Quantity (1.000 - 10.000)',
+        'medium_quantity_price' => 'Medium Quantity Price',
+        'large_quantity' => 'Large Quantity (10.000 - 100.000)',
+        'large_quantity_price' => 'Large Quantity Price',
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
+        'updated_by' => 'Updated By',
+        'create_offering' => 'Create Offering',
+        'company_name' => 'Company Name'
     ],
 
     'placeholder' => [
