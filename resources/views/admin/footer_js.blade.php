@@ -704,6 +704,78 @@
       ]
     }));
 
+    // Load offering list by Ajax
+    $('#offering-table').DataTable($.extend({}, dataTableOptions, {
+      "ajax": "{{ route('admin.admin.offering.getOfferings') }}",
+      "columns": [{
+          'data': 'checkbox',
+          'name': 'checkbox',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        },
+        {
+          'data': 'product',
+          'name': 'product'
+        },
+        {
+          'data': 'small_quantity_price',
+          'name': 'small_quantity_price'
+        },
+        {
+          'data': 'medium_quantity_price',
+          'name': 'medium_quantity_price'
+        },
+        {
+          'data': 'large_quantity_price',
+          'name': 'large_quantity_price'
+        },
+        {
+          'data': 'created_at',
+          'name': 'created_at',
+        },
+        {
+          'data': 'created_by',
+          'name': 'created_by',
+        },
+        {
+          'data': 'company_name',
+          'name': 'company_name',
+        },
+        {
+          'data': 'email',
+          'name': 'email',
+        },
+        {
+          'data': 'phone',
+          'name': 'phone',
+        },
+        {
+          'data': 'updated_at',
+          'name': 'updated_at',
+        },
+        {
+          'data': 'updated_by',
+          'name': 'updated_by',
+        },
+        {
+          'data': 'status',
+          'name': 'status',
+        },
+        @if(Auth::user()->isAdmin() || Auth::user()->isMerchant())
+        {
+          'data': 'option',
+          'name': 'option',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        }
+        @endif
+      ]
+    }));
+
     // Load category list by Ajax
     $('#all-categories-table').DataTable($.extend({}, dataTableOptions, {
       "ajax": "{{ route('admin.catalog.category.getMore') }}",

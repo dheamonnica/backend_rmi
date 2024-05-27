@@ -1,0 +1,1 @@
+<td>{{ $offering->status === 0 ? 'Pending' : 'Approve'}}</td>

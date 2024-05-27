@@ -8,6 +8,8 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Offering\OfferingRepository;
+use App\Repositories\Offering\EloquentOffering;
 use App\Contracts\PaymentServiceContract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
@@ -79,6 +81,8 @@ class AppServiceProvider extends ServiceProvider
             $className = $this->resolvePaymentDependency(Request::get('payment_method'));
             $this->app->bind(PaymentServiceContract::class, $className);
         }
+
+        $this->app->bind(OfferingRepository::class, EloquentOffering::class);
 
         // Ondemand Img manupulation
         $this->app->singleton(

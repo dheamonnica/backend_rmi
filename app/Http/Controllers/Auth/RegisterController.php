@@ -134,6 +134,7 @@ class RegisterController extends Controller
                 $merchant['role_id'] = 10;
                 $merchant['business_name'] = $request->input('shop_name');
                 $merchant['country_id'] = $request->input('country_id');
+                $merchant['phone'] = $request->input('phone');
             }
 
             if (!customer_can_register()) {

@@ -67,6 +67,14 @@
       <div class="help-block with-errors"></div>
     </div>
 
+    @if ($profile->phone)
+      <div class="form-group">
+        {!! Form::label('phone', trans('app.form.phone') . '*') !!}
+        {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => trans('app.placeholder.phone'), 'required']) !!}
+        <div class="help-block with-errors"></div>
+      </div>
+    @endif
+
     {{-- <div class="form-group">
       {!! Form::label('dob', trans('app.form.dob')) !!}
       <div class="input-group">

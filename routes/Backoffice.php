@@ -62,6 +62,9 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
             Admin\DashboardController::class, 'index'
         ])->name('admin.dashboard')->middleware('dashboard');
 
+        // vendor offering
+        include 'admin/Offering.php';
+
         Route::get('secretLogin/{user}', [
             Admin\DashboardController::class, 'secretLogin'
         ])->name('user.secretLogin');

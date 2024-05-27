@@ -118,6 +118,7 @@ class User extends Authenticatable
         'verification_token',
         'pic_name',
         'warehouse_name',
+        'phone',
     ];
 
     /**
