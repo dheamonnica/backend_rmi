@@ -841,6 +841,12 @@
                   <i class="fa fa-angle-double-right"></i> {{ trans('nav.visitors') }}
                 </a>
               </li>
+
+              <li class="{{ Request::is('admin/offering*') ? 'active' : '' }}">
+                <a href="{{ route('admin.offering.index') }}">
+                  <i class="fa fa-angle-double-right"></i> Offering Approval
+                </a>
+              </li>
             @elseif(Auth::user()->isMerchant())
               <li class="{{ Request::is('admin/shop/report/kpi*') ? 'active' : '' }}">
                 <a href="{{ route('admin.shop-kpi') }}">
