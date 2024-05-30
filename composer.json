@@ -36,6 +36,7 @@
         "league/flysystem-cached-adapter": "^1.1",
         "league/flysystem-rackspace": "^1.0",
         "league/glide-laravel": "^1.0",
+        "livewire/livewire": "^2.12",
         "mollie/mollie-api-php": "^2.63",
         "nao-pon/flysystem-google-drive": "~1.1",
         "paypal/paypal-checkout-sdk": "^1.0",
@@ -62,7 +63,7 @@
         "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
+        "barryvdh/laravel-debugbar": "*",
         "facade/ignition": "^2.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
@@ -88,20 +89,8 @@
             "Incevio\\Package\\": "packages/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "classmap": [
-            "packages"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
         }
     },
-    "classmap": [
-      "packages"
-    ],
-
   "autoload-dev": {
     "psr-4": {
       "Tests\\": "tests/"
