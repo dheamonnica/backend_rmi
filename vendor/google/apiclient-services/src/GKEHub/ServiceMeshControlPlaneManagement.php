@@ -20,12 +20,12 @@ namespace Google\Service\GKEHub;
 class ServiceMeshControlPlaneManagement extends \Google\Collection
 {
   protected $collection_key = 'details';
-  /**
-   * @var ServiceMeshStatusDetails[]
-   */
-  public $details;
   protected $detailsType = ServiceMeshStatusDetails::class;
   protected $detailsDataType = 'array';
+  /**
+   * @var string
+   */
+  public $implementation;
   /**
    * @var string
    */
@@ -44,6 +44,20 @@ class ServiceMeshControlPlaneManagement extends \Google\Collection
   public function getDetails()
   {
     return $this->details;
+  }
+  /**
+   * @param string
+   */
+  public function setImplementation($implementation)
+  {
+    $this->implementation = $implementation;
+  }
+  /**
+   * @return string
+   */
+  public function getImplementation()
+  {
+    return $this->implementation;
   }
   /**
    * @param string

@@ -28,6 +28,7 @@ return [
         'config' => 'Settings',
         'coupon' => 'Coupon',
         'customer' => 'Customer',
+        'customer_active' => 'Customer Active',
         'currency' => 'Currency',
         'dispute' => 'Dispute',
         'email_template' => 'Email template',
@@ -59,7 +60,7 @@ return [
         'ticket' => 'Ticket',
         'user' => 'User',
         'warehouse' => 'Warehouse',
-        'delivery_boy' => 'Delivery Boy'
+        'delivery_boy' => 'Delivery Boy',
     ],
 
     // Application Levels
@@ -792,6 +793,14 @@ return [
     'uninstall_app_license' => 'Uninstall license',
     'take_a_backup' => 'Take a backup',
 
+    'dashboard' => [
+        'customer_active' => 'Customer Active',
+        'total_all_customer_active' => 'Total All Customer Active',
+        'total_profit_exclude_ops' => 'Total Profit exclude Ops',
+        'total_all_order' => 'Total All Order',
+        'qty_pcs' => 'Quantity in Pcs',
+        'gross_value' => 'Gross Value'
+    ],
     'payment_method_type' => [
         'paypal' => [
             'name' => 'PayPal',

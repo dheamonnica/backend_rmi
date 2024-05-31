@@ -19,16 +19,14 @@ namespace Google\Service\Firestore;
 
 class RunQueryResponse extends \Google\Model
 {
-  /**
-   * @var Document
-   */
-  public $document;
   protected $documentType = Document::class;
   protected $documentDataType = '';
   /**
    * @var bool
    */
   public $done;
+  protected $explainMetricsType = ExplainMetrics::class;
+  protected $explainMetricsDataType = '';
   /**
    * @var string
    */
@@ -69,6 +67,20 @@ class RunQueryResponse extends \Google\Model
   public function getDone()
   {
     return $this->done;
+  }
+  /**
+   * @param ExplainMetrics
+   */
+  public function setExplainMetrics(ExplainMetrics $explainMetrics)
+  {
+    $this->explainMetrics = $explainMetrics;
+  }
+  /**
+   * @return ExplainMetrics
+   */
+  public function getExplainMetrics()
+  {
+    return $this->explainMetrics;
   }
   /**
    * @param string

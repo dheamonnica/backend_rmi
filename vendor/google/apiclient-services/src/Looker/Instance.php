@@ -19,10 +19,6 @@ namespace Google\Service\Looker;
 
 class Instance extends \Google\Model
 {
-  /**
-   * @var AdminSettings
-   */
-  public $adminSettings;
   protected $adminSettingsType = AdminSettings::class;
   protected $adminSettingsDataType = '';
   /**
@@ -33,26 +29,14 @@ class Instance extends \Google\Model
    * @var string
    */
   public $createTime;
-  /**
-   * @var CustomDomain
-   */
-  public $customDomain;
   protected $customDomainType = CustomDomain::class;
   protected $customDomainDataType = '';
-  /**
-   * @var DenyMaintenancePeriod
-   */
-  public $denyMaintenancePeriod;
   protected $denyMaintenancePeriodType = DenyMaintenancePeriod::class;
   protected $denyMaintenancePeriodDataType = '';
   /**
    * @var string
    */
   public $egressPublicIp;
-  /**
-   * @var EncryptionConfig
-   */
-  public $encryptionConfig;
   protected $encryptionConfigType = EncryptionConfig::class;
   protected $encryptionConfigDataType = '';
   /**
@@ -63,12 +47,12 @@ class Instance extends \Google\Model
    * @var string
    */
   public $ingressPublicIp;
-  /**
-   * @var DenyMaintenancePeriod
-   */
-  public $lastDenyMaintenancePeriod;
   protected $lastDenyMaintenancePeriodType = DenyMaintenancePeriod::class;
   protected $lastDenyMaintenancePeriodDataType = '';
+  /**
+   * @var string
+   */
+  public $linkedLspProjectNumber;
   /**
    * @var string
    */
@@ -77,26 +61,14 @@ class Instance extends \Google\Model
    * @var string
    */
   public $lookerVersion;
-  /**
-   * @var MaintenanceSchedule
-   */
-  public $maintenanceSchedule;
   protected $maintenanceScheduleType = MaintenanceSchedule::class;
   protected $maintenanceScheduleDataType = '';
-  /**
-   * @var MaintenanceWindow
-   */
-  public $maintenanceWindow;
   protected $maintenanceWindowType = MaintenanceWindow::class;
   protected $maintenanceWindowDataType = '';
   /**
    * @var string
    */
   public $name;
-  /**
-   * @var OAuthConfig
-   */
-  public $oauthConfig;
   protected $oauthConfigType = OAuthConfig::class;
   protected $oauthConfigDataType = '';
   /**
@@ -123,10 +95,6 @@ class Instance extends \Google\Model
    * @var string
    */
   public $updateTime;
-  /**
-   * @var UserMetadata
-   */
-  public $userMetadata;
   protected $userMetadataType = UserMetadata::class;
   protected $userMetadataDataType = '';
 
@@ -269,6 +237,20 @@ class Instance extends \Google\Model
   public function getLastDenyMaintenancePeriod()
   {
     return $this->lastDenyMaintenancePeriod;
+  }
+  /**
+   * @param string
+   */
+  public function setLinkedLspProjectNumber($linkedLspProjectNumber)
+  {
+    $this->linkedLspProjectNumber = $linkedLspProjectNumber;
+  }
+  /**
+   * @return string
+   */
+  public function getLinkedLspProjectNumber()
+  {
+    return $this->linkedLspProjectNumber;
   }
   /**
    * @param string

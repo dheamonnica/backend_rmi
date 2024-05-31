@@ -20,16 +20,16 @@ namespace Google\Service\Webfonts;
 class Webfont extends \Google\Collection
 {
   protected $collection_key = 'variants';
-  /**
-   * @var Axis[]
-   */
-  public $axes;
   protected $axesType = Axis::class;
   protected $axesDataType = 'array';
   /**
    * @var string
    */
   public $category;
+  /**
+   * @var string[]
+   */
+  public $colorCapabilities;
   /**
    * @var string
    */
@@ -90,6 +90,20 @@ class Webfont extends \Google\Collection
   public function getCategory()
   {
     return $this->category;
+  }
+  /**
+   * @param string[]
+   */
+  public function setColorCapabilities($colorCapabilities)
+  {
+    $this->colorCapabilities = $colorCapabilities;
+  }
+  /**
+   * @return string[]
+   */
+  public function getColorCapabilities()
+  {
+    return $this->colorCapabilities;
   }
   /**
    * @param string

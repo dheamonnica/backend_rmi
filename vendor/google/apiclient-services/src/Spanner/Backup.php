@@ -32,12 +32,10 @@ class Backup extends \Google\Collection
    * @var string
    */
   public $databaseDialect;
-  /**
-   * @var EncryptionInfo
-   */
-  public $encryptionInfo;
   protected $encryptionInfoType = EncryptionInfo::class;
   protected $encryptionInfoDataType = '';
+  protected $encryptionInformationType = EncryptionInfo::class;
+  protected $encryptionInformationDataType = 'array';
   /**
    * @var string
    */
@@ -126,6 +124,20 @@ class Backup extends \Google\Collection
   public function getEncryptionInfo()
   {
     return $this->encryptionInfo;
+  }
+  /**
+   * @param EncryptionInfo[]
+   */
+  public function setEncryptionInformation($encryptionInformation)
+  {
+    $this->encryptionInformation = $encryptionInformation;
+  }
+  /**
+   * @return EncryptionInfo[]
+   */
+  public function getEncryptionInformation()
+  {
+    return $this->encryptionInformation;
   }
   /**
    * @param string

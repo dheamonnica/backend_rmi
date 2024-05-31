@@ -19,14 +19,12 @@ namespace Google\Service\Firestore;
 
 class RunAggregationQueryResponse extends \Google\Model
 {
+  protected $explainMetricsType = ExplainMetrics::class;
+  protected $explainMetricsDataType = '';
   /**
    * @var string
    */
   public $readTime;
-  /**
-   * @var AggregationResult
-   */
-  public $result;
   protected $resultType = AggregationResult::class;
   protected $resultDataType = '';
   /**
@@ -34,6 +32,20 @@ class RunAggregationQueryResponse extends \Google\Model
    */
   public $transaction;
 
+  /**
+   * @param ExplainMetrics
+   */
+  public function setExplainMetrics(ExplainMetrics $explainMetrics)
+  {
+    $this->explainMetrics = $explainMetrics;
+  }
+  /**
+   * @return ExplainMetrics
+   */
+  public function getExplainMetrics()
+  {
+    return $this->explainMetrics;
+  }
   /**
    * @param string
    */

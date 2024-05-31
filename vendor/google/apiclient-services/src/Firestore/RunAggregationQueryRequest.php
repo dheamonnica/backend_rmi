@@ -19,20 +19,14 @@ namespace Google\Service\Firestore;
 
 class RunAggregationQueryRequest extends \Google\Model
 {
-  /**
-   * @var TransactionOptions
-   */
-  public $newTransaction;
+  protected $explainOptionsType = ExplainOptions::class;
+  protected $explainOptionsDataType = '';
   protected $newTransactionType = TransactionOptions::class;
   protected $newTransactionDataType = '';
   /**
    * @var string
    */
   public $readTime;
-  /**
-   * @var StructuredAggregationQuery
-   */
-  public $structuredAggregationQuery;
   protected $structuredAggregationQueryType = StructuredAggregationQuery::class;
   protected $structuredAggregationQueryDataType = '';
   /**
@@ -40,6 +34,20 @@ class RunAggregationQueryRequest extends \Google\Model
    */
   public $transaction;
 
+  /**
+   * @param ExplainOptions
+   */
+  public function setExplainOptions(ExplainOptions $explainOptions)
+  {
+    $this->explainOptions = $explainOptions;
+  }
+  /**
+   * @return ExplainOptions
+   */
+  public function getExplainOptions()
+  {
+    return $this->explainOptions;
+  }
   /**
    * @param TransactionOptions
    */

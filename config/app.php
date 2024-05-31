@@ -281,6 +281,8 @@ return [
         App\Providers\GoogleDriveServiceProvider::class,
         App\Providers\MysqlScoutServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ], $packages),
 
     /*
@@ -343,7 +345,7 @@ return [
         // 'Image' => 'Intervention\Image\Facades\Image',
         // 'Flash' => 'Laracasts\Flash\Flash',
         // 'Curl' => Ixudra\Curl\Facades\Curl::class,
-        // 'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
         'Chat'   => Musonza\Chat\Chat::class,
     ],

@@ -31,26 +31,22 @@ class SavedQuery extends \Google\Model
    * @var string
    */
   public $displayName;
-  /**
-   * @var LoggingQuery
-   */
-  public $loggingQuery;
   protected $loggingQueryType = LoggingQuery::class;
   protected $loggingQueryDataType = '';
   /**
    * @var string
    */
   public $name;
-  /**
-   * @var OpsAnalyticsQuery
-   */
-  public $opsAnalyticsQuery;
   protected $opsAnalyticsQueryType = OpsAnalyticsQuery::class;
   protected $opsAnalyticsQueryDataType = '';
   /**
    * @var string
    */
   public $updateTime;
+  /**
+   * @var string
+   */
+  public $visibility;
 
   /**
    * @param string
@@ -149,6 +145,20 @@ class SavedQuery extends \Google\Model
   public function getUpdateTime()
   {
     return $this->updateTime;
+  }
+  /**
+   * @param string
+   */
+  public function setVisibility($visibility)
+  {
+    $this->visibility = $visibility;
+  }
+  /**
+   * @return string
+   */
+  public function getVisibility()
+  {
+    return $this->visibility;
   }
 }
 

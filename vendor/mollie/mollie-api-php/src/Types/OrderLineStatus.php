@@ -39,9 +39,4 @@ class OrderLineStatus
      * The order line is completed.
      */
     public const STATUS_COMPLETED = "completed";
-
-    /**
-     * The order line is packed.
-     */
-    public const STATUS_PACKED = "packed";
 }

@@ -20,18 +20,12 @@ namespace Google\Service\Integrations;
 class GoogleCloudConnectorsV1EventingConfig extends \Google\Collection
 {
   protected $collection_key = 'additionalVariables';
-  /**
-   * @var GoogleCloudConnectorsV1ConfigVariable[]
-   */
-  public $additionalVariables;
   protected $additionalVariablesType = GoogleCloudConnectorsV1ConfigVariable::class;
   protected $additionalVariablesDataType = 'array';
-  /**
-   * @var GoogleCloudConnectorsV1AuthConfig
-   */
-  public $authConfig;
   protected $authConfigType = GoogleCloudConnectorsV1AuthConfig::class;
   protected $authConfigDataType = '';
+  protected $deadLetterConfigType = GoogleCloudConnectorsV1EventingConfigDeadLetterConfig::class;
+  protected $deadLetterConfigDataType = '';
   /**
    * @var bool
    */
@@ -40,20 +34,14 @@ class GoogleCloudConnectorsV1EventingConfig extends \Google\Collection
    * @var string
    */
   public $eventsListenerIngressEndpoint;
-  /**
-   * @var GoogleCloudConnectorsV1AuthConfig
-   */
-  public $listenerAuthConfig;
   protected $listenerAuthConfigType = GoogleCloudConnectorsV1AuthConfig::class;
   protected $listenerAuthConfigDataType = '';
   /**
    * @var bool
    */
   public $privateConnectivityEnabled;
-  /**
-   * @var GoogleCloudConnectorsV1DestinationConfig
-   */
-  public $registrationDestinationConfig;
+  protected $proxyDestinationConfigType = GoogleCloudConnectorsV1DestinationConfig::class;
+  protected $proxyDestinationConfigDataType = '';
   protected $registrationDestinationConfigType = GoogleCloudConnectorsV1DestinationConfig::class;
   protected $registrationDestinationConfigDataType = '';
 
@@ -84,6 +72,20 @@ class GoogleCloudConnectorsV1EventingConfig extends \Google\Collection
   public function getAuthConfig()
   {
     return $this->authConfig;
+  }
+  /**
+   * @param GoogleCloudConnectorsV1EventingConfigDeadLetterConfig
+   */
+  public function setDeadLetterConfig(GoogleCloudConnectorsV1EventingConfigDeadLetterConfig $deadLetterConfig)
+  {
+    $this->deadLetterConfig = $deadLetterConfig;
+  }
+  /**
+   * @return GoogleCloudConnectorsV1EventingConfigDeadLetterConfig
+   */
+  public function getDeadLetterConfig()
+  {
+    return $this->deadLetterConfig;
   }
   /**
    * @param bool
@@ -140,6 +142,20 @@ class GoogleCloudConnectorsV1EventingConfig extends \Google\Collection
   public function getPrivateConnectivityEnabled()
   {
     return $this->privateConnectivityEnabled;
+  }
+  /**
+   * @param GoogleCloudConnectorsV1DestinationConfig
+   */
+  public function setProxyDestinationConfig(GoogleCloudConnectorsV1DestinationConfig $proxyDestinationConfig)
+  {
+    $this->proxyDestinationConfig = $proxyDestinationConfig;
+  }
+  /**
+   * @return GoogleCloudConnectorsV1DestinationConfig
+   */
+  public function getProxyDestinationConfig()
+  {
+    return $this->proxyDestinationConfig;
   }
   /**
    * @param GoogleCloudConnectorsV1DestinationConfig
