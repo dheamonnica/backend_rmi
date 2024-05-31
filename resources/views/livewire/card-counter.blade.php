@@ -6,7 +6,11 @@
             <img src="/images/circle.svg" class="card-img-absolute" alt="circle-image">
             <h4 class="font-weight-normal mb-3">{{ trans('app.dashboard.customer_active') }} <i class="icon ion-md-people float-right"></i>
             </h4>
+<<<<<<< HEAD
             <h2 class="mb-5"> {{ $customer_count }} </h2>
+=======
+            <h2 class="mb-5"> 0 </h2>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
             <h6 class="card-text"><i class="icon ion-md-add"></i> {{ trans('app.dashboard.total_all_customer_active', ['new' => 0, 'model' => trans('app.dashboard.customer_active')]) }}</h6>
             </div>
         </div>

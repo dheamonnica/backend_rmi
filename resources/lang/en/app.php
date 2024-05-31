@@ -29,7 +29,10 @@ return [
         'coupon' => 'Coupon',
         'customer' => 'Customer',
         'customer_active' => 'Customer Active',
+<<<<<<< HEAD
         'customer_active' => 'Customer Active',
+=======
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
         'currency' => 'Currency',
         'dispute' => 'Dispute',
         'email_template' => 'Email template',
@@ -63,7 +66,6 @@ return [
         'user' => 'User',
         'warehouse' => 'Warehouse',
         'delivery_boy' => 'Delivery Boy',
-        'budget' => 'Budget'
     ],
 
     // Application Levels

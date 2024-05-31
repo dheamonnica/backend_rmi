@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Charts\VisitorsOfMonths;
+<<<<<<< HEAD
 use App\Helpers\Status;
 use App\Models\Customer;
 use App\Models\Order;
@@ -12,12 +13,19 @@ use App\Repositories\Warehouse\WarehouseRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\Order\OrderRepository;
+=======
+use App\Models\Customer;
+use App\Models\User;
+use App\Repositories\Warehouse\WarehouseRepository;
+use Illuminate\Support\Facades\DB;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
 
 class Dashboard extends Component
 {
     public $customer_count = 0;
     public $new_customer_last_30_days = 0;
 
+<<<<<<< HEAD
     public $total_profit = 0;
     public $total_order_created = 0;
 
@@ -28,6 +36,23 @@ class Dashboard extends Component
     public $packing_process = 0;
     public $delivery_process = 0;
     public $payment_process = 0;
+=======
+    public $merchant_count = 0;
+    public $new_merchant_last_30_days = 0;
+
+    public $total_order_count = 0;
+    public $todays_all_order_count = 0;
+    public $yesterdays_all_order_count = 0;
+
+    public $todays_sale_amount = 0;
+    public $yesterdays_sale_amount = 0;
+
+    public $pending_verifications= 0;
+    public $pending_approvals= 0;
+    public $dispute_count= 0;
+    public $last_60days_dispute_count= 0;
+    public $last_30days_dispute_count= 0;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
 
     //option
     public $customers;
@@ -50,7 +75,11 @@ class Dashboard extends Component
     public $userName = '';
 
     //filter #2
+<<<<<<< HEAD
     public $selectedIntervalOption = '';
+=======
+    public $selectedIntervalOption = 'WEEK';
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     public $selectedStartDate = '';
     public $selectedEndDate = '';
     public $selectedYearWeek = '';
@@ -70,6 +99,7 @@ class Dashboard extends Component
         'monthEndUpdated' => 'updatedselectedYearMonthEnd',
         'yearStartUpdated' => 'updatedselectedYearStart',
         'yearEndUpdated' => 'updatedselectedYearEnd',
+<<<<<<< HEAD
         'resetTimeFrameFilter' => 'resettingTimeFrameFilter',
     ];
     //card
@@ -89,6 +119,9 @@ class Dashboard extends Component
     public $table5_data;
     public $table6_data;
     public $table7_data;
+=======
+    ];
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
 
     public function mount()
     {
@@ -107,6 +140,17 @@ class Dashboard extends Component
             ->groupBy('c.name', 'cp.category_id')
             ->select('cp.category_id', 'c.name')
             ->pluck('c.name', 'cp.category_id');
+<<<<<<< HEAD
+=======
+        $this->category_groups = DB::table('products as p')
+            ->leftJoin('category_product as cp', 'p.id', '=', 'cp.product_id')
+            ->leftJoin('categories as c', 'cp.category_id', '=', 'c.id')
+            ->leftJoin('category_sub_groups as csg', 'c.category_sub_group_id', '=', 'csg.id')
+            ->where('p.manufacture_skuid', '!=', '')
+            ->groupBy('c.name', 'cp.category_id')
+            ->select('cp.category_id', 'c.name')
+            ->pluck('c.name', 'cp.category_id');
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
         $this->category_sub_groups = DB::table('products as p')
             ->leftJoin('category_product as cp', 'p.id', '=', 'cp.product_id')
             ->leftJoin('categories as c', 'cp.category_id', '=', 'c.id')
@@ -115,6 +159,7 @@ class Dashboard extends Component
             ->groupBy('csg.name', 'c.category_sub_group_id')
             ->select('c.category_sub_group_id', 'csg.name')
             ->pluck('csg.name', 'c.category_sub_group_id');
+<<<<<<< HEAD
 
         $this->customer_count = DB::table('orders')->whereNotNull('customer_id')
             ->distinct()->count('customer_id');
@@ -344,6 +389,8 @@ class Dashboard extends Component
           $this->table6_data = json_decode(json_encode($worst_product), true);
           $this->table7_data = json_decode(json_encode($kpi_users), true);
         
+=======
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function render()
@@ -351,6 +398,7 @@ class Dashboard extends Component
         return view('livewire.dashboard');
     }
 
+<<<<<<< HEAD
     public function clear()
     {
         $this->selectedWarehouseOption = '';
@@ -369,6 +417,8 @@ class Dashboard extends Component
         $this->updateTableSection();
     }
 
+=======
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     public function updatedSelectedIntervalOption()
     {
         $this->dispatchBrowserEvent('reinitialize-datepicker', ['interval' => $this->selectedIntervalOption]);
@@ -382,56 +432,86 @@ class Dashboard extends Component
 
     public function updatedSelectedClientOption($value)
     {
+<<<<<<< HEAD
         $this->selectedClientOption = $value;
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
         $this->updateTableSection();
+=======
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedSelectedClientGroupOption($value)
     {
+<<<<<<< HEAD
         $this->selectedClientGroupOption = $value;
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
         $this->updateTableSection();
+=======
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedSelectedCategorySubGroupOption($value)
     {
+<<<<<<< HEAD
         $this->selectedCategorySubGroupOption = $value;
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
         $this->updateTableSection();
+=======
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedSelectedOrderStatusOption($value)
     {
+<<<<<<< HEAD
         $this->selectedOrderStatusOption = $value;
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
         $this->updateTableSection();
+=======
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedSelectedPaymentStatusOption($value)
     {
+<<<<<<< HEAD
         $this->selectedPaymentStatusOption = $value;
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
         $this->updateTableSection();
+=======
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedProductName($value)
     {
+<<<<<<< HEAD
         $this->selectedproductName = $value;
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
         $this->updateTableSection();
+=======
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedUserName($value)
@@ -468,23 +548,36 @@ class Dashboard extends Component
 
     public function updatedselectedYearMonthStart($value)
     {
+<<<<<<< HEAD
         $this->selectedYearMonthStart = $value;
+=======
+        $this->selectedWeek = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedselectedYearMonthEnd($value)
     {
+<<<<<<< HEAD
         $this->selectedYearMonthEnd = $value;
+=======
+        $this->selectedWeek = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedselectedYearStart($value)
     {
+<<<<<<< HEAD
         $this->selectedYearStart = $value;
+=======
+        $this->selectedWeek = $value;
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
     }
 
     public function updatedselectedYearEnd($value)
     {
         $this->selectedWeek = $value;
     }
+<<<<<<< HEAD
 
     public function updateTableSection()
     {
@@ -1720,4 +1813,6 @@ class Dashboard extends Component
         $this->table7_data = json_decode(json_encode($kpi_users), true);
     }
 
+=======
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
 }

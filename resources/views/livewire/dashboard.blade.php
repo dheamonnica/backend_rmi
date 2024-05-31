@@ -6,7 +6,11 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-2">
+<<<<<<< HEAD
                     <h3>{{ trans('app.custom_filters')}}</h3>
+=======
+                    <h3>{{ trans('app.filters')}}</h3>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                   </div>
                 </div>
                 <div class="row">
@@ -58,7 +62,11 @@
                     <div class="form-group">
                       <label>{{ trans('app.category_sub_group') }}</label>
                       <select style="width: 100%" id="select_category_sub_group" wire:model="selectedCategorySubGroupOption" class="form-control" >
+<<<<<<< HEAD
                         <option value="">{{ trans('app.select_category_sub_group') }}</option>
+=======
+                        <option value="">{{ trans('app.category_sub_group') }}</option>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                         @foreach ($category_sub_groups as $key => $item)  
                           <option value="{{ $key }}">{{ $item }}</option>
                         @endforeach
@@ -83,7 +91,11 @@
                     <div class="form-group">
                       <label>{{ trans('app.order_status') }}</label>
                       <select id="orderStatus" class="form-control" name="order_status" wire:model="selectedOrderStatusOption" >
+<<<<<<< HEAD
                         <option value="all" @if (request()->get('order_status') == 'all') selected @endif>{{ trans('app.all') }}</option>
+=======
+                        <option value="" @if (request()->get('order_status') == 'all') selected @endif>{{ trans('app.all') }}</option>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                         <option value="STATUS_WAITING_FOR_PAYMENT" @if (request()->get('order_status') == 'STATUS_WAITING_FOR_PAYMENT') selected @endif>{{ trans('app.waiting_for_payment') }}</option>
                         <option value="STATUS_CONFIRMED" @if (request()->get('order_status') == 'STATUS_CONFIRMED') selected @endif>{{ trans('app.confirmed') }}</option>
                         <option value="STATUS_FULFILLED" @if (request()->get('order_status') == 'STATUS_FULFILLED') selected @endif>{{ trans('app.fulfilled') }}</option>
@@ -114,23 +126,35 @@
                   <div class="col-md-2 nopadding-left">
                     <div class="form-group">
                       <label>&nbsp;</label>
+<<<<<<< HEAD
                       <button type="button" class="btn btn-default pull-right" name="clear" id="clear"><i class="fa fa-caret-left"></i> {{ trans('app.clear') }}</button>
+=======
+                      <button type="button" class="btn btn-default pull-right" name="search" value="1"><i class="fa fa-caret-left"></i> {{ trans('app.clear') }}</button>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                     </div>
                   </div>
                 </div>
 
                 <hr>
                 <div class="row">
+<<<<<<< HEAD
                   <div class="col-md-2">
                     <h3>{{ trans('app.timeframe_filters')}}</h3>
                   </div>
+=======
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                   <div class="col-md-2 nopadding-right">
                     <div class="form-group">
                       <label>{{ trans('app.interval') }}</label>
                       <select id="time_interval"class="form-control" name="interval" wire:model="selectedIntervalOption" >
+<<<<<<< HEAD
                         <option value="" selected>{{ trans('app.select_timeframe_type') }}</option>
                         <option value="DAILY">{{ trans('app.daily') }}</option>
                         {{-- <option value="WEEK">{{ trans('app.week') }}</option> --}}
+=======
+                        <option value="DAILY">{{ trans('app.daily') }}</option>
+                        <option value="WEEK">{{ trans('app.week') }}</option>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                         <option value="MONTH">{{ trans('app.month') }}</option>
                         <option value="YEAR">{{ trans('app.year') }}</option>
                       </select>
@@ -166,16 +190,27 @@
                     <div class="col-md-2 nopadding-right">
                       <div class="form-group">
                         <label>{{ trans('app.month_start') }}</label>
+<<<<<<< HEAD
                         <input type="text" id="monthStartPicker" wire:model="selectedYearMonthStart" class="form-control">
+=======
+                        <input type="text" id="yearMonthStartPicker" wire:model="selectedYearMonthStart" class="form-control">
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                       </div>
                     </div>
                     <div class="col-md-2 nopadding-right">
                       <div class="form-group">
                         <label>{{ trans('app.month_end') }}</label>
+<<<<<<< HEAD
                         <input type="text" id="monthEndPicker" wire:model="selectedYearMonthEnd" class="form-control">
                       </div>
                     </div>
                   @elseif ($selectedIntervalOption == 'MONTH')  
+=======
+                        <input type="text" id="yearMonthEndPicker" wire:model="selectedYearMonthEnd" class="form-control">
+                      </div>
+                    </div>
+                  @else  
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                     <div class="col-md-2 nopadding-right ">
                       <div class="form-group">
                         <label>{{ trans('app.year_start') }}</label>
@@ -188,16 +223,22 @@
                         <input type="text" id="yearEndPicker" wire:model="selectedYearEnd" class="form-control">
                       </div>
                     </div>
+<<<<<<< HEAD
                   @else
                     <div></div>
                   @endif
                 </div> 
+=======
+                  @endif
+                </div>  
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
               </div>
             </div>
           </div>
         </div>
     </div>
 
+<<<<<<< HEAD
     {{-- <div class="row">
       <div class="col-sm-12">
         <div id="filter-panel">
@@ -424,11 +465,25 @@
         </div>
       </div>
 
+=======
+    <div class="row dashboard-total">
+
+      {{-- @dump([
+          'warehouse' => $selectedWarehouseOption,
+          'client' => $selectedClientOption,
+          'client_group' => $selectedClientGroupOption,
+          'category_group' => $selectedCategoryGroupOption,
+          'category_sub_group' => $selectedCategorySubGroupOption,
+          'order_status' => $selectedOrderStatusOption,
+          'payment_status' => $selectedPaymentStatusOption,
+      ]) --}}
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
       <div class="row">
         <div class="col-sm-12">
           <div id="filter-panel">
             <div class="panel panel-default">
               <div class="panel-body">
+<<<<<<< HEAD
                   <div class="row">
                     <div class="col-md-12">
                       <x-table :header="[
@@ -535,11 +590,30 @@
                       />
                     </div>
                   </div>
+=======
+                <div class="row">
+                    <div class="col-md-2 nopadding-right">
+                  Filter value : <br> 
+                  warehouse : {{ $selectedWarehouseOption }} <br>
+                  client : {{ $selectedClientOption }} <br>
+                  client_group : {{ $selectedClientGroupOption }} <br>
+                  category group : {{ $selectedCategoryGroupOption }} <br>
+                  category sub group : {{ $selectedCategorySubGroupOption }} <br>
+                  order status : {{ $selectedOrderStatusOption }} <br>
+                  payment status : {{ $selectedPaymentStatusOption }} <br>
+                  username : {{ $productName }} <br>
+                  product name : {{ $userName }} <br>
+                  interval: {{ $selectedIntervalOption }} <br>
+                  start_date: {{ $selectedStartDate }} <br>
+                  end_date : {{ $selectedEndDate }} <br>
+                    </div>
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                 </div>
               </div>
             </div>
           </div>
         </div>
+<<<<<<< HEAD
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
@@ -603,11 +677,125 @@
             @this.emit(livewireEnd, e.format(0, optionsEnd.format));
           });
 
+=======
+      </div>
+        
+      @livewire('card-counter',[
+        'customer_count' => $customer_count,
+        'new_customer_last_30_days' => $new_customer_last_30_days,
+        'merchant_count' => $merchant_count,
+        'new_merchant_last_30_days' => $new_merchant_last_30_days,
+        'total_order_count' => $total_order_count,
+        'todays_all_order_count' => $todays_all_order_count,
+        'yesterdays_all_order_count' => $yesterdays_all_order_count,
+        'todays_sale_amount' => $todays_sale_amount,
+        'yesterdays_sale_amount' => $yesterdays_sale_amount,
+      ])
+
+      @livewire('info-boxes', [
+        'pending_verifications' => $pending_verifications,
+        'pending_approvals' => $pending_approvals,
+        'dispute_count' => $dispute_count,
+        'last_60days_dispute_count' => $last_60days_dispute_count,
+        'last_30days_dispute_count' => $last_30days_dispute_count,
+      ])
+
+      {{-- @livewire('po-chart-all-filter')
+
+      <div class="row">
+        @livewire('po-chart-time-filter', [ 'chart ' => $chart])
+  
+        @livewire('warehouse-pie-chart')
+      </div> --}}
+    </div>
+
+    {{-- <div class="row dashboard-ticket-section">
+      @livewire('customer-table')
+
+      @livewire('warehouse-table')
+
+      @livewire('log-activity-table')
+
+      <div class="row dashboard-product-section">
+        @livewire('top-worst-product-table')
+
+        @livewire('latest-product-table')
+      </div>
+
+      <div class="row dashboard-product-section">
+        @livewire('stock-table')
+
+        @livewire('key-performance-table')
+      </div> --}}
+    {{-- </div> --}}
+    {{-- <div class="row">
+        <div class="col-sm-12">
+            @include('admin.partials.reports.timeframe')
+        </div>
+    </div> --}}
+</div>
+
+<script>
+  function initializeDatepicker(interval) {
+          $('#datepicker').datepicker('destroy'); // Destroy any existing datepicker
+          let options = {};
+
+          switch(interval) {
+              case 'DAILY':
+                  $('#datepicker_start_date').datepicker({
+                      format: 'yyyy-mm-dd'
+                  }).on('changeDate', function(e) {
+                      @this.set('startDateUpdated', e.format(0, 'yyyy-mm-dd'));
+                  });
+
+                  $('#datepicker_end_date').datepicker({
+                      format: 'yyyy-mm-dd'
+                  }).on('changeDate', function(e) {
+                      @this.set('endDateUpdated', e.format(0, 'yyyy-mm-dd'));
+                  });
+                  break;
+              case 'WEEK':
+
+                  $('#yearPicker').datepicker({ format: 'yyyy', startView: 'years', minViewMode: 'years', autoclose: true }).on('changeDate', function(e) {
+                      @this.set('yearWeekUpdated', e.format(0, 'yyyy'));
+                  });
+
+                  $('#weekPicker').datepicker({ format: 'yyyy-WW', autoclose: true, calendarWeeks: true }).on('changeDate', function(e) {
+                      @this.set('weekUpdated', e.format(0, 'yyyy-WW'));
+                  });
+                  break;
+              case 'MONTH':
+                  options = { format: 'yyyy-mm', startView: 'months', minViewMode: 'months', autoclose: true };
+
+
+                  $('#yearMonthStartPicker').datepicker(options).on('changeDate', function(e) {
+                      @this.set('monthStartUpdated', e.format(0, options.format));
+                  });
+
+
+                  $('#yearMonthEndPicker').datepicker(options).on('changeDate', function(e) {
+                      @this.set('monthEndUpdated', e.format(0, options.format));
+                  });
+                  break;
+              case 'YEAR':
+                  options = { format: 'yyyy-mm', startView: 'months', minViewMode: 'months', autoclose: true };
+
+                  $('#yearMonthStartPicker').datepicker(options).on('changeDate', function(e) {
+                      @this.set('yearStartUpdated', e.format(0, options.format));
+                  });
+
+                  $('#yearMonthEndPicker').datepicker(options).on('changeDate', function(e) {
+                      @this.set('yearEndUpdated', e.format(0, options.format));
+                  });
+                  break;
+          }
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
       }
 
   document.addEventListener('livewire:load', function () {
       // $('#select_warehouse').select2();
 
+<<<<<<< HEAD
       $('#select_warehouse').on('change', function (e) {
           // var data = $('#select_warehouse').select2("val");
           @this.emit('updatedCustomerCount');
@@ -616,11 +804,85 @@
       $('#clear').on('click', function (e) {
           @this.emit('resetFilters');
       });
+=======
+      // $('#select_warehouse').on('change', function (e) {
+      //     var data = $('#select_warehouse').select2("val");
+      //     @this.set('selectedWarehouseOption', data);
+      // });
+
+      // $('#select_client').select2({
+      //   minimumInputLength: 3,
+      // });
+
+      // $('#select_client').on('change', function (e) {
+      //     var data = $('#select_client').select2("val");
+      //     @this.set('selectedClientOption', data);
+      // });
+
+      // $('#select_client_group').select2({
+      //   placeholder: "{{ trans('app.select_client_group') }}",
+      //   allowClear: true, 
+      //   minimumInputLength: 3,
+      // });
+
+      // $('#select_client_group').on('change', function (e) {
+      //     var data = $('#select_client_group').select2("val");
+      //     @this.set('selectedClientGroupOption', data);
+      // });
+
+      // $('#select_category_group').select2({
+      //   minimumInputLength: 3,
+      // });
+
+      // $('#select_category_group').on('change', function (e) {
+      //     var data = $('#select_category_group').select2("val");
+      //     @this.set('selectedCategoryGroupOption', data);
+      // });
+
+      // $('#select_category_sub_group').select2({
+      //   minimumInputLength: 3,
+      // });
+
+      // $('#select_category_sub_group').on('change', function (e) {
+      //     var data = $('#select_category_sub_group').select2("val");
+      //     @this.set('selectedCategorySubGroupOption', data);
+      // });
+
+      // $('#orderStatus').select2({
+      //     minimumResultsForSearch: -1
+      // });
+
+      // $('#orderStatus').on('change', function (e) {
+      //     var data = $('#orderStatus').select2("val");
+      //     @this.set('selectedOrderStatusOption', data);
+      // });
+
+      // $('#paymentStatus').select2({
+      //     minimumResultsForSearch: -1
+      // });
+
+      // $('#paymentStatus').on('change', function (e) {
+      //     var data = $('#paymentStatus').select2("val");
+      //     @this.set('selectedPaymentStatusOption', data);
+      // });
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
 
       initializeDatepicker(@this.selectedIntervalOption);
 
       window.addEventListener('reinitialize-datepicker', event => {
           initializeDatepicker(event.detail.interval);
       });
+<<<<<<< HEAD
+=======
+
+      // $('#yearPicker').datepicker({
+      //     format: "yyyy",
+      //     viewMode: "years",
+      //     minViewMode: "years",
+      //     autoclose: true
+      // }).on('changeDate', function(e) {
+      //     @this.emit('yearWeekUpdated', e.format(0, 'yyyy'));
+      // });
+>>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
   });
 </script>
