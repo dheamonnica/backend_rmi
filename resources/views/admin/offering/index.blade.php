@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-    <div class="box">
-        <div class="content">
-            <div class="box-tools pull-right">
+    <div class="">
+        <div class="box">
+            <div class="box-tools pull-right p-2">
                 <a href="javascript:void(0)" data-link="{{ route('admin.offering.create') }}"
                     class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.form.create_offering') }}</a>
             </div>
-            <div style="padding-top: 50px;">
+            <div style="padding-top: 50px;padding-left:10px;padding-right:10px">
                 <table class="table table-hover" id="offering-table">
                     <thead>
                         <tr>
