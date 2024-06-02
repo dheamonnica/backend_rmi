@@ -7,6 +7,7 @@ use App\Repositories\BaseRepository;
 use App\Repositories\EloquentRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EloquentOffering extends EloquentRepository implements BaseRepository, OfferingRepository
 {
@@ -32,5 +33,10 @@ class EloquentOffering extends EloquentRepository implements BaseRepository, Off
         $offering = parent::store($request);
 
         return $offering;
+    }
+
+    public function getDatabyUser($user_id)
+    {
+        return DB::table('offering')->where('created_by', $user_id)->get();
     }
 }
