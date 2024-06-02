@@ -334,7 +334,7 @@
                   @if($order->order_status_id === 10)
                     <a href="javascript:void(0)" data-link="{{ route('admin.order.order.fulfillment', $order) }}" class='ajax-modal-btn' style="color: white">
                       <button type="submit" class="btn btn-lg btn-danger">
-                          FULFILL ORDER 
+                          SHIPMENT 
                       </button>
                     </a>
                   @endif
