@@ -5,7 +5,13 @@
     <ul class="sidebar-menu">
       <li class="{{ Request::is('admin/dashboard*') ? 'active' : '' }}">
         <a href="{{ url('admin/dashboard') }}">
-          <i class="fa fa-dashboard"></i> <span>{{ trans('nav.dashboard') }}</span>
+          <i class="fa fa-dashboard"></i> <span>
+            @if(Auth::user()->isAdmin() || Auth::user()->isMerchant())
+              {{ trans('nav.dashboard') }}
+            @else
+              Offering Status
+            @endif
+          </span>
         </a>
       </li>
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Offering extends BaseModel
 {
@@ -34,7 +35,7 @@ class Offering extends BaseModel
     ];
 
     public function getProductName() {
-        return $this->belongsTo(Inventory::class, 'product_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function getCreatedOfferedByName() {
@@ -43,5 +44,10 @@ class Offering extends BaseModel
 
     public function getUpdatedOfferedByName() {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function getDatabyUser($user_id)
+    {
+        return DB::table('offering')->where('created_by', $user_id)->get();
     }
 }

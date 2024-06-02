@@ -1,1 +1,1 @@
-<td>{{$offering->getProductName->title}}</td>
+<td>{{$offering->getProductName->name}}</td>

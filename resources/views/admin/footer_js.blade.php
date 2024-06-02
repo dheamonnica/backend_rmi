@@ -705,7 +705,7 @@
     }));
 
     // Load offering list by Ajax
-    $('#offering-table').DataTable($.extend({}, dataTableOptions, {
+    var tableOffering = $('#offering-table').DataTable($.extend({}, dataTableOptions, {
       "ajax": "{{ route('admin.admin.offering.getOfferings') }}",
       "columns": [{
           'data': 'checkbox',
@@ -718,6 +718,7 @@
         {
           'data': 'product',
           'name': 'product'
+          
         },
         {
           'data': 'small_quantity_price',
@@ -731,6 +732,7 @@
           'data': 'large_quantity_price',
           'name': 'large_quantity_price'
         },
+        @if (Auth::user()->isAdmin() || Auth::user()->isMerchant())
         {
           'data': 'created_at',
           'name': 'created_at',
@@ -759,6 +761,7 @@
           'data': 'updated_by',
           'name': 'updated_by',
         },
+        @endif
         {
           'data': 'status',
           'name': 'status',
@@ -775,6 +778,9 @@
         @endif
       ]
     }));
+
+    // Filter the 'created_by' column with the name of the authenticated user
+    tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
 
     // Load category list by Ajax
     $('#all-categories-table').DataTable($.extend({}, dataTableOptions, {

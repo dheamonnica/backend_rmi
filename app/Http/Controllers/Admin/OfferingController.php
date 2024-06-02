@@ -10,6 +10,7 @@ use App\Repositories\Offering\OfferingRepository;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Models\Inventory;
+use App\Models\Product;
 
 class OfferingController extends Controller
 {
@@ -105,7 +106,7 @@ class OfferingController extends Controller
      */
     public function create()
     {
-        $inventory = Inventory::available()->get()->pluck('title', 'id')->toArray();
+        $inventory = Product::get()->pluck('name', 'id')->toArray();
         return view('admin.offering._create', compact('inventory'));
     }
 

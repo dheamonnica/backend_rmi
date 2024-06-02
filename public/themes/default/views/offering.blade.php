@@ -168,6 +168,7 @@
                         </div>
                     </div>
                     <a href="/register" class="btn btn-primary mt-4">REGISTER NOW</a>
+                    <a href="/login" class="btn btn-primary mt-4">LOGIN</a>
                 </div>
             </div>
         </div>
