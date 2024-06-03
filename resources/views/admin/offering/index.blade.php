@@ -6,14 +6,38 @@
 
 @section('content')
     <div class="">
-        <div class="box">
-            <div class="box-tools pull-right p-2">
-                @if (!Auth::user()->isAdmin() || !Auth::user()->isMerchant())
-                    <a href="javascript:void(0)" data-link="{{ route('admin.offering.create') }}"
-                        class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.form.create_offering') }}</a>
-                @endif
+
+        <div class="box border-small p-2">
+            <div class="box-header with-border">
+                <div class="box-tools pull-right p-2">
+                    @if (!Auth::user()->isAdmin() || !Auth::user()->isMerchant())
+                        <a href="javascript:void(0)" data-link="{{ route('admin.offering.create') }}"
+                            class="ajax-modal-btn btn btn-new btn-flat">{{ trans('app.form.create_offering') }}</a>
+                    @endif
+                </div>
+                <div class="pull-left">
+                    <select id="productFilter" class="btn btn-sm btn-default">
+                        <option value="0" selected>{{ 'Filter Product Name' }}</option>
+                        <option value="0">{{ trans('app.all_orders') }}</option>
+                        @foreach ($products as $product)
+                            <option value="{{ $product }}">{{ $product }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div style="padding-top: 50px;padding-left:10px;padding-right:10px;">
+            {{-- <div class="container row m-0 p-0">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        {!! Form::label('product_id', trans('app.form.select_product') . '*', ['class' => 'with-help']) !!}
+                        {!! Form::select('product_id', $products, null, [
+                            'class' => 'form-control select2-normal',
+                            'required',
+                        ]) !!}
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div> --}}
+            <div>
                 <div style="overflow: auto">
                     <table class="table table-hover" id="offering-table" style="width: 1500px;">
                         <thead>
@@ -38,9 +62,7 @@
                                     <th>{{ trans('app.form.updated_by') }}</th>
                                 @endif
                                 <th>{{ trans('app.form.status') }}</th>
-                                @if (Auth::user()->isAdmin() || Auth::user()->isMerchant())
-                                    <th>{{ trans('app.form.option') }}</th>
-                                @endif
+                                <th>{{ trans('app.form.option') }}</th>
                             </tr>
                         </thead>
                         <tbody id="massSelectArea">

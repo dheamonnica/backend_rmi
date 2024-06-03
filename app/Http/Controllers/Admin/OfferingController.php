@@ -39,17 +39,19 @@ class OfferingController extends Controller
      */
     public function index()
     {
+        $products = Product::get()->pluck('name', 'id')->toArray();
+
         $offerings = $this->offering->all();
 
         $trashes = $this->offering->trashOnly();
 
-        return view('admin.offering.index', compact('offerings', 'trashes'));
+        return view('admin.offering.index', compact('products', 'offerings', 'trashes'));
     }
 
     public function getOfferings(Request $request)
     {
         $offerings = $this->offering->all();
-        
+
         return Datatables::of($offerings)
             ->addColumn('checkbox', function ($offering) {
                 return view('admin.offering.partials.checkbox', compact('offering'));
@@ -93,9 +95,23 @@ class OfferingController extends Controller
             ->addColumn('option', function ($offering) {
                 return view('admin.offering.partials.options', compact('offering'));
             })
-            
-            ->rawColumns(['checkbox', 'product', 'small_quantity', 'small_quantity_price', 'medium_quantity_price',
-            'large_quantity_price', 'created_at', 'company_name', 'email', 'phone', 'created_by', 'updated_at', 'updated_by', 'option'])
+
+            ->rawColumns([
+                'checkbox',
+                'product',
+                'small_quantity',
+                'small_quantity_price',
+                'medium_quantity_price',
+                'large_quantity_price',
+                'created_at',
+                'company_name',
+                'email',
+                'phone',
+                'created_by',
+                'updated_at',
+                'updated_by',
+                'option'
+            ])
             ->make(true);
     }
 
@@ -106,8 +122,8 @@ class OfferingController extends Controller
      */
     public function create()
     {
-        $inventory = Product::get()->pluck('name', 'id')->toArray();
-        return view('admin.offering._create', compact('inventory'));
+        $product = Product::get()->pluck('name', 'id')->toArray();
+        return view('admin.offering._create', compact('product'));
     }
 
     /**
@@ -142,11 +158,11 @@ class OfferingController extends Controller
      */
     public function edit($id)
     {
-        $inventory = Inventory::available()->get()->pluck('title', 'id')->toArray();
+        $product = Product::get()->pluck('name', 'id')->toArray();
 
         $offering = $this->offering->find($id);
 
-        return view('admin.offering._edit', compact('offering', 'inventory'));
+        return view('admin.offering._edit', compact('offering', 'product'));
     }
 
     /**
