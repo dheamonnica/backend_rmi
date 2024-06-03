@@ -11223,3 +11223,7 @@ img.verified-badge {
 .px-5 {
   padding-left: 3rem !important
 }
+
+.border-small {
+  border-radius: 10px;
+}

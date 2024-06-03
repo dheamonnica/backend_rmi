@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="form-group">
             {!! Form::label('product_id', trans('app.form.select_product') . '*', ['class' => 'with-help']) !!}
-            {!! Form::select('product_id', $inventory, null, [
+            {!! Form::select('product_id', $product, null, [
                 'class' => 'form-control select2-normal',
                 'required',
             ]) !!}

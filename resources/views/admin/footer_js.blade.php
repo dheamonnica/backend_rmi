@@ -766,7 +766,6 @@
           'data': 'status',
           'name': 'status',
         },
-        @if(Auth::user()->isAdmin() || Auth::user()->isMerchant())
         {
           'data': 'option',
           'name': 'option',
@@ -775,12 +774,19 @@
           'exportable': false,
           'printable': false
         }
-        @endif
       ]
     }));
 
     // Filter the 'created_by' column with the name of the authenticated user
-    tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
+    @if(!Auth::user()->isAdmin() && !Auth::user()->isMerchant())
+      tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
+    @endif
+    
+    // Filter by product name
+    $('#productFilter').on('change', function() {
+        var selectedProduct = $(this).val();
+        tableOffering.column('product:name').search(selectedProduct).draw();
+    });
 
     // Load category list by Ajax
     $('#all-categories-table').DataTable($.extend({}, dataTableOptions, {

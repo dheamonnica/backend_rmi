@@ -24,9 +24,9 @@ class UpdateOfferingRequest extends Request
     public function rules()
     {
         return [
-            'updated_at' => 'required',
-            'updated_by' => 'required',
-            'status' => 'required',
+            // 'updated_at' => 'required',
+            // 'updated_by' => 'required',
+            // 'status' => 'required',
         ];
     }
 }
