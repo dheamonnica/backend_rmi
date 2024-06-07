@@ -42,15 +42,15 @@
             </div>
             {!! Form::close() !!}
 
-            <a class="btn btn-link" href="{{ route('customer.password.request') }}">
+            {{-- <a class="btn btn-link" href="{{ route('customer.password.request') }}">
               {{ trans('theme.forgot_password') }}
             </a>
 
             <a class="btn btn-link" href="{{ route('customer.register') }}" class="text-center">
               {{ trans('theme.register_here') }}
-            </a>
+            </a> --}}
 
-            @include('theme::auth._social_login')
+            {{-- @include('theme::auth._social_login') --}}
           </div>
           @include('partials._demo_customer_login')
         </div> <!-- /.login-form-section -->
