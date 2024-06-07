@@ -2,7 +2,7 @@
 <header class="main-header">
   <!-- Logo -->
   <a href="{{ url('/') }}" class="logo">
-    <img src="{{ get_storage_file_url(optional($system->iconImage)->path) }}" width="30" alt="{{ trans('app.icon') }}"> {{ get_site_title() }}
+    <img src="{{ get_logo_url('system', 'logo') }}" width="30" alt="{{ trans('app.icon') }}"> {{ get_site_title() }}
 
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">{{ Str::limit(get_site_title(), 2, '.') ? Str::limit(get_site_title(), 2, '.') : "RMI" }}</span>
