@@ -44,19 +44,15 @@
             @endcan
             <th>{{ trans('app.image') }}</th>
             <th>{{ trans('app.name') }}</th>
+            <th>{{ trans('app.form.general_name') }}</th>
             <th>{{ trans('app.form.licence_number') }}</th>
             <th>{{ trans('app.form.selling_skuid') }}</th>
-            <th width="20%">{{ trans('app.form.purchase_price') }}</th>
-            <th>{{ trans('app.min_price') }}</th>
-            <th>{{ trans('app.max_price') }}</th>
-            {{-- <th>
+            <th>{{ trans('app.form.purchase_price') }}</th>
+            <th>{{ trans('app.form.min_selling_price') }}</th>
+            <th>{{ trans('app.form.max_selling_price') }}</th>
+            <th>
               {{ trans('app.listing') }}
-            </th> --}}
-            @if (Auth::user()->isFromPlatform())
-              <th width="15%">{{ trans('app.added_by') }}</th>
-            @else
-              <th></th>
-            @endif
+            </th>
             <th>{{ trans('app.option') }}</th>
           </tr>
         </thead>

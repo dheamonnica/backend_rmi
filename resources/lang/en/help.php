@@ -242,7 +242,9 @@ return [
 
     'shop_external_url' => 'If you own a website you can put the external link here, the url can be set as shop\'s landing page.',
 
-    'product_name' => 'This name only helps admin to find the item for listing.',
+    'product_name' => 'This name only helps admin to find the item for listing. Example: Rizkimed Nasal Mask, etc.',
+
+    'general_name' => 'This name only helps customers to find the item in listing catalogue. Example: Nasal Mask',
 
     'product_featured_image' =>  'This helps to make thumbnail photo.',
 

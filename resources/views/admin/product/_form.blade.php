@@ -27,11 +27,20 @@
         </div> <!-- /.box-header -->
         <div class="box-body">
           <div class="row">
-            <div class="col-md-9 nopadding-right">
+            <div class="col-md-5 nopadding-right">
               <div class="form-group">
                 {!! Form::label('name', trans('app.form.name') . '*', ['class' => 'with-help']) !!}
                 <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.product_name') }}"></i>
-                {!! Form::text('name', null, ['class' => $title_classes, 'placeholder' => trans('app.placeholder.title'), 'required']) !!}
+                {!! Form::text('name', null, ['class' => $title_classes, 'placeholder' => trans('app.form.product_name'), 'required']) !!}
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+
+            <div class="col-md-4 nopadding-right">
+              <div class="form-group">
+                {!! Form::label('general_name', trans('app.form.general_name') . '*', ['class' => 'with-help']) !!}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('help.general_name') }}"></i>
+                {!! Form::text('general_name', null, ['class' => $title_classes, 'placeholder' => trans('app.form.general_name'), 'required']) !!}
                 <div class="help-block with-errors"></div>
               </div>
             </div>

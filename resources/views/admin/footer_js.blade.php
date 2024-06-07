@@ -265,6 +265,10 @@
           'name': 'name'
         },
         {
+          'data': 'general_name',
+          'name': 'general_name'
+        },
+        {
           'data': 'licence_number',
           'name': 'licence_number'
         },
@@ -284,6 +288,11 @@
           'data': 'max_price',
           'name': 'max_price'
         },
+        {
+          'data': 'inventories_count',
+          'name': 'inventories_count',
+          'searchable': false
+        },
         // {
         //   'data': 'type',
         //   'name': 'type',
@@ -301,16 +310,11 @@
         //   'searchable': false
         // },
         // {
-        //   'data': 'inventories_count',
-        //   'name': 'inventories_count',
-        //   'searchable': false
+        //   'data': 'added_by',
+        //   'name': 'added_by',
+        //   'searchable': false,
+        //   'orderable': false
         // },
-        {
-          'data': 'added_by',
-          'name': 'added_by',
-          'searchable': false,
-          'orderable': false
-        },
         {
           'data': 'option',
           'name': 'option',
