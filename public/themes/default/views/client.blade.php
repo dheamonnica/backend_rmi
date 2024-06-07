@@ -11,6 +11,7 @@
                         <ul class="topbar-social">
                             <li><a href="https://www.facebook.com/RizqullahMediskaIndonesia/"><i
                                         class="fab fa-facebook-f"></i></a></li>
+                            <!-- <li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
                             <li><a href="https://www.instagram.com/pt.rizqullahmediskaindonesia/"><i
                                         class="fab fa-instagram"></i></a></li>
                             <li><a href="https://id.linkedin.com/in/pt-rizqullah-mediska-indonesia-group-132529151"><i
@@ -56,31 +57,24 @@
             <div class="row">
                 <div class="col-md-7 col-lg-12">
                     <div class="heading-style1 mb-0">
-                        <span>Become Part of Us</span>
-                        <h2>Whats Makes Us Better,
-                            Makes You Better.
+                        <span>Welcome to Rizqullah Mediska Indonesia Portal</span>
+                        <h2>Your One-Stop Solution for Medical Supplies
                         </h2>
-                        <p>PT Rizqullah Mediska Indonesia always strives to achieve
-                            idealism by reminding each other between Management,
-                            employees, vendor and consumers in order to achieve the expected goals
-                            together. By achieving a common goal there will be
-                            contribution to the Company's success in the short-term
-                            and long term. On this basis, we try
-                            founded PT Rizqullah Mediska Indonesia with the aim of
-                            make it easier for parties who need medical equipment
-                            at an economical price that can be beneficial for health
-                            together.</p>
+                        <p>At Rizqullah mediska indonesia, we understand the critical role that timely access to
+                            high-quality medical supplies plays in patient care and healthcare operations. Our platform
+                            is designed to provide healthcare professionals, clinics, hospitals, and individual
+                            consumers with a seamless and secure shopping experience for all their medical needs.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="dental-features_list">
                                 <li>
                                     <i class="fas fa-check"></i>
-                                    <h6>150+ Happy Client</h6>
+                                    <h6>Order Tracking</h6>
                                 </li>
                                 <li>
                                     <i class="fas fa-check"></i>
-                                    <h6>10 + Hospital Partner </h6>
+                                    <h6>Reorder Item </h6>
                                 </li>
                             </ul>
                         </div>
@@ -88,17 +82,16 @@
                             <ul class="dental-features_list">
                                 <li>
                                     <i class="fas fa-check"></i>
-                                    <h6>Product License</h6>
+                                    <h6>Wishlist</h6>
                                 </li>
                                 <li>
                                     <i class="fas fa-check"></i>
-                                    <h6>80 + Product Variant</h6>
+                                    <h6>Invoice</h6>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <a href="/register" class="btn btn-primary mt-4">REGISTER NOW</a>
-                    <a href="/login" class="btn btn-primary mt-4">LOGIN AS VENDOR</a>
+                    <a href="/customer/login" class="btn btn-primary mt-4">LOGIN AS CLIENT</a>
                 </div>
             </div>
         </div>

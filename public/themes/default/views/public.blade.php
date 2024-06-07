@@ -21,7 +21,8 @@
                         <ul class="topbar-contact ml-auto">
                             <li>officebogor@rizqullahmediskaindonesia.com</li>
                             <li>021-8759842</li>
-                            <li><a href="/offering" class="btn btn-success">Offering</a></li>
+                            <li class="m-0"><a href="/offering" class="btn btn-success">Offering</a></li>
+                            <li><a href="/client" class="btn btn-success">Client</a></li>
                         </ul>
                     </div>
                 </div>

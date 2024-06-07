@@ -80,6 +80,10 @@ Route::middleware('storefront')->namespace('Storefront')->group(function () {
         HomeController::class, 'offering'
     ])->name('offering');
 
+    Route::get('client', [
+        HomeController::class, 'client'
+    ])->name('client');
+
     Route::get('category/{slug}', [
         HomeController::class, 'browseCategory'
     ])->name('category.browse');
