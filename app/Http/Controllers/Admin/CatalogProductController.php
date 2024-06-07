@@ -68,6 +68,9 @@ class CatalogProductController extends Controller
         ->editColumn('name', function ($product) {
             return view('admin.partials.actions.product.name', compact('product'));
         })
+        ->editColumn('general_name', function ($product) {
+            return view('admin.partials.actions.product.general_name', compact('product'));
+        })
         ->editColumn('licence', function ($product) {
             return view('admin.partials.actions.product.licence', compact('product'));
         })
@@ -83,13 +86,16 @@ class CatalogProductController extends Controller
         ->editColumn('max_price', function ($product) {
             return view('admin.partials.actions.product.max_price', compact('product'));
         })
+        ->editColumn('inventories_count', function ($product) {
+            return view('admin.partials.actions.product.inventories_count', compact('product'));
+        })
         ->editColumn('added_by', function ($product) {
             return view('admin.partials.actions.product.added_by', compact('product'));
         })
         ->addColumn('option', function ($product) {
             return view('admin.partials.actions.product.options', compact('product'));
         })
-        ->rawColumns(['image', 'name', 'licence', 'selling_skuid', 'purchase_price', 'min_price', 'max_price', 'added_by', 'option'])
+        ->rawColumns(['image', 'name', 'licence', 'selling_skuid', 'purchase_price', 'min_price', 'max_price', 'inventories_count', 'added_by', 'option'])
         ->make(true);
     }
 

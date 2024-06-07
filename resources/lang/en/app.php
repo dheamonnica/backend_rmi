@@ -1191,6 +1191,7 @@ return [
         'client_skuid' => 'Client SKUID',
         'manufacturing' => 'Manufacturing',
         'type_uom' => 'Type of UOM',
+        'general_name' => 'General Name',
 
         // inventories
         'expired_date' => 'Expired Date',
@@ -1231,7 +1232,7 @@ return [
         'product_quantity' => 'Product Quantity',
         'created_by' => 'Created By',
         'price' => 'Price',
-        'product_name' => 'Product Name',
+        'product_title' => 'Product Name',
         'small_quantity' => 'Small Quantity (0 - 1.000)',
         'small_quantity_price' => 'Small Quantity Price',
         'medium_quantity' => 'Medium Quantity (1.000 - 10.000)',
@@ -1242,7 +1243,10 @@ return [
         'updated_at' => 'Updated At',
         'updated_by' => 'Updated By',
         'create_offering' => 'Create Offering',
-        'company_name' => 'Company Name'
+        'company_name' => 'Company Name',
+        'product_name' => 'Rizkimed Nasal Mask',
+        'min_selling_price' => 'Min Selling Price',
+        'max_selling_price' => 'Max Selling Price',
     ],
 
     'placeholder' => [
