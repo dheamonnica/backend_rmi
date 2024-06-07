@@ -47,9 +47,11 @@
             <th>{{ trans('app.form.licence_number') }}</th>
             <th>{{ trans('app.form.selling_skuid') }}</th>
             <th width="20%">{{ trans('app.form.purchase_price') }}</th>
-            <th>
+            <th>{{ trans('app.min_price') }}</th>
+            <th>{{ trans('app.max_price') }}</th>
+            {{-- <th>
               {{ trans('app.listing') }}
-            </th>
+            </th> --}}
             @if (Auth::user()->isFromPlatform())
               <th width="15%">{{ trans('app.added_by') }}</th>
             @else

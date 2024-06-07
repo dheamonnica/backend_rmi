@@ -59,35 +59,38 @@ class CatalogProductController extends Controller
         // }
 
         return Datatables::of($products)
-            ->editColumn('checkbox', function ($product) {
-                return view('admin.partials.actions.product.checkbox', compact('product'));
-            })
-            ->addColumn('option', function ($product) {
-                return view('admin.partials.actions.product.options', compact('product'));
-            })
-            ->editColumn('image', function ($product) {
-                return view('admin.partials.actions.product.image', compact('product'));
-            })
-            ->editColumn('name', function ($product) {
-                return view('admin.partials.actions.product.name', compact('product'));
-            })
-            ->editColumn('type', function ($product) {
-                return $product->licence_number;
-            })
-            ->editColumn('gtin', function ($product) {
-                return view('admin.partials.actions.product.gtin', compact('product'));
-            })
-            ->editColumn('category', function ($product) {
-                return view('admin.partials.actions.product.category', compact('product'));
-            })
-            ->editColumn('inventories_count', function ($product) {
-                return view('admin.partials.actions.product.inventories_count', compact('product'));
-            })
-            ->editColumn('added_by', function ($product) {
-                return view('admin.partials.actions.product.added_by', compact('product'));
-            })
-            ->rawColumns(['image', 'name', 'type', 'gtin', 'category', 'inventories_count', 'added_by', 'status', 'checkbox', 'option'])
-            ->make(true);
+        ->editColumn('checkbox', function ($product) {
+            return view('admin.partials.actions.product.checkbox', compact('product'));
+        })
+        ->editColumn('image', function ($product) {
+            return view('admin.partials.actions.product.image', compact('product'));
+        })
+        ->editColumn('name', function ($product) {
+            return view('admin.partials.actions.product.name', compact('product'));
+        })
+        ->editColumn('licence', function ($product) {
+            return view('admin.partials.actions.product.licence', compact('product'));
+        })
+        ->editColumn('selling_skuid', function ($product) {
+            return view('admin.partials.actions.product.selling_skuid', compact('product'));
+        })
+        ->editColumn('purchase_price', function ($product) {
+            return view('admin.partials.actions.product.purchase_price', compact('product'));
+        })
+        ->editColumn('min_price', function ($product) {
+            return view('admin.partials.actions.product.min_price', compact('product'));
+        })
+        ->editColumn('max_price', function ($product) {
+            return view('admin.partials.actions.product.max_price', compact('product'));
+        })
+        ->editColumn('added_by', function ($product) {
+            return view('admin.partials.actions.product.added_by', compact('product'));
+        })
+        ->addColumn('option', function ($product) {
+            return view('admin.partials.actions.product.options', compact('product'));
+        })
+        ->rawColumns(['image', 'name', 'licence', 'selling_skuid', 'purchase_price', 'min_price', 'max_price', 'added_by', 'option'])
+        ->make(true);
     }
 
     /**

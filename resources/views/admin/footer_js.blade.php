@@ -265,26 +265,46 @@
           'name': 'name'
         },
         {
-          'data': 'type',
-          'name': 'type',
-          'orderable': false,
-          'searchable': false
+          'data': 'licence_number',
+          'name': 'licence_number'
         },
         {
-          'data': 'gtin',
-          'name': 'gtin'
+          'data': 'selling_skuid',
+          'name': 'selling_skuid'
         },
         {
-          'data': 'category',
-          'name': 'category',
-          'orderable': false,
-          'searchable': false
+          'data': 'purchase_price',
+          'name': 'purchase_price'
         },
         {
-          'data': 'inventories_count',
-          'name': 'inventories_count',
-          'searchable': false
+          'data': 'min_price',
+          'name': 'min_price'
         },
+        {
+          'data': 'max_price',
+          'name': 'max_price'
+        },
+        // {
+        //   'data': 'type',
+        //   'name': 'type',
+        //   'orderable': false,
+        //   'searchable': false
+        // },
+        // {
+        //   'data': 'gtin',
+        //   'name': 'gtin'
+        // },
+        // {
+        //   'data': 'category',
+        //   'name': 'category',
+        //   'orderable': false,
+        //   'searchable': false
+        // },
+        // {
+        //   'data': 'inventories_count',
+        //   'name': 'inventories_count',
+        //   'searchable': false
+        // },
         {
           'data': 'added_by',
           'name': 'added_by',
