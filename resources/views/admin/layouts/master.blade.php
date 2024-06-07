@@ -78,7 +78,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      @if (View::hasSection('buttons') || isset($page_title))
+      {{-- @if (View::hasSection('buttons') || isset($page_title))
         <section class="content-header">
           <h1>
             {!! $page_title ?? '' !!}
@@ -91,7 +91,7 @@
 
           </span>
         </section>
-      @endif
+      @endif --}}
 
       <!-- Main content -->
       <section class="content">
