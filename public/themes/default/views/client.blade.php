@@ -22,8 +22,8 @@
                         <ul class="topbar-contact ml-auto">
                             <li>officebogor@rizqullahmediskaindonesia.com</li>
                             <li>021-8759842</li>
-                            <li class="m-0"><a href="/offering" class="btn btn-success">Offering</a></li>
-                            <li><a href="/client" class="btn btn-success">Client</a></li>
+                            <li class="m-0"><a href="/offering" class="btn btn-warning" style="background-color: #5bc198 !important;color: black !important">Offering</a></li>
+                            <li><a href="/client" class="btn btn-warning" style="color: black !important">Client</a></li>
                         </ul>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-7 col-lg-12">
                     <div class="heading-style1 mb-0">
                         <span>Welcome to Rizqullah Mediska Indonesia Portal</span>
-                        <h2>Your One-Stop Solution for Medical Supplies
+                        <h2>Solution for Medical Supplies
                         </h2>
                         <p>At Rizqullah mediska indonesia, we understand the critical role that timely access to
                             high-quality medical supplies plays in patient care and healthcare operations. Our platform
