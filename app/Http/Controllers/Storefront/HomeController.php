@@ -585,7 +585,7 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        if (Auth::guard('customer')->user() == null) {
+        if (@Auth::user()->name === null) {
             Log::info('belom login');
             return view('theme::client');
         } else {
