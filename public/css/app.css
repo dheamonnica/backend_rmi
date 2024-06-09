@@ -10761,7 +10761,7 @@ img.verified-badge {
 	/* background: url('/images/login-customer.png'); */
 	background-size: cover;
 	background-position: center;
-  background: linear-gradient(to left, #FFA500, #FF4500); /* Lighter orange to darker orange */
+  background: linear-gradient(to left, #1d00ff, #9389dc);/* Lighter orange to darker orange */
   border-radius: 100px 0 0 100px;
   vertical-align: middle;
   padding: 10vw;

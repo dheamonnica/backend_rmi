@@ -36,7 +36,7 @@
               </div>
 
               <div class="col-sm-5 pull-right">
-                {!! Form::submit(trans('theme.button.login'), ['class' => 'btn btn-block btn-lg btn-flat btn-danger']) !!}
+                {!! Form::submit(trans('theme.button.login'), ['class' => 'btn btn-block btn-lg btn-flat btn-primary']) !!}
               </div>
             </div>
             {!! Form::close() !!}
@@ -54,8 +54,8 @@
           @include('partials._demo_customer_login')
         </div> <!-- /.login-form-section -->
         <div class="image-holder-customer">
-          <h1>Hello User!</h1>
-          <p>Register with your personal details to use all of site features.</p>
+          <h1>Hello Valuable Client!</h1>
+          <p>Login with your personal details to use all of site features.</p>
         </div>
       </div> <!-- /.form-container -->
     </div> <!-- /.login-section -->
