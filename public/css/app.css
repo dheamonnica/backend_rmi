@@ -10739,7 +10739,7 @@ img.verified-badge {
 	margin: 0;
 }
 .login-section {
-	background: #f1f7fc;
+	background: white;
 	height: 100vh;
 }
 .login-form-section {
@@ -10758,9 +10758,15 @@ img.verified-badge {
 .login-section .image-holder-customer {
 	display: table-cell;
 	width: 50%;
-	background: url('/images/login-customer.png');
+	/* background: url('/images/login-customer.png'); */
 	background-size: cover;
 	background-position: center;
+  background: linear-gradient(to left, #FFA500, #FF4500); /* Lighter orange to darker orange */
+  border-radius: 100px 0 0 100px;
+  vertical-align: middle;
+  padding: 10vw;
+  text-align: center;
+  color: white;
 }
 
 .login-section .form-container {

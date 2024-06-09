@@ -4,7 +4,6 @@
   <div class="box">
     <div class="login-section">
       <div class="form-container">
-        <div class="image-holder-customer"></div>
         <div class="login-form-section">
           <div class="login-logo">
             <a href="{{ url('/') }}">
@@ -13,7 +12,7 @@
           </div>
 
           <div class="form-section customer-login">
-            <h3 class="text-center mt-0">{{ trans('theme.account_login') }}</h3>
+            <h3 class="text-center mt-0">Sign In</h3>
             {!! Form::open(['route' => 'customer.login.submit', 'id' => 'loginForm-1', 'data-toggle' => 'validator']) !!}
             <div class="form-group has-feedback">
               {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control input-lg', 'placeholder' => trans('theme.placeholder.email'), 'required']) !!}
@@ -37,7 +36,7 @@
               </div>
 
               <div class="col-sm-5 pull-right">
-                {!! Form::submit(trans('theme.button.login'), ['class' => 'btn btn-block btn-lg btn-flat btn-primary']) !!}
+                {!! Form::submit(trans('theme.button.login'), ['class' => 'btn btn-block btn-lg btn-flat btn-danger']) !!}
               </div>
             </div>
             {!! Form::close() !!}
@@ -54,6 +53,10 @@
           </div>
           @include('partials._demo_customer_login')
         </div> <!-- /.login-form-section -->
+        <div class="image-holder-customer">
+          <h1>Hello User!</h1>
+          <p>Register with your personal details to use all of site features.</p>
+        </div>
       </div> <!-- /.form-container -->
     </div> <!-- /.login-section -->
   </div> <!-- /.box -->
