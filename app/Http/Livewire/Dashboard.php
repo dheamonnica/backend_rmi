@@ -10,9 +10,6 @@ use App\Models\Order;
 use App\Models\User;
 use App\Repositories\Warehouse\WarehouseRepository;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
-use App\Repositories\Order\OrderRepository;
-use Carbon;
 
 class Dashboard extends Component
 {
@@ -61,10 +58,6 @@ class Dashboard extends Component
     public $selectedYearStart = '';
     public $selectedYearEnd = '';
 
-    //filter 3
-    public $selectedThisWeekFilter = false; // Set initial selection to This Week
-    public $selectedThisMonthFilter = false;
-    public $selectedThisYearFilter = false;
 
     protected $listeners = [
         'startDateUpdated' => 'updatedSelectedStartDate',
@@ -75,32 +68,13 @@ class Dashboard extends Component
         'monthEndUpdated' => 'updatedselectedYearMonthEnd',
         'yearStartUpdated' => 'updatedselectedYearStart',
         'yearEndUpdated' => 'updatedselectedYearEnd',
-        'resetTimeFrameFilter' => 'resettingTimeFrameFilter',
-        'resetFilters' => 'clear'
     ];
-    //card
-    public $card1_options = [];
-
-    //charts
-    public $chart1_data_d1 = [];
-    public $chart1_data_d2 = [];
-    public $chart1_data_d3 = [];
-
-    //table
-    public $table1_options = [];
-    public $table1_data;
-    public $table2_data;
-    public $table3_data;
-    public $table4_data;
-    public $table5_data;
-    public $table6_data;
-    public $table7_data;
 
     public function mount()
     {
         $this->warehouses = User::where('warehouse_name', 'LIKE', 'Warehouse%')
-            ->groupBy('warehouse_name')
-            ->pluck('warehouse_name', 'shop_id');
+        ->groupBy('warehouse_name')
+        ->pluck('warehouse_name', 'id');
         $this->clients = Customer::select('id', 'name')->distinct('name')->get()  ->pluck('name', 'id');
         $this->client_groups = Customer::whereNotNull('hospital_group')
             ->distinct()
@@ -121,12 +95,6 @@ class Dashboard extends Component
             ->groupBy('csg.name', 'c.category_sub_group_id')
             ->select('c.category_sub_group_id', 'csg.name')
             ->pluck('csg.name', 'c.category_sub_group_id');
-
-        //rehydrate content
-        $this->updateCardSection();
-        $this->updateProcessCountSection();
-        $this->updateChartSection();
-        $this->updateTableSection();
     }
 
     public function render()
@@ -159,11 +127,8 @@ class Dashboard extends Component
 
     public function updatedSelectedWarehouseOption($value)
     {
-        $this->selectedWarehouseOption = $value;
-        $this->updateCardSection();
-        $this->updateProcessCountSection();
-        $this->updateChartSection();
-        $this->updateTableSection();
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
     }
 
     public function updatedSelectedClientOption($value)
@@ -222,11 +187,14 @@ class Dashboard extends Component
 
     public function updatedUserName($value)
     {
-        $this->selecteduserName = $value;
-        $this->updateCardSection();
-        $this->updateProcessCountSection();
-        $this->updateChartSection();
-        $this->updateTableSection();
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
+    }
+
+    public function updatedSelectedIntervalOption($value)
+    {
+        // Handle the updated select2 value
+        // Example: $this->selectedOption = $value;
     }
 
     public function updatedSelectedStartDate($value)
@@ -266,43 +234,7 @@ class Dashboard extends Component
 
     public function updatedselectedYearEnd($value)
     {
-        $this->selectedYearEnd = $value;
-    }
-
-    public function resettingTimeFrameFilter() 
-    {
-        $this->selectedStartDate = '';
-        $this->selectedEndDate = '';
-        $this->selectedYearWeek = '';
-        $this->selectedWeek = '';
-        $this->selectedYearMonthStart = '';
-        $this->selectedYearMonthEnd = '';
-        $this->selectedYearStart = '';
-        $this->selectedYearEnd = '';
-    }
-
-    public function updateCardSection()
-    {
-        $this->updatedCustomerCount();
-        $this->updatedTotalProfit();
-        $this->updatedTotalOrders();
-        $this->updatedQtyOrdered();
-        $this->updatedGrandTotal();
-    }
-
-    public function updateProcessCountSection()
-    {
-        $this->updatedOrdersProcess();
-        $this->updatedPackingProcess();
-        $this->updatedDeliveryProcess();
-        $this->updatedPaymentProcess();
-    }
-
-    public function updateChartSection()
-    {
-        $this->updatedChart1DataD1();
-        $this->updatedChart1DataD2();
-        $this->updatedChart1DataD3();
+        $this->selectedWeek = $value;
     }
 
     public function updateTableSection()
