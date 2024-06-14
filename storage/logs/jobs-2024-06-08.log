@@ -1,0 +1,63 @@
+[2024-06-08 06:58:35] production.INFO: ............. Job Processing:: App\Listeners\System\NotifyAdminSystemUpdated .................  
+[2024-06-08 06:58:35] production.INFO: array (
+  'payload' => 
+  array (
+    'uuid' => 'f275946a-83b3-45e5-9f3d-4df65cd317b7',
+    'displayName' => 'App\\Listeners\\System\\NotifyAdminSystemUpdated',
+    'job' => 'Illuminate\\Queue\\CallQueuedHandler@call',
+    'maxTries' => 20,
+    'maxExceptions' => NULL,
+    'failOnTimeout' => false,
+    'backoff' => NULL,
+    'timeout' => NULL,
+    'retryUntil' => NULL,
+    'data' => 
+    array (
+      'commandName' => 'Illuminate\\Events\\CallQueuedListener',
+      'command' => 'O:36:"Illuminate\\Events\\CallQueuedListener":19:{s:5:"class";s:45:"App\\Listeners\\System\\NotifyAdminSystemUpdated";s:6:"method";s:6:"handle";s:4:"data";a:1:{i:0;O:35:"App\\Events\\System\\SystemInfoUpdated":1:{s:6:"system";O:45:"Illuminate\\Contracts\\Database\\ModelIdentifier":4:{s:5:"class";s:17:"App\\Models\\System";s:2:"id";i:1;s:9:"relations";a:0:{}s:10:"connection";s:5:"mysql";}}}s:5:"tries";i:20;s:13:"maxExceptions";N;s:7:"backoff";N;s:10:"retryUntil";N;s:7:"timeout";N;s:17:"shouldBeEncrypted";b:0;s:3:"job";N;s:10:"connection";N;s:5:"queue";N;s:15:"chainConnection";N;s:10:"chainQueue";N;s:19:"chainCatchCallbacks";N;s:5:"delay";N;s:11:"afterCommit";N;s:10:"middleware";a:0:{}s:7:"chained";a:0:{}}',
+    ),
+  ),
+)  
+[2024-06-08 06:58:35] production.INFO: ............. Job Processing:: App\Notifications\System\SystemInfoUpdated .................  
+[2024-06-08 06:58:35] production.INFO: array (
+  'payload' => 
+  array (
+    'uuid' => '157ab47a-0494-4b23-942a-37b4d966763b',
+    'displayName' => 'App\\Notifications\\System\\SystemInfoUpdated',
+    'job' => 'Illuminate\\Queue\\CallQueuedHandler@call',
+    'maxTries' => NULL,
+    'maxExceptions' => NULL,
+    'failOnTimeout' => false,
+    'backoff' => NULL,
+    'timeout' => NULL,
+    'retryUntil' => NULL,
+    'data' => 
+    array (
+      'commandName' => 'Illuminate\\Notifications\\SendQueuedNotifications',
+      'command' => 'O:48:"Illuminate\\Notifications\\SendQueuedNotifications":16:{s:11:"notifiables";O:45:"Illuminate\\Contracts\\Database\\ModelIdentifier":4:{s:5:"class";s:15:"App\\Models\\User";s:2:"id";a:1:{i:0;i:1;}s:9:"relations";a:0:{}s:10:"connection";s:5:"mysql";}s:12:"notification";O:42:"App\\Notifications\\System\\SystemInfoUpdated":12:{s:6:"system";O:45:"Illuminate\\Contracts\\Database\\ModelIdentifier":4:{s:5:"class";s:17:"App\\Models\\System";s:2:"id";i:1;s:9:"relations";a:0:{}s:10:"connection";s:5:"mysql";}s:2:"id";s:36:"c106f4ab-39c1-4e46-b50a-1e62fa23e147";s:6:"locale";N;s:10:"connection";N;s:5:"queue";N;s:15:"chainConnection";N;s:10:"chainQueue";N;s:19:"chainCatchCallbacks";N;s:5:"delay";N;s:11:"afterCommit";N;s:10:"middleware";a:0:{}s:7:"chained";a:0:{}}s:8:"channels";a:1:{i:0;s:4:"mail";}s:5:"tries";N;s:7:"timeout";N;s:17:"shouldBeEncrypted";b:0;s:3:"job";N;s:10:"connection";N;s:5:"queue";N;s:15:"chainConnection";N;s:10:"chainQueue";N;s:19:"chainCatchCallbacks";N;s:5:"delay";N;s:11:"afterCommit";N;s:10:"middleware";a:0:{}s:7:"chained";a:0:{}}',
+    ),
+  ),
+)  
+[2024-06-08 06:58:35] production.INFO: ......................... Job Processed Successfully .............................  
+[2024-06-08 06:58:35] production.INFO: ............. Job Processing:: App\Notifications\System\SystemInfoUpdated .................  
+[2024-06-08 06:58:35] production.INFO: array (
+  'payload' => 
+  array (
+    'uuid' => 'faab0f58-b46b-492d-a49e-32e25f1d87c0',
+    'displayName' => 'App\\Notifications\\System\\SystemInfoUpdated',
+    'job' => 'Illuminate\\Queue\\CallQueuedHandler@call',
+    'maxTries' => NULL,
+    'maxExceptions' => NULL,
+    'failOnTimeout' => false,
+    'backoff' => NULL,
+    'timeout' => NULL,
+    'retryUntil' => NULL,
+    'data' => 
+    array (
+      'commandName' => 'Illuminate\\Notifications\\SendQueuedNotifications',
+      'command' => 'O:48:"Illuminate\\Notifications\\SendQueuedNotifications":16:{s:11:"notifiables";O:45:"Illuminate\\Contracts\\Database\\ModelIdentifier":4:{s:5:"class";s:15:"App\\Models\\User";s:2:"id";a:1:{i:0;i:1;}s:9:"relations";a:0:{}s:10:"connection";s:5:"mysql";}s:12:"notification";O:42:"App\\Notifications\\System\\SystemInfoUpdated":12:{s:6:"system";O:45:"Illuminate\\Contracts\\Database\\ModelIdentifier":4:{s:5:"class";s:17:"App\\Models\\System";s:2:"id";i:1;s:9:"relations";a:0:{}s:10:"connection";s:5:"mysql";}s:2:"id";s:36:"c106f4ab-39c1-4e46-b50a-1e62fa23e147";s:6:"locale";N;s:10:"connection";N;s:5:"queue";N;s:15:"chainConnection";N;s:10:"chainQueue";N;s:19:"chainCatchCallbacks";N;s:5:"delay";N;s:11:"afterCommit";N;s:10:"middleware";a:0:{}s:7:"chained";a:0:{}}s:8:"channels";a:1:{i:0;s:8:"database";}s:5:"tries";N;s:7:"timeout";N;s:17:"shouldBeEncrypted";b:0;s:3:"job";N;s:10:"connection";N;s:5:"queue";N;s:15:"chainConnection";N;s:10:"chainQueue";N;s:19:"chainCatchCallbacks";N;s:5:"delay";N;s:11:"afterCommit";N;s:10:"middleware";a:0:{}s:7:"chained";a:0:{}}',
+    ),
+  ),
+)  
+[2024-06-08 06:58:35] production.INFO: ......................... Job Processed Successfully .............................  
+[2024-06-08 06:58:35] production.INFO: ......................... Job Processed Successfully .............................  

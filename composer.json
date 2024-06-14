@@ -39,8 +39,8 @@
         "livewire/livewire": "^2.12",
         "mollie/mollie-api-php": "^2.63",
         "nao-pon/flysystem-google-drive": "~1.1",
-        "paypal/paypal-checkout-sdk": "^1.0",
-        "paypal/rest-api-sdk-php": "^1.14",
+        "paypal/paypal-checkout-sdk": "1.0.2",
+        "paypal/rest-api-sdk-php": "1.14",
         "predis/predis": "^2.0",
         "pusher/pusher-php-server": "^7.0",
         "ramsey/uuid": "^4.2",
@@ -53,7 +53,7 @@
         "spatie/laravel-backup": "^6.16",
         "spatie/laravel-newsletter": "^4.10",
         "spatie/laravel-sitemap": "^5.8",
-        "stripe/stripe-php": "^7.100",
+        "stripe/stripe-php": "7.128",
         "symfony/polyfill-iconv": "^1.10",
         "teamtnt/laravel-scout-tntsearch-driver": "^11.6",
         "torann/geoip": "^3.0",
@@ -63,7 +63,7 @@
         "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "*",
+        "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",

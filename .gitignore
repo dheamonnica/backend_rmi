@@ -30,3 +30,4 @@
 # /.htaccess
 # /composer1.phar
 vendor/ 
+.vscode/settings.json

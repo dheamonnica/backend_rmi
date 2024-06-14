@@ -6,7 +6,7 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-2">
-                    <h3>{{ trans('app.filters')}}</h3>
+                    <h3>{{ trans('app.custom_filters')}}</h3>
                   </div>
                 </div>
                 <div class="row">
@@ -121,10 +121,14 @@
 
                 <hr>
                 <div class="row">
+                  <div class="col-md-2">
+                    <h3>{{ trans('app.timeframe_filters')}}</h3>
+                  </div>
                   <div class="col-md-2 nopadding-right">
                     <div class="form-group">
                       <label>{{ trans('app.interval') }}</label>
                       <select id="time_interval"class="form-control" name="interval" wire:model="selectedIntervalOption" >
+                        <option value="" selected>{{ trans('app.select_timeframe_type') }}</option>
                         <option value="DAILY">{{ trans('app.daily') }}</option>
                         <option value="WEEK">{{ trans('app.week') }}</option>
                         <option value="MONTH">{{ trans('app.month') }}</option>
@@ -162,16 +166,16 @@
                     <div class="col-md-2 nopadding-right">
                       <div class="form-group">
                         <label>{{ trans('app.month_start') }}</label>
-                        <input type="text" id="yearMonthStartPicker" wire:model="selectedYearMonthStart" class="form-control">
+                        <input type="text" id="monthStartPicker" wire:model="selectedYearMonthStart" class="form-control">
                       </div>
                     </div>
                     <div class="col-md-2 nopadding-right">
                       <div class="form-group">
                         <label>{{ trans('app.month_end') }}</label>
-                        <input type="text" id="yearMonthEndPicker" wire:model="selectedYearMonthEnd" class="form-control">
+                        <input type="text" id="monthEndPicker" wire:model="selectedYearMonthEnd" class="form-control">
                       </div>
                     </div>
-                  @else  
+                  @elseif ($selectedIntervalOption == 'MONTH')  
                     <div class="col-md-2 nopadding-right ">
                       <div class="form-group">
                         <label>{{ trans('app.year_start') }}</label>
@@ -184,241 +188,417 @@
                         <input type="text" id="yearEndPicker" wire:model="selectedYearEnd" class="form-control">
                       </div>
                     </div>
+                  @else
+                    <div></div>
                   @endif
-                </div>  
+                </div> 
               </div>
             </div>
           </div>
         </div>
     </div>
 
-    <div class="row dashboard-total">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="filter-panel">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-2 nopadding-right">
+                    Filter value (debug only): <br> 
+                    warehouse : {{ $selectedWarehouseOption }} <br>
+                    client : {{ $selectedClientOption }} <br>
+                    client_group : {{ $selectedClientGroupOption }} <br>
+                    category group : {{ $selectedCategoryGroupOption }} <br>
+                    category sub group : {{ $selectedCategorySubGroupOption }} <br>
+                    order status : {{ $selectedOrderStatusOption }} <br>
+                    payment status : {{ $selectedPaymentStatusOption }} <br>
+                    product name : {{ $productName }} <br>
+                    user name : {{ $userName }} <br>
+                  </div>
+                  <div class="col-md-2">
+                    Filter Timeframe
+                    interval: {{ $selectedIntervalOption }} <br>
+                    start_date: {{ $selectedStartDate }} <br>
+                    end_date : {{ $selectedEndDate }} <br>
+                    Year_week : {{ $selectedYearWeek }} <br>
+                    week : {{ $selectedWeek }} <br>
+                    year month start : {{ $selectedYearMonthStart }} <br>
+                    year month end : {{ $selectedYearMonthEnd }} <br>
+                    year start : {{ $selectedYearStart }} <br>
+                    year End : {{ $selectedYearEnd }} <br>
+                  </div>
+                  <div class="col-md-2">
+                    result : <br>
+                      'customer count' => {{ $customer_count }},<br>
+                      'new_customer_last_30_days' => {{$new_customer_last_30_days}},<br>
+                      'total_profit' => Rp {{$total_profit}},<br>
+                      'total_order_created' => {{$total_order_created}},<br>
+                      'qty_ordered' => {{$qty_ordered}},<br>
+                      'gross_value' => {{$gross_value}},<br>
+                      -- info boxes process status -- <br>
+                      'orders_process' => {{$orders_process}},<br>
+                      'packing_process' => {{$packing_process}},<br>
+                      'delivery_process' => {{$delivery_process}},<br>
+                      'payment_process' => {{$payment_process}},<br>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      {{-- @dump([
-          'warehouse' => $selectedWarehouseOption,
-          'client' => $selectedClientOption,
-          'client_group' => $selectedClientGroupOption,
-          'category_group' => $selectedCategoryGroupOption,
-          'category_sub_group' => $selectedCategorySubGroupOption,
-          'order_status' => $selectedOrderStatusOption,
-          'payment_status' => $selectedPaymentStatusOption,
-      ]) --}}
-      <div class="row">
-        <div class="col-sm-12">
-          <div id="filter-panel">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 nopadding-right">
-                  Filter value : <br> 
-                  warehouse : {{ $selectedWarehouseOption }} <br>
-                  client : {{ $selectedClientOption }} <br>
-                  client_group : {{ $selectedClientGroupOption }} <br>
-                  category group : {{ $selectedCategoryGroupOption }} <br>
-                  category sub group : {{ $selectedCategorySubGroupOption }} <br>
-                  order status : {{ $selectedOrderStatusOption }} <br>
-                  payment status : {{ $selectedPaymentStatusOption }} <br>
-                  username : {{ $productName }} <br>
-                  product name : {{ $userName }} <br>
-                  interval: {{ $selectedIntervalOption }} <br>
-                  start_date: {{ $selectedStartDate }} <br>
-                  end_date : {{ $selectedEndDate }} <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="filter-panel">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row dashboard-total">
+                <x-dashboard-card :count=$customer_count :count_plus=$new_customer_last_30_days :options="
+                  [
+                    'name' => trans('app.dashboard.customer_active'),
+                    'is_count_plus' => true,
+                    'is_currency' => false, 
+                    'count_plus_name' => trans('app.dashboard.total_all_customer_active'),
+                    'icon' => 'people',
+                    'color' => 'danger' 
+                  ]" />
+                <x-dashboard-card :count=$total_profit :count_plus=0 :options="
+                [
+                  'name' => trans('app.dashboard.total_profit_exclude_ops'),
+                  'is_count_plus' => false, 
+                  'is_currency' => true, 
+                  'count_plus_name' => trans('app.dashboard.total_all_order'),
+                  'icon' => 'wallet',
+                  'color' => 'info' 
+                ]"/>
+                <x-dashboard-card :count=$qty_ordered :count_plus=$total_order_created :options="
+                [
+                  'name' => trans('app.dashboard.qty_pcs'),
+                  'is_count_plus' => true,
+                  'is_currency' => false,  
+                  'count_plus_name' => trans('app.dashboard.total_all_order'),
+                  'icon' => 'cube',
+                  'color' => 'primary' 
+                ]"/>
+                <x-dashboard-card :count=$gross_value :count_plus=0 :options="
+                [
+                  'name' => trans('app.dashboard.gross_value'),
+                  'is_count_plus' => false,
+                  'is_currency' => true,  
+                  'count_plus_name' => trans('app.dashboard.total_all_order'),
+                  'icon' => 'cash', 
+                  'color' => 'success'
+                ]"/>
+              </div>
+              <div class="row">
+                <x-info-card :count=$orders_process :options="
+                [
+                  'name' => trans('app.dashboard.order'),
+                  'route' => 'admin.vendor.shop.verifications',
+                  'action' => trans('app.take_action'), 
+                  'icon' => 'cart', 
+                  'bg-color' => 'yellow'
+                ]"/>
+                <x-info-card :count=$packing_process :options="
+                [
+                  'name' => trans('app.dashboard.packing'),
+                  'route' => 'admin.vendor.shop.verifications',
+                  'action' => trans('app.take_action'), 
+                  'icon' => 'archive', 
+                  'bg-color' => 'blue'
+                ]"/>
+                <x-info-card :count=$delivery_process :options="
+                [
+                  'name' => trans('app.dashboard.delivery'),
+                  'route' => 'admin.vendor.shop.verifications',
+                  'action' => trans('app.take_action'), 
+                  'icon' => 'boat', 
+                  'bg-color' => 'green'
+                ]"/>
+                <x-info-card :count=$payment_process :options="
+                [
+                  'name' => trans('app.dashboard.payment'),
+                  'route' => 'admin.vendor.shop.verifications',
+                  'action' => trans('app.take_action'), 
+                  'icon' => 'card', 
+                  'bg-color' => 'orange'
+                ]"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="filter-panel">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6 nopadding-right">
+                    <h3>Chart & Tables Time Filters</h3>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary {{ $selectedThisWeekFilter ? 'active' : '' }}" wire:click="toggleFilter('selectedThisWeekFilter')">This Week</button>
+                        <button type="button" class="btn btn-primary {{ $selectedThisMonthFilter ? 'active' : '' }}" wire:click="toggleFilter('selectedThisMonthFilter')">This Month</button>
+                        <button type="button" class="btn btn-primary {{ $selectedThisYearFilter ? 'active' : '' }}" wire:click="toggleFilter('selectedThisYearFilter')">This Year</button>
                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    @php
+                        $chartData = [
+                            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                            'datasets' => [
+                                [
+                                    'label' => 'My Data',
+                                    'data' => [10, 20, 30, 40, 50],
+                                ],
+                            ],
+                        ];
+                    @endphp
+                    <x-p-o-chart :chart-data="$chartData" :options="[
+                      'name' => trans('app.dashboard.table.po_status_timeframe')
+                    ]"/>
+                  </div>
+                  <div class="col-md-6">
+                    @php
+                        $chartData = [
+                            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                            'datasets' => [
+                                [
+                                    'label' => 'My Data',
+                                    'data' => [10, 20, 30, 40, 50],
+                                ],
+                            ],
+                        ];
+                    @endphp
+                    <x-chart :chart-data="$chartData" :options="[
+                      'name' => trans('app.dashboard.table.po_status')
+                    ]"/>
+                  </div>
+                  <div class="col-md-6">
+                    <x-pie-chart :data="[]" :options="[
+                      'name' => trans('app.dashboard.table.warehouse_total')
+                    ]"/>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-        
-      @livewire('card-counter',[
-        'customer_count' => $customer_count,
-        'new_customer_last_30_days' => $new_customer_last_30_days,
-        'merchant_count' => $merchant_count,
-        'new_merchant_last_30_days' => $new_merchant_last_30_days,
-        'total_order_count' => $total_order_count,
-        'todays_all_order_count' => $todays_all_order_count,
-        'yesterdays_all_order_count' => $yesterdays_all_order_count,
-        'todays_sale_amount' => $todays_sale_amount,
-        'yesterdays_sale_amount' => $yesterdays_sale_amount,
-      ])
-
-      @livewire('info-boxes', [
-        'pending_verifications' => $pending_verifications,
-        'pending_approvals' => $pending_approvals,
-        'dispute_count' => $dispute_count,
-        'last_60days_dispute_count' => $last_60days_dispute_count,
-        'last_30days_dispute_count' => $last_30days_dispute_count,
-      ])
-
-      {{-- @livewire('po-chart-all-filter')
 
       <div class="row">
-        @livewire('po-chart-time-filter', [ 'chart ' => $chart])
-  
-        @livewire('warehouse-pie-chart')
-      </div> --}}
-    </div>
-
-    {{-- <div class="row dashboard-ticket-section">
-      @livewire('customer-table')
-
-      @livewire('warehouse-table')
-
-      @livewire('log-activity-table')
-
-      <div class="row dashboard-product-section">
-        @livewire('top-worst-product-table')
-
-        @livewire('latest-product-table')
-      </div>
-
-      <div class="row dashboard-product-section">
-        @livewire('stock-table')
-
-        @livewire('key-performance-table')
-      </div> --}}
-    {{-- </div> --}}
-    {{-- <div class="row">
         <div class="col-sm-12">
-            @include('admin.partials.reports.timeframe')
+          <div id="filter-panel">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <x-table :header="[
+                          trans('app.dashboard.table.warehouse_name'),
+                          trans('app.dashboard.table.product_name'),
+                          trans('app.dashboard.table.expired_date'),
+                          trans('app.dashboard.table.qty'),
+                          trans('app.dashboard.table.avg_selling_qty'),
+                          trans('app.dashboard.table.selling_price'),
+                          trans('app.dashboard.table.buying_price'),
+                          trans('app.dashboard.table.total'),
+                          trans('app.dashboard.table.note'),
+                          trans('app.dashboard.table.grand_total'),
+                      ]" :options="[
+                        'table_name' => trans('app.dashboard.table.stock_format'),
+                      ]"/>
+                    </div>
+                    <div class="col-md-12">
+                      <x-table :header="[
+                        trans('app.dashboard.table.date'),
+                        trans('app.dashboard.table.from'),
+                        trans('app.dashboard.table.to'),
+                        trans('app.dashboard.table.product_desc'),
+                        trans('app.dashboard.table.qty'),
+                        trans('app.dashboard.table.updated_by'),
+                    ]" :options="[
+                        'table_name' => trans('app.dashboard.table.log_stock_movement'),
+                      ]"/>
+                    </div>
+                    <div class="col-md-12">
+                      @php
+                          $data_sample = [
+                              [
+                                  "date_order" => now()->subDays(2)->format('Y-m-d'), // 2 days ago
+                                  "username" => "user123",
+                                  "hospital_name" => "General Hospital",
+                                  "no_po_ref" => "PO12345",
+                                  "status" => "Completed",
+                              ],
+                              [
+                                  "date_order" => now()->subDays(1)->format('Y-m-d'), // 1 day ago
+                                  "username" => "user456",
+                                  "hospital_name" => "City Clinic",
+                                  "no_po_ref" => "PO54321",
+                                  "status" => "Pending",
+                              ],
+                              [
+                                  "date_order" => now()->format('Y-m-d'), // Today
+                                  "username" => "user789",
+                                  "hospital_name" => "Central Medical Center",
+                                  "no_po_ref" => "PO98765",
+                                  "status" => "In Progress",
+                              ],
+                          ];
+                      @endphp
+                      <x-table :header="[
+                        'date_order' => trans('app.dashboard.table.date_order'),
+                        'username' => trans('app.dashboard.table.username'),
+                        'hospital_name' => trans('app.dashboard.table.hospital_name  '),
+                        'no_po_ref' => trans('app.dashboard.table.no_po_ref'),
+                        'status' => trans('app.dashboard.table.status'),
+                    ]" :options="[
+                        'table_name' => trans('app.dashboard.table.log_activity_export_document')
+                      ]" :data-body="$data_sample"/>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <x-table :header="[
+                        trans('app.dashboard.table.name'),
+                        trans('app.dashboard.table.count_order'),
+                        trans('app.dashboard.table.revenue'),
+                        trans('app.dashboard.table.last_month'),
+                        trans('app.dashboard.table.last_year'),
+                        trans('app.dashboard.table.target'),
+                    ]" :options="[
+                        'table_name' => trans('app.dashboard.table.top_customer')
+                      ]"/>
+                    </div>
+                    <div class="col-md-12">
+                      
+                      <x-table :header="[
+                        trans('app.dashboard.table.name'),
+                        trans('app.dashboard.table.count_order'),
+                        trans('app.dashboard.table.revenue'),
+                        trans('app.dashboard.table.last_month'),
+                        trans('app.dashboard.table.last_year'),
+                        trans('app.dashboard.table.target'),
+                        trans('app.dashboard.table.acheivment'),
+                      ]" :options="[
+                        'table_name' => trans('app.dashboard.table.warehouse')
+                      ]" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <x-table :header="[
+                        trans('app.dashboard.table.name'),
+                        trans('app.dashboard.table.count_order'),
+                        trans('app.dashboard.table.revenue'),
+                        trans('app.dashboard.table.last_month_revenue'),
+                        trans('app.dashboard.table.last_year_revenue'),
+                    ]" :options="[
+                        'table_name' => trans('app.dashboard.table.top_worst_product')
+                      ]"/>
+                    </div>
+                    <div class="col-md-12">
+                      <x-table :header="[
+                        trans('app.dashboard.table.employee_name'),
+                        trans('app.dashboard.table.warehouse_name'),
+                        trans('app.dashboard.table.confirmed'),
+                        trans('app.dashboard.table.packed'),
+                        trans('app.dashboard.table.delivered'),
+                        trans('app.dashboard.table.paided'),
+                        trans('app.dashboard.table.total'),
+                    ]" :options="[
+                        'table_name' => trans('app.dashboard.table.kpi')
+                      ]"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div> --}}
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
 <script>
   function initializeDatepicker(interval) {
           $('#datepicker').datepicker('destroy'); // Destroy any existing datepicker
-          let options = {};
+          @this.emit('resetTimeFrameFilter');
+
+          let optionsStart = {};
+          let optionsEnd = {};
+          let propsStart = '';
+          let propsEnd= '';
+          let livewireStart = '';
+          let livewireEnd = '';
 
           switch(interval) {
               case 'DAILY':
-                  $('#datepicker_start_date').datepicker({
-                      format: 'yyyy-mm-dd'
-                  }).on('changeDate', function(e) {
-                      @this.set('startDateUpdated', e.format(0, 'yyyy-mm-dd'));
-                  });
-
-                  $('#datepicker_end_date').datepicker({
-                      format: 'yyyy-mm-dd'
-                  }).on('changeDate', function(e) {
-                      @this.set('endDateUpdated', e.format(0, 'yyyy-mm-dd'));
-                  });
+                  propsStart = '#datepicker_start_date';
+                  propsEnd= '#datepicker_end_date';
+                  livewireStart = 'startDateUpdated';
+                  livewireEnd = 'endDateUpdated';
+                  optionsStart = {format: 'yyyy-mm-dd'};
+                  optionsEnd = {format: 'yyyy-mm-dd'};
+                 
                   break;
               case 'WEEK':
 
-                  $('#yearPicker').datepicker({ format: 'yyyy', startView: 'years', minViewMode: 'years', autoclose: true }).on('changeDate', function(e) {
-                      @this.set('yearWeekUpdated', e.format(0, 'yyyy'));
-                  });
+                  propsStart = '#yearPicker';
+                  propsEnd= '#weekPicker';
+                  livewireStart = 'yearWeekUpdated';
+                  livewireEnd = 'weekUpdated';
+                  optionsStart = { format: 'yyyy', startView: 'years', minViewMode: 'years', autoclose: true }
+                  optionsEnd = { format: 'yyyy-WW', autoclose: true, calendarWeeks: true }
 
-                  $('#weekPicker').datepicker({ format: 'yyyy-WW', autoclose: true, calendarWeeks: true }).on('changeDate', function(e) {
-                      @this.set('weekUpdated', e.format(0, 'yyyy-WW'));
-                  });
                   break;
               case 'MONTH':
-                  options = { format: 'yyyy-mm', startView: 'months', minViewMode: 'months', autoclose: true };
+                  propsStart = '#monthStartPicker';
+                  propsEnd= '#monthEndPicker';
+                  livewireStart = 'monthStartUpdated';
+                  livewireEnd = 'monthEndUpdated';
+                  optionsStart = { format: 'yyyy-mm', startView: 'months', minViewMode: 'months', autoclose: true };
+                  optionsEnd = { format: 'yyyy-mm', startView: 'months', minViewMode: 'months', autoclose: true };
 
-
-                  $('#yearMonthStartPicker').datepicker(options).on('changeDate', function(e) {
-                      @this.set('monthStartUpdated', e.format(0, options.format));
-                  });
-
-
-                  $('#yearMonthEndPicker').datepicker(options).on('changeDate', function(e) {
-                      @this.set('monthEndUpdated', e.format(0, options.format));
-                  });
                   break;
               case 'YEAR':
-                  options = { format: 'yyyy-mm', startView: 'months', minViewMode: 'months', autoclose: true };
+                  propsStart = '#yearStartPicker';
+                  propsEnd= '#yearEndPicker';
+                  livewireStart = 'yearStartUpdated';
+                  livewireEnd = 'yearEndUpdated';
+                  optionsStart = { format: 'yyyy', startView: 'years', minViewMode: 'years', autoclose: true };
+                  optionsEnd = { format: 'yyyy', startView: 'years', minViewMode: 'years', autoclose: true };
 
-                  $('#yearMonthStartPicker').datepicker(options).on('changeDate', function(e) {
-                      @this.set('yearStartUpdated', e.format(0, options.format));
-                  });
-
-                  $('#yearMonthEndPicker').datepicker(options).on('changeDate', function(e) {
-                      @this.set('yearEndUpdated', e.format(0, options.format));
-                  });
                   break;
           }
+
+          $(propsStart).datepicker(optionsStart).on('changeDate', function(e) {
+            @this.emit(livewireStart, e.format(0, optionsStart.format));
+          });
+
+          $(propsEnd).datepicker(optionsEnd).on('changeDate', function(e) {
+            @this.emit(livewireEnd, e.format(0, optionsEnd.format));
+          });
+
       }
 
   document.addEventListener('livewire:load', function () {
       // $('#select_warehouse').select2();
 
-      // $('#select_warehouse').on('change', function (e) {
-      //     var data = $('#select_warehouse').select2("val");
-      //     @this.set('selectedWarehouseOption', data);
-      // });
-
-      // $('#select_client').select2({
-      //   minimumInputLength: 3,
-      // });
-
-      // $('#select_client').on('change', function (e) {
-      //     var data = $('#select_client').select2("val");
-      //     @this.set('selectedClientOption', data);
-      // });
-
-      // $('#select_client_group').select2({
-      //   placeholder: "{{ trans('app.select_client_group') }}",
-      //   allowClear: true, 
-      //   minimumInputLength: 3,
-      // });
-
-      // $('#select_client_group').on('change', function (e) {
-      //     var data = $('#select_client_group').select2("val");
-      //     @this.set('selectedClientGroupOption', data);
-      // });
-
-      // $('#select_category_group').select2({
-      //   minimumInputLength: 3,
-      // });
-
-      // $('#select_category_group').on('change', function (e) {
-      //     var data = $('#select_category_group').select2("val");
-      //     @this.set('selectedCategoryGroupOption', data);
-      // });
-
-      // $('#select_category_sub_group').select2({
-      //   minimumInputLength: 3,
-      // });
-
-      // $('#select_category_sub_group').on('change', function (e) {
-      //     var data = $('#select_category_sub_group').select2("val");
-      //     @this.set('selectedCategorySubGroupOption', data);
-      // });
-
-      // $('#orderStatus').select2({
-      //     minimumResultsForSearch: -1
-      // });
-
-      // $('#orderStatus').on('change', function (e) {
-      //     var data = $('#orderStatus').select2("val");
-      //     @this.set('selectedOrderStatusOption', data);
-      // });
-
-      // $('#paymentStatus').select2({
-      //     minimumResultsForSearch: -1
-      // });
-
-      // $('#paymentStatus').on('change', function (e) {
-      //     var data = $('#paymentStatus').select2("val");
-      //     @this.set('selectedPaymentStatusOption', data);
-      // });
+      $('#select_warehouse').on('change', function (e) {
+          // var data = $('#select_warehouse').select2("val");
+          @this.emit('updatedCustomerCount');
+      });
 
       initializeDatepicker(@this.selectedIntervalOption);
 
       window.addEventListener('reinitialize-datepicker', event => {
           initializeDatepicker(event.detail.interval);
       });
-
-      // $('#yearPicker').datepicker({
-      //     format: "yyyy",
-      //     viewMode: "years",
-      //     minViewMode: "years",
-      //     autoclose: true
-      // }).on('changeDate', function(e) {
-      //     @this.emit('yearWeekUpdated', e.format(0, 'yyyy'));
-      // });
   });
 </script>
