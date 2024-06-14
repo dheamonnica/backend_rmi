@@ -36,12 +36,6 @@
   {!! $chart->script() !!}
   
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<<<<<<< HEAD
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script> --}}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  @stack('js-scripts')
-=======
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
   <script>
     var ctx = document.getElementById("productChart").getContext('2d');
@@ -157,5 +151,4 @@
       }
     }
   </script>
->>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
 @endsection
