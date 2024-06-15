@@ -1,7 +1,7 @@
 <!-- Main Header -->
 <header class="main-header">
   <!-- Logo -->
-  <a href="{{ url('/') }}" class="logo">
+  <a href="{{ url('/') }}" class="logo" style="position: fixed;">
     <img src="{{ get_logo_url('system', 'logo') }}" width="30" alt="{{ trans('app.icon') }}"> {{ get_site_title() }}
 
     <!-- mini logo for sidebar mini 50x50 pixels -->
