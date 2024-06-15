@@ -9,7 +9,8 @@
               <i class="fal fa-location-arrow"></i> {{ trans('theme.ship_to') . ' ' . Session::get('zipcode_default') }}
             </a>
           @else
-            <h3>{{ trans('theme.welcome') . ' ' . config('app.name') }}</h3>
+            {{-- <h3>{{ trans('theme.welcome') . ' ' . config('app.name') }}</h3> --}}
+            <h3>{{ trans('theme.welcome') . ' RMI Marketplace' }}</h3>
           @endif
 
           {{-- @unless (empty($promotional_tagline['text']))
@@ -269,13 +270,13 @@
 <div class="primary-nav">
   <div class="container" id="primary-nav-container">
     <div class="primary-nav-inner">
-      <ul class="menu-dropdown-list primary-nav-category">
+      {{-- <ul class="menu-dropdown-list primary-nav-category">
         @if (is_null($hidden_menu_items) || !in_array('Categories', $hidden_menu_items))
           <li>
             <a href="{{ route('categories') }}" class="menu-link" data-menu-link>
               <i class="fas fa-bars" style="margin-right: 10px;"></i>
               {{ trans('theme.categories') }}
-              {{-- <i class="far fa-chevron-down"></i> --}}
+              <i class="far fa-chevron-down"></i>
             </a>
 
             <ul class="menu-cat hide">
@@ -292,7 +293,6 @@
                         <span>{{ $catGroup->name }}</span>
                         <i class="fal fa-chevron-right mb-0"></i>
                       </a>
-                      {{-- <div class="mega-dropdown" style="background-image:url({{ $catGroup->backgroundImage ? get_storage_file_url(optional($catGroup->backgroundImage)->path, 'full') : '' }});"> --}}
                     </li>
                   @endforeach
                 </div>
@@ -301,7 +301,6 @@
               @foreach ($all_categories as $catGroup)
                 <div class="mega-dropdown common-dropdown" data-simplebar data-category-id="{{ $catGroup->id }}" @if ($catGroup->backgroundImage) style="background-image: url('{{ get_storage_file_url(optional($catGroup->backgroundImage)->path, 'full') }}')" @endif>
 
-                  {{-- <img class="mega-menu-background" src="{{ get_storage_file_url(optional($catGroup->backgroundImage)->path, 'full') }}" /> --}}
 
 
                   <div class="row">
@@ -322,15 +321,15 @@
                         </div>
                       </div>
                     @endforeach
-                  </div> <!-- ./row -->
-                </div> <!-- ./mega-dropdown -->
+                  </div> 
+                </div> 
               @endforeach
             </ul>
           </li>
         @endif
-      </ul>
+      </ul> --}}
 
-      <ul class="header-nav-items">
+      {{-- <ul class="header-nav-items">
         @if (is_null($hidden_menu_items) || !in_array('Brands', $hidden_menu_items))
           <li>
             <a class="menu-link" href="{{ route('brands') }}">
@@ -391,131 +390,14 @@
             </a>
           </li>
         @endif
-
-        {{-- <li class="menu-dropdown-list">
-          <a class="menu-link" href="#">
-            Shop
-            <i class="far fa-chevron-down"></i>
-          </a>
-          <div class="menu-cat shop-menu">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="navbar-cat-item mega-dropdown-item">
-                  <h3>
-                    <a href="#">Home & Garden</a>
-                  </h3>
-                  <ul>
-                    <li><a href="#">Schoen and Sons <p>Air Jordan 1 Top 3 Sneaker (DS)</p> </a></li>
-                    <li><a href="#">Funk, Paucek and Krajcik <p>iPad Pro 2017 Model</p> </a></li>
-                    <li><a href="#">Home Entertainment <p>Heimer Miller Sofa (Mint Condition)</p> </a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="navbar-cat-item mega-dropdown-item">
-                  <h3>
-                    <a href="#">Electronics</a>
-                  </h3>
-                  <ul>
-                    <li><a href="#">Corkery Group <p>Brand New Bike, Local buyer only</p> </a></li>
-                    <li><a href="#">Corkery Group <p>Coach Tabby 26 for sale</p> </a></li>
-                    <li><a href="#">Home Entertainment <p>Playstation 4 Limited Edition (with games)</p> </a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="navbar-cat-item mega-dropdown-item">
-                  <h3>
-                    <a href="#">hobbies & DIY</a>
-                  </h3>
-                  <ul>
-                    <li><a href="#">Schoen and Sons <p>DJI Mavic Pro 2</p> </a></li>
-                    <li><a href="#">Funk, Paucek and Krajcik <p>Dell Computer Monitor</p> </a></li>
-                    <li><a href="#">Dell Computer Monitor <p>Gopro hero 7 (with receipt)</p> </a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="navbar-cat-item mega-dropdown-item">
-                  <h3>
-                    <a href="#">Pats</a>
-                  </h3>
-                  <ul>
-                    <li><a href="#">Schoen and Sons <p>Macbook Pro 16 inch (2020 ) For Sale</p> </a></li>
-                    <li><a href="#">Funk, Paucek and Krajcik <p>Heimer Miller Sofa (Mint Condition)</p> </a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="navbar-cat-item mega-dropdown-item">
-                  <h3>
-                    <a href="#">kids & Toy</a>
-                  </h3>
-                  <ul>
-                    <li><a href="#">Schoen and Sons <p>Gaming Chair, local pickup only</p> </a></li>
-                    <li><a href="#">Funk, Paucek and Krajcik <p>Lego Star'War edition</p> </a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="navbar-cat-item mega-dropdown-item">
-                  <h3>
-                    <a href="#">Clothing & Shoes</a>
-                  </h3>
-                  <ul>
-                    <li><a href="#">Schoen and Sons <p>Brand New Bike, Local buyer only</p> </a></li>
-                    <li><a href="#">Funk, Paucek and Krajcik <p>Gaming Chair, local pickup only</p> </a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="menu-banner">
-                  <a href="#">
-                    <img src="{{ theme_asset_url('img/shop-1.png') }}" alt="">
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="menu-banner">
-                  <a href="#">
-                    <img src="{{ theme_asset_url('img/shop-2.png') }}" alt="">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li> --}}
-
-        {{-- <li class="menu-dropdown-list">
-          <a class="menu-link" href="#">
-            Pages
-            <i class="far fa-chevron-down"></i>
-          </a>
-          <ul class="menu-cat">
-            <li>
-              <a href="#">Shopping Cart</a>
-            </li>
-            <li>
-              <a href="#">Checkout</a>
-            </li>
-            <li>
-              <a href="#">Account</a>
-            </li>
-            <li>
-              <a href="#">About Us</a>
-            </li>
-            <li>
-              <a href="#">Blog</a>
-            </li>
-            <li>
-              <a href="#">Wishlist</a>
-            </li>
-          </ul>
-        </li> --}}
+      </ul> --}}
+      <ul class="header-nav-items">
+      <li>
+        <a href="{{ route('categories.browse', 'general') }}" class="menu-link" data-menu-link>
+          <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
+          General
+        </a>
+      </li>
       </ul>
 
       <div class="shale-text">
