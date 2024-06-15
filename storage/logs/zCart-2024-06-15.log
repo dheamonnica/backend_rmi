@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2024-06-15 07:56:35] production.ERROR: View [partials._demo_admin_login] not found. (View: /Users/aldyhelix/Projects/www/backend_rmi/resources/views/auth/login.blade.php) {"view":{"view":"/Users/aldyhelix/Projects/www/backend_rmi/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php","data":[]},"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): View [partials._demo_admin_login] not found. (View: /Users/aldyhelix/Projects/www/backend_rmi/resources/views/auth/login.blade.php) at /Users/aldyhelix/Projects/www/backend_rmi/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:137)
 [stacktrace]
 #0 /Users/aldyhelix/Projects/www/backend_rmi/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\\View\\FileViewFinder->findInPaths('partials._demo_...', Array)
@@ -4462,3 +4463,14 @@
 #83 /Applications/Herd.app/Contents/Resources/valet/server.php(153): require('/Users/aldyheli...')
 #84 {main}
 "} 
+=======
+[2024-06-15 10:36:29] production.INFO: Evironemnt key ZCART_API_KEY has been updated to "XdfhVn60Av4eD6nHqC00uSGkaXWpSqpQ"  
+[2024-06-15 10:36:29] production.INFO: Evironemnt key ZCART_ENCRYPTION_KEY has been updated to "eHENVHyxqhafBnunaYZprSMarxUXgqqO"  
+[2024-06-15 10:36:29] production.INFO: Evironemnt key ZCART_ENCRYPTION_IV has been updated to "xIuCqQIcomc45yUd"  
+[2024-06-15 10:39:36] production.INFO: Evironemnt key ZCART_API_KEY has been updated to "qoS8P2VCmC4cMe9bYfl4Fd4ZM9q8kvHd"  
+[2024-06-15 10:39:36] production.INFO: Evironemnt key ZCART_ENCRYPTION_KEY has been updated to "X0q4S8uenAJC2E0Y5PoHD8qU4lj1HEWG"  
+[2024-06-15 10:39:36] production.INFO: Evironemnt key ZCART_ENCRYPTION_IV has been updated to "ntFXfT1Rieai2ApR"  
+[2024-06-15 12:08:11] production.INFO: Evironemnt key ZCART_API_KEY has been updated to "tNhYfEr8fZoy1RJrj9ZEsLVLgwFULQyA"  
+[2024-06-15 12:08:11] production.INFO: Evironemnt key ZCART_ENCRYPTION_KEY has been updated to "jlVtwAOOHG6eMXPkVLLojQS0S3bavy1b"  
+[2024-06-15 12:08:11] production.INFO: Evironemnt key ZCART_ENCRYPTION_IV has been updated to "fCVikNlTpNA4Xp0o"  
+>>>>>>> 24a0678c7 (fix: license error)
