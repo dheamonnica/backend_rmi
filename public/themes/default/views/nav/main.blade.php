@@ -392,12 +392,39 @@
         @endif
       </ul> --}}
       <ul class="header-nav-items">
-      <li>
-        <a href="{{ route('categories.browse', 'general') }}" class="menu-link" data-menu-link>
-          <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
-          General
-        </a>
-      </li>
+        <li>
+          <a href="{{ route('categories.browse', 'general') }}" class="menu-link" data-menu-link>
+            <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
+            General
+          </a>
+        </li>
+      </ul>
+
+      <ul class="header-nav-items">
+        <li>
+          <a href="{{ route('categories.browse', 'bmap-operation') }}" class="menu-link" data-menu-link>
+            <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
+            BMAP Operation
+          </a>
+        </li>
+      </ul>
+
+      <ul class="header-nav-items">
+        <li>
+          <a href="{{ route('categories.browse', 'bmap-ok') }}" class="menu-link" data-menu-link>
+            <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
+            BMAP OK
+          </a>
+        </li>
+      </ul>
+
+      <ul class="header-nav-items">
+        <li>
+          <a href="{{ route('categories.browse', 'bmap-repiratory') }}" class="menu-link" data-menu-link>
+            <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
+            BMAP Repiratory
+          </a>
+        </li>
       </ul>
 
       <div class="shale-text">
