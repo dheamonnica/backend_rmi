@@ -115,8 +115,8 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null ) {
-            Log::info('belum login');
+        // if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null ) {
+        //     Log::info('belum login');
             return view('theme::index', compact(
                 'banners',
                 'sliders',
@@ -135,9 +135,9 @@ class HomeController extends Controller
                 'flashdeals',
                 'digital_products'
             ));
-        } else {
-            return view('theme::public');
-        }
+        // } else {
+        //     return view('theme::public');
+        // }
     }
 
     public function search(Request $request)
@@ -584,29 +584,29 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null) {
-            Log::info('belum login');
-            return view('theme::index', compact(
-                'banners',
-                'sliders',
-                // 'daily_popular',
-                // 'weekly_popular',
-                // 'monthly_popular',
-                'recent',
-                'additional_items',
-                'trending_categories',
-                'featured_items',
-                'deal_of_the_day',
-                'deals_under',
-                'featured_category',
-                'featured_brands',
-                'featured_vendors',
-                'flashdeals',
-                'digital_products'
-            ));
-        } else {
-            return view('theme::client');
-        }
+        // if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null) {
+        //     Log::info('belum login');
+        //     return view('theme::index', compact(
+        //         'banners',
+        //         'sliders',
+        //         // 'daily_popular',
+        //         // 'weekly_popular',
+        //         // 'monthly_popular',
+        //         'recent',
+        //         'additional_items',
+        //         'trending_categories',
+        //         'featured_items',
+        //         'deal_of_the_day',
+        //         'deals_under',
+        //         'featured_category',
+        //         'featured_brands',
+        //         'featured_vendors',
+        //         'flashdeals',
+        //         'digital_products'
+        //     ));
+        // } else {
+        //     return view('theme::client');
+        // }
     }
 
     /**
