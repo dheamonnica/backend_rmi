@@ -3608,12 +3608,13 @@ a:focus {
  */
 .main-sidebar,
 .left-side {
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* position: absolute; */
+  position: fixed;
+  /* top: 0; */
+  /* left: 0; */
   font-weight: lighter;
   letter-spacing: 0.5px;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   min-height: 100%;
   width: 170px;
   /* text-transform: uppercase; */
@@ -3629,7 +3630,7 @@ a:focus {
 .main-sidebar,
 .left-side {
   /* background-color: #d7dee6; */
-  background-color: white;
+  /* background-color: white; */
 }
 .sidebar-menu {
   /*line-height: 1.2em;*/
