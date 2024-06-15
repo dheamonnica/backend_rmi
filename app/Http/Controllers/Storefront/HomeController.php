@@ -115,11 +115,8 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        if (Auth::guard('customer')->user() == null) {
-            Log::info('belom login');
-            return view('theme::public');
-        } else {
-            Log::info('udah login');
+        if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null ) {
+            Log::info('belum login');
             return view('theme::index', compact(
                 'banners',
                 'sliders',
@@ -138,6 +135,8 @@ class HomeController extends Controller
                 'flashdeals',
                 'digital_products'
             ));
+        } else {
+            return view('theme::public');
         }
     }
 
@@ -585,11 +584,8 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        if (@Auth::user()->name === null) {
-            Log::info('belom login');
-            return view('theme::client');
-        } else {
-            Log::info('udah login');
+        if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null) {
+            Log::info('belum login');
             return view('theme::index', compact(
                 'banners',
                 'sliders',
@@ -608,6 +604,8 @@ class HomeController extends Controller
                 'flashdeals',
                 'digital_products'
             ));
+        } else {
+            return view('theme::client');
         }
     }
 
