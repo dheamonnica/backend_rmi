@@ -38,7 +38,11 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $shops = $this->shop->all();
+        $shops_array = $this->shop->all();
+        // Filter the collection
+        $shops = $shops_array->filter(function ($shop) {
+            return $shop->pic_name !== null;
+        });
 
         $trashes = $this->shop->trashOnly();
 
