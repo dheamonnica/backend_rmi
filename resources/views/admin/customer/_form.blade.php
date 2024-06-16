@@ -2,7 +2,7 @@
   <div class="col-md-4 nopadding-right">
     <div class="form-group">
       {!! Form::label('title', trans('app.form.title') . '*') !!}
-      {!! Form::select('title', ['rsup' => 'RSUP', 'rsud' => 'RSUD', 'rsu' => 'RSU', 'clinic' => 'Clinic'], $customer->title, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.placeholder.title'), 'required']) !!}
+      {!! Form::select('title', ['rsup' => 'RSUP', 'rsud' => 'RSUD', 'rsu' => 'RSU', 'clinic' => 'Clinic'], null, ['class' => 'form-control select2-normal', 'placeholder' => trans('app.placeholder.title'), 'required']) !!}
       <div class="help-block with-errors"></div>
     </div>
   </div>
