@@ -404,7 +404,7 @@
         <li>
           <a href="{{ route('categories.browse', 'bmap-operation') }}" class="menu-link" data-menu-link>
             <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
-            BMAP Operation
+            Operation
           </a>
         </li>
       </ul>
@@ -413,7 +413,7 @@
         <li>
           <a href="{{ route('categories.browse', 'bmap-ok') }}" class="menu-link" data-menu-link>
             <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
-            BMAP OK
+            OK
           </a>
         </li>
       </ul>
@@ -422,7 +422,7 @@
         <li>
           <a href="{{ route('categories.browse', 'bmap-repiratory') }}" class="menu-link" data-menu-link>
             <i class="fal fa-store menu-icon" style="margin-right: 10px;"></i>
-            BMAP Repiratory
+            Repiratory
           </a>
         </li>
       </ul>
