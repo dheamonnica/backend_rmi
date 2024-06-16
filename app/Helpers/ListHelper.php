@@ -705,6 +705,14 @@ class ListHelper
             ->orderBy('name', 'asc')->pluck('name', 'id');
     }
 
+    public static function merchantsWarehouse()
+    {
+        return DB::table('users')->where('role_id', 3)
+        ->where('deleted_at', null)
+        ->where('warehouse_name', 'LIKE', '%' . 'Warehouse' . '%')
+            ->orderBy('warehouse_name', 'asc')->pluck('warehouse_name', 'id');
+    }
+
     /**
      * Get new merchants list for form dropdown.
      *

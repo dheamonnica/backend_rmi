@@ -83,7 +83,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        $merchants = ListHelper::merchants();
+        $merchants = ListHelper::merchantsWarehouse();
 
         return view('admin.customer._create', compact('merchants'));
     }
@@ -154,7 +154,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $merchants = ListHelper::merchants();
+        $merchants = ListHelper::merchantsWarehouse();
 
         $customer = $this->customer->find($id);
 
