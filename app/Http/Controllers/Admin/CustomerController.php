@@ -12,6 +12,7 @@ use App\Repositories\Customer\CustomerRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use App\Helpers\ListHelper;
 
 class CustomerController extends Controller
 {
@@ -82,7 +83,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('admin.customer._create');
+        $merchants = ListHelper::merchants();
+
+        return view('admin.customer._create', compact('merchants'));
     }
 
     /**
@@ -151,9 +154,11 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
+        $merchants = ListHelper::merchants();
+
         $customer = $this->customer->find($id);
 
-        return view('admin.customer._edit', compact('customer'));
+        return view('admin.customer._edit', compact('customer', 'merchants'));
     }
 
     /**

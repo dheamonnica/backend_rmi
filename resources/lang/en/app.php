@@ -1183,6 +1183,8 @@ return [
         'hospital_pic_name' => 'Hospital PIC Name',
         'hospital_pic_phone' => 'Hospital PIC Phone',
         'hospital_pic_email' => 'Hospital PIC Email',
+        'hospital_tax_name' => 'Hospital Tax Name',
+        'coverage_area' => 'Coverage Area',
 
         // product
         'licence_number' => 'Licence Number',
