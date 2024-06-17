@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Manufacturer;
 use App\Models\System;
 use App\Helpers\ListHelper;
 use Illuminate\Support\Str;
@@ -21,6 +22,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\Validations\RegisterMerchantRequest;
 use App\Notifications\Auth\SendVerificationEmail as EmailVerificationNotification;
 use App\Notifications\SuperAdmin\VerdorRegistered as VerdorRegisteredNotification;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -130,13 +132,6 @@ class RegisterController extends Controller
         try {
             $merchant = $this->create($request->all());
 
-            if($request['shop_name']) {
-                $merchant['role_id'] = 10;
-                $merchant['business_name'] = $request->input('shop_name');
-                $merchant['country_id'] = $request->input('country_id');
-                $merchant['phone'] = $request->input('phone');
-            }
-
             if (!customer_can_register()) {
                 // Dispatching customer create job
                 CreateCustomerFromMerchant::dispatch($merchant);
@@ -149,6 +144,19 @@ class RegisterController extends Controller
                 $merchant['role_id'] = 10;
                 $merchant['business_name'] = $request->input('shop_name');
                 $merchant['country_id'] = $request->input('country_id');
+                 // Create a new manufacturer record
+                Manufacturer::create([
+                    'name' => $request->input('shop_name'),
+                    'slug' =>  Str::slug($request->input('name')),
+                    'email' => $request->input('email'),
+                    'phone' => $request->input('phone'),
+                    'country_id' => $request->input('country_id'),
+                    'active' => '1',
+                    'created_at' => Carbon::today(),
+                    'manufacture_pic_name' => $request->input('name'),
+                    'manufacture_pic_email' => $request->input('personal_email'),
+                    'manufacture_pic_phone' => $request->input('personal_phone'),
+                ]);
             } else {
                 Auth::guard()->login($merchant);
             }

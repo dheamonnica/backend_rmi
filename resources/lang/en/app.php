@@ -1288,6 +1288,11 @@ return [
         'manufacture_pic_name' => 'Manufacture PIC Name',
         'manufacture_pic_email' => 'Manufacture PIC Email',
         'manufacture_pic_phone' => 'Manufacture PIC Phone',
+        'company_name' => 'Company Name',
+        'company_email' => 'Company Email',
+        'company_phone' => 'Company Phone',
+        'personal_email' => 'Personal Email',
+        'personal_phone' => 'Personal Phone',
 
         // vendor
         'select_product' => 'Select Product',
