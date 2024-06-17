@@ -36,15 +36,15 @@
     </a>
   </li>
 
-  <li class="{{ $tab == 'disputes' ? 'active' : '' }}">
+  {{-- <li class="{{ $tab == 'disputes' ? 'active' : '' }}">
     <a href="{{ route('account', 'disputes') }}"><i class="fas fa-rocket no-fill"></i> @lang('theme.nav.refunds_disputes')</a>
-  </li>
-
+  </li> --}}
+{{-- 
   <li class="{{ $tab == 'coupons' ? 'active' : '' }}">
     <a href="{{ route('account', 'coupons') }}">
       <i class="fas fa-tags no-fill"></i> @lang('theme.nav.my_coupons')
     </a>
-  </li>
+  </li> --}}
 
   @if (is_incevio_package_loaded('eventy'))
     <li class="{{ $tab == 'events' ? 'active' : '' }}">

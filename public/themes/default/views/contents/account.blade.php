@@ -35,9 +35,9 @@
             </div>
 
             <div class="form-group">
-              {!! Form::label('nice_name', trans('theme.nice_name'), ['class' => 'col-sm-4 control-label']) !!}
+              {!! Form::label('hospital_pic_name', trans('app.form.hospital_pic_name'), ['class' => 'col-sm-4 control-label']) !!}
               <div class="col-md-8 col-sm-12">
-                {!! Form::text('nice_name', null, ['id' => 'nice_name', 'class' => 'form-control', 'placeholder' => trans('theme.placeholder.nice_name')]) !!}
+                {!! Form::text('hospital_pic_name', null, ['id' => 'hospital_pic_name', 'class' => 'form-control', 'placeholder' => trans('theme.placeholder.pic_name')]) !!}
                 <div class="help-block with-errors"></div>
               </div>
             </div>
