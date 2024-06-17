@@ -27,55 +27,56 @@
               </div>
             @endif
 
-            <div class="form-group has-feedback">
-                {!! Form::text('shop_name', null, ['class' => 'form-control input-lg', 'placeholder' => 'Company Name']) !!}
-                <i class="glyphicon glyphicon-equalizer form-control-feedback"></i>
-                <div class="help-block with-errors"></div>
-            </div>
-
-            <div class="form-group has-feedback">
-              {!! Form::text('name', null, ['class' => 'form-control input-lg', 'placeholder' => trans('theme.placeholder.full_name')]) !!}
-              <span class="glyphicon glyphicon-user form-control-feedback"></span>
-              <div class="help-block with-errors"></div>
-            </div>
-
-            <div class="form-group has-feedback">
-              {!! Form::email('email', null, ['class' => 'form-control input-lg', 'placeholder' => 'Email Address']) !!}
-              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-              <div class="help-block with-errors"></div>
-            </div>
-
-            @if (is_incevio_package_loaded('otp-login'))
-                @include('otp-login::phone_field')
-            @else
+            <div class="row">
+              <div class="col-lg-6">
                 <div class="form-group has-feedback">
-                {!! Form::text('phone', null, ['class' => 'form-control input-lg', 'placeholder' => trans('app.placeholder.phone')]) !!}
-                <i class="glyphicon glyphicon-phone form-control-feedback"></i>
-                <div class="help-block with-errors"></div>
+                    {!! Form::text('shop_name', null, ['class' => 'form-control input-lg', 'placeholder' => 'Company Name']) !!}
+                    <i class="glyphicon glyphicon-equalizer form-control-feedback"></i>
+                    <div class="help-block with-errors"></div>
                 </div>
-            @endif
+    
+                <div class="form-group has-feedback">
+                  {!! Form::email('email', null, ['class' => 'form-control input-lg', 'placeholder' => trans('app.form.company_email')]) !!}
+                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                  <div class="help-block with-errors"></div>
+                </div>
+    
+                @if (is_incevio_package_loaded('otp-login'))
+                    @include('otp-login::phone_field')
+                @else
+                    <div class="form-group has-feedback">
+                    {!! Form::text('phone', null, ['class' => 'form-control input-lg', 'placeholder' => trans('app.form.company_phone')]) !!}
+                    <i class="glyphicon glyphicon-phone form-control-feedback"></i>
+                    <div class="help-block with-errors"></div>
+                    </div>
+                @endif
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group has-feedback">
+                  {!! Form::text('name', null, ['class' => 'form-control input-lg', 'placeholder' => trans('theme.placeholder.full_name')]) !!}
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  <div class="help-block with-errors"></div>
+                </div>
+    
+                <div class="form-group has-feedback">
+                  {!! Form::email('personal_email', null, ['class' => 'form-control input-lg', 'placeholder' => trans('app.form.personal_email')]) !!}
+                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                  <div class="help-block with-errors"></div>
+                </div>
+    
+                <div class="form-group has-feedback">
+                  {!! Form::text('personal_phone', null, ['class' => 'form-control input-lg', 'placeholder' => trans('app.form.personal_phone')]) !!}
+                  <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+            </div>
 
             <div class="form-group has-feedback">
                 {{ Form::select('country_id', $countries, 360, ['id' => 'country_id', 'class' => 'form-control input-lg', 'required']) }}
                 <i class="glyphicon glyphicon-map-marker form-control-feedback"></i>
             </div>
-
-            {{-- <div class="form-group has-feedback">
-                {{ Form::select('product_id', ['' => 'Select Product'] + $products->toArray(), null, ['id' => 'product_id', 'class' => 'form-control input-lg', 'required']) }}
-                <i class="glyphicon glyphicon-file form-control-feedback"></i>
-            </div>
-
-            <div class="form-group has-feedback">
-              {{ Form::select('offer_quantity_pcs', [
-                  '' => 'Select a Offer Quantity Pcs',
-                  '100' => '100',
-                  '500' => '500',
-                  '1000' => '1,000',
-                  '5000' => '5,000',
-                  '10000' => '10,000',
-              ], null, ['id' => 'offer_quantity_pcs', 'class' => 'form-control input-lg', 'required']) }}
-                <i class="glyphicon glyphicon-file form-control-feedback"></i>
-            </div> --}}
 
             <div class="form-group has-feedback">
               {!! Form::password('password', ['class' => 'form-control input-lg', 'id' => 'password', 'placeholder' => trans('app.placeholder.password'), 'data-minlength' => '6', 'required']) !!}

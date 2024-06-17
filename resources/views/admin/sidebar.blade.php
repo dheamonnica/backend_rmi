@@ -623,7 +623,7 @@
           @can('view', \App\Models\Config::class)
             <li class="{{ Request::is('admin/setting/general*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/general') }}">
-                <i class="fa fa-angle-double-right"></i>
+                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.shop_settings') }}
               </a>
             </li>
@@ -900,7 +900,8 @@
 
               <li class="{{ Request::is('admin/offering*') ? 'active' : '' }}">
                 <a href="{{ route('admin.offering.index') }}">
-                  <i class="fa fa-angle-double-right"></i> Offering Approval
+                  {{-- <i class="fa fa-angle-double-right"></i> --}}
+                  Offering Approval
                 </a>
               </li>
             @elseif(Auth::user()->isMerchant())
