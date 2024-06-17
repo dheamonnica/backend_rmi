@@ -149,7 +149,7 @@
           </div> <!-- /.header-menu-toggler -->
 
           <div class="header-logo">
-            <a href="{{ url('/') }}">
+            <a href="{{ url('/catalog') }}">
               <img src="{{ get_logo_url('system', 'logo') }}" class="brand-logo" alt="{{ trans('theme.logo') }}" title="{{ trans('theme.logo') }}">
             </a>
           </div> <!-- /.header-logo -->
