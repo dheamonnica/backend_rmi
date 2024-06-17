@@ -45,6 +45,10 @@ Route::middleware('storefront')->namespace('Storefront')->group(function () {
         Route::post('message/{message}', [
             ConversationController::class, 'reply'
         ])->name('message.reply');
+
+        Route::get('catalog', [
+            HomeController::class, 'catalog'
+        ])->name('catalog');
     });
 
 

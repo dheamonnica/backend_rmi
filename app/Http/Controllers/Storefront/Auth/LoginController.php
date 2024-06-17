@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends SocialiteBaseController
 {
@@ -123,8 +124,10 @@ class LoginController extends SocialiteBaseController
 
         // if successful, then redirect to their intended location
         if ($this->attemptLogin($request)) {
-            return redirect()->intended(url()->previous())
-                ->with('success', trans('theme.notify.logged_in_successfully'));
+            // return redirect()->intended(url()->previous())
+            //     ->with('success', trans('theme.notify.logged_in_successfully'));
+            return redirect()->route('catalog')
+                ->with(['phone_number' => $request['phone']]);
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts

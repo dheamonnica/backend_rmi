@@ -38,6 +38,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('theme::public');
+    }
+
+    public function catalog()
+    {
         $sliders = Cache::rememberForever('sliders', function () {
             return Slider::orderBy('order', 'asc')
                 ->with([
@@ -115,8 +120,6 @@ class HomeController extends Controller
             View::share('auction_listings', $auction_random_items);
         }
 
-        // if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null ) {
-        //     Log::info('belum login');
             return view('theme::index', compact(
                 'banners',
                 'sliders',
@@ -135,9 +138,7 @@ class HomeController extends Controller
                 'flashdeals',
                 'digital_products'
             ));
-        // } else {
-        //     return view('theme::public');
-        // }
+      
     }
 
     public function search(Request $request)
@@ -507,106 +508,7 @@ class HomeController extends Controller
 
     public function client()
     {
-        $sliders = Cache::rememberForever('sliders', function () {
-            return Slider::orderBy('order', 'asc')
-                ->with([
-                    'featureImage:path,imageable_id,imageable_type',
-                    'mobileImage:path,imageable_id,imageable_type',
-                ])
-                ->where('shop_id', null)
-                ->get()->toArray();
-        });
-
-        $banners = Cache::rememberForever('banners', function () {
-            return Banner::with('featureImage:path,imageable_id,imageable_type')
-                ->whereNull('shop_id')
-                ->orderBy('order', 'asc')->get()
-                ->groupBy('group_id')->toArray();
-        });
-
-        //Trending Category Load With Images
-        $trending_categories = get_trending_categories();
-
-        //Featured Category Load With Images
-        $featured_category = get_featured_category();
-
-        //Featured Brands
-        $featured_brands = get_featured_brands();
-
-        //Featured Vendors
-        $featured_vendors = get_featured_vendors();
-
-        // Deal of the day;
-        $deal_of_the_day = get_deal_of_the_day();
-
-        // Get featured items
-        $featured_items = get_featured_items();
-
-        // Recently Added Items
-        $digital_products = ListHelper::latest_digital_items(10);
-
-        // Recently Added Items
-        $recent = ListHelper::latest_available_items(10);
-
-        //Additional Items
-        $additional_items = ListHelper::random_items(10);
-
-        // Bundle Offer:
-        // $bundle_offer = ListHelper::random_items(18);
-
-        // Best deal under the amount:
-        $deals_under = Cache::rememberForever('deals_under', function () {
-            return ListHelper::best_find_under(get_from_option_table('best_finds_under', 99));
-        });
-
-        // Flash deals
-        $flashdeals = get_flash_deals();
-
-        // Trending items
-        $trending = ListHelper::popular_items(config('system.popular.period.trending', 2), config('system.popular.take.trending', 12));
-
-        // Best Selling now:
-        // $best_selling = ListHelper::random_items(18);
-
-        // For legacy theme support. Will be removed in future
-        if (active_theme() == 'legacy' || active_theme() == 'martfury') {
-            $trending = ListHelper::popular_items(config('system.popular.period.trending', 2), config('system.popular.take.trending', 15));
-
-            View::share('trending', $trending);
-        }
-
-        // Auction listings
-        if (is_incevio_package_loaded('auction')) {
-            $auction_random_items = Cache::remember('auction_random_items', config('auction.cache_auction_items'), function () {
-                return latest_auction_items(config('auction.latest_list_limit'), true);
-            });
-
-            View::share('auction_listings', $auction_random_items);
-        }
-
-        // if (Auth::guard('customer')->user() !== null && Auth::guard('customer')->user()->getName() === null) {
-        //     Log::info('belum login');
-        //     return view('theme::index', compact(
-        //         'banners',
-        //         'sliders',
-        //         // 'daily_popular',
-        //         // 'weekly_popular',
-        //         // 'monthly_popular',
-        //         'recent',
-        //         'additional_items',
-        //         'trending_categories',
-        //         'featured_items',
-        //         'deal_of_the_day',
-        //         'deals_under',
-        //         'featured_category',
-        //         'featured_brands',
-        //         'featured_vendors',
-        //         'flashdeals',
-        //         'digital_products'
-        //     ));
-        // } else {
-        //     return view('theme::client');
-        // }
+        return view('theme::client');
     }
 
     /**
