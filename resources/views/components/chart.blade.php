@@ -28,20 +28,22 @@
     const ctx1 = document.getElementById('myChart1');
 
 new Chart(ctx1, {
-  type: 'line',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: JSON.parse('{!! json_encode($chartData['labels']) !!}'),
     datasets: [
       {
-        label: 'Dataset 1', // Label for the first line
-        data: [12, 19, 3, 5, 2, 3],
+        type: 'line',
+        label: JSON.parse('{!! json_encode($chartData['datasets'][0]['label']) !!}'),
+        data: JSON.parse('{!! json_encode($chartData['datasets'][0]['data']) !!}'),
         borderWidth: 1,
         backgroundColor: 'rgba(255, 99, 132, 0.2)', // Optional: Set background color for the first line
         borderColor: 'rgba(255, 99, 132, 1)', // Optional: Set border color for the first line
+        tension: 0.3,
       },
       {
-        label: 'Dataset 2', // Label for the second line
-        data: [7, 5, 10, 8, 1, 4],
+        type: 'bar',
+        label: JSON.parse('{!! json_encode($chartData['datasets'][1]['label']) !!}'),
+        data: JSON.parse('{!! json_encode($chartData['datasets'][1]['data']) !!}'),
         borderWidth: 1,
         backgroundColor: 'rgba(54, 162, 235, 0.2)', // Optional: Set background color for the second line
         borderColor: 'rgba(54, 162, 235, 1)', // Optional: Set border color for the second line

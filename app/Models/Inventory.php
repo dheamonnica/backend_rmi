@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Common\Loggable;
 use App\Common\Taggable;
 use App\Common\Imageable;
 use App\Common\Attachable;
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Inventory extends Inspectable
 {
-    use HasFactory, SoftDeletes, CascadeSoftDeletes, Taggable, Imageable, Searchable, Filterable, Feedbackable, Attachable;
+    use HasFactory, SoftDeletes, CascadeSoftDeletes, Taggable, Imageable, Searchable, Filterable, Feedbackable, Loggable, Attachable;
 
     const CONDITIONS = ['New', 'Used', 'Refurbished'];
 

@@ -27,10 +27,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: JSON.parse('{!! json_encode($chartData['labels']) !!}'),
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: JSON.parse('{!! json_encode($chartData['datasets'][0]['label']) !!}'),
+        data: JSON.parse('{!! json_encode($chartData['datasets'][0]['data']) !!}'),
         borderWidth: 1
       }]
     },

@@ -142,6 +142,29 @@ class Order extends BaseModel
         'created_by'
     ];
 
+    // Map status codes to their respective messages
+    public static $statusMessages = [
+        self::STATUS_WAITING_FOR_PAYMENT => 'Waiting for Payment',
+        self::STATUS_PAYMENT_ERROR => 'Payment Error',
+        self::STATUS_CONFIRMED => 'Confirmed',
+        self::STATUS_FULFILLED => 'Fulfilled',
+        self::STATUS_AWAITING_DELIVERY => 'Awaiting Delivery',
+        self::STATUS_DELIVERED => 'Delivered',
+        self::STATUS_RETURNED => 'Returned',
+        self::STATUS_CANCELED => 'Canceled',
+        self::STATUS_DISPUTED => 'Disputed',
+        self::STATUS_PACKED => 'Packed'
+    ];
+
+    public static $paymentStatusMessages = [
+        self::PAYMENT_STATUS_UNPAID => 'Unpaid',
+        self::PAYMENT_STATUS_PENDING => 'Pending',
+        self::PAYMENT_STATUS_PAID => 'Paid',
+        self::PAYMENT_STATUS_INITIATED_REFUND => 'Initiated Refund',
+        self::PAYMENT_STATUS_PARTIALLY_REFUNDED => 'Partially Refunded',
+        self::PAYMENT_STATUS_REFUNDED => 'Refunded'
+    ];
+    
     /**
      * Get the address associated with the order.
      */

@@ -130,7 +130,7 @@
                       <select id="time_interval"class="form-control" name="interval" wire:model="selectedIntervalOption" >
                         <option value="" selected>{{ trans('app.select_timeframe_type') }}</option>
                         <option value="DAILY">{{ trans('app.daily') }}</option>
-                        <option value="WEEK">{{ trans('app.week') }}</option>
+                        {{-- <option value="WEEK">{{ trans('app.week') }}</option> --}}
                         <option value="MONTH">{{ trans('app.month') }}</option>
                         <option value="YEAR">{{ trans('app.year') }}</option>
                       </select>
@@ -350,38 +350,70 @@
                 <div class="row">
                   <div class="col-md-12">
                     @php
-                        $chartData = [
-                            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-                            'datasets' => [
-                                [
-                                    'label' => 'My Data',
-                                    'data' => [10, 20, 30, 40, 50],
-                                ],
-                            ],
-                        ];
+                        $chartDataDO = [
+                          'labels' => [],  // Fill with month names later
+                          'datasets' => [
+                              [
+                                  'label' => 'Daily Orders (Excluding Cancelled)',
+                                  'data' => [],  // Fill with daily order counts later
+                              ],
+                          ],
+                      ];
+
+                      foreach ($chart1_data_d1 as $orderCount) {
+                          $chartDataDO['labels'][] = $orderCount->order_date ?? '01-01-1900';  // Extract month name
+                          $chartDataDO['datasets'][0]['data'][] = $orderCount->count ?? 0;
+                      }
+
                     @endphp
-                    <x-p-o-chart :chart-data="$chartData" :options="[
+                    <x-p-o-chart :chart-data="$chartDataDO" :options="[
                       'name' => trans('app.dashboard.table.po_status_timeframe')
                     ]"/>
                   </div>
                   <div class="col-md-6">
                     @php
-                        $chartData = [
-                            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                        $chartDataMTD = [
+                            'labels' => [],  // Fill with month names later
                             'datasets' => [
                                 [
-                                    'label' => 'My Data',
-                                    'data' => [10, 20, 30, 40, 50],
+                                    'label' => 'Daily Orders Count Month To Date',
+                                    'data' => [],  // Fill with daily order counts later
+                                ],
+                                [
+                                    'label' => 'Daily Orders Count Today',
+                                    'data' => [],  // Fill with daily order counts later
                                 ],
                             ],
                         ];
+
+                        foreach ($chart1_data_d3 as $orderCount) {
+                          $chartDataMTD['labels'][] = $orderCount->order_date ?? '01-01-1900';  // Extract month name
+                          $chartDataMTD['datasets'][0]['data'][] = $orderCount->mtd_count ?? 0;
+                          $chartDataMTD['datasets'][1]['data'][] = $orderCount->count ?? 0;
+                      }
                     @endphp
-                    <x-chart :chart-data="$chartData" :options="[
+                    <x-chart :chart-data="$chartDataMTD" :options="[
                       'name' => trans('app.dashboard.table.po_status')
                     ]"/>
                   </div>
                   <div class="col-md-6">
-                    <x-pie-chart :data="[]" :options="[
+                    @php
+                        $chartDataPie = [
+                          'labels' => [],  // Fill with month names later
+                          'datasets' => [
+                              [
+                                  'label' => 'Warehouse Count',
+                                  'data' => [],  // Fill with daily order counts later
+                              ],
+                          ],
+                      ];
+
+                      foreach ($chart1_data_d2 as $warehouse) {
+                          $chartDataPie['labels'][] = $warehouse->name ?? '-';  // Extract month name
+                          $chartDataPie['datasets'][0]['data'][] = $warehouse->count_order ?? 0;
+                      }
+                    @endphp
+                    <x-pie-chart :chart-data="$chartDataPie" :options="[
                       'name' => trans('app.dashboard.table.warehouse_total')
                     ]"/>
                   </div>
@@ -400,58 +432,35 @@
                   <div class="row">
                     <div class="col-md-12">
                       <x-table :header="[
-                          trans('app.dashboard.table.warehouse_name'),
-                          trans('app.dashboard.table.product_name'),
-                          trans('app.dashboard.table.expired_date'),
-                          trans('app.dashboard.table.qty'),
-                          trans('app.dashboard.table.avg_selling_qty'),
-                          trans('app.dashboard.table.selling_price'),
-                          trans('app.dashboard.table.buying_price'),
-                          trans('app.dashboard.table.total'),
-                          trans('app.dashboard.table.note'),
-                          trans('app.dashboard.table.grand_total'),
+                          'warehouse_name' => trans('app.dashboard.table.warehouse_name'),
+                          'product_name' => trans('app.dashboard.table.product_name'),
+                          'expired_date' => trans('app.dashboard.table.expired_date'),
+                          'qty' => trans('app.dashboard.table.qty'),
+                          'avg_selling_qty' => trans('app.dashboard.table.avg_selling_qty'),
+                          'selling_price' => trans('app.dashboard.table.selling_price'),
+                          'buying_price' => trans('app.dashboard.table.buying_price'),
+                          'total' => trans('app.dashboard.table.total'),
+                          'note' => trans('app.dashboard.table.note'),
+                          'grand_total' => trans('app.dashboard.table.grand_total'),
                       ]" :options="[
-                        'table_name' => trans('app.dashboard.table.stock_format'),
-                      ]"/>
+                        'table_name' => trans('app.dashboard.table.stock_preview'),
+                      ]" :data-body="$table1_data" />
                     </div>
                     <div class="col-md-12">
                       <x-table :header="[
-                        trans('app.dashboard.table.date'),
-                        trans('app.dashboard.table.from'),
-                        trans('app.dashboard.table.to'),
-                        trans('app.dashboard.table.product_desc'),
-                        trans('app.dashboard.table.qty'),
-                        trans('app.dashboard.table.updated_by'),
+                        'date' => trans('app.dashboard.table.date'),
+                        'from' => trans('app.dashboard.table.from'),
+                        'to' => trans('app.dashboard.table.to'),
+                        'product_desc' => trans('app.dashboard.table.product_desc'),
+                        'qty' => trans('app.dashboard.table.qty'),
+                        'updated_by' => trans('app.dashboard.table.updated_by'),
                     ]" :options="[
                         'table_name' => trans('app.dashboard.table.log_stock_movement'),
-                      ]"/>
+                      ]"
+                    :data-body="$table2_data"  
+                    />
                     </div>
                     <div class="col-md-12">
-                      @php
-                          $data_sample = [
-                              [
-                                  "date_order" => now()->subDays(2)->format('Y-m-d'), // 2 days ago
-                                  "username" => "user123",
-                                  "hospital_name" => "General Hospital",
-                                  "no_po_ref" => "PO12345",
-                                  "status" => "Completed",
-                              ],
-                              [
-                                  "date_order" => now()->subDays(1)->format('Y-m-d'), // 1 day ago
-                                  "username" => "user456",
-                                  "hospital_name" => "City Clinic",
-                                  "no_po_ref" => "PO54321",
-                                  "status" => "Pending",
-                              ],
-                              [
-                                  "date_order" => now()->format('Y-m-d'), // Today
-                                  "username" => "user789",
-                                  "hospital_name" => "Central Medical Center",
-                                  "no_po_ref" => "PO98765",
-                                  "status" => "In Progress",
-                              ],
-                          ];
-                      @endphp
                       <x-table :header="[
                         'date_order' => trans('app.dashboard.table.date_order'),
                         'username' => trans('app.dashboard.table.username'),
@@ -459,62 +468,71 @@
                         'no_po_ref' => trans('app.dashboard.table.no_po_ref'),
                         'status' => trans('app.dashboard.table.status'),
                     ]" :options="[
-                        'table_name' => trans('app.dashboard.table.log_activity_export_document')
-                      ]" :data-body="$data_sample"/>
+                        'table_name' => trans('app.dashboard.table.log_activity_order')
+                      ]" 
+                      :data-body="$table3_data" 
+                      />
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <x-table :header="[
-                        trans('app.dashboard.table.name'),
-                        trans('app.dashboard.table.count_order'),
-                        trans('app.dashboard.table.revenue'),
-                        trans('app.dashboard.table.last_month'),
-                        trans('app.dashboard.table.last_year'),
-                        trans('app.dashboard.table.target'),
+                        'name' => trans('app.dashboard.table.name'),
+                        'count_order' => trans('app.dashboard.table.count_order'),
+                        'revenue' => trans('app.dashboard.table.revenue'),
+                        'last_month' => trans('app.dashboard.table.last_month'),
+                        'last_year' => trans('app.dashboard.table.last_year'),
+                        'target' => trans('app.dashboard.table.target'),
                     ]" :options="[
                         'table_name' => trans('app.dashboard.table.top_customer')
-                      ]"/>
+                      ]"
+                      :data-body="$table4_data" 
+                      />
                     </div>
                     <div class="col-md-12">
-                      
                       <x-table :header="[
-                        trans('app.dashboard.table.name'),
-                        trans('app.dashboard.table.count_order'),
-                        trans('app.dashboard.table.revenue'),
-                        trans('app.dashboard.table.last_month'),
-                        trans('app.dashboard.table.last_year'),
-                        trans('app.dashboard.table.target'),
-                        trans('app.dashboard.table.acheivment'),
+                        'name' => trans('app.dashboard.table.name'),
+                        'count_order' => trans('app.dashboard.table.count_order'),
+                        'revenue' => trans('app.dashboard.table.revenue'),
+                        'last_month' => trans('app.dashboard.table.last_month'),
+                        'last_year' => trans('app.dashboard.table.last_year'),
+                        'target' => trans('app.dashboard.table.target'),
+                        'acheivement' => trans('app.dashboard.table.acheivement'),
                       ]" :options="[
                         'table_name' => trans('app.dashboard.table.warehouse')
-                      ]" />
+                      ]" 
+                      :data-body="$table5_data"
+                      />
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <x-table :header="[
-                        trans('app.dashboard.table.name'),
-                        trans('app.dashboard.table.count_order'),
-                        trans('app.dashboard.table.revenue'),
-                        trans('app.dashboard.table.last_month_revenue'),
-                        trans('app.dashboard.table.last_year_revenue'),
+                        'name' => trans('app.dashboard.table.name'),
+                        'count_order' => trans('app.dashboard.table.count_order'),
+                        'revenue' => trans('app.dashboard.table.revenue'),
+                        'last_month_revenue' => trans('app.dashboard.table.last_month_revenue'),
+                        'last_year_revenue' => trans('app.dashboard.table.last_year_revenue'),
                     ]" :options="[
                         'table_name' => trans('app.dashboard.table.top_worst_product')
-                      ]"/>
+                      ]"
+                      :data-body="$table6_data"
+                      />
                     </div>
                     <div class="col-md-12">
                       <x-table :header="[
-                        trans('app.dashboard.table.employee_name'),
-                        trans('app.dashboard.table.warehouse_name'),
-                        trans('app.dashboard.table.confirmed'),
-                        trans('app.dashboard.table.packed'),
-                        trans('app.dashboard.table.delivered'),
-                        trans('app.dashboard.table.paided'),
-                        trans('app.dashboard.table.total'),
+                        'employee_name' => trans('app.dashboard.table.employee_name'),
+                        'warehouse_name' => trans('app.dashboard.table.warehouse_name'),
+                        'confirmed' => trans('app.dashboard.table.confirmed'),
+                        'packed' => trans('app.dashboard.table.packed'),
+                        'delivered' => trans('app.dashboard.table.delivered'),
+                        'paided' => trans('app.dashboard.table.paided'),
+                        'total' => trans('app.dashboard.table.total'),
                     ]" :options="[
                         'table_name' => trans('app.dashboard.table.kpi')
-                      ]"/>
+                      ]"
+                      :data-body="$table7_data"
+                      />
                     </div>
                   </div>
                 </div>

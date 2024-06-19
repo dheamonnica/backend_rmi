@@ -5,7 +5,7 @@
             <i class="fa fa-pie-chart"></i>
             {{ $options['name'] }}
         </div>
-        <div class="donutChart" style="min-height: 340px; padding: 30px 0;">
+        <div class="donutChart" style="min-height: 340px; max-height: 700px; padding: 30px 0;">
         <canvas id="productChart" class=""></canvas>
         </div>
     </div>
@@ -16,14 +16,14 @@
     var productChart = new Chart(ctx3, {
       type: 'doughnut',
       data: {
-        labels: ["{{ trans('app.admin') }}", "{{ trans('app.merchant') }}", "{{ trans('app.total') }}"],
+        labels: JSON.parse('{!! json_encode($chartData['labels']) !!}'),
         datasets: [{
           backgroundColor: [
             "#f39c12",
             "#ef486a",
             "#0abb75"
           ],
-          data: [10, 20, 30]
+          data: JSON.parse('{!! json_encode($chartData['datasets'][0]['data']) !!}')
         }]
       }
     });

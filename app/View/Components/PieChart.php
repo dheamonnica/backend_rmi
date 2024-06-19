@@ -6,12 +6,13 @@ use Illuminate\View\Component;
 
 class PieChart extends Component
 {
+    public $chartData;
     public $options;
-    public function __construct($options = [])
+    public function __construct($chartData = [], $options = [])
     {
+        $this->chartData = $chartData;
         $this->options = $options;
     }
-
     /**
      * Get the view / contents that represent the component.
      *
