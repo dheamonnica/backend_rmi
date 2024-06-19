@@ -6,11 +6,7 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-2">
-<<<<<<< HEAD
-                    <h3>{{ trans('app.custom_filters')}}</h3>
-=======
                     <h3>{{ trans('app.filters')}}</h3>
->>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
                   </div>
                 </div>
                 <div class="row">
@@ -151,10 +147,13 @@
                         <option value="" selected>{{ trans('app.select_timeframe_type') }}</option>
                         <option value="DAILY">{{ trans('app.daily') }}</option>
                         {{-- <option value="WEEK">{{ trans('app.week') }}</option> --}}
+<<<<<<< HEAD
 =======
                         <option value="DAILY">{{ trans('app.daily') }}</option>
                         <option value="WEEK">{{ trans('app.week') }}</option>
 >>>>>>> 82d7c7fd1 (feat: :sparkles: [WIP] - new dashboard)
+=======
+>>>>>>> e03be0d75 (dashboard mount fixed)
                         <option value="MONTH">{{ trans('app.month') }}</option>
                         <option value="YEAR">{{ trans('app.year') }}</option>
                       </select>
