@@ -66,6 +66,7 @@ return [
         'user' => 'User',
         'warehouse' => 'Warehouse',
         'delivery_boy' => 'Delivery Boy',
+        'budget' => 'Budget'
     ],
 
     // Application Levels
@@ -1272,8 +1273,6 @@ return [
         // budget
         'create_budget' => 'Create Budget',
         'date' => 'Date',
-        'year' => 'Year',
-        'month' => 'Month',
         'requirement' => 'Requirement',
         'qty' => 'Qty',
         'total' => 'Total for each Qty',

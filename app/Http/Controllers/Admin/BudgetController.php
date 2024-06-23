@@ -11,9 +11,6 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-use App\Models\Merchant;
-use App\Models\Budget;
-use App\Models\Order;
 
 // use App\Models\Inventory;
 
@@ -44,24 +41,11 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        $merchants = Merchant::get()->pluck('warehouse_name', 'id')->toArray();
-
-        $years = Budget::selectRaw('YEAR(created_at) as year')
-            ->distinct()
-            ->orderBy('year', 'desc')
-            ->pluck('year');
-
         $budgets = $this->budget->all();
 
         $trashes = $this->budget->trashOnly();
 
-        $getTotalIncomebyShop = Order::selectRaw('SUM(grand_total) as total_grand_total')
-            ->where('shop_id', 19)
-            ->whereNull('deleted_at')
-            ->orWhere('deleted_at', '')
-            ->first();
-
-        return view('admin.budget.index', compact('merchants', 'years', 'budgets', 'trashes', 'getTotalIncomebyShop'));
+        return view('admin.budget.index', compact('budgets', 'trashes'));
     }
 
     public function getBudgets(Request $request)
@@ -74,12 +58,6 @@ class BudgetController extends Controller
             })
             ->addColumn('date', function ($budget) {
                 return view('admin.budget.partials.date', compact('budget'));
-            })
-            ->addColumn('month', function ($budget) {
-                return view('admin.budget.partials.month', compact('budget'));
-            })
-            ->addColumn('year', function ($budget) {
-                return view('admin.budget.partials.year', compact('budget'));
             })
             ->addColumn('requirement', function ($budget) {
                 return view('admin.budget.partials.requirement', compact('budget'));
@@ -115,7 +93,7 @@ class BudgetController extends Controller
                 return view('admin.budget.partials.options', compact('budget'));
             })
 
-            ->rawColumns(['checkbox', 'date', 'month', 'year', 'requirement', 'qty', 'total', 'grand_total', 'picture', 'created_by', 'created_at', 'updated_by', 'updated_by', 'option'])
+            ->rawColumns(['checkbox', 'date', 'requirement', 'qty', 'total', 'grand_total', 'picture', 'created_by', 'created_at', 'updated_by', 'updated_by', 'option'])
             ->make(true);
     }
 

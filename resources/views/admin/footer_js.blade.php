@@ -757,6 +757,73 @@
     @if(!Auth::user()->isAdmin() && !Auth::user()->isMerchant())
       tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
     @endif
+
+    // Load offering list by Ajax
+    var tableBudgets = $('#budget-tables').DataTable($.extend({}, dataTableOptions, {
+      "ajax": "{{ route('admin.admin.budget.getBudgets') }}",
+      "columns": [{
+          'data': 'checkbox',
+          'name': 'checkbox',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        },
+        {
+          'data': 'date',
+          'name': 'date'
+          
+        },
+        {
+          'data': 'requirement',
+          'name': 'requirement'
+        },
+        {
+          'data': 'qty',
+          'name': 'qty'
+        },
+        {
+          'data': 'total',
+          'name': 'total'
+        },
+        {
+          'data': 'grand_total',
+          'name': 'grand_total'
+        },
+        {
+          'data': 'picture',
+          'name': 'picture'
+        },
+        {
+          'data': 'warehouse',
+          'name': 'warehouse'
+        },
+        {
+          'data': 'created_at',
+          'name': 'created_at',
+        },
+        {
+          'data': 'created_by',
+          'name': 'created_by',
+        },
+        {
+          'data': 'updated_at',
+          'name': 'updated_at',
+        },
+        {
+          'data': 'updated_by',
+          'name': 'updated_by',
+        },
+        {
+          'data': 'option',
+          'name': 'option',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        }
+      ]
+    }));
     
     // Filter by product name
     $('#productFilter').on('change', function() {
