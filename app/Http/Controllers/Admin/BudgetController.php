@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-use App\Models\Merchant;
 
 // use App\Models\Inventory;
 
@@ -42,13 +41,11 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        $merchants = Merchant::get()->pluck('warehouse_name', 'id')->toArray();
-
         $budgets = $this->budget->all();
 
         $trashes = $this->budget->trashOnly();
 
-        return view('admin.budget.index', compact('merchants','budgets', 'trashes'));
+        return view('admin.budget.index', compact('budgets', 'trashes'));
     }
 
     public function getBudgets(Request $request)
@@ -61,9 +58,6 @@ class BudgetController extends Controller
             })
             ->addColumn('date', function ($budget) {
                 return view('admin.budget.partials.date', compact('budget'));
-            })
-            ->addColumn('month', function ($budget) {
-                return view('admin.budget.partials.month', compact('budget'));
             })
             ->addColumn('requirement', function ($budget) {
                 return view('admin.budget.partials.requirement', compact('budget'));

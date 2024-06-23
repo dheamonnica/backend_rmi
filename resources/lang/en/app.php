@@ -62,7 +62,7 @@ return [
         'ticket' => 'Ticket',
         'user' => 'User',
         'warehouse' => 'Warehouse',
-        'delivery_boy' => 'Delivery Boy',,
+        'delivery_boy' => 'Delivery Boy',
         'budget' => 'Budget'
     ],
 
@@ -1235,6 +1235,7 @@ return [
         'cancel_by' => 'Cancel By',
         'product_qty' => 'Product Qty',
         'due_date_payment' => 'Due Date Payment',
+        'due_date_payment' => 'Due Date Payment',
 
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',
@@ -1270,7 +1271,6 @@ return [
         // budget
         'create_budget' => 'Create Budget',
         'date' => 'Date',
-        'month' => 'Month',
         'requirement' => 'Requirement',
         'qty' => 'Qty',
         'total' => 'Total for each Qty',

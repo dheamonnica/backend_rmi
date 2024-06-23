@@ -858,6 +858,12 @@
               </a>
             </li>
 
+              <li class="{{ Request::is('admin/budget*') ? 'active' : '' }}">
+                <a href="{{ route('admin.budget.index') }}">
+                  Budget
+                </a>
+              </li>
+
               <li class="{{ Request::is('admin/report/sales*') ? 'active' : '' }}">
                 <a href="javascript:void(0)">
                   {{-- <i class="fa fa-angle-double-right"></i> --}}

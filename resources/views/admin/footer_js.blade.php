@@ -757,7 +757,7 @@
     @if(!Auth::user()->isAdmin() && !Auth::user()->isMerchant())
       tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
     @endif
-
+    
     // Filter by product name
     $('#productFilter').on('change', function() {
         var selectedProduct = $(this).val();
