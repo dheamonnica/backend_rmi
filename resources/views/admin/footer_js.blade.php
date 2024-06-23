@@ -491,68 +491,20 @@
           'name': 'order_date'
         },
         {
-          'data': 'created_by',
-          'name': 'created_by',
-          'visible': false,
-          'exportable': true,
-          'printable': true
-        },
-        // {
-        //   'data': 'packed_by',
-        //   'name': 'packed_by'
-        // },
-        // {
-        //   'data': 'packed_date',
-        //   'name': 'packed_date'
-        // },
-        // {
-        //   'data': 'shipped_by',
-        //   'name': 'shipped_by'
-        // },
-        // {
-        //   'data': 'shipping_date',
-        //   'name': 'shipping_date'
-        // },
-        // {
-        //   'data': 'delivery_by',
-        //   'name': 'delivery_by'
-        // },
-        {
-          'data': 'delivery_date',
-          'name': 'delivery_date',
-          'visible': false,
-        },
-        {
           'data': 'due_date_payment',
           'name': 'due_date_payment'
         },
-        // {
-        //   'data': 'paid_by',
-        //   'name': 'paid_by'
-        // },
-        // {
-        //   'data': 'paid_date',
-        //   'name': 'paid_date'
-        // },
-        @if (Auth::user()->isFromPlatform())
-          {
-            'data': 'shop',
-            'name': 'shop'
-          },
-        @endif {
+        {
           'data': 'customer_name',
           'name': 'customer_name',
-          'searchable': true
         },
         {
           'data': 'grand_total',
           'name': 'grand_total',
-          'searchable': false
         },
         {
           'data': 'payment_status',
           'name': 'payment_status',
-          'searchable': false
         },
         {
           'data': 'order_status',
@@ -805,6 +757,73 @@
     @if(!Auth::user()->isAdmin() && !Auth::user()->isMerchant())
       tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
     @endif
+
+    // Load offering list by Ajax
+    var tableBudgets = $('#budget-tables').DataTable($.extend({}, dataTableOptions, {
+      "ajax": "{{ route('admin.admin.budget.getBudgets') }}",
+      "columns": [{
+          'data': 'checkbox',
+          'name': 'checkbox',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        },
+        {
+          'data': 'date',
+          'name': 'date'
+          
+        },
+        {
+          'data': 'requirement',
+          'name': 'requirement'
+        },
+        {
+          'data': 'qty',
+          'name': 'qty'
+        },
+        {
+          'data': 'total',
+          'name': 'total'
+        },
+        {
+          'data': 'grand_total',
+          'name': 'grand_total'
+        },
+        {
+          'data': 'picture',
+          'name': 'picture'
+        },
+        {
+          'data': 'warehouse',
+          'name': 'warehouse'
+        },
+        {
+          'data': 'created_at',
+          'name': 'created_at',
+        },
+        {
+          'data': 'created_by',
+          'name': 'created_by',
+        },
+        {
+          'data': 'updated_at',
+          'name': 'updated_at',
+        },
+        {
+          'data': 'updated_by',
+          'name': 'updated_by',
+        },
+        {
+          'data': 'option',
+          'name': 'option',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        }
+      ]
+    }));
     
     // Filter by product name
     $('#productFilter').on('change', function() {

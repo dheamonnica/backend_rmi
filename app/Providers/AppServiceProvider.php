@@ -8,6 +8,8 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Budget\BudgetRepository;
+use App\Repositories\Budget\EloquentBudget;
 use App\Repositories\Offering\OfferingRepository;
 use App\Repositories\Offering\EloquentOffering;
 use App\Contracts\PaymentServiceContract;
@@ -83,6 +85,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->bind(OfferingRepository::class, EloquentOffering::class);
+        $this->app->bind(BudgetRepository::class, EloquentBudget::class);
 
         // Ondemand Img manupulation
         $this->app->singleton(

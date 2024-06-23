@@ -4,32 +4,34 @@ namespace App\Http\Controllers\Admin;
 
 use App\Common\Authorizable;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Validations\CreateOfferingRequest;
-use App\Http\Requests\Validations\UpdateOfferingRequest;
-use App\Repositories\Offering\OfferingRepository;
+use App\Http\Requests\Validations\CreateBudgetRequest;
+use App\Http\Requests\Validations\UpdateBudgetRequest;
+use App\Repositories\Budget\BudgetRepository;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
-use App\Models\Inventory;
-use App\Models\Product;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
-class OfferingController extends Controller
+// use App\Models\Inventory;
+
+class BudgetController extends Controller
 {
     // use Authorizable;
 
     private $model_name;
 
-    private $offering;
+    private $budget;
 
     /**
      * construct
      */
-    public function __construct(OfferingRepository $offering)
+    public function __construct(BudgetRepository $budget)
     {
         parent::__construct();
 
-        $this->model_name = trans('app.model.offering');
+        $this->model_name = trans('app.model.budget');
 
-        $this->offering = $offering;
+        $this->budget = $budget;
     }
 
     /**
@@ -39,79 +41,59 @@ class OfferingController extends Controller
      */
     public function index()
     {
-        $products = Product::get()->pluck('name', 'id')->toArray();
+        $budgets = $this->budget->all();
 
-        $offerings = $this->offering->all();
+        $trashes = $this->budget->trashOnly();
 
-        $trashes = $this->offering->trashOnly();
-
-        return view('admin.offering.index', compact('products', 'offerings', 'trashes'));
+        return view('admin.budget.index', compact('budgets', 'trashes'));
     }
 
-    public function getOfferings(Request $request)
+    public function getBudgets(Request $request)
     {
-        $offerings = $this->offering->all();
+        $budgets = $this->budget->all();
 
-        return Datatables::of($offerings)
-            ->addColumn('checkbox', function ($offering) {
-                return view('admin.offering.partials.checkbox', compact('offering'));
+        return Datatables::of($budgets)
+            ->addColumn('checkbox', function ($budget) {
+                return view('admin.budget.partials.checkbox', compact('budget'));
             })
-            ->addColumn('product', function ($offering) {
-                return view('admin.offering.partials.product', compact('offering'));
+            ->addColumn('date', function ($budget) {
+                return view('admin.budget.partials.date', compact('budget'));
             })
-            ->addColumn('small_quantity_price', function ($offering) {
-                return view('admin.offering.partials.small_quantity_price', compact('offering'));
+            ->addColumn('requirement', function ($budget) {
+                return view('admin.budget.partials.requirement', compact('budget'));
             })
-            ->addColumn('medium_quantity_price', function ($offering) {
-                return view('admin.offering.partials.medium_quantity_price', compact('offering'));
+            ->addColumn('qty', function ($budget) {
+                return view('admin.budget.partials.qty', compact('budget'));
             })
-            ->addColumn('large_quantity_price', function ($offering) {
-                return view('admin.offering.partials.large_quantity_price', compact('offering'));
+            ->addColumn('total', function ($budget) {
+                return view('admin.budget.partials.total', compact('budget'));
             })
-            ->addColumn('created_at', function ($offering) {
-                return view('admin.offering.partials.created_at', compact('offering'));
+            ->addColumn('grand_total', function ($budget) {
+                return view('admin.budget.partials.grand_total', compact('budget'));
             })
-            ->addColumn('created_by', function ($offering) {
-                return view('admin.offering.partials.created_by', compact('offering'));
+            ->addColumn('warehouse', function ($budget) {
+                return view('admin.budget.partials.warehouse', compact('budget'));
             })
-            ->addColumn('company_name', function ($offering) {
-                return view('admin.offering.partials.company_name', compact('offering'));
+            ->addColumn('picture', function ($budget) {
+                return view('admin.budget.partials.picture', compact('budget'));
             })
-            ->addColumn('email', function ($offering) {
-                return view('admin.offering.partials.email', compact('offering'));
+            ->addColumn('created_by', function ($budget) {
+                return view('admin.budget.partials.created_by', compact('budget'));
             })
-            ->addColumn('phone', function ($offering) {
-                return view('admin.offering.partials.phone', compact('offering'));
+            ->addColumn('created_at', function ($budget) {
+                return view('admin.budget.partials.created_at', compact('budget'));
             })
-            ->addColumn('updated_at', function ($offering) {
-                return view('admin.offering.partials.updated_at', compact('offering'));
+            ->addColumn('updated_at', function ($budget) {
+                return view('admin.budget.partials.updated_at', compact('budget'));
             })
-            ->addColumn('updated_by', function ($offering) {
-                return view('admin.offering.partials.updated_by', compact('offering'));
+            ->addColumn('updated_by', function ($budget) {
+                return view('admin.budget.partials.updated_by', compact('budget'));
             })
-            ->addColumn('status', function ($offering) {
-                return view('admin.offering.partials.status', compact('offering'));
-            })
-            ->addColumn('option', function ($offering) {
-                return view('admin.offering.partials.options', compact('offering'));
+            ->addColumn('option', function ($budget) {
+                return view('admin.budget.partials.options', compact('budget'));
             })
 
-            ->rawColumns([
-                'checkbox',
-                'product',
-                'small_quantity',
-                'small_quantity_price',
-                'medium_quantity_price',
-                'large_quantity_price',
-                'created_at',
-                'company_name',
-                'email',
-                'phone',
-                'created_by',
-                'updated_at',
-                'updated_by',
-                'option'
-            ])
+            ->rawColumns(['checkbox', 'date', 'requirement', 'qty', 'total', 'grand_total', 'picture', 'created_by', 'created_at', 'updated_by', 'updated_by', 'option'])
             ->make(true);
     }
 
@@ -122,8 +104,7 @@ class OfferingController extends Controller
      */
     public function create()
     {
-        $product = Product::get()->pluck('name', 'id')->toArray();
-        return view('admin.offering._create', compact('product'));
+        return view('admin.budget._create');
     }
 
     /**
@@ -132,10 +113,12 @@ class OfferingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateOfferingRequest $request)
+    public function store(CreateBudgetRequest $request)
     {
-        $this->offering->store($request);
-
+        $request['grand_total'] = $request->input('total') * $request->input('qty');
+        date_default_timezone_set('Asia/Jakarta');
+        $request['created_at'] = date('Y-m-d G:i:s');
+        $this->budget->store($request);
         return back()->with('success', trans('messages.created', ['model' => $this->model_name]));
     }
 
@@ -158,11 +141,8 @@ class OfferingController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::get()->pluck('name', 'id')->toArray();
-
-        $offering = $this->offering->find($id);
-
-        return view('admin.offering._edit', compact('offering', 'product'));
+        $budget = $this->budget->find($id);
+        return view('admin.budget._edit', compact('budget'));
     }
 
     /**
@@ -172,9 +152,12 @@ class OfferingController extends Controller
      * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOfferingRequest $request, $id)
+    public function update(UpdateBudgetRequest $request, $id)
     {
-        $this->offering->update($request, $id);
+        $request['grand_total'] = $request->input('total') * $request->input('qty');
+        date_default_timezone_set('Asia/Jakarta');
+        $request['updated_at'] = date('Y-m-d G:i:s');
+        $this->budget->update($request, $id);
 
         return back()->with('success', trans('messages.updated', ['model' => $this->model_name]));
     }
@@ -188,7 +171,7 @@ class OfferingController extends Controller
      */
     public function trash(Request $request, $id)
     {
-        $this->offering->trash($id);
+        $this->budget->trash($id);
 
         return back()->with('success', trans('messages.trashed', ['model' => $this->model_name]));
     }
@@ -202,7 +185,7 @@ class OfferingController extends Controller
      */
     public function restore(Request $request, $id)
     {
-        $this->offering->restore($id);
+        $this->budget->restore($id);
 
         return back()->with('success', trans('messages.restored', ['model' => $this->model_name]));
     }
@@ -216,7 +199,7 @@ class OfferingController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $this->offering->destroy($id);
+        $this->budget->destroy($id);
 
         return back()->with('success', trans('messages.deleted', ['model' => $this->model_name]));
     }
@@ -229,7 +212,7 @@ class OfferingController extends Controller
      */
     public function massTrash(Request $request)
     {
-        $this->offering->massTrash($request->ids);
+        $this->budget->massTrash($request->ids);
 
         if ($request->ajax()) {
             return response()->json(['success' => trans('messages.trashed', ['model' => $this->model_name])]);
@@ -246,7 +229,7 @@ class OfferingController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        $this->offering->massDestroy($request->ids);
+        $this->budget->massDestroy($request->ids);
 
         if ($request->ajax()) {
             return response()->json(['success' => trans('messages.deleted', ['model' => $this->model_name])]);
@@ -263,7 +246,7 @@ class OfferingController extends Controller
      */
     public function emptyTrash(Request $request)
     {
-        $this->offering->emptyTrash($request);
+        $this->budget->emptyTrash($request);
 
         if ($request->ajax()) {
             return response()->json(['success' => trans('messages.deleted', ['model' => $this->model_name])]);
