@@ -62,6 +62,7 @@ return [
         'user' => 'User',
         'warehouse' => 'Warehouse',
         'delivery_boy' => 'Delivery Boy',
+        'budget' => 'Budget'
     ],
 
     // Application Levels
@@ -1283,6 +1284,7 @@ return [
         'cancel_date' => 'Cancel Date',
         'cancel_by' => 'Cancel By',
         'product_qty' => 'Product Qty',
+        'due_date_payment' => 'Due Date Payment',
 
         // manufacture
         'manufacture_pic_name' => 'Manufacture PIC Name',
@@ -1314,6 +1316,15 @@ return [
         'product_name' => 'Rizkimed Nasal Mask',
         'min_selling_price' => 'Min Selling Price',
         'max_selling_price' => 'Max Selling Price',
+
+        // budget
+        'create_budget' => 'Create Budget',
+        'date' => 'Date',
+        'requirement' => 'Requirement',
+        'qty' => 'Qty',
+        'total' => 'Total for each Qty',
+        'grand_total' => 'Grand Total', 
+        'picture' => 'Picture',
     ],
 
     'placeholder' => [

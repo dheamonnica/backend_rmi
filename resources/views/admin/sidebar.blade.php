@@ -846,10 +846,15 @@
             @endif
 
             @if (Auth::user()->isAdmin())
-              <li class="{{ Request::is('admin/report/kpi*') ? 'active' : '' }}">
-                <a href="{{ route('admin.kpi') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
-                   {{ trans('nav.performance') }}
+            <li class="{{ Request::is('admin/report/kpi*') ? 'active' : '' }}">
+              <a href="{{ route('admin.kpi') }}">
+                 {{ trans('nav.performance') }}
+              </a>
+            </li>
+
+              <li class="{{ Request::is('admin/budget*') ? 'active' : '' }}">
+                <a href="{{ route('admin.budget.index') }}">
+                  Budget
                 </a>
               </li>
 
