@@ -1260,6 +1260,7 @@ return [
         // budget
         'create_budget' => 'Create Budget',
         'date' => 'Date',
+        'month' => 'Month',
         'requirement' => 'Requirement',
         'qty' => 'Qty',
         'total' => 'Total for each Qty',
