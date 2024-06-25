@@ -15,13 +15,29 @@
                     @endif
                 </div>
                 <div class="pull-left">
-                    <select id="productFilter" class="btn btn-sm btn-default">
-                        <option value="0" selected>{{ 'Filter Product Name' }}</option>
-                        <option value="0">{{ trans('app.all_orders') }}</option>
-                        {{-- @foreach ($products as $product)
-                            <option value="{{ $product }}">{{ $product }}</option>
-                        @endforeach --}}
+                    <select id="monthFilter" class="btn btn-sm btn-default">
+                        <option value="" selected>Select Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
                     </select>
+                    @if (Auth::user()->isAdmin())
+                    <select id="merchantFilter" class="btn btn-sm btn-default">
+                        <option value="" selected>Select Business Unit</option>
+                        @foreach ($merchants as $merchant)
+                            <option value="{{ $merchant }}">{{ $merchant }}</option>
+                        @endforeach
+                    </select>
+                    @endif
                 </div>
             </div>
 
@@ -37,6 +53,7 @@
                                     </button>
                                 </th>
                                 <th>{{ trans('app.form.date') }}</th>
+                                <th>{{ trans('app.form.month') }}</th>
                                 <th>{{ trans('app.form.requirement') }}</th>
                                 <th>{{ trans('app.form.qty') }}</th>
                                 <th>{{ trans('app.form.total') }}</th>
@@ -52,6 +69,18 @@
                         </thead>
                         <tbody id="massSelectArea">
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>TOTAL</th>
+                                <th id="totalAmount"></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

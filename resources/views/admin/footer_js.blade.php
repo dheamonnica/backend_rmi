@@ -758,6 +758,12 @@
       tableOffering.column('created_by:name').search('{{ Auth::user()->name }}').draw();
     @endif
 
+    // Filter by product name
+    $('#productFilter').on('change', function() {
+        var selectedProduct = $(this).val();
+        tableOffering.column('product:name').search(selectedProduct).draw();
+    });
+
     // Load offering list by Ajax
     var tableBudgets = $('#budget-tables').DataTable($.extend({}, dataTableOptions, {
       "ajax": "{{ route('admin.admin.budget.getBudgets') }}",
@@ -772,6 +778,11 @@
         {
           'data': 'date',
           'name': 'date'
+          
+        },
+        {
+          'data': 'month',
+          'name': 'month'
           
         },
         {
@@ -824,12 +835,50 @@
         }
       ]
     }));
+
+    // Filter the 'created_by' column with the name of the authenticated user
+    @if(!Auth::user()->isAdmin())
+      tableBudgets.column('created_by:name').search('{{ Auth::user()->name }}').draw();
+    @endif
+
+    // Function to calculate the total amount
+    function calculateTotal() {
+        var total = 0;
+        tableBudgets.rows({ search: 'applied' }).every(function(rowIdx, tableLoop, rowLoop) {
+            var data = this.data();
+            var amount = data.grand_total.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            total += parseFloat(amount); // Assuming the 'Amount' column is at index 1
+        });
+
+        $('#totalAmount').html('Rp. ' + total.toLocaleString('id-ID'));
+    }
+
+    function filterByMonth() {
+        var selectedMonth = $('#monthFilter').val();
+
+        // Apply the month filter to the 'month' column (assume the column name is 'month')
+        tableBudgets.column('month:name').search(selectedMonth).draw();
+    }
+
+    function filterByWarehouse() {
+        var selectedMerchant = $('#merchantFilter').val();
+
+        // Apply the business area filter to the 'business area' column (assume the column name is 'business area')
+        tableBudgets.column('warehouse:name').search(selectedMerchant).draw();
+    }
+
+    // Initial calculation
+    calculateTotal();
     
-    // Filter by product name
-    $('#productFilter').on('change', function() {
-        var selectedProduct = $(this).val();
-        tableOffering.column('product:name').search(selectedProduct).draw();
+    // Bind the filter and calculation function to the month dropdown change event
+    $('#monthFilter').on('change', filterByMonth);
+    $('#merchantFilter').on('change', filterByWarehouse);
+
+    // Recalculate the total on each table draw
+    tableBudgets.on('draw', function() {
+        calculateTotal();
     });
+
 
     // Load category list by Ajax
     $('#all-categories-table').DataTable($.extend({}, dataTableOptions, {
