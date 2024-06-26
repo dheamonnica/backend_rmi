@@ -58,7 +58,7 @@
                     <div class="form-group">
                       <label>{{ trans('app.category_sub_group') }}</label>
                       <select style="width: 100%" id="select_category_sub_group" wire:model="selectedCategorySubGroupOption" class="form-control" >
-                        <option value="">{{ trans('app.category_sub_group') }}</option>
+                        <option value="">{{ trans('app.select_category_sub_group') }}</option>
                         @foreach ($category_sub_groups as $key => $item)  
                           <option value="{{ $key }}">{{ $item }}</option>
                         @endforeach
@@ -83,7 +83,7 @@
                     <div class="form-group">
                       <label>{{ trans('app.order_status') }}</label>
                       <select id="orderStatus" class="form-control" name="order_status" wire:model="selectedOrderStatusOption" >
-                        <option value="" @if (request()->get('order_status') == 'all') selected @endif>{{ trans('app.all') }}</option>
+                        <option value="all" @if (request()->get('order_status') == 'all') selected @endif>{{ trans('app.all') }}</option>
                         <option value="STATUS_WAITING_FOR_PAYMENT" @if (request()->get('order_status') == 'STATUS_WAITING_FOR_PAYMENT') selected @endif>{{ trans('app.waiting_for_payment') }}</option>
                         <option value="STATUS_CONFIRMED" @if (request()->get('order_status') == 'STATUS_CONFIRMED') selected @endif>{{ trans('app.confirmed') }}</option>
                         <option value="STATUS_FULFILLED" @if (request()->get('order_status') == 'STATUS_FULFILLED') selected @endif>{{ trans('app.fulfilled') }}</option>
@@ -198,7 +198,7 @@
         </div>
     </div>
 
-    <div class="row">
+    {{-- <div class="row">
       <div class="col-sm-12">
         <div id="filter-panel">
           <div class="panel panel-default">
@@ -247,7 +247,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <div class="row">
       <div class="col-sm-12">
