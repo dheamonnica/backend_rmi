@@ -76,6 +76,7 @@ class Dashboard extends Component
         'yearStartUpdated' => 'updatedselectedYearStart',
         'yearEndUpdated' => 'updatedselectedYearEnd',
         'resetTimeFrameFilter' => 'resettingTimeFrameFilter',
+        'resetFilters' => 'clear'
     ];
     //card
     public $card1_options = [];
@@ -133,6 +134,24 @@ class Dashboard extends Component
         return view('livewire.dashboard');
     }
 
+    public function clear()
+    {
+        $this->selectedWarehouseOption = '';
+        $this->selectedClientOption = '';
+        $this->selectedClientGroupOption = '';
+        $this->selectedCategoryGroupOption = '';
+        $this->selectedCategorySubGroupOption = '';
+        $this->selectedOrderStatusOption = 'all';
+        $this->selectedPaymentStatusOption = 'all';
+        $this->productName = '';
+        $this->userName = '';
+
+        $this->updateCardSection();
+        $this->updateProcessCountSection();
+        $this->updateChartSection();
+        $this->updateTableSection();
+    }
+
     public function updatedSelectedIntervalOption()
     {
         $this->dispatchBrowserEvent('reinitialize-datepicker', ['interval' => $this->selectedIntervalOption]);
@@ -144,6 +163,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedSelectedClientOption($value)
@@ -152,6 +172,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedSelectedClientGroupOption($value)
@@ -160,6 +181,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedSelectedCategorySubGroupOption($value)
@@ -168,6 +190,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedSelectedOrderStatusOption($value)
@@ -176,6 +199,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedSelectedPaymentStatusOption($value)
@@ -184,6 +208,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedProductName($value)
@@ -192,6 +217,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedUserName($value)
@@ -200,6 +226,7 @@ class Dashboard extends Component
         $this->updateCardSection();
         $this->updateProcessCountSection();
         $this->updateChartSection();
+        $this->updateTableSection();
     }
 
     public function updatedSelectedStartDate($value)
@@ -752,7 +779,7 @@ class Dashboard extends Component
     }
 
     //updated chart
-    public function updatedChart1DataD1()
+    public function updatedChart1DataD1() //PO
     {
         $orderCounts = $this->ordersFilters()
                 ->when($this->selectedThisWeekFilter, function($q) {
@@ -781,30 +808,32 @@ class Dashboard extends Component
         $this->chart1_data_d1 = $orderCounts;
     }
 
-    public function updatedChart1DataD3()
+    public function updatedChart1DataD3() //po mtd
     {
         // $currentMonth = date('Y-m');
         $currentMonth = "02";
 
-        $orderMTDCounts = $this->ordersFilters()
-            ->when($this->selectedThisWeekFilter, function($q) {
-                // Filter for current week (Sunday to Saturday)
-                $startOfWeek = (new Carbon\Carbon('this week'))->startOfWeek();
-                $endOfWeek = (new Carbon\Carbon('this week'))->endOfWeek();
-                return $q->whereBetween('o.created_at', [$startOfWeek, $endOfWeek]);
-            })
-            ->when($this->selectedThisMonthFilter, function($q) {
-                // Filter for current month
-                $startOfMonth = (new Carbon\Carbon('this month'))->startOfMonth();
-                $endOfMonth = (new Carbon\Carbon('this month'))->endOfMonth();
-                return $q->whereBetween('o.created_at', [$startOfMonth, $endOfMonth]);
-            })
-            ->when($this->selectedThisYearFilter, function($q) {
-                // Filter for current year
-                $startOfYear = (new Carbon\Carbon('this year'))->startOfYear();
-                $endOfYear = (new Carbon\Carbon('this year'))->endOfYear();
-                return $q->whereBetween('o.created_at', [$startOfYear, $endOfYear]);
-            })
+        $orderMTDCounts = 
+            DB::table('orders as o')
+            //$this->ordersFilters()
+            // ->when($this->selectedThisWeekFilter, function($q) {
+            //     // Filter for current week (Sunday to Saturday)
+            //     $startOfWeek = (new Carbon\Carbon('this week'))->startOfWeek();
+            //     $endOfWeek = (new Carbon\Carbon('this week'))->endOfWeek();
+            //     return $q->whereBetween('o.created_at', [$startOfWeek, $endOfWeek]);
+            // })
+            // ->when($this->selectedThisMonthFilter, function($q) {
+            //     // Filter for current month
+            //     $startOfMonth = (new Carbon\Carbon('this month'))->startOfMonth();
+            //     $endOfMonth = (new Carbon\Carbon('this month'))->endOfMonth();
+            //     return $q->whereBetween('o.created_at', [$startOfMonth, $endOfMonth]);
+            // })
+            // ->when($this->selectedThisYearFilter, function($q) {
+            //     // Filter for current year
+            //     $startOfYear = (new Carbon\Carbon('this year'))->startOfYear();
+            //     $endOfYear = (new Carbon\Carbon('this year'))->endOfYear();
+            //     return $q->whereBetween('o.created_at', [$startOfYear, $endOfYear]);
+            // })
             ->select(
                 DB::raw('DATE(o.created_at) AS order_date'),
                 DB::raw('COUNT(*) AS count'),
@@ -812,8 +841,8 @@ class Dashboard extends Component
                 DB::raw('SUM(COUNT(*)) OVER (PARTITION BY MONTH(o.created_at) ORDER BY o.created_at ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS mtd_count')
             )
             ->where('order_status_id', '<>', '8') // Exclude cancelled orders
-            // ->whereMonth('o.created_at', '=', $currentMonth)  // Filter for current month
-            // ->whereRaw('MONTH(o.created_at) = ?', [$currentMonth])
+            ->whereMonth('o.created_at', '=', $currentMonth)  // Filter for current month
+            ->whereRaw('MONTH(o.created_at) = ?', [$currentMonth])
             ->groupBy('order_date')
             ->orderBy('order_date')
             ->get();
@@ -821,7 +850,7 @@ class Dashboard extends Component
         $this->chart1_data_d3 = $orderMTDCounts;        
     }
 
-    public function updatedChart1DataD2()
+    public function updatedChart1DataD2() //pie
     {
         $warehouseCount = DB::table('order_items as oi')
         ->join('orders as o', 'o.id', '=', 'oi.order_id')
@@ -856,11 +885,20 @@ class Dashboard extends Component
     }
 
     //updated table
-    public function updatedTable1Data()
+    public function updatedTable1Data() //stock
     {
+        $productName = $this->productName;
+        $userName = $this->userName;
+        $selectedClientGroupOption = $this->selectedClientGroupOption;
+        $selectedCategorySubGroupOption = $this->selectedCategorySubGroupOption;
+        $selectedCategoryGroupOption = $this->selectedCategoryGroupOption;
+
         $inventories = DB::table('inventories as i')
             ->join('users as u', 'i.user_id', '=', 'u.id')
             ->join('products', 'i.product_id', '=', 'products.id')
+            ->leftJoin('orders AS o', 'u.id', '=', 'o.created_by')
+            ->leftJoin('order_items as oi', 'o.id', '=', 'oi.order_id')
+            ->join('customers as cust', 'o.customer_id', '=', 'cust.id')
             ->select(
                 'u.warehouse_name as warehouse_name',
                 'products.name as product_name',
@@ -873,6 +911,50 @@ class Dashboard extends Component
                 'i.condition_note as note',
                 DB::raw('SUM(i.sale_price * i.stock_quantity) OVER () as grand_total')
             )
+            ->when($this->selectedWarehouseOption !== '', function($q) {
+                return $q->where('o.shop_id', $this->selectedWarehouseOption);
+            })
+            ->when($this->selectedClientOption !== '', function($q) {
+                return $q->where('o.customer_id', $this->selectedClientOption);
+            })
+            ->when($this->selectedClientGroupOption !== '', function($q) use ($selectedClientGroupOption){
+                return $q
+                    ->join('category_product as cp', 'p.id', '=', 'cp.product_id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('cust.hospital_group', 'LIKE' ,'%'.$selectedClientGroupOption.'%');
+            })
+            ->when($this->selectedCategoryGroupOption !== '', function($q) use ($selectedCategoryGroupOption){
+                // return $q->where('shop_id', $this->selectedWarehouseOption);
+                return $q
+                    ->join('category_product as cp2', 'p.id', '=', 'cp2.product_id')
+                    ->join('categories as c', 'cp2.category_id', '=', 'c.id')
+                    ->join('category_sub_groups as csg', 'c.category_sub_group_id', '=', 'csg.id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('csg.category_group_id',  $selectedCategoryGroupOption);
+            })
+            ->when($this->selectedCategorySubGroupOption !== '', function($q) use ($selectedCategorySubGroupOption){
+                return $q
+                    ->join('category_product as cp3', 'p.id', '=', 'cp3.product_id')
+                    ->join('categories as c2', 'cp3.category_id', '=', 'c2.id')
+                    ->join('category_sub_groups as csg2', 'c2.category_sub_group_id', '=', 'csg2.id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('c2.category_sub_group_id',  $selectedCategorySubGroupOption);
+            })
+            ->when($this->selectedOrderStatusOption != 'all', function($q) {
+                return $q->where('o.order_status_id', Status::getStatusCode($this->selectedOrderStatusOption));
+            })
+            ->when($this->selectedPaymentStatusOption != 'all', function($q) {
+                return $q->where('o.payment_status', Status::getStatusCode($this->selectedPaymentStatusOption));
+            })
+            ->when($this->productName != '', function($q) use ($productName) {
+                return $q
+                    ->where('oi.item_description', 'LIKE', "%{$productName}%");
+            })
+            ->when($this->userName != '', function($q) use ($userName) {
+                return $q->where('cust.name', 'LIKE', "%{$this->userName}%");
+            })
+            
+            ->whereNotNull('customer_id')
             ->get();
 
         $this->table1_data = $inventories->map(function ($inventory) use ($inventories) {
@@ -886,7 +968,7 @@ class Dashboard extends Component
         $this->table1_data = json_decode(json_encode($inventories), true);
     }
     
-    public function updatedTable2Data()
+    public function updatedTable2Data() //log stock movement
     {
         $this->table2_data = [
             [
@@ -908,19 +990,137 @@ class Dashboard extends Component
             // Add more data entries following the same structure
           ];
     }
-    public function updatedTable3Data()
+
+    public function updatedTable3Data() //log activity
     {
+        $productName = $this->productName;
+        $userName = $this->userName;
+        $selectedClientGroupOption = $this->selectedClientGroupOption;
+        $selectedCategorySubGroupOption = $this->selectedCategorySubGroupOption;
+        $selectedCategoryGroupOption = $this->selectedCategoryGroupOption;
+
+        $selectedStartDate = $this->selectedStartDate;
+        $selectedEndDate = $this->selectedEndDate;
+        $selectedYearWeek = $this->selectedYearWeek;
+        $selectedWeek = $this->selectedWeek;
+        $selectedYearMonthStart = $this->selectedYearMonthStart;
+        $selectedYearMonthEnd = $this->selectedYearMonthEnd;
+        $selectedYearStart = $this->selectedYearStart;
+        $selectedYearEnd = $this->selectedYearEnd;
+
         $log_activity = DB::table('activity_log as al')
             ->join('orders as o', 'al.subject_id', '=', 'o.id')
             ->join('users as u', 'al.causer_id', '=', 'u.id')
-            ->join('customers as c', 'o.customer_id', '=', 'c.id')
+            ->join('customers as cust', 'o.customer_id', '=', 'cust.id')
+            ->leftJoin('order_items as oi', 'o.id', '=', 'oi.order_id')
+            ->join('inventories as i', 'oi.inventory_id', '=', 'i.id')
+            ->join('products as p', 'i.product_id', '=', 'p.id')
             ->select(
                 'o.created_at as date_order',
                 'u.name as username',
-                'c.name as hospital_name',
+                'cust.name as hospital_name',
                 'o.po_number_ref as no_po_ref',
                 'al.properties as status'
             )
+            ->when($this->selectedWarehouseOption !== '', function($q) {
+                return $q->where('o.shop_id', $this->selectedWarehouseOption);
+            })
+            ->when($this->selectedClientOption !== '', function($q) {
+                return $q->where('o.customer_id', $this->selectedClientOption);
+            })
+            ->when($this->selectedClientGroupOption !== '', function($q) use ($selectedClientGroupOption){
+                return $q
+                    ->join('category_product as cp', 'p.id', '=', 'cp.product_id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('cust.hospital_group', 'LIKE' ,'%'.$selectedClientGroupOption.'%');
+            })
+            ->when($this->selectedCategoryGroupOption !== '', function($q) use ($selectedCategoryGroupOption){
+                // return $q->where('shop_id', $this->selectedWarehouseOption);
+                return $q
+                    ->join('category_product as cp2', 'p.id', '=', 'cp2.product_id')
+                    ->join('categories as c', 'cp2.category_id', '=', 'c.id')
+                    ->join('category_sub_groups as csg', 'c.category_sub_group_id', '=', 'csg.id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('csg.category_group_id',  $selectedCategoryGroupOption);
+            })
+            ->when($this->selectedCategorySubGroupOption !== '', function($q) use ($selectedCategorySubGroupOption){
+                return $q
+                    ->join('category_product as cp3', 'p.id', '=', 'cp3.product_id')
+                    ->join('categories as c2', 'cp3.category_id', '=', 'c2.id')
+                    ->join('category_sub_groups as csg2', 'c2.category_sub_group_id', '=', 'csg2.id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('c2.category_sub_group_id',  $selectedCategorySubGroupOption);
+            })
+            ->when($this->selectedOrderStatusOption != 'all', function($q) {
+                return $q->where('o.order_status_id', Status::getStatusCode($this->selectedOrderStatusOption));
+            })
+            ->when($this->selectedPaymentStatusOption != 'all', function($q) {
+                return $q->where('o.payment_status', Status::getStatusCode($this->selectedPaymentStatusOption));
+            })
+            ->when($this->productName != '', function($q) use ($productName) {
+                return $q
+                    ->where('oi.item_description', 'LIKE', "%{$productName}%");
+            })
+            ->when($this->userName != '', function($q) use ($userName) {
+                return $q->where('cust.name', 'LIKE', "%{$this->userName}%");
+            })
+            ->when($this->selectedIntervalOption !== '', function($q) use (
+                $selectedStartDate,
+                $selectedEndDate,
+                $selectedYearWeek,
+                $selectedWeek,
+                $selectedYearMonthStart,
+                $selectedYearMonthEnd,
+                $selectedYearStart,
+                $selectedYearEnd
+            ){
+                if ($this->selectedIntervalOption == 'DAILY') {
+                    // Filter for records between start and end date (inclusive)
+                    return $q->whereBetween('o.created_at', [$selectedStartDate, $selectedEndDate]);
+                } else if ($this->selectedIntervalOption == 'MONTH') {
+                   // Extract start and end month/year
+                    $startMonth = (int)date('m', strtotime($selectedYearMonthStart));
+                    $startYear = (int)date('Y', strtotime($selectedYearMonthStart));
+                    $endMonth = (int)date('m', strtotime($selectedYearMonthEnd));
+                    $endYear = (int)date('Y', strtotime($selectedYearMonthEnd));
+    
+                    // Handle filtering based on start and end month/year
+                    if ($startYear === $endYear) {
+                        // Same year, filter for records within the specified month range (inclusive)
+                        return $q->whereMonth('o.created_at', '>=', $startMonth)
+                                ->whereMonth('o.created_at', '<=', $endMonth)
+                                ->whereYear('o.created_at', $startYear);
+                    } else {
+                        // Different years, handle filtering across year boundaries
+                        $q = $q->where(function ($subquery) use ($startMonth, $startYear, $endMonth, $endYear) {
+                            $subquery->whereMonth('o.created_at', '>=', $startMonth)
+                                    ->whereYear('o.created_at', $startYear);
+                            if ($startYear !== $endYear - 1) {
+                                // Filter for all months in between start and end year (excluding end year)
+                                $subquery->orWhere(function ($subsubquery) use ($endYear) {
+                                    $subsubquery->whereYear('o.created_at', '>', $startYear)
+                                            ->whereYear('o.created_at', '<', $endYear);
+                                });
+                            }
+                            $subquery->orWhereMonth('o.created_at', '<=', $endMonth)
+                                    ->whereYear('o.created_at', $endYear);
+                        });
+                    }
+                    return $q;
+                } else if ($this->selectedIntervalOption == 'YEAR') {
+                    // Extract start and end year
+                    $startYear = (int)date('Y', strtotime($selectedYearStart));
+                    $endYear = (int)date('Y', strtotime($selectedYearEnd));
+    
+                    // Filter for records within the specified year range (inclusive)
+                    return $q->whereYear('o.created_at', '>=', $startYear)
+                            ->whereYear('o.created_at', '<=', $endYear);
+                } else {
+                    // Handle invalid interval option (optional)
+                    return $q;
+                }
+            })
+            ->whereNotNull('customer_id')
             ->where('al.log_name', 'order')
             ->limit(10)
             ->orderBy('o.updated_at', 'DESC')
@@ -954,7 +1154,7 @@ class Dashboard extends Component
 
         $this->table3_data = json_decode(json_encode($processedResults), true);
     }
-    public function updatedTable4Data()
+    public function updatedTable4Data() //top customer table
     {
         $top_customers = $this->ordersFilters() //filter 1,2
             //filter 3
@@ -998,7 +1198,7 @@ class Dashboard extends Component
 
         $this->table4_data = json_decode(json_encode($top_customers), true);
     }
-    public function updatedTable5Data()
+    public function updatedTable5Data() //warehouse table
     {
         $warehouse_revenue = $this->ordersFilters() //filter 1,2
                 //filter 3
@@ -1042,7 +1242,7 @@ class Dashboard extends Component
 
         $this->table5_data = json_decode(json_encode($warehouse_revenue), true);
     }
-    public function updatedTable6Data()
+    public function updatedTable6Data() //top worst product
     {
         $productName = $this->productName;
         $userName = $this->userName;
@@ -1199,9 +1399,29 @@ class Dashboard extends Component
         
         $this->table6_data = json_decode(json_encode($worst_product), true);
     }
-    public function updatedTable7Data()
+    public function updatedTable7Data() //kpi table
     {
+        $productName = $this->productName;
+        $userName = $this->userName;
+        $selectedClientGroupOption = $this->selectedClientGroupOption;
+        $selectedCategorySubGroupOption = $this->selectedCategorySubGroupOption;
+        $selectedCategoryGroupOption = $this->selectedCategoryGroupOption;
+
+        $selectedStartDate = $this->selectedStartDate;
+        $selectedEndDate = $this->selectedEndDate;
+        $selectedYearWeek = $this->selectedYearWeek;
+        $selectedWeek = $this->selectedWeek;
+        $selectedYearMonthStart = $this->selectedYearMonthStart;
+        $selectedYearMonthEnd = $this->selectedYearMonthEnd;
+        $selectedYearStart = $this->selectedYearStart;
+        $selectedYearEnd = $this->selectedYearEnd;
+
         $kpi_users = $query = DB::table('users AS u')
+            ->leftJoin('orders AS o', 'u.id', '=', 'o.created_by')
+            ->leftJoin('order_items as oi', 'o.id', '=', 'oi.order_id')
+            ->leftJoin('inventories as i', 'oi.inventory_id', '=', 'i.id')
+            ->leftJoin('products as p', 'i.product_id', '=', 'p.id')
+            ->leftJoin('customers as cust', 'o.customer_id', '=', 'cust.id')
             ->select([
                 'u.name AS employee_name',
                 'u.warehouse_name',
@@ -1211,7 +1431,105 @@ class Dashboard extends Component
                 DB::raw('(SELECT COUNT(*) FROM orders o2 WHERE o2.paid_by = u.id) AS paided'),
                 DB::raw('(((SELECT COUNT(*) FROM orders o2 WHERE o2.created_by = u.id))+ (SELECT COUNT(*) FROM orders o2 WHERE o2.packed_by = u.id) + (SELECT COUNT(*) FROM orders o2 WHERE o2.delivery_by = u.id) + (SELECT COUNT(*) FROM orders o2 WHERE o2.paid_by = u.id)) AS total'),
             ])
-            ->leftJoin('orders AS o', 'u.id', '=', 'o.created_by')
+            ->when($this->selectedWarehouseOption !== '', function($q) {
+                return $q->where('o.shop_id', $this->selectedWarehouseOption);
+            })
+            ->when($this->selectedClientOption !== '', function($q) {
+                return $q->where('o.customer_id', $this->selectedClientOption);
+            })
+            ->when($this->selectedClientGroupOption !== '', function($q) use ($selectedClientGroupOption){
+                return $q
+                    ->join('category_product as cp', 'p.id', '=', 'cp.product_id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('cust.hospital_group', 'LIKE' ,'%'.$selectedClientGroupOption.'%');
+            })
+            ->when($this->selectedCategoryGroupOption !== '', function($q) use ($selectedCategoryGroupOption){
+                // return $q->where('shop_id', $this->selectedWarehouseOption);
+                return $q
+                    ->join('category_product as cp2', 'p.id', '=', 'cp2.product_id')
+                    ->join('categories as c', 'cp2.category_id', '=', 'c.id')
+                    ->join('category_sub_groups as csg', 'c.category_sub_group_id', '=', 'csg.id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('csg.category_group_id',  $selectedCategoryGroupOption);
+            })
+            ->when($this->selectedCategorySubGroupOption !== '', function($q) use ($selectedCategorySubGroupOption){
+                return $q
+                    ->join('category_product as cp3', 'p.id', '=', 'cp3.product_id')
+                    ->join('categories as c2', 'cp3.category_id', '=', 'c2.id')
+                    ->join('category_sub_groups as csg2', 'c2.category_sub_group_id', '=', 'csg2.id')
+                    // ->where('p.manufacture_skuid', '!=', '')
+                    ->where('c2.category_sub_group_id',  $selectedCategorySubGroupOption);
+            })
+            ->when($this->selectedOrderStatusOption != 'all', function($q) {
+                return $q->where('o.order_status_id', Status::getStatusCode($this->selectedOrderStatusOption));
+            })
+            ->when($this->selectedPaymentStatusOption != 'all', function($q) {
+                return $q->where('o.payment_status', Status::getStatusCode($this->selectedPaymentStatusOption));
+            })
+            ->when($this->productName != '', function($q) use ($productName) {
+                return $q
+                    ->where('oi.item_description', 'LIKE', "%{$productName}%");
+            })
+            ->when($this->userName != '', function($q) use ($userName) {
+                return $q->where('cust.name', 'LIKE', "%{$this->userName}%");
+            })
+            ->when($this->selectedIntervalOption !== '', function($q) use (
+                $selectedStartDate,
+                $selectedEndDate,
+                $selectedYearWeek,
+                $selectedWeek,
+                $selectedYearMonthStart,
+                $selectedYearMonthEnd,
+                $selectedYearStart,
+                $selectedYearEnd
+            ){
+                if ($this->selectedIntervalOption == 'DAILY') {
+                    // Filter for records between start and end date (inclusive)
+                    return $q->whereBetween('o.created_at', [$selectedStartDate, $selectedEndDate]);
+                } else if ($this->selectedIntervalOption == 'MONTH') {
+                   // Extract start and end month/year
+                    $startMonth = (int)date('m', strtotime($selectedYearMonthStart));
+                    $startYear = (int)date('Y', strtotime($selectedYearMonthStart));
+                    $endMonth = (int)date('m', strtotime($selectedYearMonthEnd));
+                    $endYear = (int)date('Y', strtotime($selectedYearMonthEnd));
+    
+                    // Handle filtering based on start and end month/year
+                    if ($startYear === $endYear) {
+                        // Same year, filter for records within the specified month range (inclusive)
+                        return $q->whereMonth('o.created_at', '>=', $startMonth)
+                                ->whereMonth('o.created_at', '<=', $endMonth)
+                                ->whereYear('o.created_at', $startYear);
+                    } else {
+                        // Different years, handle filtering across year boundaries
+                        $q = $q->where(function ($subquery) use ($startMonth, $startYear, $endMonth, $endYear) {
+                            $subquery->whereMonth('o.created_at', '>=', $startMonth)
+                                    ->whereYear('o.created_at', $startYear);
+                            if ($startYear !== $endYear - 1) {
+                                // Filter for all months in between start and end year (excluding end year)
+                                $subquery->orWhere(function ($subsubquery) use ($endYear) {
+                                    $subsubquery->whereYear('o.created_at', '>', $startYear)
+                                            ->whereYear('o.created_at', '<', $endYear);
+                                });
+                            }
+                            $subquery->orWhereMonth('o.created_at', '<=', $endMonth)
+                                    ->whereYear('o.created_at', $endYear);
+                        });
+                    }
+                    return $q;
+                } else if ($this->selectedIntervalOption == 'YEAR') {
+                    // Extract start and end year
+                    $startYear = (int)date('Y', strtotime($selectedYearStart));
+                    $endYear = (int)date('Y', strtotime($selectedYearEnd));
+    
+                    // Filter for records within the specified year range (inclusive)
+                    return $q->whereYear('o.created_at', '>=', $startYear)
+                            ->whereYear('o.created_at', '<=', $endYear);
+                } else {
+                    // Handle invalid interval option (optional)
+                    return $q;
+                }
+            })
+            // ->whereNotNull('customer_id')
             ->where('u.warehouse_name', '<>', '')
             ->groupBy('u.id')
             ->orderBy('total', 'desc')

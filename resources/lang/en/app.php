@@ -836,7 +836,7 @@ return [
             'revenue' => 'Revenue',
             'last_month' => 'Last Month',
             'last_year' => 'Last Year',
-            'top_customrt' => 'Top Customer',
+            'top_customer' => 'Top Customer',
             'target' => 'Target',
             'acheivement' => 'acheivement',
             'warehouse' => 'warehouse',

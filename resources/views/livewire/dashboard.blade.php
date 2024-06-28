@@ -114,7 +114,7 @@
                   <div class="col-md-2 nopadding-left">
                     <div class="form-group">
                       <label>&nbsp;</label>
-                      <button type="button" class="btn btn-default pull-right" name="search" value="1"><i class="fa fa-caret-left"></i> {{ trans('app.clear') }}</button>
+                      <button type="button" class="btn btn-default pull-right" name="clear" id="clear"><i class="fa fa-caret-left"></i> {{ trans('app.clear') }}</button>
                     </div>
                   </div>
                 </div>
@@ -464,7 +464,7 @@
                       <x-table :header="[
                         'date_order' => trans('app.dashboard.table.date_order'),
                         'username' => trans('app.dashboard.table.username'),
-                        'hospital_name' => trans('app.dashboard.table.hospital_name  '),
+                        'hospital_name' => trans('app.dashboard.table.hospital_name'),
                         'no_po_ref' => trans('app.dashboard.table.no_po_ref'),
                         'status' => trans('app.dashboard.table.status'),
                     ]" :options="[
@@ -611,6 +611,10 @@
       $('#select_warehouse').on('change', function (e) {
           // var data = $('#select_warehouse').select2("val");
           @this.emit('updatedCustomerCount');
+      });
+
+      $('#clear').on('click', function (e) {
+          @this.emit('resetFilters');
       });
 
       initializeDatepicker(@this.selectedIntervalOption);
