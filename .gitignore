@@ -31,3 +31,5 @@
 # /composer1.phar
 vendor/ 
 .vscode/settings.json
+.env 
+.env.local
