@@ -786,6 +786,11 @@
           
         },
         {
+          'data': 'year',
+          'name': 'year'
+          
+        },
+        {
           'data': 'requirement',
           'name': 'requirement'
         },
@@ -867,13 +872,21 @@
         tableBudgets.column('warehouse:name').search(selectedMerchant).draw();
     }
 
+    function filterByYear() {
+        var selectedMerchant = $('#yearFilter').val();
+
+        // Apply the year filter to the 'year' column (assume the column name is 'year')
+        tableBudgets.column('year:name').search(selectedMerchant).draw();
+    }
+
     // Initial calculation
     calculateTotal();
     
     // Bind the filter and calculation function to the month dropdown change event
     $('#monthFilter').on('change', filterByMonth);
     $('#merchantFilter').on('change', filterByWarehouse);
-
+    $('#yearFilter').on('change', filterByYear);
+    
     // Recalculate the total on each table draw
     tableBudgets.on('draw', function() {
         calculateTotal();
