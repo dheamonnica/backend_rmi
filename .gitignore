@@ -1,14 +1,14 @@
 # /node_modules
 # /public/hot
-# /public/storage
+/public/storage
 # /public/images/demo
 # /public/sitemap.xml
-# /public/*.index*
-# /storage/*.index*
-# /storage/*.key
-# /storage/*_token
-# /storage/installed
-# /storage/logs/**
+/public/*.index*
+/storage/*.index*
+/storage/*.key
+/storage/*_token
+/storage/installed
+/storage/logs/**
 # /storage/app/analytics-api.json
 # /storage/ebay_refresh_token
 # /vendor/**
