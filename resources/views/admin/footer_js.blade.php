@@ -765,6 +765,126 @@
     });
 
     // Load offering list by Ajax
+    var tableTargets = $('#target-tables').DataTable($.extend({}, dataTableOptions, {
+      "ajax": "{{ route('admin.admin.target.getTargetsTables') }}",
+      "columns": [{
+          'data': 'checkbox',
+          'name': 'checkbox',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        },
+        {
+          'data': 'date',
+          'name': 'date'
+          
+        },
+        {
+          'data': 'month',
+          'name': 'month'
+          
+        },
+        {
+          'data': 'year',
+          'name': 'year'
+          
+        },
+        {
+          'data': 'hospital_group',
+          'name': 'hospital_group'
+        },
+        {
+          'data': 'actual_sales',
+          'name': 'actual_sales'
+        },
+        {
+          'data': 'grand_total',
+          'name': 'grand_total'
+        },
+        {
+          'data': 'warehouse',
+          'name': 'warehouse'
+        },
+        {
+          'data': 'created_at',
+          'name': 'created_at',
+        },
+        {
+          'data': 'created_by',
+          'name': 'created_by',
+        },
+        {
+          'data': 'updated_at',
+          'name': 'updated_at',
+        },
+        {
+          'data': 'updated_by',
+          'name': 'updated_by',
+        },
+        {
+          'data': 'option',
+          'name': 'option',
+          'orderable': false,
+          'searchable': false,
+          'exportable': false,
+          'printable': false
+        }
+      ]
+    }));
+
+    // Filter the 'created_by' column with the name of the authenticated user
+    @if(!Auth::user()->isAdmin())
+      tableTargets.column('created_by:name').search('{{ Auth::user()->name }}').draw();
+    @endif
+
+    // Function to calculate the total amount
+    function calculateTotalTarget() {
+        var total = 0;
+        tableTargets.rows({ search: 'applied' }).every(function(rowIdx, tableLoop, rowLoop) {
+            var data = this.data();
+            var amount = data.grand_total.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            total += parseFloat(amount); // Assuming the 'Amount' column is at index 1
+        });
+
+        $('#totalAmountTarget').html('Rp. ' + total.toLocaleString('id-ID'));
+    }
+
+    function filterByMonthTarget() {
+        var selectedMonth = $('#monthFilterTarget').val();
+
+        // Apply the month filter to the 'month' column (assume the column name is 'month')
+        tableTargets.column('month:name').search(selectedMonth).draw();
+    }
+
+    function filterByWarehouseTarget() {
+        var selectedMerchant = $('#merchantFilterTarget').val();
+
+        // Apply the business area filter to the 'business area' column (assume the column name is 'business area')
+        tableTargets.column('warehouse:name').search(selectedMerchant).draw();
+    }
+
+    function filterByYearTarget() {
+        var selectedMerchant = $('#yearFilterTarget').val();
+
+        // Apply the year filter to the 'year' column (assume the column name is 'year')
+        tableTargets.column('year:name').search(selectedMerchant).draw();
+    }
+
+    // Initial calculation
+    calculateTotalTarget();
+    
+    // Bind the filter and calculation function to the month dropdown change event
+    $('#monthFilterTarget').on('change', filterByMonthTarget);
+    $('#merchantFilterTarget').on('change', filterByWarehouseTarget);
+    $('#yearFilterTarget').on('change', filterByYearTarget);
+    
+    // Recalculate the total on each table draw
+    tableTargets.on('draw', function() {
+        calculateTotalTarget();
+    });
+
+    // Load offering list by Ajax
     var tableBudgets = $('#budget-tables').DataTable($.extend({}, dataTableOptions, {
       "ajax": "{{ route('admin.admin.budget.getBudgets') }}",
       "columns": [{

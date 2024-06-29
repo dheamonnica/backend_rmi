@@ -61,7 +61,8 @@ return [
         'user' => 'User',
         'warehouse' => 'Warehouse',
         'delivery_boy' => 'Delivery Boy',
-        'budget' => 'Budget'
+        'budget' => 'Budget',
+        'target' => 'Target'
     ],
 
     // Application Levels
@@ -1266,6 +1267,11 @@ return [
         'total' => 'Total for each Qty',
         'grand_total' => 'Grand Total', 
         'picture' => 'Picture',
+
+        // target
+        'actual_sales' => 'Actual Sales',
+        'create_target' => 'Create Target',
+        'select_hospital_group' => 'Select Hospital Group',
     ],
 
     'placeholder' => [

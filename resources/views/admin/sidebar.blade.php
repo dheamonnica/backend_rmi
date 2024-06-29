@@ -25,7 +25,6 @@
             @if (Gate::allows('index', \App\Models\Category::class) || Gate::allows('index', \App\Models\CategoryGroup::class) || Gate::allows('index', \App\Models\CategorySubGroup::class))
               <li class="{{ Request::is('admin/catalog/category*') ? 'active' : '' }}">
                 <a href="javascript:void(0)">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.categories') }}
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -72,7 +71,6 @@
               @can('index', \App\Models\Product::class)
                 <li class="{{ Request::is('admin/catalog/product*') ? 'active' : '' }}">
                   <a href="{{ url('admin/catalog/product') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('nav.products') }}
                   </a>
                 </li>
@@ -82,7 +80,6 @@
             @can('index', \App\Models\Manufacturer::class)
               <li class="{{ Request::is('admin/catalog/manufacturer*') ? 'active' : '' }}">
                 <a href="{{ url('admin/catalog/manufacturer') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.manufacturers') }}
                 </a>
               </li>
@@ -103,7 +100,6 @@
               @can('index', \App\Models\Inventory::class)
                 <li class="{{ (Request::is('admin/stock/inventory/physical') && !(Request::is('admin/stock/inventory/digital*') || Request::is('admin/stock/inventory/auction*'))) || (isset($inventory) && isset($product) && !$product->downloadable && !$inventory->auctionable) ? 'active' : '' }}">
                   <a href="{{ route('admin.stock.inventory.index', ['type' => 'physical']) }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('nav.physical_products') }}
                   </a>
                 </li>
@@ -117,7 +113,6 @@
                 @if (is_incevio_package_loaded('auction'))
                   <li class="{{ Request::is('admin/stock/inventory/auction') || (isset($inventory) && $inventory->auctionable) ? 'active' : '' }}">
                     <a href="{{ route('admin.stock.inventory.index', ['type' => 'auction']) }}">
-                      {{-- <i class="fa fa-angle-double-right"></i> --}}
                       {{ trans('auction::lang.auction_items') }}
                     </a>
                   </li>
@@ -129,14 +124,12 @@
               @can('index', \App\Models\Product::class)
                 <li class="{{ Request::is('admin/stock/product/physical*') ? 'active' : '' }}">
                   <a href="{{ url('admin/stock/product/physical') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('nav.physical_products') }}
                   </a>
                 </li>
 
                 <li class="{{ Request::is('admin/stock/product/digital*') ? 'active' : '' }}">
                   <a href="{{ url('admin/stock/product/digital') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('nav.digital_products') }}
                   </a>
                 </li>
@@ -144,7 +137,6 @@
                 @if (is_incevio_package_loaded('auction'))
                   <li class="{{ Request::is('admin/stock/product/auction*') || (isset($inventory) && $inventory->auctionable) ? 'active' : '' }}">
                     <a href="{{ url('admin/stock/product/auction') }}">
-                      {{-- <i class="fa fa-angle-double-right"></i> --}}
                       {{ trans('auction::lang.auction_items') }}
                     </a>
                   </li>
@@ -163,7 +155,6 @@
             @can('index', \App\Models\Supplier::class)
               <li class="{{ Request::is('admin/stock/supplier*') ? 'active' : '' }}">
                 <a href="{{ url('admin/stock/supplier') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.suppliers') }}
                 </a>
               </li>
@@ -183,7 +174,6 @@
             @can('index', \App\Models\Order::class)
               <li class="{{ Request::is('admin/order/order*') ? 'active' : '' }}">
                 <a href="{{ url('admin/order/order') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.orders') }}
                 </a>
               </li>
@@ -191,7 +181,6 @@
             @can('index', \App\Models\Order::class)
               <li class="{{ Request::is('admin/order/order-full') ? 'active' : '' }}">
                 <a href="{{ url('admin/order/order-full') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   Order Report
                 </a>
               </li>
@@ -243,7 +232,6 @@
             @can('index', \App\Models\User::class)
               <li class="{{ Request::is('admin/admin/user*') ? 'active' : '' }}">
                 <a href="{{ url('admin/admin/user') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.users') }}
                 </a>
               </li>
@@ -252,7 +240,6 @@
             @if (Auth::user()->isMerchant())
               <li class="{{ Request::is('admin/admin/deliveryboys*') ? 'active' : '' }}">
                 <a href="{{ route('admin.admin.deliveryboy.index') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.delivery_boys') }}
                 </a>
               </li>
@@ -261,7 +248,6 @@
             @can('index', \App\Models\Customer::class)
               <li class="{{ Request::is('admin/admin/customer*') || Request::is('address/addresses/customer*') ? 'active' : '' }}">
                 <a href="{{ url('admin/admin/customer') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.customers') }}
                 </a>
               </li>
@@ -271,7 +257,6 @@
               @can('index', \Incevio\Package\Inspector\Models\InspectorModel::class)
                 <li class="{{ Request::is('admin/inspector/inspectables*') ? 'active' : '' }}">
                   <a href="{{ url('admin/inspector/inspectables') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('inspector::lang.inspectables') }}
                     @include('partials._addon_badge')
                   </a>
@@ -293,7 +278,6 @@
             @can('index', \App\Models\Shop::class)
               <li class="{{ Request::is('admin/vendor/merchant*') ? 'active' : '' }}">
                 <a href="{{ url('admin/vendor/merchant') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   Area
                 </a>
               </li>
@@ -302,7 +286,6 @@
             @can('index', \App\Models\Shop::class)
               <li class="{{ Request::is('admin/vendor/shop*') ? 'active' : '' }}">
                 <a href="{{ url('admin/vendor/shop') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   Employee
                 </a>
               </li>
@@ -323,21 +306,18 @@
             <ul class="treeview-menu">
               <li class="{{ Request::is('admin/payouts*') ? 'active' : '' }}">
                 <a href="{{ url('admin/payouts') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('wallet::lang.payouts') }}
                 </a>
               </li>
 
               <li class="{{ Request::is('admin/payout/requests*') ? 'active' : '' }}">
                 <a href="{{ url('admin/payout/requests') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('wallet::lang.payout_requests') }}
                 </a>
               </li>
 
               <li class="{{ Request::is('admin/wallet/bulkupload/*') ? 'active' : '' }}">
                 <a href="{{ route('admin.wallet.bulkupload.index') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('wallet::lang.wallet_bulk_upload') }}
                 </a>
               </li>
@@ -367,7 +347,6 @@
               @can('index', \App\Models\Carrier::class)
                 <li class="{{ Request::is('admin/shipping/carrier*') ? 'active' : '' }}">
                   <a href="{{ url('admin/shipping/carrier') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('nav.carriers') }}
                   </a>
                 </li>
@@ -377,7 +356,6 @@
                 @can('index', \Incevio\Package\Packaging\Models\Packaging::class)
                   <li class="{{ Request::is('admin/shipping/packaging*') ? 'active' : '' }}">
                     <a href="{{ url('admin/shipping/packaging') }}">
-                      {{-- <i class="fa fa-angle-double-right"></i> --}}
                       {{ trans('nav.packaging') }}
                       @include('partials._addon_badge')
                     </a>
@@ -388,7 +366,6 @@
               @can('index', \App\Models\ShippingZone::class)
                 <li class="{{ Request::is('admin/shipping/shippingZone*') ? 'active' : '' }}">
                   <a href="{{ url('admin/shipping/shippingZone') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                     {{ trans('nav.shipping_zones') }}
                   </a>
                 </li>
@@ -595,7 +572,6 @@
             @can('index', \App\Models\SubscriptionPlan::class)
               <li class="{{ Request::is('admin/setting/subscriptionPlan*') ? 'active' : '' }}">
                 <a href="{{ url('admin/setting/subscriptionPlan') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.subscription_plans') }}
                 </a>
               </li>
@@ -605,7 +581,6 @@
           @can('index', \App\Models\Role::class)
             <li class="{{ Request::is('admin/setting/role*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/role') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.user_roles') }}
               </a>
             </li>
@@ -614,7 +589,6 @@
           @can('index', \App\Models\Tax::class)
             <li class="{{ Request::is('admin/setting/tax*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/tax') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.taxes') }}
               </a>
             </li>
@@ -623,14 +597,12 @@
           @can('view', \App\Models\Config::class)
             <li class="{{ Request::is('admin/setting/general*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/general') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.shop_settings') }}
               </a>
             </li>
 
             <li class="{{ Request::is('admin/setting/config*') || Request::is('admin/setting/verify*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/config') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                  {{ trans('nav.configurations') }}
               </a>
             </li>
@@ -639,7 +611,6 @@
             @if (vendor_get_paid_directly() || vendor_can_on_off_payment_method())
               <li class=" {{ Request::is('admin/setting/paymentMethod*') ? 'active' : '' }}">
                 <a href="{{ url('admin/setting/paymentMethod') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                    {{ trans('nav.payment_methods') }}
                 </a>
               </li>
@@ -648,7 +619,6 @@
 
             <li class=" {{ Request::is('admin/setting/shippingMethod*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/shippingMethod') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.shipping_methods') }}
               </a>
             </li>
@@ -658,7 +628,6 @@
           @can('view', \App\Models\System::class)
             <li class="{{ Request::is('admin/setting/system/general*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/system/general') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.system_settings') }}
               </a>
             </li>
@@ -667,7 +636,6 @@
           @can('view', \App\Models\SystemConfig::class)
             <li class="{{ Request::is('admin/setting/system/config*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/system/config') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.configurations') }}
               </a>
             </li>
@@ -676,7 +644,6 @@
           @if (is_incevio_package_loaded('announcement') && Auth::user()->isAdmin())
             <li class="{{ Request::is('admin/setting/announcement*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/announcement') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.announcements') }}
                 @include('partials._addon_badge')
               </a>
@@ -686,21 +653,18 @@
           @if (Auth::user()->isAdmin())
             <li class="{{ Request::is('admin/setting/country*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/country') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.countries') }}
               </a>
             </li>
 
             <li class="{{ Request::is('admin/setting/currency*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/currency') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('nav.currencies') }}
               </a>
             </li>
 
             <li class="{{ Request::is('admin/setting/language*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/language') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                 {{ trans('app.languages') }}
               </a>
             </li>
@@ -711,7 +675,6 @@
             @can('setting', \Incevio\Package\Wallet\Models\Wallet::class)
               <li class="{{ Request::is('admin/setting/wallet*') ? 'active' : '' }}">
                 <a href="{{ url('admin/setting/wallet') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                    {{ trans('wallet::lang.wallet_settings') }}
                 </a>
               </li>
@@ -721,7 +684,6 @@
           @if (is_incevio_package_loaded('inspector') && Gate::allows('setting', \Incevio\Package\Inspector\Models\InspectorModel::class))
             <li class="{{ Request::is('admin/setting/inspector*') ? 'active' : '' }}">
               <a href="{{ route(config('inspector.routes.settings')) }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                  {{ trans('inspector::lang.inspector_settings') }}
                 @include('partials._addon_badge')
               </a>
@@ -731,7 +693,6 @@
           @if (is_incevio_package_loaded('zipcode'))
             <li class="{{ Request::is('admin/setting/zipcode*') ? 'active' : '' }}">
               <a href="{{ route(config('zipcode.routes.settings')) }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                  {{ trans('zipcode::lang.zipcode_setting') }}
                 @include('partials._addon_badge')
               </a>
@@ -741,7 +702,6 @@
           @if (is_incevio_package_loaded('dynamicCommission') && (new \App\Helpers\Authorize(Auth::user(), 'manage_dynamic_commission'))->check())
             <li class="{{ Request::is('admin/setting/dynamicCommission*') ? 'active' : '' }}">
               <a href="{{ route(config('dynamicCommission.routes.settings')) }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                  {{ trans('dynamicCommission::lang.commissions_settings') }}
                 @include('partials._addon_badge')
               </a>
@@ -751,7 +711,6 @@
           @if (is_incevio_package_loaded('searchAutocomplete') && Auth::user()->isAdmin())
             <li class="{{ Request::is('admin/setting/autocomplete*') ? 'active' : '' }}">
               <a href="{{ route('admin.setting.autocomplete') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                  {{ trans('searchAutocomplete::lang.search_settings') }}
                 @include('partials._addon_badge')
               </a>
@@ -761,7 +720,6 @@
           @if (is_incevio_package_loaded('ebay'))
             <li class="{{ Request::is('admin/setting/ebay*') ? 'active' : '' }}">
               <a href="{{ url('admin/setting/ebay') }}">
-                {{-- <i class="fa fa-angle-double-right"></i> --}}
                  {{ trans('ebay::lang.ebay_settings') }}
               </a>
             </li>
@@ -838,7 +796,6 @@
               @can('report', \Incevio\Package\Wallet\Models\Wallet::class)
                 <li class="{{ Request::is('admin/report/payout*') ? 'active' : '' }}">
                   <a href="{{ route('admin.wallet.payout.report') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                      {{ trans('nav.payout') }}
                   </a>
                 </li>
@@ -851,6 +808,12 @@
               </a>
             </li>
 
+            <li class="{{ Request::is('admin/target*') ? 'active' : '' }}">
+              <a href="{{ route('admin.target.index') }}">
+                Target
+              </a>
+            </li>
+
             @if (Auth::user()->isAdmin())
             <li class="{{ Request::is('admin/report/kpi*') ? 'active' : '' }}">
               <a href="{{ route('admin.kpi') }}">
@@ -860,7 +823,6 @@
 
               <li class="{{ Request::is('admin/report/sales*') ? 'active' : '' }}">
                 <a href="javascript:void(0)">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.sales') }}
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -889,7 +851,6 @@
               @if (is_incevio_package_loaded('googleAnalytics'))
                 <li class="{{ Request::is('admin/report/googleAnalytics*') ? 'active' : '' }}">
                   <a href="{{ route('admin.report.googleAnalytics') }}">
-                    {{-- <i class="fa fa-angle-double-right"></i> --}}
                      {{ trans('analytics::lang.analytics') }}
                     @include('partials._addon_badge')
                   </a>
@@ -898,21 +859,18 @@
 
               <li class="{{ Request::is('admin/report/visitors*') ? 'active' : '' }}">
                 <a href="{{ route('admin.report.visitors') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                    {{ trans('nav.visitors') }}
                 </a>
               </li>
 
               <li class="{{ Request::is('admin/offering*') ? 'active' : '' }}">
                 <a href="{{ route('admin.offering.index') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   Offering Approval
                 </a>
               </li>
             @elseif(Auth::user()->isMerchant())
               <li class="{{ Request::is('admin/shop/report/kpi*') ? 'active' : '' }}">
                 <a href="{{ route('admin.shop-kpi') }}">
-                  {{-- <i class="fa fa-angle-double-right"></i> --}}
                   {{ trans('nav.performance') }}
                 </a>
               </li>
