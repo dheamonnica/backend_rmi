@@ -1263,7 +1263,6 @@ return [
         'updated_at' => 'Updated At',
         'updated_by' => 'Updated By',
         'create_offering' => 'Create Offering',
-        'company_name' => 'Company Name',
         'product_name' => 'Rizkimed Nasal Mask',
         'min_selling_price' => 'Min Selling Price',
         'max_selling_price' => 'Max Selling Price',
@@ -1271,6 +1270,8 @@ return [
         // budget
         'create_budget' => 'Create Budget',
         'date' => 'Date',
+        'year' => 'Year',
+        'month' => 'Month',
         'requirement' => 'Requirement',
         'qty' => 'Qty',
         'total' => 'Total for each Qty',
