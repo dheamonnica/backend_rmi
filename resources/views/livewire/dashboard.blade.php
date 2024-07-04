@@ -255,7 +255,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="row dashboard-total">
-                <x-dashboard-card :count=$customer_count :count_plus=$new_customer_last_30_days :options="
+                <x-dashboard-card :count=$customer_count :count2=$new_customer_last_30_days :options="
                   [
                     'name' => trans('app.dashboard.customer_active'),
                     'is_count_plus' => true,
@@ -264,7 +264,7 @@
                     'icon' => 'people',
                     'color' => 'danger' 
                   ]" />
-                <x-dashboard-card :count=$total_profit :count_plus=0 :options="
+                <x-dashboard-card :count=$total_profit :count2=0 :options="
                 [
                   'name' => trans('app.dashboard.total_profit_exclude_ops'),
                   'is_count_plus' => false, 
@@ -273,7 +273,7 @@
                   'icon' => 'wallet',
                   'color' => 'info' 
                 ]"/>
-                <x-dashboard-card :count=$qty_ordered :count_plus=$total_order_created :options="
+                <x-dashboard-card :count=$qty_ordered :count2=$total_order_created :options="
                 [
                   'name' => trans('app.dashboard.qty_pcs'),
                   'is_count_plus' => true,
@@ -282,7 +282,7 @@
                   'icon' => 'cube',
                   'color' => 'primary' 
                 ]"/>
-                <x-dashboard-card :count=$gross_value :count_plus=0 :options="
+                <x-dashboard-card :count=$gross_value :count2=0 :options="
                 [
                   'name' => trans('app.dashboard.gross_value'),
                   'is_count_plus' => false,
@@ -370,6 +370,8 @@
                       'name' => trans('app.dashboard.table.po_status_timeframe')
                     ]"/>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-md-6">
                     @php
                         $chartDataMTD = [
