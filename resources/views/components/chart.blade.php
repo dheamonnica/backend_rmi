@@ -1,31 +1,24 @@
 <div>
-    <div class="box">
+      <div class="box">
         <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs nav-justified">
-                <div class="box-header with-border">
-                    <h3 class="box-title">
-                    <i class="icon ion-md-pulse hidden-sm"></i>
-                    {{ $options['name'] }}
-                </div>
-            </ul>
-        <!-- /.nav .nav-tabs -->
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="visitors_tab">
-                    <div>
-                        <canvas id="myChart1"></canvas>
-                    </div>
-                </div>
+          <ul class="nav nav-tabs nav-justified">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-dollar"></i>
+                {{ $options['name'] }}</h3>
             </div>
-            <!-- /.tab-content -->
-        </div>
-        <!-- /.nav-tabs-custom -->
-    </div><!-- /.box -->
+          </ul> <!-- /.nav .nav-tabs -->
+
+          <div class="tab-content">
+            <!-- Chart canvas container -->
+            <canvas id="poStatusChart" style="height: 100vh !important;"></canvas>
+          </div> <!-- /.tab-content -->
+        </div> <!-- /.nav-tabs-custom -->
+      </div> <!-- /.box -->
 </div>
 
 @push('js-scripts')
 <script>
-    const ctx1 = document.getElementById('myChart1');
+    const ctx1 = document.getElementById('poStatusChart');
 
 new Chart(ctx1, {
   data: {
